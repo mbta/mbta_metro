@@ -23,7 +23,7 @@ defmodule BlocksWeb.Endpoint do
     at: "/",
     from: :blocks,
     gzip: false,
-    only: BlocksWeb.static_paths()
+    only: ~w(assets fonts images favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
@@ -31,17 +31,7 @@ defmodule BlocksWeb.Endpoint do
     plug Phoenix.CodeReloader
   end
 
-  plug Phoenix.LiveDashboard.RequestLogger,
-    param_key: "request_logger",
-    cookie_key: "request_logger"
-
   plug Plug.RequestId
-  plug Plug.Telemetry, event_prefix: [:phoenix, :endpoint]
-
-  plug Plug.Parsers,
-    parsers: [:urlencoded, :multipart, :json],
-    pass: ["*/*"],
-    json_decoder: Phoenix.json_library()
 
   plug Plug.MethodOverride
   plug Plug.Head

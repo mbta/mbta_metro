@@ -1,5 +1,5 @@
 defmodule BlocksWeb.Router do
-  use BlocksWeb, :router
+  use Phoenix.Router, helpers: false
 
   import Phoenix.LiveView.Router
 
