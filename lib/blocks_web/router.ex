@@ -3,5 +3,14 @@ defmodule BlocksWeb.Router do
 
   import Phoenix.LiveView.Router
 
-  live "/", BlocksWeb.Live.Demo
+  pipeline :browser do
+    plug(:accepts, ["html"])
+    plug(:put_root_layout, {BlocksWeb.Layouts, :root})
+  end
+
+  scope "/", BlocksWeb do
+    pipe_through(:browser)
+
+    live "/", Live.Demo
+  end
 end

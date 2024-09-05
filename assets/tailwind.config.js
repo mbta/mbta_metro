@@ -8,7 +8,8 @@ const path = require("path")
 module.exports = {
   content: [
     "./js/**/*.js",
-    "../lib/blocks_web.ex",
+    "node_modules/preline/dist/*.js",
+    "../lib/blocks/components/**/*.ex",
     "../lib/blocks_web/**/*.*ex"
   ],
   theme: {

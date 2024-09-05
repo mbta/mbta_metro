@@ -1,0 +1,22 @@
+{
+  "name": "blocks",
+  "version": "0.0.1",
+  "description": "A Phoenix LiveView component library",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anthonyshull/blocks.git"
+  },
+  "author": "Anthony Shull",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/anthonyshull/blocks/issues"
+  },
+  "homepage": "https://github.com/anthonyshull/blocks#readme",
+  "devDependencies": {
+    "preline": "^2.4.1"
+  }
+}

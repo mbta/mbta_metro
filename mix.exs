@@ -1,15 +1,21 @@
 defmodule Blocks.MixProject do
   use Mix.Project
 
+  @version "0.0.1"
+
   def project do
     [
       app: :blocks,
-      version: "0.1.0",
-      elixir: "~> 1.14",
+      version: "0.0.1",
+      elixir: "~> 1.17",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      package: [
+        licenses: ["GPL-3.0-or-later"],
+        links: %{"GitHub" => "https://github.com/anthonyshull/blocks"}
+      ],
     ]
   end
 
@@ -19,7 +25,6 @@ defmodule Blocks.MixProject do
   def application do
     [
       mod: {Blocks.Application, []},
-      extra_applications: [:logger, :runtime_tools]
     ]
   end
 
@@ -32,18 +37,19 @@ defmodule Blocks.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:bandit, "1.5.7"},
-      {:esbuild, "0.8.1", runtime: Mix.env() == :dev},
+      {:bandit, "1.5.7", runtime: false},
+      {:esbuild, "0.8.1", runtime: false},
       {:heroicons,
        github: "tailwindlabs/heroicons",
        tag: "v2.1.1",
        sparse: "optimized",
        app: false,
        compile: false,
-       depth: 1},
+       depth: 1,
+       runtime: false},
       {:phoenix, "1.7.14"},
       {:phoenix_live_view, "0.20.17"},
-      {:tailwind, "0.2.3", runtime: Mix.env() == :dev},
+      {:tailwind, "0.2.3", runtime: false},
     ]
   end
 
