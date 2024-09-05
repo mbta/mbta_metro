@@ -38,7 +38,7 @@ defmodule Blocks.MixProject do
   defp deps do
     [
       {:bandit, "1.5.7", runtime: false},
-      {:esbuild, "0.8.1", runtime: false},
+      {:esbuild, "0.8.1", runtime: Mix.env() == :dev},
       {:heroicons,
        github: "tailwindlabs/heroicons",
        tag: "v2.1.1",
@@ -49,7 +49,7 @@ defmodule Blocks.MixProject do
        runtime: false},
       {:phoenix, "1.7.14"},
       {:phoenix_live_view, "0.20.17"},
-      {:tailwind, "0.2.3", runtime: false},
+      {:tailwind, "0.2.3", runtime: Mix.env() == :dev},
     ]
   end
 
