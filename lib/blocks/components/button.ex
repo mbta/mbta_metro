@@ -1,4 +1,6 @@
 defmodule Blocks.Components.Button do
+  @moduledoc false
+
   use Phoenix.Component
 
   slot :inner_block, required: true

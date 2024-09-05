@@ -6,7 +6,7 @@ defmodule Blocks.MixProject do
   def project do
     [
       app: :blocks,
-      version: "0.0.1",
+      version: @version,
       elixir: "~> 1.17",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
