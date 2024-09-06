@@ -52,6 +52,7 @@ defmodule MbtaMetroWeb do
   def live_view do
     quote do
       use Phoenix.LiveView, layout: {MbtaMetroWeb.Layouts, :app}
+      use MbtaMetro
 
       unquote(html_helpers())
     end
