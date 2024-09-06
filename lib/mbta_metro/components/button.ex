@@ -1,4 +1,4 @@
-defmodule Blocks.Components.Button do
+defmodule MbtaMetro.Components.Button do
   @moduledoc false
 
   use Phoenix.Component

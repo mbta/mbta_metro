@@ -1,5 +1,5 @@
-defmodule BlocksWeb.Live.Demo do
-  use Phoenix.LiveView, layout: {BlocksWeb.Layouts, :root}
+defmodule MbtaMetroWeb.Live.Demo do
+  use Phoenix.LiveView, layout: {MbtaMetroWeb.Layouts, :root}
 
   def mount(_params, _session, socket) do
     {:ok, assign(socket, show: true)}

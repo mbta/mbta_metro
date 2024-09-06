@@ -1,5 +1,5 @@
 {
-  "name": "blocks",
+  "name": "mbta_metro",
   "version": "0.0.1",
   "description": "A Phoenix LiveView component library",
   "main": "tailwind.config.js",
@@ -8,15 +8,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anthonyshull/blocks.git"
+    "url": "git+https://github.com/anthonyshull/mbta_metro.git"
   },
   "author": "Anthony Shull",
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/anthonyshull/blocks/issues"
+    "url": "https://github.com/anthonyshull/mbta_metro/issues"
   },
-  "homepage": "https://github.com/anthonyshull/blocks#readme",
+  "homepage": "https://github.com/anthonyshull/mbta_metro#readme",
   "devDependencies": {
+    "@tailwindcss/forms": "^0.5.9",
     "preline": "^2.4.1"
   }
 }

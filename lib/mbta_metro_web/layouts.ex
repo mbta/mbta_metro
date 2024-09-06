@@ -1,4 +1,4 @@
-defmodule BlocksWeb.Layouts do
+defmodule MbtaMetroWeb.Layouts do
   @moduledoc """
   Layout templates.
   """

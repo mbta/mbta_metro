@@ -1,11 +1,11 @@
-defmodule Blocks.MixProject do
+defmodule MbtaMetro.MixProject do
   use Mix.Project
 
   @version "0.0.1"
 
   def project do
     [
-      app: :blocks,
+      app: :mbta_metro,
       version: @version,
       elixir: "~> 1.17",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -14,7 +14,7 @@ defmodule Blocks.MixProject do
       deps: deps(),
       package: [
         licenses: ["GPL-3.0-or-later"],
-        links: %{"GitHub" => "https://github.com/anthonyshull/blocks"}
+        links: %{"GitHub" => "https://github.com/anthonyshull/mbta_metro"}
       ],
     ]
   end
@@ -24,7 +24,7 @@ defmodule Blocks.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Blocks.Application, []},
+      mod: {MbtaMetro.Application, []},
     ]
   end
 
@@ -63,10 +63,10 @@ defmodule Blocks.MixProject do
     [
       setup: ["deps.get", "assets.setup", "assets.build"],
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
-      "assets.build": ["tailwind blocks", "esbuild blocks"],
+      "assets.build": ["tailwind mbta_metro", "esbuild mbta_metro"],
       "assets.deploy": [
-        "tailwind blocks --minify",
-        "esbuild blocks --minify",
+        "tailwind mbta_metro --minify",
+        "esbuild mbta_metro --minify",
         "phx.digest"
       ]
     ]

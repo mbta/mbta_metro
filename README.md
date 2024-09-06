@@ -1,8 +1,41 @@
-# Blocks
+# MBTA METRO
 
-To demo all of the Blocks components:
+To demo all of the MBTA METRO components:
 
   * Run `mix setup` to install and setup dependencies
   * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+
+## Installation
+
+1. Install Tailwind
+
+If you have a clean, recent installation of Phoenix, you should already have Tailwind installed.
+If not, you can follow this guide: [https://tailwindcss.com/docs/guides/phoenix].
+
+2. Install Preline
+
+Follow this guide: [https://preline.co/docs/index.html].
+
+3. Install MBTA METRO
+
+Add this to your `mix.exs`:
+
+```elixir
+def deps do
+  [{:mbta_metro, github: "anthonyshull/mbta_metro"}]
+end
+```
+
+You'll also need to add the MBTA METRO heex files to your `tailwind.config.js`:
+
+```javascript
+module.exports = {
+  content: [
+    ...,
+    "../deps/mbta_metro/**/*.*ex",
+  ],
+  ...
+}
+```

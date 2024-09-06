@@ -1,4 +1,4 @@
-defmodule Blocks.Application do
+defmodule MbtaMetro.Application do
   @moduledoc false
 
   use Application
@@ -6,17 +6,17 @@ defmodule Blocks.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      BlocksWeb.Endpoint
+      MbtaMetroWeb.Endpoint
     ]
 
-    opts = [strategy: :one_for_one, name: Blocks.Supervisor]
+    opts = [strategy: :one_for_one, name: MbtaMetro.Supervisor]
 
     Supervisor.start_link(children, opts)
   end
 
   @impl true
   def config_change(changed, _new, removed) do
-    BlocksWeb.Endpoint.config_change(changed, removed)
+    MbtaMetroWeb.Endpoint.config_change(changed, removed)
 
     :ok
   end

@@ -2,7 +2,7 @@ import Config
 
 config :logger, level: :info
 
-config :blocks, BlocksWeb.Endpoint,
+config :mbta_metro, MbtaMetroWeb.Endpoint,
   adapter: Bandit.PhoenixAdapter,
   http: [ip: {127, 0, 0, 1}, port: 4000],
   check_origin: false,
@@ -10,14 +10,14 @@ config :blocks, BlocksWeb.Endpoint,
   debug_errors: true,
   secret_key_base: "TcvJhq/n8JgjzZJ38tbZcFDrS2htRxPYvQNpKiqPulT+XFCsoQmxRlr9VWDYc912",
   watchers: [
-    esbuild: {Esbuild, :install_and_run, [:blocks, ~w(--sourcemap=inline --watch)]},
-    tailwind: {Tailwind, :install_and_run, [:blocks, ~w(--watch)]}
+    esbuild: {Esbuild, :install_and_run, [:mbta_metro, ~w(--sourcemap=inline --watch)]},
+    tailwind: {Tailwind, :install_and_run, [:mbta_metro, ~w(--watch)]}
   ],
   live_view: [signing_salt: "F_IrwXSetja22gAl"]
 
 config :esbuild,
   version: "0.17.11",
-  blocks: [
+  mbta_metro: [
     args:
       ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
     cd: Path.expand("../assets", __DIR__),
@@ -26,7 +26,7 @@ config :esbuild,
 
 config :tailwind,
   version: "3.4.0",
-  blocks: [
+  mbta_metro: [
     args: ~w(
       --config=tailwind.config.js
       --input=css/app.css

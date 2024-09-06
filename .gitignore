@@ -23,7 +23,7 @@ erl_crash.dump
 /tmp/
 
 # Ignore package tarball (built via "mix hex.build").
-blocks-*.tar
+mbta_metro-*.tar
 
 # Ignore assets that are produced by build tools.
 /priv/static/assets/

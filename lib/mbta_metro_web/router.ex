@@ -1,7 +1,7 @@
-defmodule BlocksWeb.Router do
+defmodule MbtaMetroWeb.Router do
   use Phoenix.Router, helpers: false
 
   import Phoenix.LiveView.Router
 
-  live "/", BlocksWeb.Live.Demo
+  live "/", MbtaMetroWeb.Live.Demo
 end

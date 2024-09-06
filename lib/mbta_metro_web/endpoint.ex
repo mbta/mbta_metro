@@ -1,12 +1,12 @@
-defmodule BlocksWeb.Endpoint do
-  use Phoenix.Endpoint, otp_app: :blocks
+defmodule MbtaMetroWeb.Endpoint do
+  use Phoenix.Endpoint, otp_app: :mbta_metro
 
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.
   @session_options [
     store: :cookie,
-    key: "_blocks_key",
+    key: "_mbta_metro_key",
     signing_salt: "6JkTgR+T",
     same_site: "Lax"
   ]
@@ -21,7 +21,7 @@ defmodule BlocksWeb.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/",
-    from: :blocks,
+    from: :mbta_metro,
     gzip: false,
     only: ~w(assets fonts images favicon.ico robots.txt)
 
@@ -36,5 +36,5 @@ defmodule BlocksWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
-  plug BlocksWeb.Router
+  plug MbtaMetroWeb.Router
 end

@@ -1,4 +1,4 @@
-defmodule BlocksWeb.ConnCase do
+defmodule MbtaMetroWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -11,7 +11,7 @@ defmodule BlocksWeb.ConnCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use BlocksWeb.ConnCase, async: true`, although
+  by setting `use MbtaMetroWeb.ConnCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -20,14 +20,14 @@ defmodule BlocksWeb.ConnCase do
   using do
     quote do
       # The default endpoint for testing
-      @endpoint BlocksWeb.Endpoint
+      @endpoint MbtaMetroWeb.Endpoint
 
-      use BlocksWeb, :verified_routes
+      use MbtaMetroWeb, :verified_routes
 
       # Import conveniences for testing with connections
       import Plug.Conn
       import Phoenix.ConnTest
-      import BlocksWeb.ConnCase
+      import MbtaMetroWeb.ConnCase
     end
   end
 
