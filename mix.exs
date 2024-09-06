@@ -48,7 +48,7 @@ defmodule MbtaMetro.MixProject do
        depth: 1,
        runtime: false},
       {:phoenix, "1.7.14"},
-      {:phoenix_live_view, "0.20.17"},
+      {:phoenix_live_view, "1.0.0-rc.6"},
       {:tailwind, "0.2.3", runtime: Mix.env() == :dev},
     ]
   end
