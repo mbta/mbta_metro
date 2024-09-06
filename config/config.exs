@@ -13,7 +13,16 @@ config :mbta_metro, MbtaMetroWeb.Endpoint,
     esbuild: {Esbuild, :install_and_run, [:mbta_metro, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:mbta_metro, ~w(--watch)]}
   ],
+  pubsub_server: MbtaMetro.PubSub,
   live_view: [signing_salt: "F_IrwXSetja22gAl"]
+
+config :mbta_metro, MbtaMetroWeb.Endpoint,
+  live_reload: [
+    patterns: [
+      ~r"priv/static/(?!uploads/).*(js|css|png|jpeg|jpg|gif|svg)$",
+      ~r"lib/mbta_metro_web/(controllers|live|components)/.*(ex|heex)$"
+    ]
+  ]
 
 config :esbuild,
   version: "0.17.11",
@@ -34,3 +43,5 @@ config :tailwind,
     ),
     cd: Path.expand("../assets", __DIR__)
   ]
+
+config :phoenix, :json_library, Jason

@@ -7,7 +7,7 @@ defmodule MbtaMetroWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_mbta_metro_key",
-    signing_salt: "6JkTgR+T",
+    signing_salt: "fK8TN2rH",
     same_site: "Lax"
   ]
 
@@ -23,15 +23,23 @@ defmodule MbtaMetroWeb.Endpoint do
     at: "/",
     from: :mbta_metro,
     gzip: false,
-    only: ~w(assets fonts images favicon.ico robots.txt)
+    only: MbtaMetroWeb.static_paths()
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
   if code_reloading? do
+    socket "/phoenix/live_reload/socket", Phoenix.LiveReloader.Socket
+    plug Phoenix.LiveReloader
     plug Phoenix.CodeReloader
   end
 
   plug Plug.RequestId
+  plug Plug.Telemetry, event_prefix: [:phoenix, :endpoint]
+
+  plug Plug.Parsers,
+    parsers: [:urlencoded, :multipart, :json],
+    pass: ["*/*"],
+    json_decoder: Phoenix.json_library()
 
   plug Plug.MethodOverride
   plug Plug.Head

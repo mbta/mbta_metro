@@ -1,5 +1,7 @@
 defmodule MbtaMetroWeb.Live.Demo do
-  use Phoenix.LiveView, layout: {MbtaMetroWeb.Layouts, :root}
+  @moduledoc false
+
+  use MbtaMetroWeb, :live_view
 
   def mount(_params, _session, socket) do
     {:ok, assign(socket, show: true)}

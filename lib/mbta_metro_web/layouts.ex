@@ -3,7 +3,7 @@ defmodule MbtaMetroWeb.Layouts do
   Layout templates.
   """
 
-  use Phoenix.Component
+  use MbtaMetroWeb, :html
 
   embed_templates "layouts/*"
 end
