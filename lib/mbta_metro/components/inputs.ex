@@ -206,4 +206,43 @@ defmodule MbtaMetro.Components.Inputs do
     </p>
     """
   end
+
+  attr :type, :string, values: ~W(checkbox radio)
+
+  attr :field, Phoenix.HTML.FormField,
+    required: true,
+    doc: "a form field struct retrieved from the form, for example: @form[:color]"
+
+  slot :input_item, doc: "Items to render as a list" do
+    attr :id, :string
+    attr :label, :string, doc: "The label displayed. The value will be used as default."
+    attr :value, :any, required: true, doc: "The value assumed then the item is checked"
+    attr :checked, :boolean
+  end
+
+  def input_group(assigns) do
+    ~H"""
+    <ul class="flex flex-col sm:flex-row">
+      <li
+        :for={item <- @input_item}
+        class={[
+          "border border-solid border-slate-200",
+          "has-[:checked]:bg-slate-100 has-[:checked]:border-slate-700",
+          "first:max-sm:rounded-t-lg last:max-sm:rounded-b-lg",
+          "sm:first:rounded-l-lg sm:last:rounded-r-lg"
+        ]}
+      >
+        <.input
+          id={item.id}
+          type={@type}
+          field={@field}
+          label={item[:label]}
+          value={item.value}
+          checked={item[:checked]}
+          multiple={if(@type == "checkbox", do: "true")}
+        />
+      </li>
+    </ul>
+    """
+  end
 end
