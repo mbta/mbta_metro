@@ -4,8 +4,8 @@ defmodule MbtaMetro do
   defmacro __using__(_) do
     quote do
       import MbtaMetro.Components.{
-        Core,
         Button,
+        Core,
         Inputs
       }
     end
