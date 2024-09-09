@@ -47,7 +47,6 @@ defmodule MbtaMetro.MixProject do
        compile: false,
        depth: 1,
        runtime: false},
-      {:jason, "1.4.4"},
       {:phoenix, "1.7.14"},
       {:phoenix_live_reload, "1.5.3", only: :dev},
       {:phoenix_live_view, "1.0.0-rc.6"},

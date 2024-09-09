@@ -42,6 +42,4 @@ config :tailwind,
     cd: Path.expand("../assets", __DIR__)
   ]
 
-config :phoenix, :json_library, Jason
-
 config :logger, level: :info
