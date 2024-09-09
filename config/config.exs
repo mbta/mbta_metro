@@ -2,7 +2,6 @@ import Config
 
 config :mbta_metro, MbtaMetroWeb.Endpoint,
   adapter: Bandit.PhoenixAdapter,
-
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
