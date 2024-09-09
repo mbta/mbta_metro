@@ -4,7 +4,8 @@ defmodule MbtaMetroWeb.Live.Demo do
   use MbtaMetroWeb, :live_view
 
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, show: true)}
+    form = Phoenix.Component.to_form(%{"fruit" => ["apple", "banana", "coconut", "durian"]})
+    {:ok, assign(socket, show: true, form: form)}
   end
 
   def handle_event("click", _, socket) do
