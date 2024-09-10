@@ -246,4 +246,22 @@ defmodule MbtaMetro.Components.Inputs do
     </ul>
     """
   end
+
+  @doc """
+  Renders a simple fieldset for grouping radio and checkbox inputs.
+  """
+  attr :legend, :string, required: true, doc: "A concise label for the fieldset."
+
+  slot :inner_block,
+    required: true,
+    doc: "The fieldset content, containing multiple options for a radio input or checkbox input."
+
+  def fieldset(assigns) do
+    ~H"""
+    <fieldset class="my-3 w-full">
+      <legend class="font-semifold text-slate-600 text-sm"><%= @legend %></legend>
+      <%= render_slot(@inner_block) %>
+    </fieldset>
+    """
+  end
 end

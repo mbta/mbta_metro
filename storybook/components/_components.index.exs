@@ -8,4 +8,5 @@ defmodule Storybook.Components.Index do
   def folder_open?, do: true
 
   def entry("button"), do: [name: "Button"]
+  def entry("fieldset"), do: [name: "Fieldset"]
 end
