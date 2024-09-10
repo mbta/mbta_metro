@@ -8,6 +8,10 @@ defmodule MbtaMetro do
         Core,
         Inputs
       }
+
+      alias MbtaMetro.Live.{
+        Map
+      }
     end
   end
 end
