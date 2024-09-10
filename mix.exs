@@ -37,20 +37,20 @@ defmodule MbtaMetro.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:bandit, "1.5.7", runtime: false},
-      {:esbuild, "0.8.1", runtime: Mix.env() == :dev},
+      {:bandit, "1.5.7", only: :dev, optional: true, runtime: false},
+      {:esbuild, "0.8.1", only: :dev, optional: true, runtime: Mix.env() == :dev},
       {:heroicons,
        github: "tailwindlabs/heroicons",
-       tag: "v2.1.1",
+       tag: "v2.1.5",
        sparse: "optimized",
        app: false,
        compile: false,
        depth: 1,
        runtime: false},
       {:phoenix, "1.7.14"},
-      {:phoenix_live_reload, "1.5.3", only: :dev},
+      {:phoenix_live_reload, "1.5.3", only: :dev, optional: true, runtime: false},
       {:phoenix_live_view, "1.0.0-rc.6"},
-      {:tailwind, "0.2.3", runtime: Mix.env() == :dev}
+      {:tailwind, "0.2.3", only: :dev, optional: true, runtime: Mix.env() == :dev}
     ]
   end
 
