@@ -7,7 +7,6 @@ defmodule MbtaMetro do
     quote do
       import MbtaMetro.Components.{
         Button,
-        Core,
         Inputs
       }
 

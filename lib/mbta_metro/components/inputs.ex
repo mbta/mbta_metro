@@ -3,8 +3,6 @@ defmodule MbtaMetro.Components.Inputs do
 
   use Phoenix.Component
 
-  import MbtaMetro.Components.Core
-
   defp base_classnames(:controls), do: "border-slate-400 text-slate-900 focus:ring-0"
 
   defp base_classnames(:control_label),
@@ -33,8 +31,8 @@ defmodule MbtaMetro.Components.Inputs do
 
   ## Examples
 
-      <.input field={@form[:email]} type="email" />
-      <.input name="my-input" errors={["oh no!"]} />
+      <.form_input field={@form[:email]} type="email" />
+      <.form_input name="my-input" errors={["oh no!"]} />
   """
   attr :id, :any, default: nil
   attr :name, :any
@@ -60,7 +58,7 @@ defmodule MbtaMetro.Components.Inputs do
     include: ~w(accept autocomplete capture cols disabled form list max maxlength min minlength
                 multiple pattern placeholder readonly required rows size step)
 
-  def input(%{field: %Phoenix.HTML.FormField{} = field} = assigns) do
+  def form_input(%{field: %Phoenix.HTML.FormField{} = field} = assigns) do
     errors = if used_input?(field), do: field.errors, else: []
 
     assigns
@@ -73,10 +71,10 @@ defmodule MbtaMetro.Components.Inputs do
     |> assign(:errors, errors)
     |> assign_new(:name, fn -> if assigns.multiple, do: field.name <> "[]", else: field.name end)
     |> assign_new(:value, fn -> field.value end)
-    |> input()
+    |> form_input()
   end
 
-  def input(%{type: "radio"} = assigns) do
+  def form_input(%{type: "radio"} = assigns) do
     assigns = assigns |> assign_new(:checked, fn -> false end)
 
     ~H"""
@@ -95,7 +93,7 @@ defmodule MbtaMetro.Components.Inputs do
     """
   end
 
-  def input(%{type: "checkbox"} = assigns) do
+  def form_input(%{type: "checkbox"} = assigns) do
     assigns =
       assigns
       |> assign_new(:checked, fn ->
@@ -119,10 +117,10 @@ defmodule MbtaMetro.Components.Inputs do
     """
   end
 
-  def input(%{type: "select"} = assigns) do
+  def form_input(%{type: "select"} = assigns) do
     ~H"""
     <div>
-      <.label for={@id}><%= @label %></.label>
+      <.form_label for={@id}><%= @label %></.form_label>
       <select
         id={@id}
         name={@name}
@@ -133,15 +131,15 @@ defmodule MbtaMetro.Components.Inputs do
         <option :if={@prompt} value=""><%= @prompt %></option>
         <%= Phoenix.HTML.Form.options_for_select(@options, @value) %>
       </select>
-      <.error :for={msg <- @errors}><%= msg %></.error>
+      <.form_error :for={msg <- @errors}><%= msg %></.form_error>
     </div>
     """
   end
 
-  def input(%{type: "textarea"} = assigns) do
+  def form_input(%{type: "textarea"} = assigns) do
     ~H"""
     <div>
-      <.label for={@id}><%= @label %></.label>
+      <.form_label for={@id}><%= @label %></.form_label>
       <textarea
         id={@id}
         name={@name}
@@ -152,16 +150,16 @@ defmodule MbtaMetro.Components.Inputs do
         ]}
         {@rest}
       ><%= Phoenix.HTML.Form.normalize_value("textarea", @value) %></textarea>
-      <.error :for={msg <- @errors}><%= msg %></.error>
+      <.form_error :for={msg <- @errors}><%= msg %></.form_error>
     </div>
     """
   end
 
   # All other inputs text, datetime-local, url, password, etc. are handled here...
-  def input(assigns) do
+  def form_input(assigns) do
     ~H"""
     <div>
-      <.label for={@id}><%= @label %></.label>
+      <.form_label for={@id}><%= @label %></.form_label>
       <input
         type={@type}
         name={@name}
@@ -174,7 +172,7 @@ defmodule MbtaMetro.Components.Inputs do
         ]}
         {@rest}
       />
-      <.error :for={msg <- @errors}><%= msg %></.error>
+      <.form_error :for={msg <- @errors}><%= msg %></.form_error>
     </div>
     """
   end
@@ -185,7 +183,7 @@ defmodule MbtaMetro.Components.Inputs do
   attr :for, :string, default: nil
   slot :inner_block, required: true
 
-  def label(assigns) do
+  def form_label(assigns) do
     ~H"""
     <label for={@for} class="block text-sm font-semibold leading-6 text-zinc-800">
       <%= render_slot(@inner_block) %>
@@ -198,10 +196,10 @@ defmodule MbtaMetro.Components.Inputs do
   """
   slot :inner_block, required: true
 
-  def error(assigns) do
+  def form_error(assigns) do
     ~H"""
-    <p class="mt-2 flex gap-3 text-sm leading-6 text-rose-600">
-      <.icon name="hero-exclamation-circle-mini" class="mt-0.5 h-5 w-5 flex-none" />
+    <p class="mt-1 flex gap-2 text-sm leading-6 text-rose-600">
+      <Heroicons.exclamation_circle class="h-6 w-6 flex-none" />
       <%= render_slot(@inner_block) %>
     </p>
     """
@@ -234,7 +232,7 @@ defmodule MbtaMetro.Components.Inputs do
           "sm:first:rounded-l-lg sm:last:rounded-r-lg"
         ]}
       >
-        <.input
+        <.form_input
           id={item.id}
           type={@type}
           field={@field}
