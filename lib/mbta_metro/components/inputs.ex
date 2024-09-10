@@ -8,7 +8,7 @@ defmodule MbtaMetro.Components.Inputs do
   defp base_classnames(:controls), do: "border-slate-400 text-slate-900 focus:ring-0"
 
   defp base_classnames(:control_label),
-    do: "py-2 px-3 w-full inline-flex items-center gap-x-2 has-[:checked]:font-bold"
+    do: "py-2 px-3 mb-0 w-full inline-flex items-center gap-x-2 has-[:checked]:font-bold"
 
   @doc """
   Renders an input with label and error messages.
@@ -213,6 +213,8 @@ defmodule MbtaMetro.Components.Inputs do
     required: true,
     doc: "a form field struct retrieved from the form, for example: @form[:color]"
 
+  attr :rest, :global
+
   slot :input_item, doc: "Items to render as a list" do
     attr :id, :string
     attr :label, :string, doc: "The label displayed. The value will be used as default."
@@ -222,7 +224,7 @@ defmodule MbtaMetro.Components.Inputs do
 
   def input_group(assigns) do
     ~H"""
-    <ul class="flex flex-col sm:flex-row">
+    <ul class="flex flex-col sm:flex-row list-none">
       <li
         :for={item <- @input_item}
         class={[
@@ -238,8 +240,8 @@ defmodule MbtaMetro.Components.Inputs do
           field={@field}
           label={item[:label]}
           value={item.value}
-          checked={item[:checked]}
           multiple={if(@type == "checkbox", do: "true")}
+          {@rest}
         />
       </li>
     </ul>
