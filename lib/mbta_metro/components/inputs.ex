@@ -222,7 +222,7 @@ defmodule MbtaMetro.Components.Inputs do
 
   def input_group(assigns) do
     ~H"""
-    <ul class="flex flex-col sm:flex-row list-none">
+    <ul class="m-0 p-0 flex flex-col sm:flex-row list-none">
       <li
         :for={item <- @input_item}
         class={[
@@ -238,6 +238,7 @@ defmodule MbtaMetro.Components.Inputs do
           field={@field}
           label={item[:label]}
           value={item.value}
+          checked={item[:checked]}
           multiple={if(@type == "checkbox", do: "true")}
           {@rest}
         />
