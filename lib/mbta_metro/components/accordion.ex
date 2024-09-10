@@ -1,0 +1,41 @@
+defmodule MbtaMetro.Components.Accordion do
+  use Phoenix.Component
+
+  attr :open, :boolean,
+    default: false,
+    doc: """
+    Whether the accordion starts open or closed.
+    """
+
+  slot :content, required: true
+
+  slot :extra,
+    required: false,
+    doc: """
+    Supplemental content to be shown below the accordion. Helpful for showing error states if form inputs are inside the component.
+    """
+
+  slot :heading,
+    required: true,
+    doc: """
+    The header of the component. Supports HTML markup.
+    """
+
+  @doc """
+  A disclosure widget that reveals or hides additional content.
+  """
+  def accordion(assigns) do
+    ~H"""
+    <details class="group w-full" open={@open}>
+      <summary class="border border-solid border-stone-500 p-2 flex cursor-pointer list-none items-center gap-2 p-2">
+        <Heroicons.chevron_down class="group-open:rotate-180 w-4 h-4" />
+        <%= render_slot(@heading) %>
+      </summary>
+      <div class="border border-solid border-t-0 border-stone-500 p-2">
+        <%= render_slot(@content) %>
+      </div>
+    </details>
+    <%= render_slot(@extra) %>
+    """
+  end
+end
