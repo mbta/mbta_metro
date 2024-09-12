@@ -26,17 +26,20 @@ defmodule MbtaMetro.Live.Map do
   Renders the map component.
   """
   def render(assigns) do
-    class = Map.get(assigns, :class, "")
-    click_handler = Map.get(assigns, :click_handler, false)
+    assigns
+    |> Map.get(:class, "")
+    |> Kernel.then(&assign(assigns, :class, &1))
+    |> Map.get(:click_handler, false)
+    |> Kernel.then(&assign(assigns, :click_handler, &1))
 
     ~H"""
     <div
       id="map"
-      class={class}
+      class={@class}
       data-api-key={@api_key}
       data-map-name={@map_name}
       data-region={@region}
-      data-click-handler={Jason.encode!(click_handler)}
+      data-click-handler={Jason.encode!(@click_handler)}
       phx-hook="Map"
     >
     </div>

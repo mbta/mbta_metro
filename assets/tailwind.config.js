@@ -1,29 +1,28 @@
 // See the Tailwind configuration guide for advanced usage
 // https://tailwindcss.com/docs/configuration
 
-const { colors: defaultColors } = require('tailwindcss/defaultTheme')
+
 const fs = require("fs")
 const path = require("path")
 const plugin = require("tailwindcss/plugin")
 
+const {colors, content, plugins} = require("mbta_metro")
+
 module.exports = {
   content: [
+    ...content,
     "./js/**/*.js",
-    "node_modules/preline/dist/*.js",
-    "../lib/mbta_metro/components/**/*.ex",
-    "../lib/mbta_metro/live/**/*.ex",
-    "../lib/mbta_metro_web/**/*.*ex"
   ],
   theme: {
     extend: {
       colors: {
-        ...defaultColors,
+        ...colors,
       }
     },
   },
   plugins: [
+    ...plugins,
     require("@tailwindcss/forms"),
-    require("preline/plugin"),
     // Allows prefixing tailwind classes with LiveView classes to add rules
     // only when LiveView classes are applied, for example:
     //

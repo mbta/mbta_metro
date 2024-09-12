@@ -1,5 +1,0 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
-
-@import "../node_modules/maplibre-gl/dist/maplibre-gl.css";

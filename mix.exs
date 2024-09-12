@@ -1,7 +1,7 @@
 defmodule MbtaMetro.MixProject do
   use Mix.Project
 
-  @version "0.0.1"
+  @version "0.0.1-alpha"
 
   def project do
     [
@@ -12,6 +12,14 @@ defmodule MbtaMetro.MixProject do
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps(),
+      name: "MbtaMetro",
+      description: "A Phoenix LiveView component library",
+      docs: [
+        main: "MbtaMetro",
+        canonical: "http://hexdocs.pm/mbta_metro",
+        source_url: "https://github.com/anthonyshull/mbta_metro",
+        source_ref: "v#{@version}"
+      ],
       package: [
         licenses: ["GPL-3.0-or-later"],
         links: %{"GitHub" => "https://github.com/anthonyshull/mbta_metro"}
