@@ -27,3 +27,16 @@ end
 ```
 
 The, follow the installation instructions for the [npm package](https://www.npmjs.com/package/mbta_metro).
+
+### Components
+
+Some components, like the Map, take further configuration.
+
+#### Map
+
+```elixir
+config :mbta_metro, :aws_location,
+  api_key: System.get_env("AWS_LOCATION_API_KEY"),
+  map_name: System.get_env("AWS_LOCATION_MAP_NAME"),
+  region: System.get_env("AWS_LOCATION_REGION")
+```
