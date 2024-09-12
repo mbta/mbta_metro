@@ -47,6 +47,7 @@ defmodule MbtaMetro.MixProject do
     [
       {:bandit, "1.5.7", only: :dev, optional: true, runtime: false},
       {:esbuild, "0.8.1", only: :dev, optional: true, runtime: Mix.env() == :dev},
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
       {:heroicons, "0.5.6", runtime: false},
       {:phoenix, "1.7.14"},
       {:phoenix_live_reload, "1.5.3", only: :dev, optional: true, runtime: false},
