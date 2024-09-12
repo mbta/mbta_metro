@@ -1,6 +1,6 @@
 <h1>From a template...</h1>
 
-<.button :if={@show} phx-click="click">
+<.button>
   I am a button that is using Tailwind & Preline!
 </.button>
 
@@ -35,4 +35,12 @@
   <:input_item id="10" value="durian" />
 </.input_group>
 
-<.live_component id="MapComponent" module={Map} />
+<.live_component
+  module={Map}
+  id="MapComponent"
+  class="h-96 w-96"
+  api_key={@api_key}
+  map_name={@map_name}
+  region={@region}
+  click_handler={true}
+/>

@@ -35,3 +35,4 @@ mbta_metro-*.tar
 npm-debug.log
 /assets/node_modules/
 
+.envrc
