@@ -1,7 +1,5 @@
 defmodule MbtaMetroWeb.Layouts do
-  @moduledoc """
-  Layout templates.
-  """
+  @moduledoc false
 
   use MbtaMetroWeb, :html
 

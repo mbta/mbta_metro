@@ -1,4 +1,6 @@
 defmodule MbtaMetro.Components.Core do
+  @moduledoc false
+
   use Phoenix.Component
 
   @doc """

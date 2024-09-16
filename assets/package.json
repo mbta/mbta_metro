@@ -4,6 +4,6 @@
   "description": "A Phoenix LiveView component library",
   "license": "GPL-3.0-or-later",
   "dependencies": {
-    "mbta_metro": "0.0.1-alpha"
+    "mbta_metro": "0.0.1"
   }
 }

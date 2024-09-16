@@ -1,5 +1,7 @@
 defmodule MbtaMetro do
-  @moduledoc false
+  @moduledoc """
+  A Phoenix LiveView component library.
+  """
 
   defmacro __using__(_) do
     quote do

@@ -26,6 +26,12 @@ def deps do
 end
 ```
 
+Import the styles in your `assets/css/app.css`:
+
+```css
+@import "../../deps/mbta_metro/priv/static/assets/app.css";
+```
+
 The, follow the installation instructions for the [npm package](https://www.npmjs.com/package/mbta_metro).
 
 ### Components

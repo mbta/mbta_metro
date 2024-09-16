@@ -1,7 +1,10 @@
 defmodule MbtaMetroWeb.Router do
+  @moduledoc false
+
   use Phoenix.Router, helpers: false
 
   import Phoenix.LiveView.Router
+  import PhoenixStorybook.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -12,9 +15,13 @@ defmodule MbtaMetroWeb.Router do
     plug :put_secure_browser_headers
   end
 
-  scope "/", MbtaMetroWeb do
-    pipe_through :browser
+  scope "/" do
+    storybook_assets()
+  end
 
-    live "/", Live.Demo
+  scope "/", MbtaMetroWeb do
+    pipe_through(:browser)
+
+    live_storybook "/storybook", backend_module: MbtaMetroWeb.Storybook
   end
 end

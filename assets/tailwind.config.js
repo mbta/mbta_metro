@@ -1,9 +1,3 @@
-// See the Tailwind configuration guide for advanced usage
-// https://tailwindcss.com/docs/configuration
-
-
-const fs = require("fs")
-const path = require("path")
 const plugin = require("tailwindcss/plugin")
 
 const {colors, content, plugins} = require("mbta_metro")
@@ -11,15 +5,10 @@ const {colors, content, plugins} = require("mbta_metro")
 module.exports = {
   content: [
     ...content,
-    "./js/**/*.js",
+    "../lib/mbta_metro/**/*.ex",
+    "../storybook/**/*.exs",
   ],
-  theme: {
-    extend: {
-      colors: {
-        ...colors,
-      }
-    },
-  },
+  important: ".mbta-metro-web",
   plugins: [
     ...plugins,
     require("@tailwindcss/forms"),
@@ -32,5 +21,12 @@ module.exports = {
     plugin(({addVariant}) => addVariant("phx-click-loading", [".phx-click-loading&", ".phx-click-loading &"])),
     plugin(({addVariant}) => addVariant("phx-submit-loading", [".phx-submit-loading&", ".phx-submit-loading &"])),
     plugin(({addVariant}) => addVariant("phx-change-loading", [".phx-change-loading&", ".phx-change-loading &"])),
-  ]
+  ],
+  theme: {
+    extend: {
+      colors: {
+        ...colors,
+      }
+    },
+  },
 }
