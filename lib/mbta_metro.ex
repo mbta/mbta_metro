@@ -8,7 +8,8 @@ defmodule MbtaMetro do
       import MbtaMetro.Components.{
         Accordion,
         Button,
-        Inputs
+        Inputs,
+        ModeSelector
       }
 
       alias MbtaMetro.Live.{
