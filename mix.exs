@@ -15,7 +15,7 @@ defmodule MbtaMetro.MixProject do
       name: "MbtaMetro",
       package: package(),
       start_permanent: Mix.env() == :prod,
-      version: @version,
+      version: @version
     ]
   end
 
