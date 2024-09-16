@@ -22,7 +22,9 @@ Add this to your `mix.exs`:
 
 ```elixir
 def deps do
-  [{:mbta_metro, "0.0.1-alpha"}]
+  [
+    {:mbta_metro, ">= 0.0.0", runtime: false}
+  ]
 end
 ```
 
@@ -45,4 +47,14 @@ config :mbta_metro, :aws_location,
   api_key: System.get_env("AWS_LOCATION_API_KEY"),
   map_name: System.get_env("AWS_LOCATION_MAP_NAME"),
   region: System.get_env("AWS_LOCATION_REGION")
+```
+
+You'll also have to add the following to your CSP (assuming you have one):
+
+```elixir
+[
+  "child-src blob: ;",
+  "connect-src *.amazonaws.com",
+  "worker-src blob: ;"
+]
 ```
