@@ -1,4 +1,6 @@
 defmodule Storybook.Components.Button do
+  @moduledoc false
+
   use PhoenixStorybook.Story, :component
 
   alias MbtaMetro.Components.Button

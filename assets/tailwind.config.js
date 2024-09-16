@@ -1,12 +1,15 @@
 const plugin = require("tailwindcss/plugin")
 
-const {colors, content, plugins} = require("mbta_metro")
+const {colors, content, fontFamily, plugins, safeList} = require("mbta_metro")
 
 module.exports = {
   content: [
     ...content,
     "../lib/mbta_metro/**/*.ex",
     "../storybook/**/*.exs",
+  ],
+  safelist: [
+    ...safeList,
   ],
   important: ".mbta-metro-web",
   plugins: [
@@ -23,6 +26,9 @@ module.exports = {
     plugin(({addVariant}) => addVariant("phx-change-loading", [".phx-change-loading&", ".phx-change-loading &"])),
   ],
   theme: {
+    fontFamily: {
+      ...fontFamily,
+    },
     extend: {
       colors: {
         ...colors,

@@ -1,4 +1,6 @@
 defmodule Storybook.Live.Index do
+  @moduledoc false
+
   use PhoenixStorybook.Index
 
   def folder_name, do: "Live"

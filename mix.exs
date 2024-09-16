@@ -78,6 +78,7 @@ defmodule MbtaMetro.MixProject do
         "lib/mbta_metro/live/**/*",
         "mix.exs",
         "priv/static/assets/app.css",
+        "priv/static/fonts/*",
         "README.md"
       ],
       licenses: ["GPL-3.0-or-later"],
