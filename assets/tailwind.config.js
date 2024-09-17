@@ -1,6 +1,6 @@
 const plugin = require("tailwindcss/plugin")
 
-const {colors, content, fontFamily, plugins, safeList} = require("mbta_metro")
+const {colors, content, fontFamily, plugins, safelist} = require("mbta_metro")
 
 module.exports = {
   content: [
@@ -9,7 +9,7 @@ module.exports = {
     "../storybook/**/*.exs",
   ],
   safelist: [
-    ...safeList,
+    ...safelist,
   ],
   important: ".mbta-metro-web",
   plugins: [

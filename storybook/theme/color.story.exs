@@ -8,12 +8,12 @@ defmodule Storybook.Theme.Color do
   def function, do: &Swatch.swatch/1
 
   def variations do
-    ~w[blue green purple red yellow]
+    ~w[blue green orange purple red silver yellow]
     |> Enum.map(fn color ->
       %Variation{
         id: String.to_atom(color),
         attributes: %{
-          name: color,
+          color: color,
         },
         description: String.capitalize(color),
       }
