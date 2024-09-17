@@ -79,6 +79,7 @@ defmodule MbtaMetro.MixProject do
         "mix.exs",
         "priv/static/assets/app.css",
         "priv/static/fonts/*",
+        "priv/static/images/icon-mode-*.svg",
         "README.md"
       ],
       licenses: ["GPL-3.0-or-later"],
