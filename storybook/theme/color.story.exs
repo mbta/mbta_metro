@@ -13,9 +13,9 @@ defmodule Storybook.Theme.Color do
       %Variation{
         id: String.to_atom(color),
         attributes: %{
-          color: color,
+          color: color
         },
-        description: String.capitalize(color),
+        description: String.capitalize(color)
       }
     end)
   end

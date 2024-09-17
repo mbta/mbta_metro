@@ -9,7 +9,7 @@ defmodule Storybook.Components.Button do
 
   def variations do
     [
-      %Variation {
+      %Variation{
         id: :default,
         slots: [
           "default"
@@ -17,18 +17,18 @@ defmodule Storybook.Components.Button do
         description: "Default"
       }
     ] ++
-    (~w[blue green orange purple red silver yellow]
-    |> Enum.map(fn color ->
-      %Variation{
-        id: String.to_atom(color),
-        attributes: %{
-          color: color,
-        },
-        slots: [
-          color
-        ],
-        description: String.capitalize(color),
-      }
-    end))
+      (~w[blue green orange purple red silver yellow]
+       |> Enum.map(fn color ->
+         %Variation{
+           id: String.to_atom(color),
+           attributes: %{
+             color: color
+           },
+           slots: [
+             color
+           ],
+           description: String.capitalize(color)
+         }
+       end))
   end
 end
