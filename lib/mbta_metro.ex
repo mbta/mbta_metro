@@ -11,10 +11,6 @@ defmodule MbtaMetro do
         Inputs,
         ModeSelector
       }
-
-      alias MbtaMetro.Live.{
-        Map
-      }
     end
   end
 end
