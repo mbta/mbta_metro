@@ -1,18 +1,18 @@
 defmodule Storybook.Components.InputGroup do
   use PhoenixStorybook.Story, :component
 
-  alias MbtaMetro.Components.Inputs
+  alias MbtaMetro.Components.Input
 
   @form %{"favorite_modes" => [:commuter_rail, :subway, :bus, :ferry]}
         |> Phoenix.Component.to_form()
 
   @field @form[:favorite_modes]
 
-  def function, do: &Inputs.input_group/1
+  def function, do: &Input.input_group/1
 
   def imports,
     do: [
-      {Inputs, [form_input: 1]}
+      {Input, [input: 1]}
     ]
 
   def variations do

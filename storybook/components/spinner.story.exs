@@ -1,20 +1,20 @@
-defmodule Storybook.Components.Button do
+defmodule Storybook.Components.Spinner do
   @moduledoc false
 
   use PhoenixStorybook.Story, :component
 
-  alias MbtaMetro.Components.Button
+  alias MbtaMetro.Components.Spinner
 
-  def function, do: &Button.button/1
+  def function, do: &Spinner.spinner/1
 
   def variations do
     [
       %Variation{
         id: :default,
-        slots: [
-          "default"
-        ],
-        description: "Default"
+        description: "Default",
+        attributes: %{
+          aria_label: Faker.Lorem.word()
+        }
       }
     ] ++ color_variations()
   end
@@ -28,11 +28,9 @@ defmodule Storybook.Components.Button do
     %Variation{
       id: String.to_atom(color),
       attributes: %{
+        aria_label: Faker.Lorem.word(),
         color: color
       },
-      slots: [
-        color
-      ],
       description: String.capitalize(color)
     }
   end

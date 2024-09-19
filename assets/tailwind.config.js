@@ -31,7 +31,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        ...colors,
+        ...colors
       }
     },
   },

@@ -1,14 +1,13 @@
 defmodule Storybook.Components.Accordion do
   use PhoenixStorybook.Story, :component
 
-  alias MbtaMetro.Components.{Accordion, Inputs}
+  alias MbtaMetro.Components.{Accordion, Feedback}
 
   def function, do: &Accordion.accordion/1
 
-  def imports,
-    do: [
-      {Inputs, form_error: 1}
-    ]
+  def imports do
+    [{Feedback, feedback: 1}]
+  end
 
   def variations do
     [
@@ -61,7 +60,7 @@ defmodule Storybook.Components.Accordion do
           """,
           """
           <:extra>
-            <.form_error>Something inside needs attention.</.form_error>
+            <.feedback kind={:error}>Something inside needs attention.</.feedback>
           </:extra>
           """
         ]
