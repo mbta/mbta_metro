@@ -18,7 +18,7 @@ defmodule Storybook.Components.Accordion do
           open: false
         },
         slots: [
-          ~s|<:heading>Heading text</:heading>|,
+          ~s|<:heading><Heroicons.bolt class="w-4 h-4" />Heading text</:heading>|,
           """
           <:content>
             <p>Any content can be inside</p>

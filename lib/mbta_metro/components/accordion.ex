@@ -27,11 +27,11 @@ defmodule MbtaMetro.Components.Accordion do
   def accordion(assigns) do
     ~H"""
     <details class="group w-full" open={@open}>
-      <summary class="border border-solid border-stone-500 p-2 flex cursor-pointer list-none items-center gap-2 p-2">
-        <Heroicons.chevron_down class="group-open:rotate-180 w-4 h-4" />
+      <summary class="border border-solid border-blue-500 hover:bg-blue-100 p-2 flex cursor-pointer list-none items-center gap-2 p-2 relative">
         <%= render_slot(@heading) %>
+        <Heroicons.chevron_down class="group-open:rotate-180 w-4 h-4 absolute top-3 right-3" />
       </summary>
-      <div class="border border-solid border-t-0 border-stone-500 p-2">
+      <div class="border border-solid border-t-0 border-blue-500 p-2">
         <%= render_slot(@content) %>
       </div>
     </details>

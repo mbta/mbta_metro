@@ -7,7 +7,7 @@ To demo all of the MBTA METRO components:
 %> mix phx.server
 ```
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+Now you can visit [`localhost:4000`](http://localhost:4000/storybook) from your browser.
 
 ## Installation
 
@@ -36,7 +36,7 @@ Import the styles in your `assets/css/app.css`:
 
 The, follow the installation instructions for the [npm package](https://www.npmjs.com/package/mbta_metro).
 
-### Components
+### LiveComponents
 
 Some components, like the Map, take further configuration.
 

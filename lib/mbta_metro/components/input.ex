@@ -5,11 +5,6 @@ defmodule MbtaMetro.Components.Input do
 
   import MbtaMetro.Components.Feedback
 
-  defp base_classnames(:controls), do: "border-slate-400 text-slate-900 focus:ring-0"
-
-  defp base_classnames(:control_label),
-    do: "py-2 px-3 mb-0 w-full inline-flex items-center gap-x-2 has-[:checked]:font-bold"
-
   @doc """
   Renders an input with label and error messages.
 
@@ -51,6 +46,7 @@ defmodule MbtaMetro.Components.Input do
     doc: "a form field struct retrieved from the form, for example: @form[:email]"
 
   attr :errors, :list, default: []
+  attr :class, :string, default: ""
   attr :checked, :boolean, doc: "the checked flag for checkbox inputs"
   attr :prompt, :string, default: nil, doc: "the prompt for select inputs"
   attr :options, :list, doc: "the options to pass to Phoenix.HTML.Form.options_for_select/2"
@@ -76,25 +72,6 @@ defmodule MbtaMetro.Components.Input do
     |> input()
   end
 
-  def input(%{type: "radio"} = assigns) do
-    assigns = assigns |> assign_new(:checked, fn -> false end)
-
-    ~H"""
-    <label for={@id} class={base_classnames(:control_label)}>
-      <input
-        type="radio"
-        id={@id}
-        name={@name}
-        value={@value}
-        checked={@checked}
-        class={["rounded-full", base_classnames(:controls)]}
-        {@rest}
-      />
-      <%= @label %>
-    </label>
-    """
-  end
-
   def input(%{type: "checkbox"} = assigns) do
     assigns =
       assigns
@@ -103,7 +80,7 @@ defmodule MbtaMetro.Components.Input do
       end)
 
     ~H"""
-    <label for={@id} class={base_classnames(:control_label)}>
+    <div class="flex">
       <input type="hidden" name={@name} value="false" disabled={@rest[:disabled]} />
       <input
         type="checkbox"
@@ -111,11 +88,30 @@ defmodule MbtaMetro.Components.Input do
         name={@name}
         value="true"
         checked={@checked}
-        class={["rounded", base_classnames(:controls)]}
+        class={["shrink-0 mt-1 mr-3 border-silver-400 rounded text-blue-600 focus:border-blue-300 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none", @class]}
         {@rest}
       />
-      <%= @label %>
-    </label>
+      <.label for={@id}><%= @label %></.label>
+    </div>
+    """
+  end
+
+  def input(%{type: "radio"} = assigns) do
+    assigns = assigns |> assign_new(:checked, fn -> false end)
+
+    ~H"""
+    <div class="flex">
+      <input
+        type="radio"
+        id={@id}
+        name={@name}
+        value={@value}
+        checked={@checked}
+        class={["shrink-0 mt-1 mr-3 border-silver-400 rounded-full text-blue-600 focus:border-blue-300 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none", @class]}
+        {@rest}
+      />
+      <.label for={@id}><%= @label %></.label>
+    </div>
     """
   end
 
@@ -126,14 +122,14 @@ defmodule MbtaMetro.Components.Input do
       <select
         id={@id}
         name={@name}
-        class="mt-2 block w-full rounded-md border border-gray-300 bg-white shadow-sm focus:border-zinc-400 focus:ring-0 sm:text-sm"
+        class="mt-2 block w-full rounded-md border border-silver-400 bg-white shadow-sm focus:border-blue-500 focus:ring-0 sm:text-sm"
         multiple={@multiple}
         {@rest}
       >
         <option :if={@prompt} value=""><%= @prompt %></option>
         <%= Phoenix.HTML.Form.options_for_select(@options, @value) %>
       </select>
-      <.feedback kind={:error} :for={msg <- @errors}><%= msg %></.feedback>
+      <.feedback :for={msg <- @errors} kind={:error}><%= msg %></.feedback>
     </div>
     """
   end
@@ -146,13 +142,13 @@ defmodule MbtaMetro.Components.Input do
         id={@id}
         name={@name}
         class={[
-          "mt-2 block w-full rounded-lg text-zinc-900 focus:ring-0 sm:text-sm sm:leading-6 min-h-[6rem]",
-          @errors == [] && "border-zinc-300 focus:border-zinc-400",
-          @errors != [] && "border-rose-400 focus:border-rose-400"
+          "mt-2 block w-full rounded text-silver-900 focus:ring-0 sm:text-sm sm:leading-6 min-h-[6rem]",
+          @errors == [] && "border-silver-400 focus:border-blue-500",
+          @errors != [] && "border-red-400 focus:border-red-500"
         ]}
         {@rest}
       ><%= Phoenix.HTML.Form.normalize_value("textarea", @value) %></textarea>
-      <.feedback kind={:error} :for={msg <- @errors}><%= msg %></.feedback>
+      <.feedback :for={msg <- @errors} kind={:error}><%= msg %></.feedback>
     </div>
     """
   end
@@ -168,13 +164,13 @@ defmodule MbtaMetro.Components.Input do
         id={@id}
         value={Phoenix.HTML.Form.normalize_value(@type, @value)}
         class={[
-          "mt-2 block w-full rounded-lg text-zinc-900 focus:ring-0 sm:text-sm sm:leading-6",
-          @errors == [] && "border-zinc-300 focus:border-zinc-400",
-          @errors != [] && "border-rose-400 focus:border-rose-400"
+          "mt-2 block w-full rounded text-silver-900 focus:ring-0 sm:text-sm sm:leading-6",
+          @errors == [] && "border-silver-400 focus:border-blue-500",
+          @errors != [] && "border-red-400 focus:border-red-500"
         ]}
         {@rest}
       />
-      <.feedback kind={:error} :for={msg <- @errors}><%= msg %></.feedback>
+      <.feedback :for={msg <- @errors} kind={:error}><%= msg %></.feedback>
     </div>
     """
   end
@@ -187,7 +183,7 @@ defmodule MbtaMetro.Components.Input do
 
   def label(assigns) do
     ~H"""
-    <label for={@for} class="block text-sm font-semibold leading-6 text-zinc-800">
+    <label for={@for} class="block text-sm font-inter-semibold leading-6 text-silver-800">
       <%= render_slot(@inner_block) %>
     </label>
     """

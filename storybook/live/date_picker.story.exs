@@ -1,19 +1,16 @@
 defmodule Storybook.Components.Button do
   @moduledoc false
 
-  use PhoenixStorybook.Story, :component
+  use PhoenixStorybook.Story, :live_component
 
-  alias MbtaMetro.Components.Button
+  alias MbtaMetro.Live.DatePicker
 
-  def function, do: &Button.button/1
+  def component, do: DatePicker
 
   def variations do
     [
       %Variation{
         id: :default,
-        slots: [
-          "default"
-        ],
         description: "Default"
       }
     ]

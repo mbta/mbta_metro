@@ -10,7 +10,11 @@ defmodule MbtaMetro.Components.Flash do
   attr :id, :string, doc: "the optional id of flash container"
 
   attr :flash, :map, default: %{}, doc: "the map of flash messages to display"
-  attr :kind, :atom, values: [:info, :error, :success, :warning], doc: "used for styling and flash lookup"
+
+  attr :kind, :atom,
+    values: [:info, :error, :success, :warning],
+    doc: "used for styling and flash lookup"
+
   attr :position, :string, default: "fixed top-2 right-2", doc: "CSS classes for positioning"
   attr :title, :string, default: nil
   attr :rest, :global, doc: "the arbitrary HTML attributes to add to the flash container"
@@ -47,9 +51,16 @@ defmodule MbtaMetro.Components.Flash do
       <.feedback :if={@title} kind={@kind}>
         <%= @title %>
       </.feedback>
+      <hr class={[
+        "mt-2 mb-1",
+        @kind == :error && "border-red-200",
+        @kind == :info && "border-blue-200",
+        @kind == :success && "border-green-200",
+        @kind == :warning && "border-yellow-200"
+        ]} />
       <p class="mt-2 text-sm leading-5"><%= msg %></p>
       <button type="button" class="group absolute top-1 right-1 p-2" aria-label="close">
-        <Heroicons.x_mark solid class="h-5 w-5 opacity-40 group-hover:opacity-70" />
+        <Heroicons.x_mark solid class="h-5 w-5 opacity-50 group-hover:opacity-80" />
       </button>
     </div>
     """

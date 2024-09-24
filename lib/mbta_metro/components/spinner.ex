@@ -15,7 +15,11 @@ defmodule MbtaMetro.Components.Spinner do
   """
   def spinner(%{color: color} = assigns) do
     ~H"""
-    <div class={"animate-spin inline-block size-6 border-[3px] border-current border-t-transparent text-#{color}-500 rounded-full"} role="status" aria-label={@aria_label}>
+    <div
+      class={"animate-spin inline-block size-6 border-[3px] border-current border-t-transparent text-#{color}-500 rounded-full"}
+      role="status"
+      aria-label={@aria_label}
+    >
       <span class="sr-only"><%= @aria_label %></span>
     </div>
     """

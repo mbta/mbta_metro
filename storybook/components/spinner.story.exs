@@ -28,7 +28,7 @@ defmodule Storybook.Components.Spinner do
     %Variation{
       id: String.to_atom(color),
       attributes: %{
-        aria_label: Faker.Lorem.word(),
+        aria_label: String.capitalize(color),
         color: color
       },
       description: String.capitalize(color)
