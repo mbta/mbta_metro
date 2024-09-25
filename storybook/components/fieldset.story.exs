@@ -1,13 +1,13 @@
 defmodule Storybook.Components.Fieldset do
   use PhoenixStorybook.Story, :component
 
-  alias MbtaMetro.Components.Inputs
+  alias MbtaMetro.Components.{Input, InputGroup}
 
-  def function, do: &Inputs.fieldset/1
+  def function, do: &InputGroup.fieldset/1
 
   def imports,
     do: [
-      {Inputs, [form_input: 1]}
+      {Input, [input: 1]}
     ]
 
   def variations do
@@ -20,9 +20,9 @@ defmodule Storybook.Components.Fieldset do
         },
         slots: [
           """
-          <.form_input type="checkbox" name="stations[]" label="North Station" />
-          <.form_input type="checkbox" name="stations[]" label="South Station" />
-          <.form_input type="checkbox" name="stations[]" label="Back Bay" />
+          <.input type="checkbox" name="stations[]" label="North Station" />
+          <.input type="checkbox" name="stations[]" label="South Station" />
+          <.input type="checkbox" name="stations[]" label="Back Bay" />
           """
         ]
       }
