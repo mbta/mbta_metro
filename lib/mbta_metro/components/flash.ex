@@ -57,7 +57,7 @@ defmodule MbtaMetro.Components.Flash do
         @kind == :info && "border-blue-200",
         @kind == :success && "border-green-200",
         @kind == :warning && "border-yellow-200"
-        ]} />
+      ]} />
       <p class="mt-2 text-sm leading-5"><%= msg %></p>
       <button type="button" class="group absolute top-1 right-1 p-2" aria-label="close">
         <Heroicons.x_mark solid class="h-5 w-5 opacity-50 group-hover:opacity-80" />

@@ -88,7 +88,10 @@ defmodule MbtaMetro.Components.Input do
         name={@name}
         value="true"
         checked={@checked}
-        class={["shrink-0 mt-1 mr-3 border-silver-400 rounded text-blue-600 focus:border-blue-300 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none", @class]}
+        class={[
+          "shrink-0 mt-1 mr-3 border-silver-400 rounded text-blue-600 focus:border-blue-300 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none",
+          @class
+        ]}
         {@rest}
       />
       <.label for={@id}><%= @label %></.label>
@@ -107,7 +110,10 @@ defmodule MbtaMetro.Components.Input do
         name={@name}
         value={@value}
         checked={@checked}
-        class={["shrink-0 mt-1 mr-3 border-silver-400 rounded-full text-blue-600 focus:border-blue-300 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none", @class]}
+        class={[
+          "shrink-0 mt-1 mr-3 border-silver-400 rounded-full text-blue-600 focus:border-blue-300 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none",
+          @class
+        ]}
         {@rest}
       />
       <.label for={@id}><%= @label %></.label>

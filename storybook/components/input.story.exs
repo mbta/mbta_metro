@@ -63,9 +63,9 @@ defmodule Storybook.Components.InputGroup do
 
   def select do
     options = [
-      "One": "one",
-      "Two": "two",
-      "Three": "three"
+      One: "one",
+      Two: "two",
+      Three: "three"
     ]
 
     %Variation{
