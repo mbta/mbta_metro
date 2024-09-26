@@ -13,10 +13,10 @@ defmodule MbtaMetro.Components.InputGroup do
 
   attr :rest, :global
 
-  slot :input_item, doc: "Items to render as a list" do
+  slot :inputs, doc: "Inputs to render as a list" do
     attr :id, :string
     attr :label, :string, doc: "The label displayed. The value will be used as default."
-    attr :value, :any, required: true, doc: "The value assumed then the item is checked"
+    attr :value, :any, required: true, doc: "The value assumed then the input is checked"
     attr :checked, :boolean
   end
 
@@ -24,7 +24,7 @@ defmodule MbtaMetro.Components.InputGroup do
     ~H"""
     <ul class="m-0 p-0 flex flex-col sm:flex-row list-none">
       <li
-        :for={item <- @input_item}
+        :for={input <- @inputs}
         class={[
           "border border-solid border-slate-200",
           "has-[:checked]:bg-slate-100 has-[:checked]:border-slate-700",
@@ -33,12 +33,12 @@ defmodule MbtaMetro.Components.InputGroup do
         ]}
       >
         <.input
-          id={item.id}
+          id={input.id}
           type={@type}
           field={@field}
-          label={item[:label]}
-          value={item.value}
-          checked={item[:checked]}
+          label={input[:label]}
+          value={input.value}
+          checked={input[:checked]}
           multiple={if(@type == "checkbox", do: "true")}
           {@rest}
         />

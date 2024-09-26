@@ -128,7 +128,10 @@ defmodule MbtaMetro.Components.Input do
       <select
         id={@id}
         name={@name}
-        class="mt-2 block w-full rounded-md border border-silver-400 bg-white shadow-sm focus:border-blue-500 focus:ring-0 sm:text-sm"
+        class={[
+          "mt-2 block w-full rounded-md border border-silver-400 bg-white shadow-sm focus:border-blue-500 focus:ring-0 sm:text-sm",
+          @class
+        ]}
         multiple={@multiple}
         {@rest}
       >
@@ -150,7 +153,8 @@ defmodule MbtaMetro.Components.Input do
         class={[
           "mt-2 block w-full rounded text-silver-900 focus:ring-0 sm:text-sm sm:leading-6 min-h-[6rem]",
           @errors == [] && "border-silver-400 focus:border-blue-500",
-          @errors != [] && "border-red-400 focus:border-red-500"
+          @errors != [] && "border-red-400 focus:border-red-500",
+          @class
         ]}
         {@rest}
       ><%= Phoenix.HTML.Form.normalize_value("textarea", @value) %></textarea>
@@ -172,7 +176,8 @@ defmodule MbtaMetro.Components.Input do
         class={[
           "mt-2 block w-full rounded text-silver-900 focus:ring-0 sm:text-sm sm:leading-6",
           @errors == [] && "border-silver-400 focus:border-blue-500",
-          @errors != [] && "border-red-400 focus:border-red-500"
+          @errors != [] && "border-red-400 focus:border-red-500",
+          @class
         ]}
         {@rest}
       />
@@ -184,6 +189,7 @@ defmodule MbtaMetro.Components.Input do
   @doc """
   Renders a label.
   """
+  attr :class, :string, default: ""
   attr :for, :string, default: nil
   slot :inner_block, required: true
 
@@ -192,66 +198,6 @@ defmodule MbtaMetro.Components.Input do
     <label for={@for} class="block text-sm font-inter-semibold leading-6 text-silver-800">
       <%= render_slot(@inner_block) %>
     </label>
-    """
-  end
-
-  attr :type, :string, values: ~W(checkbox radio)
-
-  attr :field, Phoenix.HTML.FormField,
-    required: true,
-    doc: "a form field struct retrieved from the form, for example: @form[:color]"
-
-  attr :rest, :global
-
-  slot :input_item, doc: "Items to render as a list" do
-    attr :id, :string
-    attr :label, :string, doc: "The label displayed. The value will be used as default."
-    attr :value, :any, required: true, doc: "The value assumed then the item is checked"
-    attr :checked, :boolean
-  end
-
-  def input_group(assigns) do
-    ~H"""
-    <ul class="m-0 p-0 flex flex-col sm:flex-row list-none">
-      <li
-        :for={item <- @input_item}
-        class={[
-          "border border-solid border-slate-200",
-          "has-[:checked]:bg-slate-100 has-[:checked]:border-slate-700",
-          "first:max-sm:rounded-t-lg last:max-sm:rounded-b-lg",
-          "sm:first:rounded-l-lg sm:last:rounded-r-lg"
-        ]}
-      >
-        <.input
-          id={item.id}
-          type={@type}
-          field={@field}
-          label={item[:label]}
-          value={item.value}
-          checked={item[:checked]}
-          multiple={if(@type == "checkbox", do: "true")}
-          {@rest}
-        />
-      </li>
-    </ul>
-    """
-  end
-
-  @doc """
-  Renders a simple fieldset for grouping radio and checkbox inputs.
-  """
-  attr :legend, :string, required: true, doc: "A concise label for the fieldset."
-
-  slot :inner_block,
-    required: true,
-    doc: "The fieldset content, containing multiple options for a radio input or checkbox input."
-
-  def fieldset(assigns) do
-    ~H"""
-    <fieldset class="my-3 w-full">
-      <legend class="font-semifold text-slate-600 text-sm"><%= @legend %></legend>
-      <%= render_slot(@inner_block) %>
-    </fieldset>
     """
   end
 end

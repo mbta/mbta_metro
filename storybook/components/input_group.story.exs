@@ -1,4 +1,4 @@
-defmodule Storybook.Components.Fieldset do
+defmodule Storybook.Components.InputGroup do
   use PhoenixStorybook.Story, :component
 
   alias MbtaMetro.Components.{Input, InputGroup}
