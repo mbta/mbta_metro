@@ -23,11 +23,9 @@ defmodule MbtaMetro.MixProject do
   #
   # Type `mix help compile.app` for more information.
   def application do
-    if Mix.env() == :prod do
-      []
-    else
-      [mod: {MbtaMetro.Application, []}]
-    end
+    [
+      mod: {MbtaMetro.Application, []}
+    ]
   end
 
   defp aliases do
