@@ -1,7 +1,7 @@
 defmodule MbtaMetro.MixProject do
   use Mix.Project
 
-  @version "0.0.6"
+  @version "0.0.7"
 
   def project do
     [
@@ -79,6 +79,7 @@ defmodule MbtaMetro.MixProject do
         "lib/mbta_metro.ex",
         "lib/mbta_metro/components/**/*",
         "lib/mbta_metro/live/**/*",
+        "lib/mix/tasks/**/*",
         "mix.exs",
         "priv/static/assets/app.css",
         "priv/static/fonts/*",
