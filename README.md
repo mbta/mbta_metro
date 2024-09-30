@@ -23,7 +23,7 @@ Add this to your `mix.exs`:
 ```elixir
 def deps do
   [
-    {:mbta_metro, ">= 0.0.0", runtime: false}
+    {:mbta_metro, ">= 0.0.0"}
   ]
 end
 ```
