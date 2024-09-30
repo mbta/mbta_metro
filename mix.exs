@@ -1,7 +1,7 @@
 defmodule MbtaMetro.MixProject do
   use Mix.Project
 
-  @version "0.0.5"
+  @version "0.0.6"
 
   def project do
     [
@@ -23,9 +23,11 @@ defmodule MbtaMetro.MixProject do
   #
   # Type `mix help compile.app` for more information.
   def application do
-    [
-      mod: {MbtaMetro.Application, []}
-    ]
+    if Mix.env() == :prod do
+      []
+    else
+      [mod: {MbtaMetro.Application, []}]
+    end
   end
 
   defp aliases do
