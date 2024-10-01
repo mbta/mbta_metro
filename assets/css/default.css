@@ -60,6 +60,8 @@
   }
 }
 
-body {
-  font-family: "InterNormal", system-ui, sans-serif;
+@layer utilities {
+  * {
+    font-family: "InterNormal", system-ui, sans-serif;
+  }
 }

@@ -34,11 +34,11 @@ defmodule MbtaMetro.MixProject do
     [
       setup: ["deps.get", "assets.setup", "assets.build"],
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
-      "assets.build": ["tailwind mbta_metro", "esbuild mbta_metro"],
+      "assets.build": ["tailwind storybook", "esbuild storybook", "mbta_metro.copy_css"],
       "assets.deploy": [
-        "tailwind mbta_metro --minify",
         "tailwind storybook --minify",
-        "esbuild mbta_metro --minify",
+        "esbuild storybook --minify",
+        "mbta_metro.copy_css",
         "phx.digest"
       ]
     ]
@@ -79,9 +79,9 @@ defmodule MbtaMetro.MixProject do
         "lib/mbta_metro.ex",
         "lib/mbta_metro/components/**/*",
         "lib/mbta_metro/live/**/*",
-        "lib/mix/tasks/**/*",
+        "lib/mix/tasks/mbta_metro/install_*.ex",
         "mix.exs",
-        "priv/static/assets/app.css",
+        "priv/static/assets/default.css",
         "priv/static/fonts/*",
         "priv/static/images/icon-mode-*.svg",
         "README.md"

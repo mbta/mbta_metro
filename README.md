@@ -28,10 +28,16 @@ def deps do
 end
 ```
 
+Copy the fonts from `mbta_metro` into your project's static directory:
+
+```
+%> mix mbta_metro.install_fonts
+```
+
 Import the styles in your `assets/css/app.css`:
 
 ```css
-@import "../../deps/mbta_metro/priv/static/assets/app.css";
+@import "../../deps/mbta_metro/priv/static/assets/default.css";
 ```
 
 The, follow the installation instructions for the [npm package](https://www.npmjs.com/package/mbta_metro).

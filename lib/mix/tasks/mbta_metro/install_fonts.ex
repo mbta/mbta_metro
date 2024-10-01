@@ -1,4 +1,4 @@
-defmodule Mix.Tasks.MbtaMetro.CopyFonts do
+defmodule Mix.Tasks.MbtaMetro.InstallFonts do
   @moduledoc "Copies fonts from MbtaMetro to the priv/static/fonts directory"
   @shortdoc "Copies MbtaMetro fonts"
 
@@ -6,6 +6,8 @@ defmodule Mix.Tasks.MbtaMetro.CopyFonts do
 
   @impl Mix.Task
   def run(_) do
-    System.cmd("cp", ["./deps/mbta_metro/priv/static/fonts/*", "./priv/static/fonts"])
+    dir = File.cwd!()
+
+    System.cmd("cp", ["-r", "#{dir}/deps/mbta_metro/priv/static/fonts/.", "#{dir}/priv/static/fonts"])
   end
 end

@@ -1,13 +1,2 @@
 /* This is your custom storybook stylesheet. */
-@import "app.css";
-
-/*
- * Put your component styling within the Tailwind utilities layer. 
- * See the https://hexdocs.pm/phoenix_storybook/sandboxing.html guide for more info.
- */
-
-@layer utilities {
-  * {
-    font-family: system-ui;
-  }
-}
+@import "default.css";
