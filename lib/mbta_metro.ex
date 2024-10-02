@@ -11,7 +11,6 @@ defmodule MbtaMetro do
         Flash,
         Input,
         Modal,
-        ModeSelector,
         Table
       }
     end
