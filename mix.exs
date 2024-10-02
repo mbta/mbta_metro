@@ -55,7 +55,8 @@ defmodule MbtaMetro.MixProject do
       {:phoenix_live_reload, "1.5.3", only: :dev, optional: true, runtime: false},
       {:phoenix_live_view, "1.0.0-rc.6"},
       {:phoenix_storybook, "0.6.4"},
-      {:tailwind, "0.2.3", only: :dev, optional: true, runtime: Mix.env() == :dev}
+      {:tailwind, "0.2.3", only: :dev, optional: true, runtime: Mix.env() == :dev},
+      {:timex, "3.7.11"}
     ]
   end
 

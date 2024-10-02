@@ -2,8 +2,6 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-/* @import "../node_modules/maplibre-gl/dist/maplibre-gl.css"; */
-
 @layer base {
   @font-face {
     font-family: "InterThin";

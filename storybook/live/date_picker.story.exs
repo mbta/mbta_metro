@@ -11,7 +11,11 @@ defmodule Storybook.Components.Button do
     [
       %Variation{
         id: :default,
-        description: "Default"
+        description: "Default",
+        attributes: %{
+          name: Faker.Lorem.word(),
+          value: Timex.now()
+        }
       }
     ]
   end

@@ -3,8 +3,8 @@ defmodule MbtaMetroWeb.Storybook do
     otp_app: :mbta_metro_web,
     content_path: Path.expand("../../storybook", __DIR__),
     # assets path are remote path, not local file-system paths
-    css_path: "/assets/storybook.css",
-    js_path: "/assets/storybook.js",
+    css_path: "/assets/app.css",
+    js_path: "/assets/app.js",
     sandbox_class: "mbta-metro-web",
     title: "Mbta Metro"
 end

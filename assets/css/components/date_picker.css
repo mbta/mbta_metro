@@ -1,0 +1,79 @@
+@import "../../node_modules/flatpickr/dist/flatpickr.min.css";
+
+@import "../colors.css";
+
+#date-picker-calendar {
+  & svg {
+    fill: var(--silver-400);
+  }
+}
+
+.flatpickr {
+  position: relative;
+
+  .form-control[readonly] {
+    background-color: var(--white);
+  }
+
+  &~a[data-toggle] {
+    position: absolute;
+    right: .75rem;
+    top: .5rem;
+  }
+}
+
+.flatpickr-mobile {
+  border: 1px solid var(--blue-500);
+  border-radius: .25rem;
+  width: calc(100% - 2.5rem);
+
+  &~a[data-toggle] {
+    position: unset;
+  }
+}
+
+.flatpickr-months {
+  .flatpickr-month {
+    color: inherit;
+  }
+}
+
+.flatpickr-current-month {
+  .flatpickr-monthDropdown-months {
+    font-weight: 500;
+  }
+
+  .cur-year {
+    font-weight: 200;
+  }
+
+  .cur-year[disabled],
+  .cur-year[disabled]:hover {
+    color: inherit;
+  }
+}
+
+.flatpickr-day {
+  border: none;
+}
+
+.flatpickr-time input {
+  font-size: inherit;
+}
+
+.flatpickr-calendar {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.flatpickr-day.selected {
+  background-color: var(--blue-500);
+  border-color: var(--white);
+  color: var(--white);
+
+  &:hover {
+    background-color: var(--blue-100);
+    border-color: var(--white);
+    color: var(--blue-500);
+  }
+}
