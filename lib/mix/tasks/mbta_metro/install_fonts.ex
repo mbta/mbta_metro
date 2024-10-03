@@ -8,6 +8,10 @@ defmodule Mix.Tasks.MbtaMetro.InstallFonts do
   def run(_) do
     dir = File.cwd!()
 
-    System.cmd("cp", ["-r", "#{dir}/deps/mbta_metro/priv/static/fonts/.", "#{dir}/priv/static/fonts"])
+    System.cmd("cp", [
+      "-r",
+      "#{dir}/deps/mbta_metro/priv/static/fonts/.",
+      "#{dir}/priv/static/fonts"
+    ])
   end
 end
