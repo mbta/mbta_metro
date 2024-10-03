@@ -5,45 +5,31 @@ defmodule MbtaMetro.Components.InputGroup do
 
   import MbtaMetro.Components.Input, only: [input: 1]
 
+  attr :legend, :string
+  attr :options, :list
   attr :type, :string, values: ~W(checkbox radio)
-
-  attr :field, Phoenix.HTML.FormField,
-    required: true,
-    doc: "a form field struct retrieved from the form, for example: @form[:color]"
-
-  attr :rest, :global
-
-  slot :inputs, doc: "Inputs to render as a list" do
-    attr :id, :string
-    attr :label, :string, doc: "The label displayed. The value will be used as default."
-    attr :value, :any, required: true, doc: "The value assumed then the input is checked"
-    attr :checked, :boolean
-  end
+  attr :name, :string
 
   def input_group(assigns) do
     ~H"""
-    <ul class="m-0 p-0 flex flex-col sm:flex-row list-none">
-      <li
-        :for={input <- @inputs}
-        class={[
-          "border border-solid border-slate-200",
-          "has-[:checked]:bg-slate-100 has-[:checked]:border-slate-700",
-          "first:max-sm:rounded-t-lg last:max-sm:rounded-b-lg",
-          "sm:first:rounded-l-lg sm:last:rounded-r-lg"
-        ]}
-      >
-        <.input
-          id={input.id}
-          type={@type}
-          field={@field}
-          label={input[:label]}
-          value={input.value}
-          checked={input[:checked]}
-          multiple={if(@type == "checkbox", do: "true")}
-          {@rest}
-        />
-      </li>
-    </ul>
+    <.fieldset legend={@legend}>
+      <ul class="p-0 mt-2 flex flex-col sm:flex-row list-none">
+        <li
+          :for={{label, value} <- @options}
+          class={[
+            "border border-solid border-slate-300 px-3 py-0",
+            "has-[:checked]:border has-[:checked]:bg-blue-50 has-[:checked]:border-blue-400 has-[:checked]:font-bold",
+            "first:max-sm:rounded-t-lg last:max-sm:rounded-b-lg",
+            "sm:first:rounded-l-lg sm:last:rounded-r-lg",
+            "sm:first:rounded-l-lg sm:last:rounded-r-lg",
+            "max-sm:-mb-px has-[:checked]:max-sm:mb-0",
+            "sm:-mr-px has-[:checked]:sm:mr-0"
+          ]}
+        >
+          <.input type={@type} name={@name} label={label} value={value} class="w-full sr-only" />
+        </li>
+      </ul>
+    </.fieldset>
     """
   end
 
