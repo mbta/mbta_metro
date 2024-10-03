@@ -56,10 +56,13 @@
     font-weight: 900;
     src: url("../fonts/Inter-Black.ttf");
   }
-}
 
-@layer utilities {
+  /* 
+   * We can use this when Dotcom has better font style coverage
+
   * {
     font-family: "InterNormal", system-ui, sans-serif;
   }
+
+  */
 }
