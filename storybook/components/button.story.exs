@@ -15,6 +15,15 @@ defmodule Storybook.Components.Button do
           "default"
         ],
         description: "Default"
+      },
+      %Variation{
+        id: :default_with_icon,
+        slots: [
+          """
+          <Heroicons.bolt class="w-4 h-4" /> Default with icon
+          """
+        ],
+        description: "Default with icon"
       }
     ] ++ color_variations()
   end
