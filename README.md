@@ -64,3 +64,18 @@ You'll also have to add the following to your CSP (assuming you have one):
   "worker-src blob: ;"
 ]
 ```
+
+## Publishing
+
+You need to export CSS before publishing a hex package.
+This is because we process some CSS, but don't process Tailwind.
+
+```
+%> mix mba_metro.export_css
+```
+
+Then publish to hex as normal:
+
+```
+%> mix hex.publish
+```
