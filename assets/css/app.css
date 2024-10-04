@@ -1,2 +1,6 @@
 @import "default.css";
 @import "components.css";
+
+.mbta-metro-web {
+  font-family: "Inter", 'Helvetica Neue', 'Helvetica', 'Arial', system-ui, sans-serif;
+}

@@ -195,7 +195,7 @@ defmodule MbtaMetro.Components.Input do
 
   def label(assigns) do
     ~H"""
-    <label for={@for} class="block text-sm font-inter-semibold leading-6 text-silver-800">
+    <label for={@for} class="block text-sm leading-6 text-silver-800">
       <%= render_slot(@inner_block) %>
     </label>
     """
