@@ -2,6 +2,8 @@ const plugin = require("tailwindcss/plugin")
 
 const {colors, content, plugins, safelist} = require("mbta_metro")
 
+const fallbackFontFamily = ['ui-sans-serif', 'system-ui','sans-serif','"Apple Color Emoji"','"Segoe UI Emoji"','"Segoe UI Symbol"','"Noto Color Emoji"'];
+
 module.exports = {
   content: [
     ...content,
@@ -26,7 +28,12 @@ module.exports = {
     plugin(({addVariant}) => addVariant("phx-change-loading", [".phx-change-loading&", ".phx-change-loading &"])),
   ],
   theme: {
-    fontFamily: {},
+    fontFamily: {
+      base: ["Inter", '"Helvetica Neue"', 'Helvetica', 'Arial', ...fallbackFontFamily],
+      heading: ['"Helvetica Neue"', 'Helvetica', 'Arial', ...fallbackFontFamily],
+      inter: ["Inter", ...fallbackFontFamily],
+      helvetica: ['"Helvetica Neue"', 'Helvetica', ...fallbackFontFamily]
+    },
     extend: {
       colors: {
         ...colors

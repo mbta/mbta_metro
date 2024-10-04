@@ -7,6 +7,6 @@
 
 @layer base {
   body {
-    font-family: "Inter", 'Helvetica Neue', 'Helvetica', 'Arial', system-ui, sans-serif;
+    @apply font-base;
   }
 }
