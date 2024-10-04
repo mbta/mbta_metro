@@ -11,7 +11,7 @@ config :mbta_metro, MbtaMetroWeb.Endpoint,
   secret_key_base: "TcvJhq/n8JgjzZJ38tbZcFDrS2htRxPYvQNpKiqPulT+XFCsoQmxRlr9VWDYc912",
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:app, ~w(--sourcemap=inline --watch)]},
-    tailwind: {Tailwind, :install_and_run, [:app, ~w(--watch)]},
+    tailwind: {Tailwind, :install_and_run, [:app, ~w(--watch)]}
   ]
 
 config :mbta_metro, MbtaMetroWeb.Endpoint,
@@ -37,8 +37,7 @@ config :esbuild,
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ],
   components: [
-    args:
-      ~w(components.css --bundle --outdir=../../priv/static/assets),
+    args: ~w(components.css --bundle --outdir=../../priv/static/assets),
     cd: Path.expand("../assets/css", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ]

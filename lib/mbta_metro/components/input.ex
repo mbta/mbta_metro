@@ -5,6 +5,14 @@ defmodule MbtaMetro.Components.Input do
 
   import MbtaMetro.Components.Feedback
 
+  defp input_base_classes do
+    "border border-2 border-blue-300 bg-white focus:ring-0 focus:border-blue-600 checked:border-blue-700 checked:bg-blue-600 disabled:opacity-50 disabled:pointer-events-none"
+  end
+
+  defp input_error_classes do
+    "border border-2 border-red-300 focus:border-red-600"
+  end
+
   @doc """
   Renders an input with label and error messages.
 
@@ -80,7 +88,7 @@ defmodule MbtaMetro.Components.Input do
       end)
 
     ~H"""
-    <div class="flex">
+    <.label for={@id} class="font-inter-normal">
       <input type="hidden" name={@name} value="false" disabled={@rest[:disabled]} />
       <input
         type="checkbox"
@@ -89,13 +97,14 @@ defmodule MbtaMetro.Components.Input do
         value="true"
         checked={@checked}
         class={[
-          "shrink-0 mt-1 mr-3 border-silver-400 rounded text-blue-600 focus:border-blue-300 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none",
+          "shrink-0 mr-3 rounded w-6 h-6",
+          input_base_classes(),
           @class
         ]}
         {@rest}
       />
-      <.label for={@id}><%= @label %></.label>
-    </div>
+      <%= @label %>
+    </.label>
     """
   end
 
@@ -103,7 +112,7 @@ defmodule MbtaMetro.Components.Input do
     assigns = assigns |> assign_new(:checked, fn -> false end)
 
     ~H"""
-    <div class="flex">
+    <.label for={@id} class="font-inter-normal">
       <input
         type="radio"
         id={@id}
@@ -111,25 +120,27 @@ defmodule MbtaMetro.Components.Input do
         value={@value}
         checked={@checked}
         class={[
-          "shrink-0 mt-1 mr-3 border-silver-400 rounded-full text-blue-600 focus:border-blue-300 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none",
+          "shrink-0 mr-3 rounded-full w-6 h-6",
+          input_base_classes(),
           @class
         ]}
         {@rest}
       />
-      <.label for={@id}><%= @label %></.label>
-    </div>
+      <%= @label %>
+    </.label>
     """
   end
 
   def input(%{type: "select"} = assigns) do
     ~H"""
     <div>
-      <.label for={@id}><%= @label %></.label>
+      <.label for={@id} class="font-inter-bold w-full"><%= @label %></.label>
       <select
         id={@id}
         name={@name}
         class={[
-          "mt-2 block w-full rounded-md border border-silver-400 bg-white shadow-sm focus:border-blue-500 focus:ring-0 sm:text-sm",
+          "shadow-sm rounded",
+          input_base_classes(),
           @class
         ]}
         multiple={@multiple}
@@ -146,14 +157,14 @@ defmodule MbtaMetro.Components.Input do
   def input(%{type: "textarea"} = assigns) do
     ~H"""
     <div>
-      <.label for={@id}><%= @label %></.label>
+      <.label for={@id} class="font-inter-bold w-full"><%= @label %></.label>
       <textarea
         id={@id}
         name={@name}
         class={[
-          "mt-2 block w-full rounded text-silver-900 focus:ring-0 sm:text-sm sm:leading-6 min-h-[6rem]",
-          @errors == [] && "border-silver-400 focus:border-blue-500",
-          @errors != [] && "border-red-400 focus:border-red-500",
+          "min-h-[6rem] rounded",
+          input_base_classes(),
+          @errors != [] && input_error_classes(),
           @class
         ]}
         {@rest}
@@ -167,16 +178,16 @@ defmodule MbtaMetro.Components.Input do
   def input(assigns) do
     ~H"""
     <div>
-      <.label for={@id}><%= @label %></.label>
+      <.label for={@id} class="font-inter-bold w-full"><%= @label %></.label>
       <input
         type={@type}
         name={@name}
         id={@id}
         value={Phoenix.HTML.Form.normalize_value(@type, @value)}
         class={[
-          "mt-2 block w-full rounded text-silver-900 focus:ring-0 sm:text-sm sm:leading-6",
-          @errors == [] && "border-silver-400 focus:border-blue-500",
-          @errors != [] && "border-red-400 focus:border-red-500",
+          "rounded",
+          input_base_classes(),
+          @errors != [] && input_error_classes(),
           @class
         ]}
         {@rest}
@@ -195,7 +206,7 @@ defmodule MbtaMetro.Components.Input do
 
   def label(assigns) do
     ~H"""
-    <label for={@for} class="block text-sm font-semibold leading-6 text-silver-800">
+    <label for={@for} class={"leading-6 w-full m-0 py-2 inline-flex items-center #{@class}"}>
       <%= render_slot(@inner_block) %>
     </label>
     """

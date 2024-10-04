@@ -3,7 +3,7 @@ defmodule MbtaMetro.Components.Modal do
 
   use Phoenix.Component
 
-  import MbtaMetro.Components.JS
+  import MbtaMetro.Components.{Button, JS}
 
   alias Phoenix.LiveView.JS
 
@@ -60,15 +60,10 @@ defmodule MbtaMetro.Components.Modal do
               phx-click-away={JS.exec("data-cancel", to: "##{@id}")}
               class="shadow-silver-700/5 ring-silver-700/5 relative hidden rounded bg-white p-14 shadow-lg ring-1 transition"
             >
-              <div class="absolute top-6 right-5">
-                <button
-                  phx-click={JS.exec("data-cancel", to: "##{@id}")}
-                  type="button"
-                  class="-m-3 flex-none p-3 opacity-50 hover:opacity-80"
-                  aria-label="close"
-                >
-                  <Heroicons.x_mark class="h-5 w-5" />
-                </button>
+              <div class="absolute top-3 right-3">
+                <.button phx-click={JS.exec("data-cancel", to: "##{@id}")} type="button" class="m-0">
+                  Close
+                </.button>
               </div>
               <div id={"#{@id}-content"}>
                 <%= render_slot(@inner_block) %>

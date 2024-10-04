@@ -8,10 +8,10 @@ defmodule MbtaMetro do
       import MbtaMetro.Components.{
         Accordion,
         Button,
+        Feedback,
         Flash,
         Input,
         Modal,
-        ModeSelector,
         Table
       }
     end
