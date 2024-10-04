@@ -9,4 +9,45 @@
   body {
     @apply font-base;
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold mt-5 mb-1;
+
+    + p {
+      margin-top: 0;
+    }
+  }
+
+  /* Put adjacent headings closer together by decreasing the top margin. */
+  h1 + h2,
+  h2 + h3, 
+  h3 + h4, 
+  h4 + h5, 
+  h5 + h6 {
+    @apply mt-0;
+  }
+  
+  h1 { 
+    @apply text-4xl; 
+  }
+  
+  h2 { 
+    @apply text-3xl;
+  }
+  
+  h3 { 
+    @apply text-2xl; 
+  }
+  
+  h4 { 
+    @apply text-lg; 
+  }
+  
+  h5 { 
+    @apply text-base; 
+  }
+  
+  h6 { 
+    @apply text-sm; 
+  }
 }
