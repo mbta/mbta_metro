@@ -22,14 +22,10 @@ defmodule Storybook.Theme.Typography do
         <p class="my-4">
           The fonts we use on the MBTA.com website are <strong>Helvetica Neue</strong>
           and <strong><a class="text-blue-500 underline" href="https://rsms.me/inter/">Inter</a></strong>. These are available to developers via the CSS utility classes
-          <code class="text-amber-700 border border-1 border-amber-600 py-05 px-1 text-sm rounded">
-            font-headings
-          </code>
-          and <code class="text-amber-700 border border-1 border-amber-600 py-05 px-1 text-sm rounded">font-base</code>, respectively, or additionally through
-          <code class="text-amber-700 border border-1 border-amber-600 py-05 px-1 text-sm rounded">
-            font-helvetica
-          </code>
-          and <code class="text-amber-700 border border-1 border-amber-600 py-05 px-1 text-sm rounded">font-inter</code>.
+          <code class="text-amber-700 py-05 px-1 text-sm">.font-headings</code>
+          and <code class="text-amber-700 py-05 px-1 text-sm">.font-base</code>, respectively, or additionally through
+          <code class="text-amber-700 py-05 px-1 text-sm">.font-helvetica</code>
+          and <code class="text-amber-700 py-05 px-1 text-sm">.font-inter</code>.
         </p>
         <p class="my-4">
           To increase legibility while staying within the Helvetic-ish family, we use Inter as our body font. The two fonts are visually similar to each other, but Inter is nicely optimized for screens and has better readability in running text. It is also free and open-source and has tabular numbers, which help for timetables and such.
@@ -45,54 +41,22 @@ defmodule Storybook.Theme.Typography do
 
   defp examples(assigns) do
     ~H"""
-    <h1>
-      <code class="text-amber-700 border border-1 border-amber-600 py-05 px-1 text-sm rounded">
-        &lt;h1&gt;
-      </code>
-      Heading 1
-    </h1>
-    <p>Body text</p>
-    <h1>
-      <code class="text-amber-700 border border-1 border-amber-600 py-05 px-1 text-sm rounded">
-        &lt;h1&gt;
-      </code>
-      Heading 1 Again
-    </h1>
-    <h2>
-      <code class="text-amber-700 border border-1 border-amber-600 py-05 px-1 text-sm rounded">
-        &lt;h2&gt;
-      </code>
-      Heading 2
-    </h2>
+    <%= for num <- Enum.to_list(1..6) do %>
+      <%= Phoenix.HTML.raw "<h#{num}>" %>
+        <.heading_tag_code num={num} /> <%= Faker.Lorem.word() |> String.capitalize() %>
+      <%= Phoenix.HTML.raw "</h#{num}>" %>
+      <p><%= Faker.Lorem.paragraph() %></p>
+    <% end %>
+
+    <h1><.heading_tag_code num={1} /> Heading 1</h1>
+    <h2><.heading_tag_code num={2} /> Heading 2</h2>
     <p>Body text. Adjacent headings are slightly closer together.</p>
-    <h3>
-      <code class="text-amber-700 border border-1 border-amber-600 py-05 px-1 text-sm rounded">
-        &lt;h3&gt;
-      </code>
-      Heading 3
-    </h3>
-    <p>Body text</p>
-    <h4>
-      <code class="text-amber-700 border border-1 border-amber-600 py-05 px-1 text-sm rounded">
-        &lt;h4&gt;
-      </code>
-      Heading 4
-    </h4>
-    <p>Body text</p>
-    <h5>
-      <code class="text-amber-700 border border-1 border-amber-600 py-05 px-1 text-sm rounded">
-        &lt;h5&gt;
-      </code>
-      Heading 5
-    </h5>
-    <p>Body text</p>
-    <h6>
-      <code class="text-amber-700 border border-1 border-amber-600 py-05 px-1 text-sm rounded">
-        &lt;h6&gt;
-      </code>
-      Heading 6
-    </h6>
-    <p>Body text</p>
+    """
+  end
+
+  defp heading_tag_code(assigns) do
+    ~H"""
+    <code class="text-amber-700 border border-1 border-amber-600 py-05 px-1 text-sm rounded"><%= "<h#{@num}>" %></code>
     """
   end
 
@@ -104,37 +68,18 @@ defmodule Storybook.Theme.Typography do
         In general, the header text should be in Title Case.
         <ul class="pl-4 list-disc">
           <li>
-            Exception:
-            <code class="text-amber-700 border border-1 border-amber-600 py-05 px-1 text-sm rounded">
-              &lt;h1&gt;
-            </code>
-            for station pages or for Subway/Ferry/Commuter Rail line pages should be in all caps a la Wayfinding (e.g. 'SOUTH STATION', 'RED LINE'. etc.)
+            Exception: <.heading_tag_code num={1} /> for station pages or for Subway/Ferry/Commuter Rail line pages should be in all caps a la Wayfinding (e.g. 'SOUTH STATION', 'RED LINE'. etc.)
           </li>
         </ul>
       </li>
       <li>
-        Only one
-        <code class="text-amber-700 border border-1 border-amber-600 py-05 px-1 text-sm rounded">
-          &lt;h1&gt;
-        </code>
-        instance should appear on any given page.
+        Only one <.heading_tag_code num={1} /> instance should appear on any given page.
       </li>
       <li>
-        In compliance with accessibility standards, we do not skip heading ranks (for example, an
-        <code class="text-amber-700 border border-1 border-amber-600 py-05 px-1 text-sm rounded">
-          &lt;h2&gt;
-        </code>
-        is never followed by an <code class="text-amber-700 border border-1 border-amber-600 py-05 px-1 text-sm rounded">&lt;h4&gt;</code>).
+        In compliance with accessibility standards, we do not skip heading ranks (for example, an <.heading_tag_code num={2} /> is never followed by an <.heading_tag_code num={4} />).
       </li>
       <li>
-        <code class="text-amber-700 border border-1 border-amber-600 py-05 px-1 text-sm rounded">
-          &lt;h3&gt;
-        </code>
-        and
-        <code class="text-amber-700 border border-1 border-amber-600 py-05 px-1 text-sm rounded">
-          &lt;h4&gt;
-        </code>
-        are best used as the subheaders for the text that is divided into short columns of text on large screens, otherwise, subsections should be divided with <code class="text-amber-700 border border-1 border-amber-600 py-05 px-1 text-sm rounded">&lt;h2&gt;</code>.
+        <.heading_tag_code num={3} /> and <.heading_tag_code num={4} /> are best used as the subheaders for the text that is divided into short columns of text on large screens, otherwise, subsections should be divided with <.heading_tag_code num={2} />.
       </li>
     </ul>
     """
