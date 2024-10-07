@@ -22,10 +22,10 @@ defmodule Storybook.Theme.Typography do
         <p class="my-4">
           The fonts we use on the MBTA.com website are <strong>Helvetica Neue</strong>
           and <strong><a class="text-blue-500 underline" href="https://rsms.me/inter/">Inter</a></strong>. These are available to developers via the CSS utility classes
-          <code class="text-amber-700 py-05 px-1 text-sm">.font-headings</code>
-          and <code class="text-amber-700 py-05 px-1 text-sm">.font-base</code>, respectively, or additionally through
-          <code class="text-amber-700 py-05 px-1 text-sm">.font-helvetica</code>
-          and <code class="text-amber-700 py-05 px-1 text-sm">.font-inter</code>.
+          <.code>.font-headings</.code>
+          and <.code>.font-base</.code>, respectively, or additionally through
+          <.code>.font-helvetica</.code>
+          and <.code>.font-inter</.code>.
         </p>
         <p class="my-4">
           To increase legibility while staying within the Helvetic-ish family, we use Inter as our body font. The two fonts are visually similar to each other, but Inter is nicely optimized for screens and has better readability in running text. It is also free and open-source and has tabular numbers, which help for timetables and such.
@@ -56,7 +56,7 @@ defmodule Storybook.Theme.Typography do
 
   defp heading_tag_code(assigns) do
     ~H"""
-    <code class="text-amber-700 border border-1 border-amber-600 py-05 px-1 text-sm rounded"><%= "<h#{@num}>" %></code>
+    <.code class="border border-1 border-amber-600 rounded"><%= "<h#{@num}>" %></.code>
     """
   end
 
@@ -95,6 +95,15 @@ defmodule Storybook.Theme.Typography do
     <p class="my-4">
       Clear header hierarchy improves riders’ ability to skim and understand relationships between content. The space between a header and the content it accompanies is intentionally closer than the space between it and the other sections of the page.
     </p>
+    """
+  end
+
+  # Extract this to a common location for documentation-only components
+  defp code(assigns) do
+    ~H"""
+    <code class={"text-amber-700 py-05 px-1 text-sm #{Map.get(assigns, :class)}"}>
+      <%= render_slot(@inner_block) %>
+    </code>
     """
   end
 end
