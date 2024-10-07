@@ -5,6 +5,7 @@ const {colors, content, fontFamily, plugins, safelist} = require("mbta_metro")
 module.exports = {
   content: [
     ...content,
+    "../lib/doc_components.ex",
     "../lib/mbta_metro/**/*.ex",
     "../storybook/**/*.exs",
   ],
@@ -27,7 +28,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      ...fontFamily,
+      ...fontFamily
     },
     extend: {
       colors: {

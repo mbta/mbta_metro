@@ -2,67 +2,52 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+/* Inter font v4.0 via https://rsms.me/inter/download/ */
+@import "inter.css" layer(base);
+
 @layer base {
-  @font-face {
-    font-family: "InterThin";
-    font-weight: 100;
-    src: url("../fonts/Inter-Thin.ttf");
+  body {
+    @apply font-base;
   }
 
-  @font-face {
-    font-family: "InterExtraLight";
-    font-weight: 200;
-    src: url("../fonts/Inter-ExtraLight.ttf");
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold mt-5 mb-1;
+
+    + p {
+      margin-top: 0;
+    }
   }
 
-  @font-face {
-    font-family: "InterLight";
-    font-weight: 300;
-    src: url("../fonts/Inter-Light.ttf");
+  /* Put adjacent headings closer together by decreasing the top margin. */
+  h1 + h2,
+  h2 + h3, 
+  h3 + h4, 
+  h4 + h5, 
+  h5 + h6 {
+    @apply mt-0;
   }
-
-  @font-face {
-    font-family: "InterNormal";
-    font-weight: 400;
-    src: url("../fonts/Inter-Normal.ttf");
+  
+  h1 { 
+    @apply text-4xl; 
   }
-
-  @font-face {
-    font-family: "InterMedium";
-    font-weight: 500;
-     src: url("../fonts/Inter-Medium.ttf");
+  
+  h2 { 
+    @apply text-3xl;
   }
-
-  @font-face {
-    font-family: "InterSemiBold";
-    font-weight: 600;
-    src: url("../fonts/Inter-SemiBold.ttf");
+  
+  h3 { 
+    @apply text-2xl; 
   }
-
-  @font-face {
-    font-family: "InterBold";
-    font-weight: 700;
-    src: url("../fonts/Inter-Bold.ttf");
+  
+  h4 { 
+    @apply text-lg; 
   }
-
-  @font-face {
-    font-family: "InterExtraBold";
-    font-weight: 800;
-    src: url("../fonts/Inter-ExtraBold.ttf");
+  
+  h5 { 
+    @apply text-base; 
   }
-
-  @font-face {
-    font-family: "InterBlack";
-    font-weight: 900;
-    src: url("../fonts/Inter-Black.ttf");
+  
+  h6 { 
+    @apply text-sm; 
   }
-
-  /* 
-   * We can use this when Dotcom has better font style coverage
-
-  * {
-    font-family: "InterNormal", system-ui, sans-serif;
-  }
-
-  */
 }
