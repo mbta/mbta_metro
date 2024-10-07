@@ -71,7 +71,7 @@ You need to export CSS before publishing a hex package.
 This is because we process some CSS, but don't process Tailwind.
 
 ```
-%> mix mba_metro.export_css
+%> mix mbta_metro.export_css
 ```
 
 Then publish to hex as normal:
