@@ -7,6 +7,7 @@ const fallbackFontFamily = ['ui-sans-serif', 'system-ui','sans-serif','"Apple Co
 module.exports = {
   content: [
     ...content,
+    "../lib/doc_components.ex",
     "../lib/mbta_metro/**/*.ex",
     "../storybook/**/*.exs",
   ],

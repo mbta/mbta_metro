@@ -98,12 +98,13 @@ defmodule Storybook.Theme.Typography do
     """
   end
 
-  # Extract this to a common location for documentation-only components
   defp code(assigns) do
     ~H"""
-    <code class={"text-amber-700 py-05 px-1 text-sm #{Map.get(assigns, :class)}"}>
-      <%= render_slot(@inner_block) %>
-    </code>
+    <%= Phoenix.LiveView.TagEngine.component(
+          &MbtaMetro.DocComponents.code/1,
+          assigns,
+          {__ENV__.module, __ENV__.function, __ENV__.file, __ENV__.line}
+        ) %>
     """
   end
 end
