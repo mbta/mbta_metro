@@ -42,7 +42,7 @@ defmodule MbtaMetro.Components.Input do
   attr :id, :any, default: nil
   attr :name, :any
   attr :label, :string, default: nil
-  attr :value, :any
+  attr :value, :any, default: nil
 
   attr :type, :string,
     default: "text",
@@ -69,11 +69,7 @@ defmodule MbtaMetro.Components.Input do
 
     assigns
     |> assign(field: nil, id: assigns.id || field.id)
-    |> assign(
-      :label,
-      assigns.label ||
-        Phoenix.Naming.humanize(assigns.value)
-    )
+    |> assign(:label, assigns.label || assigns.value)
     |> assign(:errors, errors)
     |> assign_new(:name, fn -> if assigns.multiple, do: field.name <> "[]", else: field.name end)
     |> assign_new(:value, fn -> field.value end)
@@ -88,7 +84,7 @@ defmodule MbtaMetro.Components.Input do
       end)
 
     ~H"""
-    <.label for={@id} class="font-inter-normal">
+    <.label :if={@label} for={@id} class="font-inter-normal">
       <input type="hidden" name={@name} value="false" disabled={@rest[:disabled]} />
       <input
         type="checkbox"
@@ -112,7 +108,7 @@ defmodule MbtaMetro.Components.Input do
     assigns = assigns |> assign_new(:checked, fn -> false end)
 
     ~H"""
-    <.label for={@id} class="font-inter-normal">
+    <.label :if={@label} for={@id} class="font-inter-normal">
       <input
         type="radio"
         id={@id}
@@ -134,7 +130,7 @@ defmodule MbtaMetro.Components.Input do
   def input(%{type: "select"} = assigns) do
     ~H"""
     <div>
-      <.label for={@id} class="font-inter-bold w-full"><%= @label %></.label>
+      <.label :if={@label} for={@id} class="font-inter-bold w-full"><%= @label %></.label>
       <select
         id={@id}
         name={@name}
@@ -157,7 +153,7 @@ defmodule MbtaMetro.Components.Input do
   def input(%{type: "textarea"} = assigns) do
     ~H"""
     <div>
-      <.label for={@id} class="font-inter-bold w-full"><%= @label %></.label>
+      <.label :if={@label} for={@id} class="font-inter-bold w-full"><%= @label %></.label>
       <textarea
         id={@id}
         name={@name}
@@ -178,7 +174,7 @@ defmodule MbtaMetro.Components.Input do
   def input(assigns) do
     ~H"""
     <div>
-      <.label for={@id} class="font-inter-bold w-full"><%= @label %></.label>
+      <.label :if={@label} for={@id} class="font-inter-bold w-full"><%= @label %></.label>
       <input
         type={@type}
         name={@name}

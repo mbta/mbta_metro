@@ -1,4 +1,4 @@
-defmodule Storybook.Components.Button do
+defmodule Storybook.Live.DatePicker do
   @moduledoc false
 
   use PhoenixStorybook.Story, :live_component
@@ -13,8 +13,20 @@ defmodule Storybook.Components.Button do
         id: :default,
         description: "Default",
         attributes: %{
-          name: Faker.Lorem.word(),
-          value: Timex.now()
+          config: %{
+            default_date: Timex.now(),
+            enable_time: true,
+            max_date: Timex.now() |> Timex.shift(days: 7),
+            min_date: Timex.now() |> Timex.shift(days: -7),
+          },
+          field: %Phoenix.HTML.FormField{
+            id: Faker.Lorem.word(),
+            errors: [],
+            field: Faker.Lorem.word(),
+            form: %Phoenix.HTML.Form{},
+            name: Faker.Lorem.word(),
+            value: NaiveDateTime.utc_now(),
+          },
         }
       }
     ]

@@ -1,4 +1,4 @@
-defmodule Storybook.Components.Button do
+defmodule Storybook.Live.Map do
   @moduledoc false
 
   use PhoenixStorybook.Story, :live_component

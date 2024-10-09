@@ -50,6 +50,7 @@ defmodule MbtaMetro.MixProject do
       {:esbuild, "0.8.1", only: :dev, optional: true, runtime: Mix.env() == :dev},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
       {:faker, "0.18.0", only: :dev, runtime: false},
+      {:jason, "1.4.4"},
       {:heroicons, "0.5.6"},
       {:phoenix, "1.7.14"},
       {:phoenix_live_reload, "1.5.3", only: :dev, optional: true, runtime: false},

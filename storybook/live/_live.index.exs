@@ -7,6 +7,6 @@ defmodule Storybook.Live.Index do
   def folder_icon, do: {:hero, "bolt"}
   def folder_open?, do: false
 
-  def entry("date_picker"), do: [name: "Date Picker"]
+  def date_picker, do: [name: "Date picker"]
   def entry("map"), do: [name: "Map"]
 end
