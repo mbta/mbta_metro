@@ -40,7 +40,7 @@ Import the styles in your `assets/css/app.css`:
 @import "../../deps/mbta_metro/priv/static/assets/default.css";
 ```
 
-The, follow the installation instructions for the [npm package](https://www.npmjs.com/package/mbta_metro).
+The, follow the installation instructions for the [npm package](assets/README.md).
 
 ### LiveComponents
 
@@ -79,3 +79,5 @@ Then publish to hex as normal:
 ```
 %> mix hex.publish
 ```
+
+Follow the publishing instructions for the [npm package](assets/README.md).

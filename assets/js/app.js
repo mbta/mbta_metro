@@ -1,4 +1,4 @@
-import {Hooks} from "mbta_metro"
+import {Hooks} from "./index"
 
 (function () {
   window.storybook = {

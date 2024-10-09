@@ -1,6 +1,6 @@
 const plugin = require("tailwindcss/plugin")
 
-const {colors, content, fontFamily, plugins, safelist} = require("mbta_metro")
+const {colors, content, fontFamily, plugins, safelist} = require("./js/index")
 
 module.exports = {
   content: [
@@ -14,8 +14,7 @@ module.exports = {
   ],
   important: ".mbta-metro-web",
   plugins: [
-    ...plugins,
-    require("@tailwindcss/forms"),
+    ...plugins(),
     // Allows prefixing tailwind classes with LiveView classes to add rules
     // only when LiveView classes are applied, for example:
     //
