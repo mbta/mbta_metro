@@ -1,6 +1,6 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer base {
   :root {
@@ -320,20 +320,25 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading font-bold mt-5 mb-1;
+    @apply font-heading font-bold mt-11 mb-3;
 
-    + p {
-      margin-top: 0;
+    /* Smaller bottom margin if followed by a <p> */
+    &:has(+p) {
+      @apply mb-1;
     }
   }
 
-  /* Put adjacent headings closer together by decreasing the top margin. */
+  /* Smaller top margin if after a heading or <p> */
   h1 + h2,
-  h2 + h3, 
-  h3 + h4, 
-  h4 + h5, 
-  h5 + h6 {
-    @apply mt-0;
+  h2 + h3,
+  h3 + h4,
+  h4 + h5,
+  h5 + h6,
+  p + h3,
+  p + h4,
+  p + h5,
+  p + h6 {
+    @apply mt-4;
   }
   
   h1 { 

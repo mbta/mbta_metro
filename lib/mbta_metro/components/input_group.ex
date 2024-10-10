@@ -45,7 +45,7 @@ defmodule MbtaMetro.Components.InputGroup do
   def fieldset(assigns) do
     ~H"""
     <fieldset class="my-3 w-full">
-      <legend class="font-inter-bold text-slate-700"><%= @legend %></legend>
+      <legend class="font-bold text-base text-slate-700"><%= @legend %></legend>
       <%= render_slot(@inner_block) %>
     </fieldset>
     """

@@ -1,6 +1,12 @@
 defmodule MbtaMetro.Components.Accordion do
   use Phoenix.Component
 
+  attr :id, :string,
+    required: true,
+    doc: """
+    A unique identifier for the accordion.
+    """
+
   attr :open, :boolean,
     default: false,
     doc: """
@@ -26,7 +32,7 @@ defmodule MbtaMetro.Components.Accordion do
   """
   def accordion(assigns) do
     ~H"""
-    <details class="group w-full bg-white" open={@open}>
+    <details id={@id} class="group w-full bg-white" open={@open} phx-update="ignore">
       <summary class="border border-solid border-blue-500 text-blue-600 hover:text-slate-900 hover:bg-blue-100 p-2 flex cursor-pointer list-none items-center gap-2 p-2 relative">
         <%= render_slot(@heading) %>
         <Heroicons.chevron_down class="group-open:rotate-180 w-4 h-4 absolute top-3 right-3" />

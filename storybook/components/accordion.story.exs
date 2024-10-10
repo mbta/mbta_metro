@@ -15,6 +15,7 @@ defmodule Storybook.Components.Accordion do
         id: :default,
         description: "Default",
         attributes: %{
+          id: "default",
           open: false
         },
         slots: [
@@ -30,6 +31,7 @@ defmodule Storybook.Components.Accordion do
         id: :open,
         description: "Initialized as open",
         attributes: %{
+          id: "open",
           open: true
         },
         slots: [
@@ -49,6 +51,7 @@ defmodule Storybook.Components.Accordion do
         id: :with_extra,
         description: "With extra content",
         attributes: %{
+          id: "content",
           open: false
         },
         slots: [

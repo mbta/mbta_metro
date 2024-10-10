@@ -6,11 +6,11 @@ defmodule MbtaMetro.Components.Input do
   import MbtaMetro.Components.Feedback
 
   defp input_base_classes do
-    "border border-2 border-blue-300 bg-white focus:ring-0 focus:border-blue-600 checked:border-blue-700 checked:bg-blue-600 disabled:opacity-50 disabled:pointer-events-none"
+    "border border-solid border-2 border-blue-600 bg-white focus:ring-4 focus:border-blue-900 ring-offset-0 ring-sky-700/50 checked:bg-blue-500 disabled:opacity-50 disabled:pointer-events-none"
   end
 
   defp input_error_classes do
-    "border border-2 border-red-300 focus:border-red-600"
+    "border border-solid border-2 border-red-300 focus:border-red-600"
   end
 
   @doc """
@@ -84,7 +84,7 @@ defmodule MbtaMetro.Components.Input do
       end)
 
     ~H"""
-    <.label :if={@label} for={@id} class="font-inter-normal">
+    <.label :if={@label} for={@id} class="font-normal inline-flex items-center">
       <input type="hidden" name={@name} value="false" disabled={@rest[:disabled]} />
       <input
         type="checkbox"
@@ -93,7 +93,7 @@ defmodule MbtaMetro.Components.Input do
         value="true"
         checked={@checked}
         class={[
-          "shrink-0 mr-3 rounded w-6 h-6",
+          "shrink-0 mr-2 rounded w-5 h-5",
           input_base_classes(),
           @class
         ]}
@@ -108,7 +108,7 @@ defmodule MbtaMetro.Components.Input do
     assigns = assigns |> assign_new(:checked, fn -> false end)
 
     ~H"""
-    <.label :if={@label} for={@id} class="font-inter-normal">
+    <.label :if={@label} for={@id} class="font-normal inline-flex items-center">
       <input
         type="radio"
         id={@id}
@@ -116,7 +116,7 @@ defmodule MbtaMetro.Components.Input do
         value={@value}
         checked={@checked}
         class={[
-          "shrink-0 mr-3 rounded-full w-6 h-6",
+          "shrink-0 mr-2 rounded-full w-5 h-5",
           input_base_classes(),
           @class
         ]}
@@ -130,7 +130,7 @@ defmodule MbtaMetro.Components.Input do
   def input(%{type: "select"} = assigns) do
     ~H"""
     <div>
-      <.label :if={@label} for={@id} class="font-inter-bold w-full"><%= @label %></.label>
+      <.label :if={@label} for={@id} class="font-bold w-full"><%= @label %></.label>
       <select
         id={@id}
         name={@name}
@@ -153,7 +153,7 @@ defmodule MbtaMetro.Components.Input do
   def input(%{type: "textarea"} = assigns) do
     ~H"""
     <div>
-      <.label :if={@label} for={@id} class="font-inter-bold w-full"><%= @label %></.label>
+      <.label :if={@label} for={@id} class="font-bold w-full"><%= @label %></.label>
       <textarea
         id={@id}
         name={@name}
@@ -174,7 +174,7 @@ defmodule MbtaMetro.Components.Input do
   def input(assigns) do
     ~H"""
     <div>
-      <.label :if={@label} for={@id} class="font-inter-bold w-full"><%= @label %></.label>
+      <.label :if={@label} for={@id} class="font-bold w-full"><%= @label %></.label>
       <input
         type={@type}
         name={@name}
