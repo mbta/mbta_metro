@@ -7,6 +7,7 @@ defmodule Storybook.Components.Index do
   def folder_icon, do: {:hero, "cube"}
   def folder_open?, do: true
 
+  def entry("accordion"), do: [name: "Accordion"]
   def entry("button"), do: [name: "Button"]
   def entry("data_list"), do: [name: "DataList"]
   def entry("feedback"), do: [name: "Feedback"]
