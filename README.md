@@ -67,13 +67,13 @@ You'll also have to add the following to your CSP (assuming you have one):
 
 ## Publishing
 
-If any JS assets have changed, publish a new [npm package](assets/README.md#publishing).
-
 If any CSS assets have changed, export a new CSS file.
 
 ```
 %> mix mbta_metro.export_css
 ```
+
+If any JS assets have changed, publish a new [npm package](assets/README.md#publishing).
 
 Edit the `VERSIONS` file so that the *next* hex version points to the npm version you just published.
 
