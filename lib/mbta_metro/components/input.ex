@@ -42,7 +42,7 @@ defmodule MbtaMetro.Components.Input do
   attr :id, :any, default: nil
   attr :name, :any
   attr :label, :string, default: nil
-  attr :value, :any, default: nil
+  attr :value, :any
 
   attr :type, :string,
     default: "text",
