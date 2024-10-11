@@ -84,7 +84,7 @@ defmodule MbtaMetro.Components.Input do
       end)
 
     ~H"""
-    <.label :if={@label} for={@id} class="font-normal inline-flex items-center">
+    <.label :if={@label} for={@id} class="font-normal inline-flex items-center cursor-pointer">
       <input type="hidden" name={@name} value="false" disabled={@rest[:disabled]} />
       <input
         type="checkbox"
@@ -104,11 +104,41 @@ defmodule MbtaMetro.Components.Input do
     """
   end
 
+  def input(%{type: "checkbox-button"} = assigns) do
+    assigns =
+      assigns
+      |> assign_new(:checked, fn ->
+        Phoenix.HTML.Form.normalize_value("checkbox", assigns[:value])
+      end)
+
+    ~H"""
+    <.label :if={@label} for={@id} class="font-inter-normal cursor-pointer">
+      <input type="hidden" name={@name} value="false" disabled={@rest[:disabled]} />
+      <input
+        type="checkbox"
+        id={@id}
+        name={@name}
+        value="true"
+        checked={@checked}
+        class={[
+          "shrink-0 mr-3 rounded w-6 h-6 sr-only",
+          input_base_classes(),
+          @class
+        ]}
+        {@rest}
+      />
+      <span class="w-full text-center">
+        <%= @label %>
+      </span>
+    </.label>
+    """
+  end
+
   def input(%{type: "radio"} = assigns) do
     assigns = assigns |> assign_new(:checked, fn -> false end)
 
     ~H"""
-    <.label :if={@label} for={@id} class="font-normal inline-flex items-center">
+    <.label :if={@label} for={@id} class="font-normal inline-flex items-center cursor-pointer">
       <input
         type="radio"
         id={@id}
@@ -123,6 +153,31 @@ defmodule MbtaMetro.Components.Input do
         {@rest}
       />
       <%= @label %>
+    </.label>
+    """
+  end
+
+  def input(%{type: "radio-button"} = assigns) do
+    assigns = assigns |> assign_new(:checked, fn -> false end)
+
+    ~H"""
+    <.label :if={@label} for={@id} class="font-inter-normal cursor-pointer">
+      <input
+        type="radio"
+        id={@id}
+        name={@name}
+        value={@value}
+        checked={@checked}
+        class={[
+          "shrink-0 mr-3 rounded-full w-6 h-6 sr-only",
+          input_base_classes(),
+          @class
+        ]}
+        {@rest}
+      />
+      <span class="w-full text-center">
+        <%= @label %>
+      </span>
     </.label>
     """
   end

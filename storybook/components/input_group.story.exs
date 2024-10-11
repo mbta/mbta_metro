@@ -1,6 +1,8 @@
 defmodule Storybook.Components.InputGroup do
   use PhoenixStorybook.Story, :component
 
+  import Phoenix.Component, only: [to_form: 1]
+
   alias MbtaMetro.Components.{Input, InputGroup}
 
   def function, do: &InputGroup.input_group/1
@@ -12,37 +14,86 @@ defmodule Storybook.Components.InputGroup do
 
   def variations do
     [
-      %Variation{
-        id: :check,
-        description: "Checkboxes (select multiple)",
-        attributes: %{
-          legend: "Favorite stations",
-          type: "checkbox",
-          name: "stations[]",
-          options: [
-            {"North Station", "place-north"},
-            {"South Station", "place-sstat"},
-            {"Back Bay", "place-bbsta"}
-          ]
-        }
-      },
-      %Variation{
-        id: :rad,
-        description: "Radio buttons (select one)",
-        attributes: %{
-          legend: "Favorite single station",
-          type: "radio",
-          name: "stations",
-          options: [
-            {"North Station", "place-north"},
-            {"South Station", "place-sstat"},
-            {"Back Bay", "place-bbsta"},
-            {"Wonderland", "place-wondl"},
-            {"Harvard", "place-harsq"},
-            {"Ruggles", "place-rugg"}
-          ]
-        }
-      }
+      # checkbox(),
+      checkbox_button(),
+      # radio(),
+      radio_button()
     ]
+  end
+
+  defp checkbox do
+    %Variation{
+      id: :checkbox,
+      description: "Checkboxes (select multiple)",
+      attributes: %{
+        legend: "Favorite stations",
+        type: "checkbox",
+        name: "stations[]",
+        form: to_form(%{}),
+        field: :stations,
+        options: [
+          {"Back Bay", "place-bbsta"},
+          {"North Station", "place-north"},
+          {"South Station", "place-sstat"}
+        ]
+      }
+    }
+  end
+
+  defp checkbox_button do
+    %Variation{
+      id: :checkbox_button,
+      description: "Checkbox Buttons (select multiple)",
+      attributes: %{
+        legend: "Favorite stations",
+        type: "checkbox-button",
+        name: "stations[]",
+        form: to_form(%{}),
+        field: :stations,
+        options: [
+          {"Back Bay", "place-bbsta"},
+          {"North Station", "place-north"},
+          {"South Station", "place-sstat"}
+        ]
+      }
+    }
+  end
+
+  defp radio do
+    %Variation{
+      id: :radio,
+      description: "Radios (select one)",
+      attributes: %{
+        legend: "Favorite single station",
+        type: "radio",
+        name: "station",
+        form: to_form(%{"station" => "place-harsq"}),
+        field: :station,
+        options: [
+          {"Harvard", "place-harsq"},
+          {"Ruggles", "place-rugg"},
+          {"Wonderland", "place-wondl"}
+        ]
+      }
+    }
+  end
+
+  defp radio_button do
+    %Variation{
+      id: :radio_button,
+      description: "Radio buttons (select one)",
+      attributes: %{
+        legend: "Favorite single station",
+        type: "radio-button",
+        name: "station",
+        form: to_form(%{"station" => "place-harsq"}),
+        field: :station,
+        options: [
+          {"Harvard", "place-harsq"},
+          {"Ruggles", "place-rugg"},
+          {"Wonderland", "place-wondl"}
+        ]
+      }
+    }
   end
 end

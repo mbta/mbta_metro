@@ -8,9 +8,11 @@ defmodule Storybook.Components.InputGroup do
   def variations do
     [
       checkbox(),
-      select(),
+      # checkbox_button(),
       password(),
       radio(),
+      # radio_button(),
+      select(),
       text(),
       textarea()
     ]
@@ -26,6 +28,21 @@ defmodule Storybook.Components.InputGroup do
         label: "Label",
         name: Faker.Lorem.word(),
         type: "checkbox",
+        value: "true"
+      }
+    }
+  end
+
+  def checkbox_button do
+    %Variation{
+      id: :checkbox_button,
+      description: "Checkbox Button",
+      attributes: %{
+        errors: [],
+        id: Faker.Lorem.word(),
+        label: "Label",
+        name: Faker.Lorem.word(),
+        type: "checkbox-button",
         value: "true"
       }
     }
@@ -56,6 +73,21 @@ defmodule Storybook.Components.InputGroup do
         label: "Label",
         name: Faker.Lorem.word(),
         type: "radio",
+        value: "true"
+      }
+    }
+  end
+
+  def radio_button do
+    %Variation{
+      id: :radio_button,
+      description: "Radio Button",
+      attributes: %{
+        errors: [],
+        id: Faker.Lorem.word(),
+        label: "Label",
+        name: Faker.Lorem.word(),
+        type: "radio-button",
         value: "true"
       }
     }

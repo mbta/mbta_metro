@@ -4,3 +4,9 @@
 .mbta-metro-web {
   font-family: "Inter", "Helvetica Neue", "Helvetica", "Arial", system-ui, sans-serif;
 }
+
+.psb {
+  pre {
+    overflow: hidden;
+  }
+}

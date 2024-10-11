@@ -6,12 +6,11 @@ defmodule MbtaMetro.Live.DatePicker do
 
     * `:field` - A form field struct retrieved from a form, for example: @form[:datetime].
 
-  You can optionally pass in a configuration map:
-    * `:config`
-      * `:default_date` - The default date that should be selected.
-      * `:enable_time` - A boolean that determines if the time picker should be enabled.
-      * `:max_date` - The maximum date that can be selected.
-      * `:min_date` - The minimum date that can be selected.
+  You can optionally pass in a `:config` map:
+    * `:default_date` - The default date that should be selected.
+    * `:enable_time` - A boolean that determines if the time picker should be enabled.
+    * `:max_date` - The maximum date that can be selected.
+    * `:min_date` - The minimum date that can be selected.
   """
 
   use Phoenix.LiveComponent
@@ -30,11 +29,17 @@ defmodule MbtaMetro.Live.DatePicker do
   """
   def render(assigns) do
     ~H"""
-    <div id="date-picker" phx-hook="DatePicker" phx-update="ignore" data-config={Jason.encode!(@config)} class="min-w-64">
+    <div
+      id="date-picker"
+      phx-hook="DatePicker"
+      phx-update="ignore"
+      data-config={Jason.encode!(@config)}
+      class="min-w-64"
+    >
       <div id="date-picker-calendar" class="relative">
-        <.input type="datetime-local" field={@field} class="w-full" data-input />
-        <a href="#" data-toggle class="absolute top-3 right-2">
-          <Heroicons.calendar micro class="w-5 h-5" />
+        <.input type="datetime-local" field={@field} class="w-full" value={nil} data-input />
+        <a href="#" data-toggle class="absolute top-3.5 right-2.5">
+          <Heroicons.calendar micro class="w-4 h-4" />
         </a>
       </div>
     </div>
