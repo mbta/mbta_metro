@@ -10,8 +10,8 @@ defmodule Mix.Tasks.MbtaMetro.UpdateAssets do
 
     File.cd!("assets", fn ->
       "npm install --save mbta_metro@#{version}"
-      Kernel.to_charlist()
-      :os.cmd()
+      |> Kernel.to_charlist()
+      |> :os.cmd()
     end)
   end
 
