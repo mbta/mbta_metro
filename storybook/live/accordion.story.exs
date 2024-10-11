@@ -1,9 +1,10 @@
 defmodule Storybook.Components.Accordion do
-  use PhoenixStorybook.Story, :component
+  use PhoenixStorybook.Story, :live_component
 
-  alias MbtaMetro.Components.{Accordion, Feedback}
+  alias MbtaMetro.Live.Accordion
+  alias MbtaMetro.Components.Feedback
 
-  def function, do: &Accordion.accordion/1
+  def component, do: Accordion
 
   def imports do
     [{Feedback, feedback: 1}]
@@ -15,11 +16,10 @@ defmodule Storybook.Components.Accordion do
         id: :default,
         description: "Default",
         attributes: %{
-          id: "default",
           open: false
         },
         slots: [
-          ~s|<:heading><Heroicons.bolt class="w-4 h-4" />Heading text</:heading>|,
+          ~s|<:heading><Heroicons.bolt class="w-4 h-4 inline-flex mr-2" />Heading text that is extra long to display wrapping</:heading>|,
           """
           <:content>
             <p>Any content can be inside</p>
@@ -31,7 +31,6 @@ defmodule Storybook.Components.Accordion do
         id: :open,
         description: "Initialized as open",
         attributes: %{
-          id: "open",
           open: true
         },
         slots: [
@@ -51,7 +50,6 @@ defmodule Storybook.Components.Accordion do
         id: :with_extra,
         description: "With extra content",
         attributes: %{
-          id: "content",
           open: false
         },
         slots: [

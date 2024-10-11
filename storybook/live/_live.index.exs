@@ -9,4 +9,6 @@ defmodule Storybook.Live.Index do
 
   def date_picker, do: [name: "Date picker"]
   def entry("map"), do: [name: "Map"]
+  def entry("accordion"), do: [name: "Accordion"]
+
 end
