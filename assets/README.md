@@ -6,11 +6,10 @@ This package contains default styles as well as [LiveView Hooks](https://hexdocs
 
 Install the [Elixir package](https://hexdocs.pm/mbta_metro/MbtaMetro.html) first.
 
-Then, add the mbta_metro library to your `assets/package.json`:
+Then, run the mix task to get the appropriate `mbta_metro` npm package:
 
 ```
-%> cd assets
-%> npm install --save mbta_metro
+%> mix mbta_metro.update_assets
 ```
 
 You can then use some defaults in your `assets/tailwind.config.js`:

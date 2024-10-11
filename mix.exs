@@ -1,8 +1,6 @@
 defmodule MbtaMetro.MixProject do
   use Mix.Project
 
-  @version "0.0.17"
-
   def project do
     [
       app: :mbta_metro,
@@ -15,7 +13,7 @@ defmodule MbtaMetro.MixProject do
       name: "MbtaMetro",
       package: package(),
       start_permanent: Mix.env() == :prod,
-      version: @version
+      version: version()
     ]
   end
 
@@ -67,7 +65,7 @@ defmodule MbtaMetro.MixProject do
       canonical: "http://hexdocs.pm/mbta_metro",
       extras: ["README.md"],
       source_url: "https://github.com/anthonyshull/mbta_metro",
-      source_ref: "v#{@version}"
+      source_ref: "v#{version()}"
     ]
   end
 
@@ -82,14 +80,24 @@ defmodule MbtaMetro.MixProject do
         "lib/mbta_metro/components/**/*",
         "lib/mbta_metro/live/**/*",
         "lib/mix/tasks/mbta_metro/install_*.ex",
+        "lib/mix/tasks/mbta_metro/update_*.ex",
         "mix.exs",
         "priv/static/assets/default.css",
         "priv/static/fonts/*",
         "priv/static/images/icon-mode-*.svg",
-        "README.md"
+        "README.md",
+        "VERSIONS"
       ],
       licenses: ["GPL-3.0-or-later"],
       links: %{"GitHub" => "https://github.com/anthonyshull/mbta_metro"}
     ]
+  end
+
+  defp version do
+    File.read!("VERSIONS")
+    |> String.split("\n", trim: true)
+    |> List.last()
+    |> String.split("-")
+    |> List.first()
   end
 end
