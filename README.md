@@ -80,4 +80,4 @@ Then publish to hex as normal:
 %> mix hex.publish
 ```
 
-Follow the publishing instructions for the [npm package](assets/README.md).
+Follow the publishing instructions for the [npm package](assets/README.md#publishing).
