@@ -11,14 +11,12 @@ export default {
    */
   mounted() {
     const apiKey = this.el.dataset.apiKey;
-    const mapName = this.el.dataset.mapName;
-    const region = this.el.dataset.region;
 
     this.map = new maplibregl.Map({
       container: this.el,
       center: [-71.05793935862762, 42.360445610002515],
       zoom: 12,
-      style: `https://maps.geo.${region}.amazonaws.com/maps/v0/maps/${mapName}/style-descriptor?key=${apiKey}`,
+      style: `https://tiles.stadiamaps.com/styles/alidade_smooth.json?api_key=${apiKey}`,
     });
 
     this.map.addControl(new maplibregl.NavigationControl(), "top-left");

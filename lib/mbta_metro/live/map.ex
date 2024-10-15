@@ -1,12 +1,10 @@
 defmodule MbtaMetro.Live.Map do
   @moduledoc """
-  A live component that renders a map using AWS Location Service.
+  A live component that renders a map using [Stadia](https://stadiamaps.com).
 
   You must pass in the following assigns:
 
     * `:api_key` - The AWS Location Service API key.
-    * `:map_name` - The name of the map to render.
-    * `:region` - The AWS region where the map is located.
 
   You can optionally pass in the following assigns:
 
@@ -37,8 +35,6 @@ defmodule MbtaMetro.Live.Map do
       id="map"
       class={@class}
       data-api-key={@api_key}
-      data-map-name={@map_name}
-      data-region={@region}
       data-click-handler={Jason.encode!(@click_handler)}
       phx-hook="Map"
     >

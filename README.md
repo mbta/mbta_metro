@@ -28,19 +28,23 @@ def deps do
 end
 ```
 
-Copy the fonts from `mbta_metro` into your project's static directory:
+If this is your first time using `mbta_metro`, copy its fonts into your project's static directory:
 
 ```
 %> mix mbta_metro.install_fonts
 ```
 
-Import the styles in your `assets/css/app.css`:
+Make sure the JS assets are in line with the hex version of `mbta_metro`:
+
+```
+%> mix mbta_metro.update_assets
+```
+
+Import its styles in your `assets/css/app.css`:
 
 ```css
 @import "../../deps/mbta_metro/priv/static/assets/default.css";
 ```
-
-The, follow the installation instructions for the [npm package](assets/README.md).
 
 ### LiveComponents
 
@@ -49,10 +53,7 @@ Some components, like the Map, take further configuration.
 #### Map
 
 ```elixir
-config :mbta_metro, :aws_location,
-  api_key: System.get_env("AWS_LOCATION_API_KEY"),
-  map_name: System.get_env("AWS_LOCATION_MAP_NAME"),
-  region: System.get_env("AWS_LOCATION_REGION")
+config :mbta_metro, :map, api_key: System.get_env("MBTA_METRO_MAP_API_KEY")
 ```
 
 You'll also have to add the following to your CSP (assuming you have one):
@@ -60,7 +61,7 @@ You'll also have to add the following to your CSP (assuming you have one):
 ```elixir
 [
   "child-src blob: ;",
-  "connect-src *.amazonaws.com",
+  "connect-src *.stadiamaps.com",
   "worker-src blob: ;"
 ]
 ```
@@ -75,13 +76,13 @@ If any CSS assets have changed, export a new CSS file.
 
 If any JS assets have changed, publish a new [npm package](assets/README.md#publishing).
 
-Edit the `VERSIONS` file so that the *next* hex version points to the npm version you just published.
+Then, bump the hex version:
 
 ```
-0.0.17-0.0.23
+%> mix mbta_metro.version [patch | minor | major]
 ```
 
-Then publish to hex as normal:
+You can now publish to hex:
 
 ```
 %> mix hex.publish

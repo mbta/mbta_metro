@@ -23,10 +23,7 @@ config :mbta_metro, MbtaMetroWeb.Endpoint,
     ]
   ]
 
-config :mbta_metro, :aws_location,
-  api_key: System.get_env("AWS_LOCATION_API_KEY"),
-  map_name: System.get_env("AWS_LOCATION_MAP_NAME"),
-  region: System.get_env("AWS_LOCATION_REGION")
+config :mbta_metro, :map, api_key: System.get_env("MBTA_METRO_MAP_API_KEY")
 
 config :esbuild,
   version: "0.17.11",
