@@ -7,7 +7,7 @@ defmodule Mix.Tasks.MbtaMetro.Version do
   @impl Mix.Task
   def run([level]) do
     File.cd!("assets", fn ->
-      run_command("npm version #{level}")
+      run_command("npm version #{level}") |> IO.puts()
 
       run_command("npm publish") |> IO.puts()
     end)
@@ -18,7 +18,7 @@ defmodule Mix.Tasks.MbtaMetro.Version do
       IO.write(file, new_version_number)
     end)
 
-    run_command("git add VERSION")
+    run_command("git add VERSION assets/package*.json") |> IO.puts()
     run_command("git commit -m 'Bump version to #{new_version_number}'") |> IO.puts()
   end
 
