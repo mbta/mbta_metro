@@ -68,8 +68,14 @@ You'll also have to add the following to your CSP (assuming you have one):
 
 ## Publishing
 
-A single alias will take care of publishing the relevant npm as well as hex version.
+You can prepare a release for publishing:
 
 ```
-%> mix publish [patch | minor | major]
+%> mix prepare [patch | minor | major]
+```
+
+And then publish:
+
+```
+%> mix hex.publish
 ```
