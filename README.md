@@ -68,14 +68,8 @@ You'll also have to add the following to your CSP (assuming you have one):
 
 ## Publishing
 
-You can prepare a release for publishing:
+You can publish a new release with a single script:
 
 ```
-%> mix prepare [patch | minor | major]
-```
-
-And then publish:
-
-```
-%> mix hex.publish
+%> ./release
 ```
