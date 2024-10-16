@@ -6,13 +6,22 @@ defmodule Mix.Tasks.MbtaMetro.Version do
 
   @impl Mix.Task
   def run([level]) do
-    hex_version = hex_version()
-    levels = String.split(hex_version, ".", parts: 3)
-    new_version = "#{new_hex_version(levels, level)}-#{npm_version()}"
+    File.cd!("assets", fn ->
+      run_command("npm version #{level}")
 
-    File.open!("VERSIONS", [:write, :append], fn file ->
-      IO.write(file, "\n#{new_version}\n")
+      run_command("npm publish")
     end)
+
+    new_version_number = npm_version()
+
+    File.open!("VERSION", [:write], fn file ->
+      IO.write(file, new_version_number)
+    end)
+
+    run_command("git add VERSION")
+    run_command("git commit -m 'Bump version to #{new_version_number}'")
+
+    IO.puts("Version bumped to #{new_version_number}")
   end
 
   defp bump_version(version) do
@@ -22,29 +31,15 @@ defmodule Mix.Tasks.MbtaMetro.Version do
     |> Integer.to_string()
   end
 
-  defp hex_version do
-    File.read!("VERSIONS")
-    |> String.split("\n", trim: true)
-    |> List.last()
-    |> String.split("-")
-    |> List.first()
-  end
-
-  defp new_hex_version(levels, "major") do
-    "#{bump_version(Enum.at(levels, 0))}.#{Enum.at(levels, 1)}.#{Enum.at(levels, 2)}"
-  end
-
-  defp new_hex_version(levels, "minor") do
-    "#{Enum.at(levels, 0)}.#{bump_version(Enum.at(levels, 1))}.#{Enum.at(levels, 2)}"
-  end
-
-  defp new_hex_version(levels, "patch") do
-    "#{Enum.at(levels, 0)}.#{Enum.at(levels, 1)}.#{bump_version(Enum.at(levels, 2))}"
-  end
-
   defp npm_version do
     File.read!("assets/package.json")
     |> Jason.decode!()
     |> Map.get("version")
+  end
+
+  defp run_command(command) do
+    command
+    |> Kernel.to_charlist()
+    |> :os.cmd()
   end
 end

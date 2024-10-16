@@ -16,10 +16,7 @@ defmodule Mix.Tasks.MbtaMetro.UpdateAssets do
   end
 
   defp version do
-    File.read!("deps/mbta_metro/VERSIONS")
-    |> String.split("\n", trim: true)
-    |> List.last()
-    |> String.split("-")
-    |> List.last()
+    File.read!("deps/mbta_metro/VERSION")
+    |> String.trim()
   end
 end

@@ -4,6 +4,7 @@ defmodule MbtaMetro.MixProject do
   def project do
     [
       app: :mbta_metro,
+      aliases: aliases(),
       deps: deps(),
       description: "A Phoenix LiveView component library",
       docs: docs(),
@@ -25,6 +26,14 @@ defmodule MbtaMetro.MixProject do
     else
       [mod: {MbtaMetro.Application, []}]
     end
+  end
+
+  defp aliases() do
+    [
+      "publish.patch": ["mbta_metro.version patch", "hex.publish"],
+      "publish.minor": ["mbta_metro.version minor", "hex.publish"],
+      "publish.major": ["mbta_metro.version major", "hex.publish"],
+    ]
   end
 
   defp deps do
@@ -71,7 +80,7 @@ defmodule MbtaMetro.MixProject do
         "priv/static/fonts/*",
         "priv/static/images/icon-mode-*.svg",
         "README.md",
-        "VERSIONS"
+        "VERSION"
       ],
       licenses: ["GPL-3.0-or-later"],
       links: %{"GitHub" => "https://github.com/anthonyshull/mbta_metro"}
@@ -79,10 +88,7 @@ defmodule MbtaMetro.MixProject do
   end
 
   defp version do
-    File.read!("VERSIONS")
-    |> String.split("\n", trim: true)
-    |> List.last()
-    |> String.split("-")
-    |> List.first()
+    File.read!("VERSION")
+    |> String.trim()
   end
 end
