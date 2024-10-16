@@ -68,22 +68,8 @@ You'll also have to add the following to your CSP (assuming you have one):
 
 ## Publishing
 
-If any CSS assets have changed, export a new CSS file.
+A single alias will take care of publishing the relevant npm as well as hex version.
 
 ```
-%> mix mbta_metro.export_css
-```
-
-If any JS assets have changed, publish a new [npm package](assets/README.md#publishing).
-
-Then, bump the hex version:
-
-```
-%> mix mbta_metro.version [patch | minor | major]
-```
-
-You can now publish to hex:
-
-```
-%> mix hex.publish
+%> mix publish [patch | minor | major]
 ```

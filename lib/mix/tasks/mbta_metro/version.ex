@@ -9,7 +9,7 @@ defmodule Mix.Tasks.MbtaMetro.Version do
     File.cd!("assets", fn ->
       run_command("npm version #{level}")
 
-      run_command("npm publish")
+      run_command("npm publish") |> IO.puts()
     end)
 
     new_version_number = npm_version()
@@ -19,16 +19,7 @@ defmodule Mix.Tasks.MbtaMetro.Version do
     end)
 
     run_command("git add VERSION")
-    run_command("git commit -m 'Bump version to #{new_version_number}'")
-
-    IO.puts("Version bumped to #{new_version_number}")
-  end
-
-  defp bump_version(version) do
-    version
-    |> String.to_integer()
-    |> Kernel.+(1)
-    |> Integer.to_string()
+    run_command("git commit -m 'Bump version to #{new_version_number}'") |> IO.puts()
   end
 
   defp npm_version do
@@ -39,7 +30,5 @@ defmodule Mix.Tasks.MbtaMetro.Version do
 
   defp run_command(command) do
     command
-    |> Kernel.to_charlist()
-    |> :os.cmd()
   end
 end

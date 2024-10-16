@@ -63,19 +63,3 @@ let liveSocket = new LiveSocket("/live", Socket, {
   }
 })
 ```
-
-## Publishing
-
-Make sure you are in the `assets` directory.
-
-Bump the version number:
-
-```
-%> npm version patch
-```
-
-Then publish to npm as normal:
-
-```
-%> npm publish
-```

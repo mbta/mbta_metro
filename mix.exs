@@ -30,9 +30,7 @@ defmodule MbtaMetro.MixProject do
 
   defp aliases() do
     [
-      "publish.patch": ["mbta_metro.version patch", "hex.publish"],
-      "publish.minor": ["mbta_metro.version minor", "hex.publish"],
-      "publish.major": ["mbta_metro.version major", "hex.publish"],
+      publish: &publish/1
     ]
   end
 
@@ -85,6 +83,13 @@ defmodule MbtaMetro.MixProject do
       licenses: ["GPL-3.0-or-later"],
       links: %{"GitHub" => "https://github.com/anthonyshull/mbta_metro"}
     ]
+  end
+
+  defp publish([level]) do
+    Mix.Task.run("mbta_metro.export_css", [])
+    Mix.Task.run("mbta_metro.version", [level])
+    Mix.Task.run("local.hex", [])
+    Mix.Task.run("hex.publish", [])
   end
 
   defp version do
