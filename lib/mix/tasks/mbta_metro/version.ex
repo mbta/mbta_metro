@@ -30,5 +30,7 @@ defmodule Mix.Tasks.MbtaMetro.Version do
 
   defp run_command(command) do
     command
+    |> Kernel.to_charlist()
+    |> :os.cmd()
   end
 end
