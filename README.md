@@ -3,7 +3,7 @@
 To demo all of the MBTA METRO components:
 
 ```
-%> mix setup
+%> mix deps.get
 %> mix phx.server
 ```
 

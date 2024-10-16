@@ -4,7 +4,6 @@ defmodule MbtaMetro.MixProject do
   def project do
     [
       app: :mbta_metro,
-      aliases: aliases(),
       deps: deps(),
       description: "A Phoenix LiveView component library",
       docs: docs(),
@@ -26,20 +25,6 @@ defmodule MbtaMetro.MixProject do
     else
       [mod: {MbtaMetro.Application, []}]
     end
-  end
-
-  defp aliases do
-    [
-      setup: ["deps.get", "assets.setup", "assets.build"],
-      "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
-      "assets.build": ["tailwind storybook", "esbuild storybook", "mbta_metro.copy_css"],
-      "assets.deploy": [
-        "tailwind storybook --minify",
-        "esbuild storybook --minify",
-        "mbta_metro.copy_css",
-        "phx.digest"
-      ]
-    ]
   end
 
   defp deps do
