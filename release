@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo -n "Please enter a release level [patch | minor | major]: "
+
+read release_level
+
+mix prepare $release_level
+
+mix hex.publish
