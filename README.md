@@ -5,7 +5,7 @@
 
 This package contains function components, live components, and default styles.
 
-To demo all of the MBTA METRO components:
+To demo all of the `mbta_metro` components:
 
 ```
 %> npm install --prefix assets
@@ -46,7 +46,7 @@ Import `mbta_metro`'s styles in your `assets/css/app.css`:
 @import "../../deps/mbta_metro/priv/static/assets/default.css";
 ```
 
-Make sure the JS assets are in line with the hex version of `mbta_metro`:
+Make sure your assets are in line with the hex version of `mbta_metro`:
 
 ```
 %> mix mbta_metro.update_assets
@@ -80,7 +80,7 @@ module.exports = {
 }
 ```
 
-If you want to MbtaMetro's LiveComponents, you'll need to add its hooks in your `assets/js/app.js`:
+If you want to use `mbta_metro`'s LiveComponents, you'll need to add its hooks in your `assets/js/app.js`:
 
 ```js
 import {Hooks} from "mbta_metro"
@@ -130,4 +130,6 @@ You can publish a new release with a single script:
 
 ```
 %> ./release
+Please enter a release level [patch | minor | major]: patch
+...
 ```
