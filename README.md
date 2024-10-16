@@ -1,5 +1,7 @@
 # MBTA METRO
 
+[![Version](https://img.shields.io/hexpm/v/mbta_metro.svg)](https://hex.pm/packages/mbta_metro)
+
 To demo all of the MBTA METRO components:
 
 ```
