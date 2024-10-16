@@ -3,6 +3,8 @@
 [![hex version](https://img.shields.io/hexpm/v/mbta_metro.svg)](https://hex.pm/packages/mbta_metro)
 [![npm version](https://badge.fury.io/js/mbta_metro.svg)](https://badge.fury.io/js/mbta_metro)
 
+This package contains function components, live components, and default styles.
+
 To demo all of the MBTA METRO components:
 
 ```
@@ -11,7 +13,7 @@ To demo all of the MBTA METRO components:
 %> mix phx.server
 ```
 
-Now you can visit [`localhost:4000`](http://localhost:4000/storybook) from your browser.
+Now you can visit [`http://localhost:4000`](http://localhost:4000/storybook) from your browser.
 
 ## Installation
 
@@ -38,16 +40,68 @@ If this is your first time using `mbta_metro`, copy its fonts into your project'
 %> mix mbta_metro.install_fonts
 ```
 
+Import `mbta_metro`'s styles in your `assets/css/app.css`:
+
+```css
+@import "../../deps/mbta_metro/priv/static/assets/default.css";
+```
+
 Make sure the JS assets are in line with the hex version of `mbta_metro`:
 
 ```
 %> mix mbta_metro.update_assets
 ```
 
-Import its styles in your `assets/css/app.css`:
+You can then use some defaults in your `assets/tailwind.config.js`:
 
-```css
-@import "../../deps/mbta_metro/priv/static/assets/default.css";
+```js
+const {colors, content, fontFamily, plugins, safelist} = require("mbta_metro")
+
+module.exports = {
+  content: [
+    ...content,
+  ],
+  safelist: [
+    ...safelist,
+  ],
+  plugins: [
+    ...plugins(), // Note that this is a function
+  ],
+  theme: {
+    extend: {
+      colors: {
+        ...colors
+      }
+    },
+    fontFamily: {
+      ...fontFamily,
+    },
+  }
+}
+```
+
+If you want to MbtaMetro's LiveComponents, you'll need to add its hooks in your `assets/js/app.js`:
+
+```js
+import {Hooks} from "mbta_metro"
+
+let liveSocket = new LiveSocket("/live", Socket, {
+  hooks: {
+    ...Hooks
+  }
+})
+```
+
+If you want to include hooks individually, you can do so:
+
+```js
+import {Map} from "mbta_metro"
+
+let liveSocket = new LiveSocket("/live", Socket, {
+  hooks: {
+    Map
+  }
+})
 ```
 
 ### LiveComponents
