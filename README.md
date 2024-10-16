@@ -3,6 +3,7 @@
 To demo all of the MBTA METRO components:
 
 ```
+%> npm install --prefix assets/
 %> mix deps.get
 %> mix phx.server
 ```
