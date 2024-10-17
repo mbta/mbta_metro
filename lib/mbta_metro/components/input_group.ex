@@ -13,11 +13,12 @@ defmodule MbtaMetro.Components.InputGroup do
   attr :name, :string
   attr :field, :atom
   attr :form, Phoenix.HTML.Form
+  attr :class, :string, default: ""
   attr :rest, :global
 
   def input_group(assigns) do
     ~H"""
-    <.fieldset legend={@legend} id={@id}>
+    <.fieldset legend={@legend} id={@id} class={@class}>
       <ul class="p-0 flex flex-col sm:flex-row list-none">
         <li
           :for={{label, value} <- @options}
@@ -51,6 +52,7 @@ defmodule MbtaMetro.Components.InputGroup do
   Renders a simple fieldset for grouping radio and checkbox inputs.
   """
   attr :id, :string
+  attr :class, :string, default: ""
   attr :legend, :string, required: true, doc: "A concise label for the fieldset."
 
   slot :inner_block,
@@ -59,7 +61,7 @@ defmodule MbtaMetro.Components.InputGroup do
 
   def fieldset(assigns) do
     ~H"""
-    <fieldset class="my-3 w-full">
+    <fieldset class={"my-2 w-full #{@class}"}>
       <legend class="font-bold text-base text-slate-700"><%= @legend %></legend>
       <%= render_slot(@inner_block) %>
     </fieldset>
