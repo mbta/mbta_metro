@@ -17,7 +17,7 @@ defmodule Storybook.Components.Icon do
     %Variation{
       id: String.to_atom("#{type}_#{name}"),
       attributes: %{
-        class: "h-7 w-7",
+        class: "h-7 w-7 fill-blue-500",
         name: name,
         type: type
       }

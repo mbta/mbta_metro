@@ -9,8 +9,18 @@ const backgroundColors = colorKeys.map(color => {
   }
 });
 
+const fillColors = colorKeys.map(color => {
+  return {
+    pattern: new RegExp(`fill-${color}`, "g"),
+    variants: ["hover"]
+  }
+});
+
 const ringColors = colorKeys.map(color => {
-  return `ring-${color}`;
+  return {
+    pattern: new RegExp(`ring-${color}`, "g"),
+    variants: ["hover"]
+  }
 });
 
 const textColors = colorKeys.map(color => {
@@ -27,6 +37,7 @@ const zindexes = [...Array(5).keys()].map(n => {
 export default [
   ...colorKeys,
   ...backgroundColors,
+  ...fillColors,
   ...ringColors,
   ...textColors,
   ...zindexes

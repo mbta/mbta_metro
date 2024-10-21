@@ -25,9 +25,8 @@ defmodule MbtaMetro.Components.Icon do
 
   for {file, name, type} <- icons do
     defp icon(unquote(type), unquote(name), class) do
-      key = "class" |> Phoenix.HTML.Safe.to_iodata()
-      value = class |> Phoenix.HTML.Safe.to_iodata()
-      attrs = [?\s, key, ?=, ?", value, ?"]
+      attrs =
+        [?\s, Phoenix.HTML.Safe.to_iodata("class"), ?=, ?", Phoenix.HTML.Safe.to_iodata(class), ?"]
 
       "<svg" <> rest = unquote(file)
 
