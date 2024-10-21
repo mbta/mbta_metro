@@ -19,8 +19,8 @@ defmodule MbtaMetro.Components.Badge do
 
   defp circle(assigns) do
     ~H"""
-    <div class={"inline-flex rounded-full bg-#{@color}-500 px-1 py-1 w-7 h-7 text-lg font-semibold text-center #{@class}"}>
-      <div class="w-8 flex items-center justify-center margin-auto">
+    <div class={"inline-flex rounded-full bg-#{@color}-500 px-0.5 py-1 w-6 h-6 text-sm font-semibold text-center #{@class}"}>
+      <div class="w-5 flex items-center justify-center margin-auto">
         <p><%= render_slot(@inner_block) %></p>
       </div>
     </div>
@@ -29,7 +29,7 @@ defmodule MbtaMetro.Components.Badge do
 
   defp square(assigns) do
     ~H"""
-    <div class={"inline-flex rounded-md bg-#{@color}-500 h-7 px-1 text-md font-semibold #{@class}"}>
+    <div class={"inline-flex bg-#{@color}-500 h-5 px-1 text-sm font-semibold #{@class}"}>
       <div class="flex items-center justify-center">
         <p><%= render_slot(@inner_block) %></p>
       </div>
