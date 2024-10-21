@@ -25,7 +25,7 @@ defmodule Storybook.Components.Badge do
         ]
       },
       %Variation{
-        id: :circle_icon,
+        id: :circle_with_icon,
         attributes: %{
           color: "blue",
           type: "circle"
