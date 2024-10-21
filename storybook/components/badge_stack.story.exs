@@ -16,7 +16,7 @@ defmodule Storybook.Components.BadgeStack do
             ["blue", "BL"],
             ["green", "E"],
             ["orange", "OL"],
-            ["red", "RL"],
+            ["red", "RL"]
           ],
           class: "text-white",
           type: "circle"
@@ -28,7 +28,7 @@ defmodule Storybook.Components.BadgeStack do
           badges: [
             ["yellow", "90"],
             ["yellow", "105"],
-            ["yellow", "93"],
+            ["yellow", "93"]
           ],
           type: "square"
         }

@@ -30,7 +30,7 @@ defmodule MbtaMetro.MixProject do
 
   defp aliases() do
     [
-      prepare: ["mbta_metro.export_css", "mbta_metro.version"],
+      prepare: ["mbta_metro.export_css", "mbta_metro.version"]
     ]
   end
 

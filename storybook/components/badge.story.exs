@@ -18,7 +18,7 @@ defmodule Storybook.Components.Badge do
         },
         slots: [
           "BL"
-        ],
+        ]
       },
       %Variation{
         id: :circle_icon,
@@ -28,7 +28,7 @@ defmodule Storybook.Components.Badge do
         },
         slots: [
           "<Heroicons.bolt class=\"w-5 h-5 text-green-200\" />"
-        ],
+        ]
       },
       %Variation{
         id: :square,
@@ -39,7 +39,7 @@ defmodule Storybook.Components.Badge do
         },
         slots: [
           "86"
-        ],
+        ]
       },
       %Variation{
         id: :square_with_icon,
@@ -49,7 +49,7 @@ defmodule Storybook.Components.Badge do
         },
         slots: [
           "<Heroicons.bolt_slash class=\"w-5 h-5 text-red-200\" />"
-        ],
+        ]
       }
     ]
   end
