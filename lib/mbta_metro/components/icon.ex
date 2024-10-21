@@ -3,7 +3,9 @@ defmodule MbtaMetro.Components.Icon do
 
   use Phoenix.Component
 
-  icon_paths = "#{File.cwd!()}/assets/node_modules/@fortawesome/fontawesome-free/svgs/**/*.svg" |> Path.wildcard()
+  icon_paths =
+    "#{File.cwd!()}/assets/node_modules/@fortawesome/fontawesome-free/svgs/**/*.svg"
+    |> Path.wildcard()
 
   icons =
     Enum.map(icon_paths, fn icon_path ->
@@ -26,7 +28,14 @@ defmodule MbtaMetro.Components.Icon do
   for {file, name, type} <- icons do
     defp icon(unquote(type), unquote(name), class) do
       attrs =
-        [?\s, Phoenix.HTML.Safe.to_iodata("class"), ?=, ?", Phoenix.HTML.Safe.to_iodata(class), ?"]
+        [
+          ?\s,
+          Phoenix.HTML.Safe.to_iodata("class"),
+          ?=,
+          ?",
+          Phoenix.HTML.Safe.to_iodata(class),
+          ?"
+        ]
 
       "<svg" <> rest = unquote(file)
 
