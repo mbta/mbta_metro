@@ -13,9 +13,13 @@ const textColors = colorKeys.map(color => {
     variants: ["hover"]
   }
 });
+const ringColors = colorKeys.map(color => {
+  return `ring-${color}`;
+});
 
 export default [
   ...colorKeys,
   ...backgroundColors,
+  ...ringColors,
   ...textColors
 ]

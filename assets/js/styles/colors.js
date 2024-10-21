@@ -1,4 +1,7 @@
 export default {
+  "black": "#000000",
+  "white": "#FFFFFF",
+
   "blue-100": "#CCD8ED",
   "blue-200": "#99B1DB",
   "blue-300": "#668BC9",
