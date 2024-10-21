@@ -4,7 +4,7 @@ defmodule MbtaMetro.Components.Badge do
   use Phoenix.Component
 
   attr :class, :string, default: ""
-  attr :color, :string, required: true
+  attr :color, :string, default: "blue"
   attr :type, :string, required: true
 
   slot :inner_block, required: true
