@@ -5,8 +5,6 @@ defmodule MbtaMetro.Components.BadgeStack do
 
   import MbtaMetro.Components.Badge, only: [badge: 1]
 
-  @zindexes ["z-0", "z-10", "z-20", "z-30", "z-40", "z-50"]
-
   attr :background, :string, default: "white"
   attr :class, :string, default: ""
   attr :badges, :list, required: true
@@ -46,8 +44,6 @@ defmodule MbtaMetro.Components.BadgeStack do
   end
 
   defp zindex(index) do
-    @zindexes
-    |> Enum.reverse()
-    |> Enum.at(index)
+    "z-#{50 - (index * 10)}"
   end
 end
