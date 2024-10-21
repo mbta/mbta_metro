@@ -6,6 +6,7 @@ defmodule MbtaMetro.Components.Button do
   attr :color, :string, default: "blue"
   attr :class, :string, default: ""
   attr :rest, :global, include: ~w(disabled form name value)
+
   slot :inner_block, required: true
 
   def button(assigns) do
