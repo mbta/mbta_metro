@@ -5,10 +5,9 @@ defmodule Storybook.Components.Fieldset do
 
   def function, do: &InputGroup.fieldset/1
 
-  def imports,
-    do: [
-      {Input, [input: 1]}
-    ]
+  def imports do
+    [{Input, [input: 1]}]
+  end
 
   def variations do
     [

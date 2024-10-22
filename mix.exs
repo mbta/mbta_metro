@@ -41,7 +41,7 @@ defmodule MbtaMetro.MixProject do
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
       {:faker, "0.18.0", only: :dev, runtime: false},
       {:jason, "1.4.4"},
-      {:heroicons, "0.5.6"},
+      {:heroicons, "0.5.6", optional: true},
       {:phoenix, "1.7.14"},
       {:phoenix_live_reload, "1.5.3", only: :dev, optional: true, runtime: false},
       {:phoenix_live_view, "1.0.0-rc.6"},

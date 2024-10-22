@@ -3,9 +3,13 @@ defmodule Storybook.Components.Badge do
 
   use PhoenixStorybook.Story, :component
 
-  alias MbtaMetro.Components.Badge
+  alias MbtaMetro.Components.{Badge, Icon}
 
   def function, do: &Badge.badge/1
+
+  def imports do
+    [{Icon, [icon: 1]}]
+  end
 
   def variations do
     [
@@ -13,27 +17,27 @@ defmodule Storybook.Components.Badge do
         id: :circle,
         attributes: %{
           class: "text-white",
+          color: "orange",
+          type: "circle"
+        },
+        slots: [
+          "OL"
+        ]
+      },
+      %Variation{
+        id: :circle_with_icon,
+        attributes: %{
           color: "blue",
           type: "circle"
         },
         slots: [
-          "BL"
-        ]
-      },
-      %Variation{
-        id: :circle_icon,
-        attributes: %{
-          color: "green",
-          type: "circle"
-        },
-        slots: [
-          "<Heroicons.bolt class=\"w-5 h-5 text-green-200\" />"
+          "<.icon type=\"solid\" name=\"ship\" class=\"w-4 h-4 fill-white\" />"
         ]
       },
       %Variation{
         id: :square,
         attributes: %{
-          class: "text-yellow-800",
+          class: "text-yellow-800 rounded-sm",
           color: "yellow",
           type: "square"
         },
@@ -44,11 +48,12 @@ defmodule Storybook.Components.Badge do
       %Variation{
         id: :square_with_icon,
         attributes: %{
-          color: "red",
+          class: "shadow-[2px_2px_lightblue]",
+          color: "purple",
           type: "square"
         },
         slots: [
-          "<Heroicons.bolt_slash class=\"w-5 h-5 text-red-200\" />"
+          "<.icon type=\"solid\" name=\"sailboat\" class=\"w-4 h-4 fill-white\" />"
         ]
       }
     ]

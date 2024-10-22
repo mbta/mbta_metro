@@ -25,7 +25,7 @@ defmodule MbtaMetro.Components.BadgeStack do
         :for={{[color, text], index} <- Enum.with_index(@badges)}
         color={color}
         type="circle"
-        class={"ring-#{@background} ring-2 #{zindex(index)} px-0.5 #{@class}"}
+        class={"ring-#{@background} ring-2 #{zindex(index)} #{@class}"}
       >
         <%= text %>
       </.badge>
@@ -35,17 +35,17 @@ defmodule MbtaMetro.Components.BadgeStack do
 
   defp square_stack(assigns) do
     ~H"""
-    <div class="flex -space-x-0.5 h-7 overflow-hidden">
+    <div class="flex -space-x-0.5 h-5 overflow-hidden">
       <%= for {[color, text], index} <- Enum.with_index(@badges) do %>
         <.badge
           color={color}
           type="square"
-          class={"h-7 pl-2 pr-2 first:pr-3 last:pl-3 rounded-none first:rounded-l-md last:rounded-r-md #{zindex(index)} #{@class}"}
+          class={"pl-2 pr-2 first:pr-2.5 last:pl-2.5 first:rounded-l-sm last:rounded-r-sm rounded-none #{zindex(index)} #{@class}"}
         >
           <%= text %>
         </.badge>
         <%= if index < Kernel.length(@badges) - 1 do %>
-          <div class={"inline-flex bg-#{@background} -mt-0.5 h-8 w-1 #{zindex(index)} transform rotate-[17deg]"}>
+          <div class={"inline-flex bg-#{@background} -mt-0.5 h-6 w-1 #{zindex(index)} transform rotate-[17deg]"}>
           </div>
         <% end %>
       <% end %>
