@@ -1,5 +1,9 @@
 defmodule MbtaMetro.Components.Accordion do
+  @moduledoc false
+
   use Phoenix.Component
+
+  import MbtaMetro.Components.Icon, only: [icon: 1]
 
   attr :id, :string,
     required: true,
@@ -35,7 +39,7 @@ defmodule MbtaMetro.Components.Accordion do
     <details id={@id} class="group w-full bg-white" open={@open}>
       <summary class="border border-solid border-blue-500 text-blue-600 hover:text-slate-900 hover:bg-blue-100 p-2 flex cursor-pointer list-none items-center gap-2 p-2 relative">
         <%= render_slot(@heading) %>
-        <Heroicons.chevron_down class="group-open:rotate-180 w-4 h-4 absolute top-3 right-3" />
+        <.icon name="chevron-up" class="group-open:rotate-180 w-4 h-4 absolute top-3 right-3 fill-blue-500" />
       </summary>
       <div class="border border-solid border-t-0 border-blue-500 p-2">
         <%= render_slot(@content) %>

@@ -1,12 +1,12 @@
 defmodule Storybook.Components.Accordion do
   use PhoenixStorybook.Story, :component
 
-  alias MbtaMetro.Components.{Accordion, Feedback}
+  alias MbtaMetro.Components.{Accordion, Feedback, Icon}
 
   def function, do: &Accordion.accordion/1
 
   def imports do
-    [{Feedback, feedback: 1}]
+    [{Feedback, feedback: 1}, {Icon, icon: 1}]
   end
 
   def variations do
@@ -19,7 +19,7 @@ defmodule Storybook.Components.Accordion do
           open: false
         },
         slots: [
-          ~s|<:heading><Heroicons.bolt class="w-4 h-4" />Heading text</:heading>|,
+          ~s|<:heading><.icon name="envelope" class="w-4 h-4 fill-blue-500" />Heading text</:heading>|,
           """
           <:content>
             <p>Any content can be inside</p>

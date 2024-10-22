@@ -3,6 +3,8 @@ defmodule MbtaMetro.Components.Feedback do
 
   use Phoenix.Component
 
+  import MbtaMetro.Components.Icon, only: [icon: 1]
+
   attr :kind, :atom, values: [:info, :error, :success, :warning], doc: "used for styling"
 
   slot :inner_block, required: true
@@ -17,7 +19,7 @@ defmodule MbtaMetro.Components.Feedback do
   def feedback(%{kind: :error} = assigns) do
     ~H"""
     <p class="flex gap-2 text-sm leading-6 text-red-600 my-2">
-      <Heroicons.exclamation_circle class="h-6 w-6 flex-none" />
+      <.icon name="circle-exclamation" class="h-5 w-5 mt-0.5 flex-none fill-red-600" />
       <%= render_slot(@inner_block) %>
     </p>
     """
@@ -26,7 +28,7 @@ defmodule MbtaMetro.Components.Feedback do
   def feedback(%{kind: :info} = assigns) do
     ~H"""
     <p class="flex gap-2 text-sm leading-6 text-blue-600 my-2">
-      <Heroicons.information_circle class="h-6 w-6 flex-none" />
+      <.icon name="circle-info" class="h-5 w-5 mt-0.5 flex-none fill-blue-600" />
       <%= render_slot(@inner_block) %>
     </p>
     """
@@ -35,7 +37,7 @@ defmodule MbtaMetro.Components.Feedback do
   def feedback(%{kind: :success} = assigns) do
     ~H"""
     <p class="flex gap-2 text-sm leading-6 text-green-600 my-2">
-      <Heroicons.check_circle class="h-6 w-6 flex-none" />
+      <.icon name="circle-check" class="h-5 w-5 mt-0.5 flex-none fill-green-600" />
       <%= render_slot(@inner_block) %>
     </p>
     """
@@ -44,7 +46,7 @@ defmodule MbtaMetro.Components.Feedback do
   def feedback(%{kind: :warning} = assigns) do
     ~H"""
     <p class="flex gap-2 text-sm leading-6 text-yellow-600 my-2">
-      <Heroicons.exclamation_triangle class="h-6 w-6 flex-none" />
+      <.icon name="triangle-exclamation" class="h-5 w-5 mt-0.5 flex-none fill-yellow-600" />
       <%= render_slot(@inner_block) %>
     </p>
     """

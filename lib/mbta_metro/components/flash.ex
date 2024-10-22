@@ -3,7 +3,9 @@ defmodule MbtaMetro.Components.Flash do
 
   use Phoenix.Component
 
-  import MbtaMetro.Components.{Feedback, JS}
+  import MbtaMetro.Components.Feedback, only: [feedback: 1]
+  import MbtaMetro.Components.Icon, only: [icon: 1]
+  import MbtaMetro.Components.JS, only: [hide: 2, show: 2]
 
   alias Phoenix.LiveView.JS
 
@@ -60,9 +62,14 @@ defmodule MbtaMetro.Components.Flash do
       ]} />
       <p class="mt-2 text-sm leading-5"><%= msg %></p>
       <button type="button" class="group absolute top-1 right-1 p-2" aria-label="close">
-        <Heroicons.x_mark solid class="h-5 w-5 opacity-50 group-hover:opacity-80" />
+        <.icon name="xmark" class={"h-5 w-5 opacity-70 group-hover:opacity-90 #{fill(@kind)}"} />
       </button>
     </div>
     """
   end
+
+  defp fill(:error), do: "fill-red-600"
+  defp fill(:info), do: "fill-blue-600"
+  defp fill(:success), do: "fill-green-600"
+  defp fill(:warning), do: "fill-yellow-600"
 end

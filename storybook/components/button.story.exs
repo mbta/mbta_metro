@@ -3,9 +3,13 @@ defmodule Storybook.Components.Button do
 
   use PhoenixStorybook.Story, :component
 
-  alias MbtaMetro.Components.Button
+  alias MbtaMetro.Components.{Button, Icon}
 
   def function, do: &Button.button/1
+
+  def imports do
+    [{Icon, icon: 1}]
+  end
 
   def variations do
     [
@@ -20,7 +24,7 @@ defmodule Storybook.Components.Button do
         id: :default_with_icon,
         slots: [
           """
-          <Heroicons.bolt class="w-4 h-4" /> Default with icon
+          <.icon name="comment" class="w-4 h-4 fill-white" /> Default with icon
           """
         ],
         description: "Default with icon"
