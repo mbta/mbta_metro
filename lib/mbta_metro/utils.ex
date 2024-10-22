@@ -1,6 +1,8 @@
 defmodule MbtaMetro.Utils do
   @moduledoc false
 
+  @regex ~r/deps/
+
   def project_root do
     project_root(__DIR__)
   end
@@ -8,12 +10,16 @@ defmodule MbtaMetro.Utils do
   defp project_root(directory) do
     IO.puts("Checking for root directory at #{directory}...")
 
-    case File.read("#{directory}/mix.exs") do
-      {:ok, _} ->
+    cond do
+      String.match?(directory, @regex) ->
+        directory
+        |> Path.dirname()
+        |> project_root()
+      File.exists?(directory <> "/mix.exs") ->
         IO.puts("Root directory found...")
 
         directory
-      _ ->
+      true ->
         directory
         |> Path.dirname()
         |> project_root()
