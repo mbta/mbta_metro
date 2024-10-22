@@ -31,7 +31,7 @@ defmodule Storybook.Components.Badge do
           type: "circle"
         },
         slots: [
-          "<.icon type=\"solid\" name=\"ship\" class=\"w-4 h-4 fill-white\" />"
+          "<.icon name=\"ship\" class=\"w-4 h-4 fill-white\" />"
         ]
       },
       %Variation{
@@ -49,11 +49,11 @@ defmodule Storybook.Components.Badge do
         id: :square_with_icon,
         attributes: %{
           class: "shadow-[2px_2px_lightblue]",
-          color: "purple",
+          color: "red",
           type: "square"
         },
         slots: [
-          "<.icon type=\"solid\" name=\"sailboat\" class=\"w-4 h-4 fill-white\" />"
+          "<.icon type=\"regular\" name=\"heart\" class=\"w-4 h-4 fill-white\" />"
         ]
       }
     ]
