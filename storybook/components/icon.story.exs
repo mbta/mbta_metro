@@ -11,6 +11,7 @@ defmodule Storybook.Components.Icon do
     Enum.map(Icon.icons(), fn {_file, name, type} ->
       icon_variation(type, name)
     end)
+    |> Enum.sort_by(&Map.get(&1.attributes, :name))
   end
 
   defp icon_variation(type, name) do
