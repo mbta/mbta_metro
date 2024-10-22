@@ -3,8 +3,10 @@ defmodule MbtaMetro.Components.Icon do
 
   use Phoenix.Component
 
+  alias MbtaMetro.Utils
+
   icon_paths =
-    "#{File.cwd!()}/assets/node_modules/@fortawesome/fontawesome-free/svgs/**/*.svg"
+    "#{Utils.project_root()}/assets/node_modules/@fortawesome/fontawesome-free/svgs/**/*.svg"
     |> Path.wildcard()
 
   icons =

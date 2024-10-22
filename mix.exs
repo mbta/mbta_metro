@@ -71,6 +71,7 @@ defmodule MbtaMetro.MixProject do
         "lib/mbta_metro.ex",
         "lib/mbta_metro/components/**/*",
         "lib/mbta_metro/live/**/*",
+        "lib/mbta_metro/utils.ex",
         "lib/mix/tasks/mbta_metro/install_*.ex",
         "lib/mix/tasks/mbta_metro/update_*.ex",
         "mix.exs",

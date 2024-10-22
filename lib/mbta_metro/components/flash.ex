@@ -5,7 +5,7 @@ defmodule MbtaMetro.Components.Flash do
 
   import MbtaMetro.Components.Feedback, only: [feedback: 1]
   import MbtaMetro.Components.Icon, only: [icon: 1]
-  import MbtaMetro.Components.JS, only: [hide: 2, show: 2]
+  import MbtaMetro.Components.JS, only: [hide: 2]
 
   alias Phoenix.LiveView.JS
 
