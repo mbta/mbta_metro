@@ -2,12 +2,6 @@
 
 @import "../colors.css";
 
-#date-picker-calendar {
-  & svg {
-    fill: var(--silver-400);
-  }
-}
-
 .flatpickr {
   position: relative;
 
