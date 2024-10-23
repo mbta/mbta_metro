@@ -1,7 +1,7 @@
 defmodule Mix.Tasks.MbtaMetro.ExportAssets do
-  @moduledoc "Copies CSS and Icons to the priv/static directory"
+  @moduledoc "Exports assets to the priv/static directory"
 
-  @shortdoc "Copies CSS and Icons"
+  @shortdoc "Exports assets"
 
   use Mix.Task
 

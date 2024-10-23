@@ -7,7 +7,6 @@ defmodule Mix.Tasks.MbtaMetro.UpdateAssets do
   @impl Mix.Task
   def run(_) do
     update_fonts()
-    update_icons()
     update_npm()
   end
 
@@ -18,16 +17,6 @@ defmodule Mix.Tasks.MbtaMetro.UpdateAssets do
       "-r",
       "#{dir}/deps/mbta_metro/priv/static/fonts/.",
       "#{dir}/priv/static/fonts"
-    ])
-  end
-
-  defp update_icons do
-    dir = File.cwd!()
-
-    System.cmd("cp", [
-      "-r",
-      "#{dir}/deps/mbta_metro/priv/static/icons/.",
-      "#{dir}/priv/static/icons"
     ])
   end
 
