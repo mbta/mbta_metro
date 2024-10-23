@@ -16,16 +16,13 @@ defmodule Mix.Tasks.MbtaMetro.ExportAssets do
 
     Esbuild.run(:components, [])
 
-    System.cmd("cp", [
-      "#{dir}/assets/css/default.css",
-      "#{dir}/priv/static/assets/default.css"
-    ])
+    "cp #{dir}/assets/css/default.css #{dir}/priv/static/assets/default.css"
+    |> Kernel.to_charlist()
+    |> :os.cmd()
 
-    System.cmd("cat", [
-      "#{dir}/priv/static/assets/components.css",
-      ">>",
-      "#{dir}/priv/static/assets/default.css"
-    ])
+    "cat #{dir}/priv/static/assets/components.css >> #{dir}/priv/static/assets/default.css"
+    |> Kernel.to_charlist()
+    |> :os.cmd()
   end
 
   defp export_icons do
@@ -33,7 +30,7 @@ defmodule Mix.Tasks.MbtaMetro.ExportAssets do
 
     System.cmd("cp", [
       "-r",
-      "#{dir}/assets/node_modules/@fortawesome/fontawesome-free/svgs/*",
+      "#{dir}/assets/node_modules/@fortawesome/fontawesome-free/svgs",
       "#{dir}/priv/static/icons"
     ])
   end
