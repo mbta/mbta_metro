@@ -19,7 +19,6 @@ defmodule Mix.Tasks.MbtaMetro.UpdateAssets do
       "#{dir}/deps/mbta_metro/priv/static/fonts/.",
       "#{dir}/priv/static/fonts"
     ])
-    |> IO.puts()
   end
 
   defp update_icons do
@@ -30,7 +29,6 @@ defmodule Mix.Tasks.MbtaMetro.UpdateAssets do
       "#{dir}/deps/mbta_metro/priv/static/icons/.",
       "#{dir}/priv/static/icons"
     ])
-    |> IO.puts()
   end
 
   defp update_npm do
@@ -40,7 +38,6 @@ defmodule Mix.Tasks.MbtaMetro.UpdateAssets do
       "npm install --save mbta_metro@#{version}"
       |> Kernel.to_charlist()
       |> :os.cmd()
-      |> IO.puts()
     end)
   end
 
