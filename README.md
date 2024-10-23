@@ -10,7 +10,6 @@ To demo all of the `mbta_metro` components:
 ```
 %> npm install --prefix assets
 %> mix deps.get
-%> mix mbta_metro.export_assets
 %> mix phx.server
 ```
 
