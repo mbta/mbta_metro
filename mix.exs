@@ -56,6 +56,7 @@ defmodule MbtaMetro.MixProject do
       main: "MbtaMetro",
       canonical: "http://hexdocs.pm/mbta_metro",
       extras: ["README.md"],
+      logo: "priv/static/icons/brands/metro.svg",
       source_url: "https://github.com/anthonyshull/mbta_metro",
       source_ref: "v#{version()}"
     ]
