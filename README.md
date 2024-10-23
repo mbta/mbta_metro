@@ -10,6 +10,7 @@ To demo all of the `mbta_metro` components:
 ```
 %> npm install --prefix assets
 %> mix deps.get
+%> mix mbta_metro.export_assets
 %> mix phx.server
 ```
 
@@ -32,12 +33,6 @@ def deps do
     {:mbta_metro, ">= 0.0.0"}
   ]
 end
-```
-
-If this is your first time using `mbta_metro`, copy its fonts into your project's static directory:
-
-```
-%> mix mbta_metro.install_fonts
 ```
 
 Import `mbta_metro`'s styles in your `assets/css/app.css`:
