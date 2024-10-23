@@ -30,7 +30,7 @@ defmodule Mix.Tasks.MbtaMetro.ExportAssets do
 
     System.cmd("cp", [
       "-r",
-      "#{dir}/assets/node_modules/@fortawesome/fontawesome-free/svgs",
+      "#{dir}/assets/node_modules/@fortawesome/fontawesome-free/svgs/.",
       "#{dir}/priv/static/icons"
     ])
   end
