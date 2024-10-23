@@ -1,4 +1,6 @@
 defmodule MbtaMetroWeb.Storybook do
+  @moduledoc false
+
   use PhoenixStorybook,
     otp_app: :mbta_metro_web,
     content_path: Path.expand("../../storybook", __DIR__),

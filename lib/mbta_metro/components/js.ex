@@ -1,7 +1,5 @@
 defmodule MbtaMetro.Components.JS do
-  @moduledoc """
-  TODO: Add module documentation
-  """
+  @moduledoc false
 
   def show(js \\ %Phoenix.LiveView.JS{}, selector) do
     Phoenix.LiveView.JS.show(js,

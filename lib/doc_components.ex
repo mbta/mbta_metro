@@ -1,7 +1,6 @@
 defmodule MbtaMetro.DocComponents do
-  @moduledoc """
-  Components used for documentation in the Storybook.
-  """
+  @moduledoc false
+
   use Phoenix.Component
 
   attr :class, :string, default: ""
