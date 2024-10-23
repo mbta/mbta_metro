@@ -1,12 +1,10 @@
+<div style="display: flex;">
+  <img src="./priv/static/icons/brands/metro.svg" alt="MbtaMetro Logo" style="display: inline-block; height: 32px; width: 32px; fill: blue; margin-right: 6px; margin-top: 10px" />
+  <p style="display: inline-block; font-size: 32px">MBTA METRO</p>
+</div>
+
 [![hex version](https://img.shields.io/hexpm/v/mbta_metro.svg)](https://hex.pm/packages/mbta_metro)
 [![npm version](https://badge.fury.io/js/mbta_metro.svg)](https://badge.fury.io/js/mbta_metro)
-
-<hr />
-
-<div style="display: flex;">
-  <img src="./priv/static/icons/brands/metro.svg" alt="MbtaMetro Logo" style="display: inline-block; height: 48px; width: 48px; fill: blue; margin-right: 8px;" />
-  <h1 style="display: inline-block;">MBTA METRO</h1>
-</div>
 
 This package contains function components, live components, and default styles.
 
