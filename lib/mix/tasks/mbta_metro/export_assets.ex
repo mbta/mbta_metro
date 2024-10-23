@@ -7,8 +7,8 @@ defmodule Mix.Tasks.MbtaMetro.ExportAssets do
 
   @impl Mix.Task
   def run(_) do
-    copy_css()
-    copy_icons()
+    export_css()
+    export_icons()
   end
 
   defp export_css do
