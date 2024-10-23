@@ -45,6 +45,8 @@ defmodule MbtaMetro.Components.Icon do
     end
   end
 
+  defp icon(_, _, _), do: nil
+
   attr :class, :string, default: ""
   attr :name, :string, required: true
   attr :type, :string, values: ~w[brands regular solid], default: "solid"
