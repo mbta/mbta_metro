@@ -30,7 +30,7 @@ defmodule MbtaMetro.MixProject do
 
   defp aliases() do
     [
-      prepare: ["mbta_metro.export_css", "mbta_metro.version"]
+      prepare: ["mbta_metro.export_assets", "mbta_metro.version"]
     ]
   end
 
@@ -72,12 +72,11 @@ defmodule MbtaMetro.MixProject do
         "lib/mbta_metro/components/**/*",
         "lib/mbta_metro/live/**/*",
         "lib/mbta_metro/utils.ex",
-        "lib/mix/tasks/mbta_metro/install_*.ex",
         "lib/mix/tasks/mbta_metro/update_*.ex",
         "mix.exs",
         "priv/static/assets/default.css",
         "priv/static/fonts/*",
-        "priv/static/images/icon-mode-*.svg",
+        "priv/static/icons/*",
         "README.md",
         "VERSION"
       ],

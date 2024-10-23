@@ -6,12 +6,41 @@ defmodule Mix.Tasks.MbtaMetro.UpdateAssets do
 
   @impl Mix.Task
   def run(_) do
+    update_fonts()
+    update_icons()
+    update_npm()
+  end
+
+  defp update_fonts do
+    dir = File.cwd!()
+
+    System.cmd("cp", [
+      "-r",
+      "#{dir}/deps/mbta_metro/priv/static/fonts/.",
+      "#{dir}/priv/static/fonts"
+    ])
+    |> IO.puts()
+  end
+
+  defp update_icons do
+    dir = File.cwd!()
+
+    System.cmd("cp", [
+      "-r",
+      "#{dir}/deps/mbta_metro/priv/static/icons/.",
+      "#{dir}/priv/static/icons"
+    ])
+    |> IO.puts()
+  end
+
+  defp update_npm do
     version = version()
 
     File.cd!("assets", fn ->
       "npm install --save mbta_metro@#{version}"
       |> Kernel.to_charlist()
       |> :os.cmd()
+      |> IO.puts()
     end)
   end
 

@@ -6,7 +6,7 @@ defmodule MbtaMetro.Components.Icon do
   alias MbtaMetro.Utils
 
   icon_paths =
-    "#{Utils.project_root()}/assets/node_modules/@fortawesome/fontawesome-free/svgs/**/*.svg"
+    "#{Utils.project_root()}/priv/static/icons/**/*.svg"
     |> Path.wildcard()
 
   icons =
