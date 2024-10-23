@@ -1,7 +1,4 @@
-<div style="display: flex; background: #f6f8fa; margin: 0px; padding: 0px;">
-  <img src="./priv/static/icons/brands/metro.svg" alt="MbtaMetro Logo" style="display: inline-block; height: 32px; width: 32px; fill: blue; margin-right: 6px; margin-top: 10px" />
-  <p style="display: inline-block; font-size: 32px; color: black;">MBTA METRO</p>
-</div>
+# MBTA METRO
 
 [![hex version](https://img.shields.io/hexpm/v/mbta_metro.svg)](https://hex.pm/packages/mbta_metro)
 [![npm version](https://badge.fury.io/js/mbta_metro.svg)](https://badge.fury.io/js/mbta_metro)
