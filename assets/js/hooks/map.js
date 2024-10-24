@@ -16,7 +16,29 @@ export default {
       container: this.el,
       center: [-71.05793935862762, 42.360445610002515],
       zoom: 12,
-      style: `https://tiles.stadiamaps.com/styles/alidade_smooth.json?api_key=${apiKey}`,
+      // style: `https://tiles.stadiamaps.com/styles/alidade_smooth.json?api_key=${apiKey}`,
+      style: {
+        'version': 8,
+        'sources': {
+            'raster-tiles': {
+                'type': 'raster',
+                'tiles': [
+                    'https://mbta-map-tiles-dev.s3.amazonaws.com/osm_tiles/{z}/{x}/{y}.png'
+                ],
+                'tileSize': 256,
+                'attribution': '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            }
+        },
+        'layers': [
+            {
+                'id': 'simple-tiles',
+                'type': 'raster',
+                'source': 'raster-tiles',
+                'minzoom': 9,
+                'maxzoom': 18
+            }
+        ]
+      }
     });
 
     this.map.addControl(new maplibregl.NavigationControl(), "top-left");
