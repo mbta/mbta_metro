@@ -21,10 +21,10 @@ defmodule MbtaMetro.MixProject do
   #
   # Type `mix help compile.app` for more information.
   def application do
-    if Mix.env() == :prod do
-      []
-    else
+    if Mix.env() == :dev do
       [mod: {MbtaMetro.Application, []}]
+    else
+      []
     end
   end
 
@@ -63,7 +63,15 @@ defmodule MbtaMetro.MixProject do
   end
 
   # Specifies which paths to compile per environment.
-  defp elixirc_paths(:test), do: ["lib", "test/support"]
+  # In test, we only want to compile the function and live components (and utils).
+  defp elixirc_paths(:test) do
+    [
+      "lib/mbta_metro/components",
+      "lib/mbta_metro/live",
+      "lib/mbta_metro/utils.ex"
+    ]
+  end
+
   defp elixirc_paths(_), do: ["lib"]
 
   defp package do
