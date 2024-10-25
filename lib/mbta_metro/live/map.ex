@@ -1,10 +1,6 @@
 defmodule MbtaMetro.Live.Map do
   @moduledoc """
-  A live component that renders a map using [Stadia](https://stadiamaps.com).
-
-  You must pass in the following assigns:
-
-    * `:api_key` - The AWS Location Service API key.
+  A live component that renders a map using [maplibre-gl](https://maplibre.org/maplibre-gl-js/docs/).
 
   You can optionally pass in the following assigns:
 
@@ -34,7 +30,6 @@ defmodule MbtaMetro.Live.Map do
     <div
       id="map"
       class={@class}
-      data-api-key={@api_key}
       data-click-handler={Jason.encode!(@click_handler)}
       phx-hook="Map"
     >
