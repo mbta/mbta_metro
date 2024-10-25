@@ -8,5 +8,5 @@ defmodule Storybook.Live.Index do
   def folder_open?, do: false
 
   def date_picker, do: [name: "Date picker"]
-  def entry("map"), do: [name: "Map"]
+  def entry("map"), do: [name: "Map [alpha]"]
 end
