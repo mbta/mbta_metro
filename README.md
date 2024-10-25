@@ -103,7 +103,13 @@ let liveSocket = new LiveSocket("/live", Socket, {
 Along with all of the [free Font Awesome icons](https://fontawesome.com/icons), you can add custom icons.
 
 ```elixir
-config :mbta_metro, custom_icons: "#{File.cwd!()}/priv/static/icons/custom/*.svg"
+config :mbta_metro, custom_icons: "#{File.cwd!()}/priv/static/icons/your-directory/your-icon-*.svg"
+```
+
+SVGs in the above directory will be turned into icons and can be used as follows:
+
+```
+<.icon type="your-directory" name="your-icon-..." class="..." />
 ```
 
 ### LiveComponents
