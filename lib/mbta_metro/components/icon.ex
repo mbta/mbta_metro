@@ -5,12 +5,17 @@ defmodule MbtaMetro.Components.Icon do
 
   alias MbtaMetro.Utils
 
+  @custom_icon_paths Application.compile_env(:mbta_metro, :custom_icons, nil)
+
+  custom_icon_paths =
+    if @custom_icon_paths == nil, do: [], else: @custom_icon_paths |> Path.wildcard()
+
   icon_paths =
     "#{Utils.project_root()}/priv/static/icons/**/*.svg"
     |> Path.wildcard()
 
   icons =
-    Enum.map(icon_paths, fn icon_path ->
+    Enum.map(custom_icon_paths ++ icon_paths, fn icon_path ->
       [type, name] = icon_path |> Path.split() |> Enum.take(-2)
 
       {File.read!(icon_path), Path.rootname(name), type}

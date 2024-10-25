@@ -98,6 +98,14 @@ let liveSocket = new LiveSocket("/live", Socket, {
 })
 ```
 
+### Custom Icons
+
+Along with all of the [free Font Awesome icons](https://fontawesome.com/icons), you can add custom icons.
+
+```elixir
+config :mbta_metro, custom_icons: "#{File.cwd!()}/priv/static/icons/custom/*.svg"
+```
+
 ### LiveComponents
 
 Some components, like the Map, take further configuration.
