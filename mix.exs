@@ -85,9 +85,7 @@ defmodule MbtaMetro.MixProject do
         "mix.exs",
         "priv/static/assets/default.css",
         "priv/static/fonts/*",
-        "priv/static/icons/brands",
-        "priv/static/icons/regular",
-        "priv/static/icons/solid",
+        "priv/static/icons/*",
         "README.md",
         "VERSION"
       ],
