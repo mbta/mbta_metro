@@ -25,12 +25,15 @@ defmodule MbtaMetro.Live.Map do
     |> Kernel.then(&assign(assigns, :class, &1))
     |> Map.get(:click_handler, false)
     |> Kernel.then(&assign(assigns, :click_handler, &1))
+    |> Map.get(:style, %{})
+    |> Kernel.then(&assign(assigns, :style, &1))
 
     ~H"""
     <div
       id="map"
       class={@class}
       data-click-handler={Jason.encode!(@click_handler)}
+      data-style={Jason.encode!(@style)}
       phx-hook="Map"
     >
     </div>

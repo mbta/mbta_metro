@@ -5,18 +5,21 @@ defmodule Storybook.Live.Map do
 
   alias MbtaMetro.Live.Map
 
+  @style Application.compile_env!(:mbta_metro, :map) |> Keyword.get(:style, %{})
+
   def component, do: Map
 
   def variations do
     [
       %Variation{
-        id: :default,
-        description: "Default",
+        id: :raster,
+        description: "Raster map",
         attributes: %{
           class: "w-full h-96",
-          click_handler: false
+          click_handler: false,
+          style: @style
         }
-      }
+      },
     ]
   end
 end
