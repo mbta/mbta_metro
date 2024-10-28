@@ -16,7 +16,7 @@ defmodule MbtaMetro.Components.Spinner do
   def spinner(assigns) do
     ~H"""
     <div
-      class={"animate-spin inline-block size-6 border-[3px] border-current border-t-transparent text-#{@color}-500 rounded-full"}
+      class={"mbta-metro-spinner h-8 w-8 after:border-4 before:border-4 after:border-solid before:border-solid after:border-#{@color}-500 before:border-#{@color}-300" }
       role="status"
       aria-label={@aria_label}
     >
