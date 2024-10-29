@@ -319,6 +319,10 @@
     src: url("../fonts/InterDisplay-BlackItalic.woff2") format("woff2");
   }
   
+  .h-full {
+    height: 100% !important;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading font-bold mt-11 mb-3;
 

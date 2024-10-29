@@ -58,4 +58,3 @@ export default {
     this.pickr.destroy();
   }
 }
-
