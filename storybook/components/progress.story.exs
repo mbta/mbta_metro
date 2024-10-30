@@ -1,0 +1,39 @@
+defmodule Storybook.Components.Spinner do
+  @moduledoc false
+
+  use PhoenixStorybook.Story, :component
+
+  alias MbtaMetro.Components.Progress
+
+  def function, do: &Progress.progress/1
+
+  def variations do
+    [
+      %Variation{
+        id: :default,
+        description: "Default",
+        attributes: %{
+          aria_label: "Default",
+          value: :rand.uniform(100)
+        }
+      }
+    ] ++ color_variations()
+  end
+
+  defp color_variations do
+    ~w[blue green orange purple red silver yellow]
+    |> Enum.map(&color_variation/1)
+  end
+
+  defp color_variation(color) do
+    %Variation{
+      id: String.to_atom(color),
+      attributes: %{
+        aria_label: String.capitalize(color),
+        color: color,
+        value: :rand.uniform(100)
+      },
+      description: String.capitalize(color)
+    }
+  end
+end
