@@ -13,7 +13,7 @@ defmodule Storybook.Components.Spinner do
         id: :default,
         description: "Default",
         attributes: %{
-          aria_label: Faker.Lorem.word()
+          aria_label: "Default"
         }
       }
     ] ++ color_variations()

@@ -1,5 +1,4 @@
 defmodule MbtaMetro.Components.IconTest do
-
   use ExUnit.Case
 
   alias MbtaMetro.Components.Icon
