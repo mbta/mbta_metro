@@ -20,14 +20,25 @@ defmodule MbtaMetro.Live.Map do
 
   import MbtaMetro.Components.Icon, only: [icon: 1]
 
-  def mount(_params, _session, socket) do
-    class = Map.get(socket.assigns, :class, "")
-    config = Map.get(socket.assigns, :config, %{})
-    lines = Map.get(socket.assigns, :lines, [])
-    pins = Map.get(socket.assigns, :pins, [])
-    points = Map.get(socket.assigns, :points, [])
+  @impl true
+  def update(assigns, %{assigns: %{loaded: true}} = socket) do
+    new_socket =
+      socket
+      |> assign(assigns)
+      |> push_event("update-lines", %{})
+      |> push_event("update-markers", %{})
 
-    new_socket = assign(socket, class: class, config: config, lines: lines, pins: pins, points: points)
+    {:ok, new_socket}
+  end
+
+  def update(assigns, socket) do
+    class = Map.get(assigns, :class, "")
+    config = Map.get(assigns, :config, %{})
+    lines = Map.get(assigns, :lines, [])
+    pins = Map.get(assigns, :pins, [])
+    points = Map.get(assigns, :points, [])
+
+    new_socket = assign(socket, class: class, config: config, lines: lines, loaded: false, pins: pins, points: points)
 
     {:ok, new_socket}
   end
@@ -35,6 +46,7 @@ defmodule MbtaMetro.Live.Map do
   @doc """
   Renders the map component.
   """
+  @impl true
   def render(assigns) do
     ~H"""
     <div
@@ -54,18 +66,20 @@ defmodule MbtaMetro.Live.Map do
           <.icon id={"mbta-metro-point-#{index}"} type="metro" name="point" class="w-4 h-4 fill-blue-500" data-coordinates={Jason.encode!(coordinates)} />
         <% end %>
         <%= for {coordinates, index} <- Enum.with_index(@pins) do %>
-          <.icon id={"mbta-metro-pin-#{index}"} type="metro" name={index_to_pin(index)} class="w-8 h-8 fill-blue-500" data-coordinates={Jason.encode!(coordinates)} />
+          <.icon id={"mbta-metro-pin-#{index}"} type="metro" name={index_to_pin(index)} class="w-16 h-16 fill-blue-500" data-coordinates={Jason.encode!(coordinates)} />
         <% end %>
       </div>
     </div>
     """
   end
 
+  @impl true
   def handle_event("map-loaded", _params, socket) do
     new_socket =
       socket
-      |> push_event("update-lines", %{lines: socket.assigns.lines})
-      |> push_event("update-markers", %{markers: socket.assigns.pins ++ socket.assigns.points})
+      |> assign(:loaded, true)
+      |> push_event("update-lines", %{})
+      |> push_event("update-markers", %{})
 
     {:noreply, new_socket}
   end

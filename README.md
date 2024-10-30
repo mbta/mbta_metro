@@ -128,7 +128,7 @@ You can use an external style source.
 config :mbta_metro, :map, style: "https://tiles.stadiamaps.com/styles/alidade_smooth.json?api_key=#{@api_key}"
 ```
 
-If you do use an external source you'll have to makue sure it is defined in your CSP (assuming you have one):
+If you do use an external source you'll have to make sure it is defined in your CSP (assuming you have one):
 
 ```elixir
 [

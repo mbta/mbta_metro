@@ -7,6 +7,7 @@ import { max } from "date-fns";
  * This is a LiveView hook that initializes a maplibre-gl map.
  */
 export default {
+  markers: [],
   /**
    * Creates a new maplibre-gl map and adds it to the phx-hook DOM element.
    */
@@ -21,11 +22,11 @@ export default {
     this.map.addControl(new maplibregl.NavigationControl(), "top-left");
 
     this.map.on("load", () => {
+      this.handleEvent("update-lines", this.updateLines(this));
+      this.handleEvent("update-markers", this.updateMarkers(this));
+
       this.pushEventTo("#mbta-metro-map", "map-loaded", {});
     });
-
-    this.handleEvent("update-lines", this.updateLines(this));
-    this.handleEvent("update-markers", this.updateMarkers(this));
   },
   /**
    * Destroys the map when the hook is removed.
@@ -104,6 +105,10 @@ export default {
         that.map.removeSource("lines");
       }
 
+      if (features.length === 0) {
+        return;
+      }
+
       that.map.addSource("lines", {
         type: "geojson",
         data: {
@@ -128,20 +133,33 @@ export default {
    */
   updateMarkers(that) {
     return function() {
-      const elements = that.el.querySelectorAll("#mbta-metro-map-markers svg");
+      const markers = Array.from(that.el.querySelectorAll("#mbta-metro-map-markers svg")).map(element => {
+        return {
+          coordinates: JSON.parse(element.getAttribute("data-coordinates")),
+          element
+        }
+      }).filter(marker => marker.coordinates.length === 2);
 
-      const markers = Array.from(elements).map(element => {
-        return JSON.parse(element.getAttribute("data-coordinates"));
-      });
+      if (markers.length === 0) {
+        that.markers.forEach(marker => marker.remove());
 
-      const bounds = that.calcBoundsFromCoordinates(markers);
+        that.markers = [];
 
-      that.map.fitBounds(bounds);
+        return;
+      }
 
-      elements.forEach((element, index) => {
-        const coordinates = markers.at(index);
+      const bounds = that.calcBoundsFromCoordinates(markers.map(marker => marker.coordinates));
 
-        new maplibregl.Marker({element}).setLngLat(coordinates).addTo(that.map);
+      that.map.fitBounds(bounds, {maxZoom: 16, padding: 50});
+
+      markers.forEach(marker => {
+        const mapMarker = new maplibregl.Marker({
+          element: marker.element
+        });
+
+        that.markers.push(mapMarker);
+
+        mapMarker.setLngLat(marker.coordinates).addTo(that.map);
       });
     }
   }

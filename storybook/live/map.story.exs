@@ -16,14 +16,7 @@ defmodule Storybook.Live.Map do
         description: "Raster map",
         attributes: %{
           class: "w-full h-96",
-          config: %{
-            center: [-71.05912000000001, 42.36418],
-            maxZoom: 16,
-            minZoom: 10,
-            pitch: 45,
-            style: "http://localhost:8888/style.json",
-            zoom: 12
-          },
+          config: @config,
           lines: [
             %{
               color: "orange-500",
