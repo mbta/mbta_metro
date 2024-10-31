@@ -5,6 +5,7 @@ config :logger, level: :info
 # Raster style maps
 config :mbta_metro, :map, %{
   center: [-71.0589, 42.3601],
+  maxZoom: 16,
   style: %{
     "version" => 8,
     "sources" => %{

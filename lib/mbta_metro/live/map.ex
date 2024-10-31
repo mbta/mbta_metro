@@ -20,6 +20,10 @@ defmodule MbtaMetro.Live.Map do
 
   import MbtaMetro.Components.Icon, only: [icon: 1]
 
+  @doc """
+  We check if the map is loaded; if so, we tell the Hook to update the lines and markers every time the component updates.
+  If the map is not loaded, we check for for assigns and assign defaults for any not passed into the component.
+  """
   @impl true
   def update(assigns, %{assigns: %{loaded: true}} = socket) do
     new_socket =
@@ -32,27 +36,26 @@ defmodule MbtaMetro.Live.Map do
   end
 
   def update(assigns, socket) do
-    class = Map.get(assigns, :class, "")
-    config = Map.get(assigns, :config, %{})
-    lines = Map.get(assigns, :lines, [])
-    pins = Map.get(assigns, :pins, [])
-    points = Map.get(assigns, :points, [])
-
     new_socket =
       assign(socket,
-        class: class,
-        config: config,
-        lines: lines,
+        class: Map.get(assigns, :class, ""),
+        config: Map.get(assigns, :config, %{}),
+        lines: Map.get(assigns, :lines, []),
         loaded: false,
-        pins: pins,
-        points: points
+        pins: Map.get(assigns, :pins, []),
+        points: Map.get(assigns, :points, [])
       )
 
     {:ok, new_socket}
   end
 
   @doc """
-  Renders the map component.
+  There are three main sections of the map component.
+  The container will hold the map itself.
+  The lines will hold the lines to draw on the map.
+  The markers will hold the points and pins to place on the map.
+
+  The associated Hook will take the lines and markers and draw them on the map.
   """
   @impl true
   def render(assigns) do
@@ -92,6 +95,11 @@ defmodule MbtaMetro.Live.Map do
     """
   end
 
+  @doc """
+  The map has to be loaded before we can draw anything on it.
+  Once the Hook tells us it has loaded, we tell it to update the lines and markers.
+  We then update the `loaded` assign to `true` so we know future updates can be drawn on the map.
+  """
   @impl true
   def handle_event("map-loaded", _params, socket) do
     new_socket =

@@ -1,29 +1,34 @@
 import maplibregl from "maplibre-gl";
 
 import colors from "../styles/colors";
-import { max } from "date-fns";
 
 /**
- * This is a LiveView hook that initializes a maplibre-gl map.
+ * This is a LiveView hook this initializes a maplibre-gl map.
  */
 export default {
+  /**
+   * We have to keep a list of markers so we can remove them when the markers are updated.
+   */
   markers: [],
   /**
-   * Creates a new maplibre-gl map and adds it to the phx-hook DOM element.
+   * Creates a new maplibre-gl map with the given config and adds it to the phx-hook DOM element.
+   *
+   * When the map is loaded, it sets up event handlers to receive updates from the LiveView.
+   * It also sends a "map-loaded" event to the LiveView to let it know this the map is ready for updates.
    */
   mounted() {
-    const config = JSON.parse(this.el.dataset.config);
+    this.config = JSON.parse(this.el.dataset.config);
 
     this.map = new maplibregl.Map({
       container: this.el.querySelector("#mbta-metro-map-container"),
-      ...config,
+      ...this.config,
     });
 
     this.map.addControl(new maplibregl.NavigationControl(), "top-left");
 
     this.map.on("load", () => {
-      this.handleEvent("update-lines", this.updateLines(this));
-      this.handleEvent("update-markers", this.updateMarkers(this));
+      this.handleEvent("update-lines", _ => this.updateLines());
+      this.handleEvent("update-markers", _ => this.updateMarkers());
 
       this.pushEventTo("#mbta-metro-map", "map-loaded", {});
     });
@@ -35,7 +40,43 @@ export default {
     delete this.map;
   },
   /**
-   * 
+   * Convert lines to GeoJSON features and add them to the map.
+   */
+  addLines(lines) {
+    this.map.addSource("lines", {
+      type: "geojson",
+      data: {
+        type: "FeatureCollection",
+        features: lines.map(this.lineToFeature)
+      }
+    });
+
+    this.map.addLayer({
+      id: "lines",
+      type: "line",
+      source: "lines",
+      paint: {
+        "line-color": ["get", "color"],
+        "line-width": ["get", "width"],
+      }
+    });
+  },
+  /**
+   * Add each marker to the map and update the markers array.
+   */
+  addMarkers(markers) {
+    markers.forEach(marker => {
+      const mapMarker = new maplibregl.Marker({
+        element: marker.element
+      });
+
+      this.markers.push(mapMarker);
+
+      mapMarker.setLngLat(marker.coordinates).addTo(this.map);
+    });
+  },
+  /**
+   * Returns the SW and NE most coordinates from a collection of coordinates.
    */
   calcBoundsFromCoordinates(coordinatesCollection) {
     return [
@@ -44,7 +85,34 @@ export default {
     ];
   },
   /**
-   * 
+   * Fit the map to a collection of coordinates.
+   * Limit the zoom to the maxZoom, zoom, or a sensible default of 16.
+   */
+  fitMapToCoordinates(coordinatesCollection) {
+    const bounds = this.calcBoundsFromCoordinates(coordinatesCollection);
+    const maxZoom = this.config.maxZoom || this.config.zoom || 16;
+
+    this.map.fitBounds(bounds, {maxZoom, padding: 50});
+  },
+  /**
+   * Fit the map to the center of the map if one is provided in the config.
+   * Otherwise, do nothing.
+   */
+  fitMapToCenter() {
+    if ("center" in this.config) {
+      this.fitMapToCoordinates([this.config.center]);
+    }
+  },
+  /**
+   * Calculate the bounds of collection of markers and fit the map to those bounds.
+   */
+  fitMapToMarkers(markers) {
+    const coordinates = markers.map(marker => marker.coordinates);
+
+    this.fitMapToCoordinates(coordinates);
+  },
+  /**
+   * Returns the NE most coordinates from a collection of coordinates.
    */
   getNECoordinates(coordinatesCollection) {
     const highestLng = Math.max(
@@ -57,7 +125,7 @@ export default {
     return [highestLng, highestLat];
   },
   /**
-   * 
+   * Returns the SW most coordinates from a collection of coordinates.
    */
   getSWCoordinates(coordinatesCollection) {
     const lowestLng = Math.min(
@@ -72,7 +140,7 @@ export default {
   /**
    * Converts a line object to a GeoJSON feature.
    */
-  lineToGeoJSON (line) {
+  lineToFeature(line) {
     return {
       type: "Feature",
       properties: {
@@ -86,81 +154,79 @@ export default {
     };
   },
   /**
-   * 
+   * If the map already has a source and layer for the lines, remove them to prepare for a redraw.
    */
-  updateLines(that) {
-    return function() {
-      const elements = that.el.querySelectorAll("#mbta-metro-map-lines div");
-      const features = Array.from(elements).map(element => {
-        const line = JSON.parse(element.getAttribute("data-line"));
-  
-        return that.lineToGeoJSON(line);
-      });
+  resetLines() {
+    if (this.map.getLayer("lines")) {
+      this.map.removeLayer("lines");
+    }
 
-      if (that.map.getLayer("lines")) {
-        that.map.removeLayer("lines");
-      }
-
-      if (that.map.getSource("lines")) {
-        that.map.removeSource("lines");
-      }
-
-      if (features.length === 0) {
-        return;
-      }
-
-      that.map.addSource("lines", {
-        type: "geojson",
-        data: {
-          type: "FeatureCollection",
-          features
-        }
-      });
-  
-      that.map.addLayer({
-        id: "lines",
-        type: "line",
-        source: "lines",
-        paint: {
-          "line-color": ["get", "color"],
-          "line-width": ["get", "width"],
-        }
-      });
+    if (this.map.getSource("lines")) {
+      this.map.removeSource("lines");
     }
   },
   /**
-   * 
+   * Remove all markers from the map and reset the markers array.
    */
-  updateMarkers(that) {
-    return function() {
-      const markers = Array.from(that.el.querySelectorAll("#mbta-metro-map-markers svg")).map(element => {
-        return {
-          coordinates: JSON.parse(element.getAttribute("data-coordinates")),
-          element
-        }
-      }).filter(marker => marker.coordinates.length === 2);
+  resetMarkers() {
+    this.markers.forEach(marker => marker.remove());
 
-      if (markers.length === 0) {
-        that.markers.forEach(marker => marker.remove());
+    this.markers = [];
+  },
+  /**
+   * Updating lines involves four steps:
+   *
+   * 1. Get all the line elements from the DOM.
+   * 2. Parse the JSON data from each element.
+   * 3. Reset the existing lines on the map.
+   * 4. Add the new lines to the map.
+   *
+   * If there are no lines, we skip the last step.
+   */
+  updateLines() {
+    const elements = this.el.querySelectorAll("#mbta-metro-map-lines div");
+    const lines = Array.from(elements).map(element => {
+      return JSON.parse(element.getAttribute("data-line"));
+    });
 
-        that.markers = [];
+    this.resetLines();
 
-        return;
-      }
-
-      const bounds = that.calcBoundsFromCoordinates(markers.map(marker => marker.coordinates));
-
-      that.map.fitBounds(bounds, {maxZoom: 16, padding: 50});
-
-      markers.forEach(marker => {
-        const mapMarker = new maplibregl.Marker({
-          element: marker.element
-        });
-
-        that.markers.push(mapMarker);
-
-        mapMarker.setLngLat(marker.coordinates).addTo(that.map);
-      });
+    if (lines.length === 0) {
+      return;
     }
+
+    this.addLines(lines);
+  },
+  /**
+   * Updating markers involves five steps:
+   *
+   * 1. Get all the marker elements from the DOM.
+   * 2. Parse the JSON data from each element.
+   * 3. Filter out any markers that don't have coordinates.
+   * 4. Reset the existing markers on the map.
+   * 5. Add the new markers to the map.
+   * 6. Fit the map to the bounds of the markers.
+   *
+   * If there are no markers, we skip the last two steps.
+   */
+  updateMarkers() {
+    const markers = Array.from(this.el.querySelectorAll("#mbta-metro-map-markers svg")).map(element => {
+      return {
+        coordinates: JSON.parse(element.getAttribute("data-coordinates")),
+        element
+      }
+    }).filter(marker => marker.coordinates.length === 2);
+
+    this.resetMarkers();
+
+    if (markers.length === 0) {
+      this.fitMapToCenter();
+
+      return;
+    }
+
+    this.addMarkers(markers);
+
+    this.fitMapToMarkers(markers);
   }
 }
