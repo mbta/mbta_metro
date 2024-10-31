@@ -118,11 +118,19 @@ Some components, like the Map, take further configuration.
 
 #### Map
 
+The map components uses [maplibre-gl](https://maplibre.org/maplibre-gl-js/docs/) so you must pass in config with a valid [style spec](https://maplibre.org/maplibre-style-spec/).
+
+You can use an external style source.
+
 ```elixir
-config :mbta_metro, :map, api_key: System.get_env("MBTA_METRO_MAP_API_KEY")
+@api_key = Application.compile_env!("MBTA_METRO_MAP_API_KEY")
+
+config :mbta_metro, :map, %{
+  style: "https://tiles.stadiamaps.com/styles/alidade_smooth.json?api_key=#{@api_key}"
+}
 ```
 
-You'll also have to add the following to your CSP (assuming you have one):
+If you do use an external source you'll have to make sure it is defined in your CSP (assuming you have one):
 
 ```elixir
 [
@@ -130,6 +138,20 @@ You'll also have to add the following to your CSP (assuming you have one):
   "connect-src *.stadiamaps.com",
   "worker-src blob: ;"
 ]
+```
+
+Or, you can define your own style.
+
+```elixir
+config :mbta_metro, :map, config: %{
+  center: [-71.0589, 42.3601],
+  style: %{
+    "version" => 8,
+    "sources" => %{...},
+    "layers" => %{...}
+  },
+  zoom: 15
+}
 ```
 
 ## Publishing

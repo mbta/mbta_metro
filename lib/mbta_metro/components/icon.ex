@@ -33,16 +33,8 @@ defmodule MbtaMetro.Components.Icon do
   def types, do: @types
 
   for {file, name, type} <- icons do
-    defp icon(unquote(type), unquote(name), class) do
-      attrs =
-        [
-          ?\s,
-          Phoenix.HTML.Safe.to_iodata("class"),
-          ?=,
-          ?",
-          Phoenix.HTML.Safe.to_iodata(class),
-          ?"
-        ]
+    defp icon(unquote(type), unquote(name), opts) do
+      attrs = opts_to_attrs(opts)
 
       "<svg" <> rest = unquote(file)
 
@@ -52,13 +44,27 @@ defmodule MbtaMetro.Components.Icon do
 
   defp icon(_, _, _), do: nil
 
-  attr :class, :string, default: ""
   attr :name, :string, required: true
+  attr :opts, :global, default: %{}
   attr :type, :string, values: @types, default: "solid"
 
   def icon(assigns) do
     ~H"""
-    <%= icon(@type, @name, @class) %>
+    <%= icon(@type, @name, @opts) %>
     """
+  end
+
+  defp opts_to_attrs(opts) do
+    for {key, value} <- opts do
+      key =
+        key
+        |> Atom.to_string()
+        |> String.replace("_", "-")
+        |> Phoenix.HTML.Safe.to_iodata()
+
+      value = Phoenix.HTML.Safe.to_iodata(value)
+
+      [?\s, key, ?=, ?", value, ?"]
+    end
   end
 end
