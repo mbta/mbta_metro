@@ -38,7 +38,15 @@ defmodule MbtaMetro.Live.Map do
     pins = Map.get(assigns, :pins, [])
     points = Map.get(assigns, :points, [])
 
-    new_socket = assign(socket, class: class, config: config, lines: lines, loaded: false, pins: pins, points: points)
+    new_socket =
+      assign(socket,
+        class: class,
+        config: config,
+        lines: lines,
+        loaded: false,
+        pins: pins,
+        points: points
+      )
 
     {:ok, new_socket}
   end
@@ -49,13 +57,12 @@ defmodule MbtaMetro.Live.Map do
   @impl true
   def render(assigns) do
     ~H"""
-    <div
-      id="mbta-metro-map"
-      class={@class}
-      data-config={Jason.encode!(@config)}
-      phx-hook="Map"
-    >
-      <div id="mbta-metro-map-container" class="w-full h-full relative overflow-hidden" phx-update="ignore" />
+    <div id="mbta-metro-map" class={@class} data-config={Jason.encode!(@config)} phx-hook="Map">
+      <div
+        id="mbta-metro-map-container"
+        class="w-full h-full relative overflow-hidden"
+        phx-update="ignore"
+      />
       <div id="mbta-metro-map-lines" class="hidden">
         <%= for {line, index} <- Enum.with_index(@lines) do %>
           <div id={"mbta-metro-line-#{index}"} data-line={Jason.encode!(line)} />
@@ -63,10 +70,22 @@ defmodule MbtaMetro.Live.Map do
       </div>
       <div id="mbta-metro-map-markers" class="hidden">
         <%= for {coordinates, index} <- Enum.with_index(@points) do %>
-          <.icon id={"mbta-metro-point-#{index}"} type="metro" name="point" class="w-4 h-4 fill-blue-500" data-coordinates={Jason.encode!(coordinates)} />
+          <.icon
+            id={"mbta-metro-point-#{index}"}
+            type="metro"
+            name="point"
+            class="w-4 h-4 fill-blue-500"
+            data-coordinates={Jason.encode!(coordinates)}
+          />
         <% end %>
         <%= for {coordinates, index} <- Enum.with_index(@pins) do %>
-          <.icon id={"mbta-metro-pin-#{index}"} type="metro" name={index_to_pin(index)} class="w-16 h-16 fill-blue-500" data-coordinates={Jason.encode!(coordinates)} />
+          <.icon
+            id={"mbta-metro-pin-#{index}"}
+            type="metro"
+            name={index_to_pin(index)}
+            class="w-16 h-16 fill-blue-500"
+            data-coordinates={Jason.encode!(coordinates)}
+          />
         <% end %>
       </div>
     </div>
