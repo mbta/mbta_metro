@@ -159,7 +159,10 @@ config :mbta_metro, :map, config: %{
 You can publish a new release with a single script:
 
 ```
+%> git checkout main
+%> git pull origin main
 %> ./release
 Please enter a release level [patch | minor | major]: patch
 ...
+%> git push origin main
 ```
