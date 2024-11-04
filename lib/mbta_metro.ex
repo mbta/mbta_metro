@@ -7,11 +7,18 @@ defmodule MbtaMetro do
     quote do
       import MbtaMetro.Components.{
         Accordion,
+        Badge,
+        BadgeStack,
         Button,
+        DataList,
         Feedback,
         Flash,
+        Icon,
         Input,
+        InputGroup,
         Modal,
+        Progress,
+        Spinner,
         Table
       }
     end

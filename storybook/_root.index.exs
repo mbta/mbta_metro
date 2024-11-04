@@ -1,0 +1,13 @@
+defmodule Storybook.Root do
+  @moduledoc false
+
+  use PhoenixStorybook.Index
+
+  def folder_name, do: "MbtaMetro"
+
+  def entry("welcome") do
+    [
+      name: "Welcome"
+    ]
+  end
+end

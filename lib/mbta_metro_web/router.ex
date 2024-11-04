@@ -22,6 +22,7 @@ defmodule MbtaMetroWeb.Router do
   scope "/", MbtaMetroWeb do
     pipe_through(:browser)
 
+    live("/demo", Live.Demo)
     live_storybook("/storybook", backend_module: MbtaMetroWeb.Storybook)
   end
 end
