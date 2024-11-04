@@ -5,7 +5,7 @@ defmodule Storybook.Live.Map do
 
   alias MbtaMetro.Live.Map
 
-  @config Application.compile_env!(:mbta_metro, :map)
+  @config Application.compile_env(:mbta_metro, :map, %{})
 
   def component, do: Map
 

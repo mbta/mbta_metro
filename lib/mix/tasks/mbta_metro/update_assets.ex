@@ -22,7 +22,7 @@ defmodule Mix.Tasks.MbtaMetro.UpdateAssets do
 
   defp update_npm do
     File.cd!("assets", fn ->
-      "npm install --save ../deps/mbta_metro/priv/"
+      "npm install -S -install-links ../deps/mbta_metro/priv/"
       |> Kernel.to_charlist()
       |> :os.cmd()
     end)
