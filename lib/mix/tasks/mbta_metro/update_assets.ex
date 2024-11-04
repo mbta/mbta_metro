@@ -21,17 +21,10 @@ defmodule Mix.Tasks.MbtaMetro.UpdateAssets do
   end
 
   defp update_npm do
-    version = version()
-
     File.cd!("assets", fn ->
-      "npm install --save mbta_metro@#{version}"
+      "npm install --save ../deps/mbta_metro/priv/"
       |> Kernel.to_charlist()
       |> :os.cmd()
     end)
-  end
-
-  defp version do
-    File.read!("deps/mbta_metro/VERSION")
-    |> String.trim()
   end
 end

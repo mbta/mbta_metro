@@ -58,7 +58,7 @@ defmodule MbtaMetro.MixProject do
       canonical: "http://hexdocs.pm/mbta_metro",
       extras: ["README.md"],
       logo: "priv/static/icons/brands/metro.svg",
-      source_url: "https://github.com/anthonyshull/mbta_metro",
+      source_url: "https://github.com/mbta/mbta_metro",
       source_ref: "v#{version()}"
     ]
   end
@@ -84,6 +84,8 @@ defmodule MbtaMetro.MixProject do
         "lib/mbta_metro/utils.ex",
         "lib/mix/tasks/mbta_metro/update_*.ex",
         "mix.exs",
+        "priv/package.json",
+        "priv/js/*",
         "priv/static/assets/default.css",
         "priv/static/fonts/*",
         "priv/static/icons/*",
@@ -91,7 +93,7 @@ defmodule MbtaMetro.MixProject do
         "VERSION"
       ],
       licenses: ["GPL-3.0-or-later"],
-      links: %{"GitHub" => "https://github.com/anthonyshull/mbta_metro"}
+      links: %{"GitHub" => "https://github.com/mbta/mbta_metro"}
     ]
   end
 

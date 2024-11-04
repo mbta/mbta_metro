@@ -6,26 +6,31 @@ defmodule Mix.Tasks.MbtaMetro.Version do
 
   @impl Mix.Task
   def run([level]) do
-    File.cd!("assets", fn ->
-      run_command("npm version #{level}") |> IO.puts()
-
-      run_command("npm publish") |> IO.puts()
-    end)
-
-    new_version_number = npm_version()
+    new_version_number =
+      File.read!("VERSION")
+      |> String.trim()
+      |> String.split(".")
+      |> Enum.map(&String.to_integer/1)
+      |> bump_hex_version(level)
 
     File.open!("VERSION", [:write], fn file ->
       IO.write(file, new_version_number)
     end)
 
-    run_command("git add VERSION assets/package*.json") |> IO.puts()
+    run_command("git add VERSION") |> IO.puts()
     run_command("git commit -m 'Bump version to #{new_version_number}'") |> IO.puts()
   end
 
-  defp npm_version do
-    File.read!("assets/package.json")
-    |> Jason.decode!()
-    |> Map.get("version")
+  defp bump_hex_version([major, minor, patch], "patch") do
+    "#{major}.#{minor}.#{patch + 1}"
+  end
+
+  defp bump_hex_version([major, minor, _patch], "minor") do
+    "#{major}.#{minor + 1}.0"
+  end
+
+  defp bump_hex_version([major, _minor, _patch], "major") do
+    "#{major + 1}.0.0"
   end
 
   defp run_command(command) do

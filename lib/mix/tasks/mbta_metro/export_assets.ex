@@ -9,6 +9,7 @@ defmodule Mix.Tasks.MbtaMetro.ExportAssets do
   def run(_) do
     export_css()
     export_fontawesome_icons()
+    export_js()
     export_metro_icons()
   end
 
@@ -33,6 +34,22 @@ defmodule Mix.Tasks.MbtaMetro.ExportAssets do
       "-r",
       "#{dir}/assets/node_modules/@fortawesome/fontawesome-free/svgs/.",
       "#{dir}/priv/static/icons"
+    ])
+  end
+
+  defp export_js do
+    dir = File.cwd!()
+
+    System.cmd("rsync", [
+      "-a",
+      "--exclude=app.js",
+      "#{dir}/assets/js/",
+      "#{dir}/priv/js/"
+    ])
+
+    System.cmd("cp", [
+      "#{dir}/assets/package.json",
+      "#{dir}/priv/"
     ])
   end
 
