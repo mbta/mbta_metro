@@ -153,6 +153,18 @@ config :mbta_metro, :map, config: %{
 }
 ```
 
+## Production usage
+
+Because we ship Mbta Metro's javascript via hex and not npm, installing the library works a little differently than normal.
+We included a mix task `mix mbta_metro.update_assets` that will install the javascript along with its dependencies in the normal Phoenix `node_modules` directory.
+When you go to build and compile your application you might run into errors about Mbta Metro's dependencies not being found.
+If you are building in an environment where you have Elixir and Node in the same image, you can simply run the above mix task.
+If you only have Node in the image, you can run the underlying npm command that mix tasks calls:
+
+```
+%> npm install --prefix assets -S -install-links deps/mbta_metro/priv/
+```
+
 ## Publishing
 
 You can publish a new release with a single script:
