@@ -4,35 +4,38 @@ defmodule MbtaMetro.Components.Badge do
   use Phoenix.Component
 
   attr :class, :string, default: ""
-  attr :color, :string, default: "blue"
-  attr :type, :string, required: true
+  attr :color, :string, default: "blue-200"
+  attr :variant, :string, default: "square", values: ["circle", "pill", "square"]
 
   slot :inner_block, required: true
 
-  def badge(%{type: "circle"} = assigns) do
-    circle(assigns)
+  def badge(%{variant: "circle"} = assigns) do
+    assigns
+    |> assign(:variant_class, "px-0.5 py-1 w-6 h-6 rounded-full font-semibold")
+    |> base_badge()
   end
 
-  def badge(%{type: "square"} = assigns) do
-    square(assigns)
+  def badge(%{variant: "pill"} = assigns) do
+    assigns
+    |> assign(:variant_class, "px-2 py-1 rounded-full font-semibold")
+    |> base_badge()
   end
 
-  defp circle(assigns) do
+  def badge(%{variant: "square"} = assigns) do
+    assigns
+    |> assign(:variant_class, "px-2 py-1 rounded-md min-w-8 font-bold")
+    |> base_badge()
+  end
+
+  defp base_badge(assigns) do
     ~H"""
-    <div class={"inline-flex rounded-full bg-#{@color}-500 px-0.5 py-1 w-6 h-6 text-sm font-semibold text-center #{@class}"}>
-      <div class="w-5 flex items-center justify-center margin-auto">
-        <p><%= render_slot(@inner_block) %></p>
-      </div>
-    </div>
-    """
-  end
-
-  defp square(assigns) do
-    ~H"""
-    <div class={"inline-flex bg-#{@color}-500 h-5 px-1 text-sm font-semibold #{@class}"}>
-      <div class="flex items-center justify-center">
-        <p><%= render_slot(@inner_block) %></p>
-      </div>
+    <div class={[
+      "inline-flex items-center justify-center whitespace-nowrap leading-none text-sm",
+      "bg-#{@color}",
+      @variant_class,
+      @class
+    ]}>
+      <%= render_slot(@inner_block) %>
     </div>
     """
   end

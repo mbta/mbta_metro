@@ -13,24 +13,24 @@ defmodule Storybook.Components.BadgeStack do
         id: :circle,
         attributes: %{
           badges: [
-            ["blue", "BL"],
-            ["green", "E"],
-            ["orange", "OL"],
-            ["red", "RL"]
+            ["blue-500", "BL"],
+            ["green-500", "E"],
+            ["orange-500", "OL"],
+            ["red-500", "RL"]
           ],
           class: "text-white",
-          type: "circle"
+          variant: "circle"
         }
       },
       %Variation{
         id: :square,
         attributes: %{
           badges: [
-            ["yellow", "90"],
-            ["yellow", "105"],
-            ["yellow", "93"]
+            ["yellow-300", "90"],
+            ["yellow-300", "105"],
+            ["yellow-300", "93"]
           ],
-          type: "square"
+          variant: "square"
         }
       }
     ]

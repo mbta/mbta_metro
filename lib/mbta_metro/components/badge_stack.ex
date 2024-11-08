@@ -8,23 +8,23 @@ defmodule MbtaMetro.Components.BadgeStack do
   attr :background, :string, default: "white"
   attr :class, :string, default: ""
   attr :badges, :list, required: true
-  attr :type, :string, required: true
+  attr :variant, :string, required: true, values: ["circle", "square"]
 
-  def badge_stack(%{type: "circle"} = assigns) do
+  def badge_stack(%{variant: "circle"} = assigns) do
     circle_stack(assigns)
   end
 
-  def badge_stack(%{type: "square"} = assigns) do
+  def badge_stack(%{variant: "square"} = assigns) do
     square_stack(assigns)
   end
 
   defp circle_stack(assigns) do
     ~H"""
-    <div class="flex -space-x-0.5">
+    <div class="inline-flex -space-x-0.5">
       <.badge
         :for={{[color, text], index} <- Enum.with_index(@badges)}
+        variant="circle"
         color={color}
-        type="circle"
         class={"ring-#{@background} ring-2 #{zindex(index)} #{@class}"}
       >
         <%= text %>
@@ -35,12 +35,12 @@ defmodule MbtaMetro.Components.BadgeStack do
 
   defp square_stack(assigns) do
     ~H"""
-    <div class="flex -space-x-0.5 h-5 overflow-hidden">
+    <div class="inline-flex -space-x-0.5 h-5 overflow-hidden">
       <%= for {[color, text], index} <- Enum.with_index(@badges) do %>
         <.badge
           color={color}
-          type="square"
-          class={"pl-2 pr-2 first:pr-2.5 last:pl-2.5 first:rounded-l-sm last:rounded-r-sm rounded-none #{zindex(index)} #{@class}"}
+          variant="square"
+          class={"px-2 first:px-2.5 [&:not(:first-child)]:rounded-l-none [&:not(:last-child)]:rounded-r-none #{zindex(index)} #{@class}"}
         >
           <%= text %>
         </.badge>
