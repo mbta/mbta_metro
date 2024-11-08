@@ -17,7 +17,7 @@ defmodule Storybook.Components.Badge do
         id: :circle,
         attributes: %{
           class: "text-white",
-          color: "orange",
+          color_class: "bg-[#ed8b00]",
           type: "circle"
         },
         slots: [
@@ -25,31 +25,56 @@ defmodule Storybook.Components.Badge do
         ]
       },
       %Variation{
+        id: :pill,
+        attributes: %{
+          class: "text-white",
+          color_class: "bg-purple-500",
+          padding_class: "px-2 py-0.5",
+          rounded_class: "rounded-full",
+          type: "square"
+        },
+        slots: [
+          "PURPLE"
+        ]
+      },
+      %Variation{
         id: :circle_with_icon,
         attributes: %{
-          color: "blue",
+          class: "text-black",
+          color_class: "bg-blue-100",
           type: "circle"
         },
         slots: [
-          "<.icon name=\"ship\" class=\"w-4 h-4 fill-white\" />"
+          "<.icon name=\"ship\" class=\"w-4 h-4 fill-black\" />"
         ]
       },
       %Variation{
         id: :square,
         attributes: %{
-          class: "text-yellow-800 rounded-sm",
-          color: "yellow",
+          class: "min-w-8",
+          color_class: "bg-blue-700 text-orange-100",
           type: "square"
         },
         slots: [
-          "86"
+          "A"
+        ]
+      },
+      %Variation{
+        id: :square_with_rounded_corners,
+        attributes: %{
+          color_class: "bg-yellow-300 text-yellow-900",
+          rounded_class: "rounded-md",
+          type: "square"
+        },
+        slots: [
+          "441/442"
         ]
       },
       %Variation{
         id: :square_with_icon,
         attributes: %{
           class: "shadow-[2px_2px_lightblue]",
-          color: "red",
+          color_class: "bg-red-800",
           type: "square"
         },
         slots: [
