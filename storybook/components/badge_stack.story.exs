@@ -13,10 +13,10 @@ defmodule Storybook.Components.BadgeStack do
         id: :circle,
         attributes: %{
           badges: [
-            ["blue", "BL"],
-            ["green", "E"],
-            ["orange", "OL"],
-            ["red", "RL"]
+            ["bg-blue-500", "BL"],
+            ["bg-green-500", "E"],
+            ["bg-orange-500", "OL"],
+            ["bg-red-500", "RL"]
           ],
           class: "text-white",
           type: "circle"
@@ -26,9 +26,9 @@ defmodule Storybook.Components.BadgeStack do
         id: :square,
         attributes: %{
           badges: [
-            ["yellow", "90"],
-            ["yellow", "105"],
-            ["yellow", "93"]
+            ["bg-yellow-400", "90"],
+            ["bg-yellow-400", "105"],
+            ["bg-yellow-400", "93"]
           ],
           type: "square"
         }
