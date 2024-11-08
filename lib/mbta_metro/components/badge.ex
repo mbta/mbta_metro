@@ -30,7 +30,7 @@ defmodule MbtaMetro.Components.Badge do
   defp base_badge(assigns) do
     ~H"""
     <div class={[
-      "inline-flex items-center justify-center whitespace-nowrap leading-none text-sm",
+      "inline-flex items-center justify-center whitespace-nowrap leading-none",
       "bg-#{@color}",
       @variant_class,
       @class
