@@ -16,9 +16,17 @@ defmodule Storybook.Components.Badge do
       %Variation{
         id: :circle,
         attributes: %{
-          class: "text-white",
-          color_class: "bg-[#ed8b00]",
-          type: "circle"
+          variant: "circle"
+        },
+        slots: [
+          "7"
+        ]
+      },
+      %Variation{
+        id: :circle_with_customization,
+        attributes: %{
+          class: "text-white !bg-[#ed8b00]",
+          variant: "circle"
         },
         slots: [
           "OL"
@@ -28,10 +36,8 @@ defmodule Storybook.Components.Badge do
         id: :pill,
         attributes: %{
           class: "text-white",
-          color_class: "bg-purple-500",
-          padding_class: "px-2 py-0.5",
-          rounded_class: "rounded-full",
-          type: "square"
+          color: "purple-600",
+          variant: "pill"
         },
         slots: [
           "PURPLE"
@@ -40,9 +46,7 @@ defmodule Storybook.Components.Badge do
       %Variation{
         id: :circle_with_icon,
         attributes: %{
-          class: "text-black",
-          color_class: "bg-blue-100",
-          type: "circle"
+          variant: "circle"
         },
         slots: [
           "<.icon name=\"ship\" class=\"w-4 h-4 fill-black\" />"
@@ -51,31 +55,29 @@ defmodule Storybook.Components.Badge do
       %Variation{
         id: :square,
         attributes: %{
-          class: "min-w-8",
-          color_class: "bg-blue-700 text-orange-100",
-          type: "square"
+          variant: "square"
         },
         slots: [
-          "A"
+          "5 Emails"
         ]
       },
       %Variation{
-        id: :square_with_rounded_corners,
+        id: :square_with_customizations,
         attributes: %{
-          color_class: "bg-yellow-300 text-yellow-900",
-          rounded_class: "rounded-md",
-          type: "square"
+          color: "transparent",
+          class: "text-black border border-2 border-red-800 !rounded-none",
+          variant: "square"
         },
         slots: [
-          "441/442"
+          "Close"
         ]
       },
       %Variation{
         id: :square_with_icon,
         attributes: %{
           class: "shadow-[2px_2px_lightblue]",
-          color_class: "bg-red-800",
-          type: "square"
+          color: "red-400",
+          variant: "square"
         },
         slots: [
           "<.icon type=\"regular\" name=\"heart\" class=\"w-4 h-4 fill-white\" />"

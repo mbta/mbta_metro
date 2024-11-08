@@ -4,57 +4,35 @@ defmodule MbtaMetro.Components.Badge do
   use Phoenix.Component
 
   attr :class, :string, default: ""
-  attr :color_class, :string, default: "bg-blue-500"
-  attr :font_class, :string, default: "text-sm font-semibold"
-  attr :padding_class, :string
-  attr :rounded_class, :string, default: ""
-  attr :sizing_class, :string
-  attr :type, :string, required: true, values: ["circle", "square"]
+  attr :color, :string, default: "blue-200"
+  attr :variant, :string, default: "square", values: ["circle", "pill", "square"]
 
   slot :inner_block, required: true
 
-  def badge(%{type: "circle"} = assigns) do
-    circle(assigns)
+  def badge(%{variant: "circle"} = assigns) do
+    assigns
+    |> assign(:variant_class, "px-0.5 py-1 w-6 h-6 rounded-full font-semibold")
+    |> base_badge()
   end
 
-  def badge(%{type: "square"} = assigns) do
-    square(assigns)
+  def badge(%{variant: "pill"} = assigns) do
+    assigns
+    |> assign(:variant_class, "px-2 py-1 rounded-full font-semibold")
+    |> base_badge()
   end
 
-  defp circle(assigns) do
-    assigns =
-      assigns
-      |> assign_new(:padding_class, fn -> "px-0.5 py-1" end)
-      |> assign_new(:sizing_class, fn -> "w-6 h-6" end)
+  def badge(%{variant: "square"} = assigns) do
+    assigns
+    |> assign(:variant_class, "px-2 py-1 rounded-md min-w-8 font-bold")
+    |> base_badge()
+  end
 
+  defp base_badge(assigns) do
     ~H"""
     <div class={[
-      "inline-flex rounded-full items-center justify-center whitespace-nowrap",
-      @color_class,
-      @font_class,
-      @padding_class,
-      @sizing_class,
-      @class
-    ]}>
-      <%= render_slot(@inner_block) %>
-    </div>
-    """
-  end
-
-  defp square(assigns) do
-    assigns =
-      assigns
-      |> assign_new(:padding_class, fn -> "px-1" end)
-      |> assign_new(:sizing_class, fn -> "" end)
-
-    ~H"""
-    <div class={[
-      "inline-flex align-center justify-center  whitespace-nowrap",
-      @color_class,
-      @font_class,
-      @padding_class,
-      @rounded_class,
-      @sizing_class,
+      "inline-flex items-center justify-center whitespace-nowrap leading-none text-sm",
+      "bg-#{@color}",
+      @variant_class,
       @class
     ]}>
       <%= render_slot(@inner_block) %>
