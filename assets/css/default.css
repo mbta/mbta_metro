@@ -6,14 +6,14 @@
   :root {
     font-family: "Inter", sans-serif;
   }
-  
+
   @supports (font-variation-settings: normal) {
     :root {
       font-family: "InterVariable", sans-serif;
       font-optical-sizing: auto;
     }
   }
-  
+
   @font-face {
     font-family: InterVariable;
     font-style: normal;
@@ -21,7 +21,7 @@
     font-display: swap;
     src: url("../fonts/InterVariable.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: InterVariable;
     font-style: italic;
@@ -29,7 +29,7 @@
     font-display: swap;
     src: url("../fonts/InterVariable-Italic.woff2") format("woff2");
   }
-  
+
   /* static fonts */
   @font-face {
     font-family: "Inter";
@@ -38,7 +38,7 @@
     font-display: swap;
     src: url("../fonts/Inter-Thin.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "Inter";
     font-style: italic;
@@ -46,7 +46,7 @@
     font-display: swap;
     src: url("../fonts/Inter-ThinItalic.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "Inter";
     font-style: normal;
@@ -54,7 +54,7 @@
     font-display: swap;
     src: url("../fonts/Inter-ExtraLight.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "Inter";
     font-style: italic;
@@ -62,7 +62,7 @@
     font-display: swap;
     src: url("../fonts/Inter-ExtraLightItalic.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "Inter";
     font-style: normal;
@@ -70,7 +70,7 @@
     font-display: swap;
     src: url("../fonts/Inter-Light.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "Inter";
     font-style: italic;
@@ -78,7 +78,7 @@
     font-display: swap;
     src: url("../fonts/Inter-LightItalic.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "Inter";
     font-style: normal;
@@ -86,7 +86,7 @@
     font-display: swap;
     src: url("../fonts/Inter-Regular.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "Inter";
     font-style: italic;
@@ -94,7 +94,7 @@
     font-display: swap;
     src: url("../fonts/Inter-Italic.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "Inter";
     font-style: normal;
@@ -102,7 +102,7 @@
     font-display: swap;
     src: url("../fonts/Inter-Medium.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "Inter";
     font-style: italic;
@@ -110,7 +110,7 @@
     font-display: swap;
     src: url("../fonts/Inter-MediumItalic.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "Inter";
     font-style: normal;
@@ -118,7 +118,7 @@
     font-display: swap;
     src: url("../fonts/Inter-SemiBold.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "Inter";
     font-style: italic;
@@ -126,7 +126,7 @@
     font-display: swap;
     src: url("../fonts/Inter-SemiBoldItalic.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "Inter";
     font-style: normal;
@@ -134,7 +134,7 @@
     font-display: swap;
     src: url("../fonts/Inter-Bold.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "Inter";
     font-style: italic;
@@ -142,7 +142,7 @@
     font-display: swap;
     src: url("../fonts/Inter-BoldItalic.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "Inter";
     font-style: normal;
@@ -150,7 +150,7 @@
     font-display: swap;
     src: url("../fonts/Inter-ExtraBold.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "Inter";
     font-style: italic;
@@ -158,7 +158,7 @@
     font-display: swap;
     src: url("../fonts/Inter-ExtraBoldItalic.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "Inter";
     font-style: normal;
@@ -166,7 +166,7 @@
     font-display: swap;
     src: url("../fonts/Inter-Black.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "Inter";
     font-style: italic;
@@ -174,7 +174,7 @@
     font-display: swap;
     src: url("../fonts/Inter-BlackItalic.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "InterDisplay";
     font-style: normal;
@@ -182,7 +182,7 @@
     font-display: swap;
     src: url("../fonts/InterDisplay-Thin.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "InterDisplay";
     font-style: italic;
@@ -190,7 +190,7 @@
     font-display: swap;
     src: url("../fonts/InterDisplay-ThinItalic.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "InterDisplay";
     font-style: normal;
@@ -198,7 +198,7 @@
     font-display: swap;
     src: url("../fonts/InterDisplay-ExtraLight.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "InterDisplay";
     font-style: italic;
@@ -206,7 +206,7 @@
     font-display: swap;
     src: url("../fonts/InterDisplay-ExtraLightItalic.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "InterDisplay";
     font-style: normal;
@@ -214,7 +214,7 @@
     font-display: swap;
     src: url("../fonts/InterDisplay-Light.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "InterDisplay";
     font-style: italic;
@@ -222,7 +222,7 @@
     font-display: swap;
     src: url("../fonts/InterDisplay-LightItalic.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "InterDisplay";
     font-style: normal;
@@ -230,7 +230,7 @@
     font-display: swap;
     src: url("../fonts/InterDisplay-Regular.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "InterDisplay";
     font-style: italic;
@@ -238,7 +238,7 @@
     font-display: swap;
     src: url("../fonts/InterDisplay-Italic.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "InterDisplay";
     font-style: normal;
@@ -246,7 +246,7 @@
     font-display: swap;
     src: url("../fonts/InterDisplay-Medium.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "InterDisplay";
     font-style: italic;
@@ -254,7 +254,7 @@
     font-display: swap;
     src: url("../fonts/InterDisplay-MediumItalic.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "InterDisplay";
     font-style: normal;
@@ -262,7 +262,7 @@
     font-display: swap;
     src: url("../fonts/InterDisplay-SemiBold.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "InterDisplay";
     font-style: italic;
@@ -270,7 +270,7 @@
     font-display: swap;
     src: url("../fonts/InterDisplay-SemiBoldItalic.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "InterDisplay";
     font-style: normal;
@@ -278,7 +278,7 @@
     font-display: swap;
     src: url("../fonts/InterDisplay-Bold.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "InterDisplay";
     font-style: italic;
@@ -286,7 +286,7 @@
     font-display: swap;
     src: url("../fonts/InterDisplay-BoldItalic.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "InterDisplay";
     font-style: normal;
@@ -294,7 +294,7 @@
     font-display: swap;
     src: url("../fonts/InterDisplay-ExtraBold.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "InterDisplay";
     font-style: italic;
@@ -302,7 +302,7 @@
     font-display: swap;
     src: url("../fonts/InterDisplay-ExtraBoldItalic.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "InterDisplay";
     font-style: normal;
@@ -310,58 +310,12 @@
     font-display: swap;
     src: url("../fonts/InterDisplay-Black.woff2") format("woff2");
   }
-  
+
   @font-face {
     font-family: "InterDisplay";
     font-style: italic;
     font-weight: 900;
     font-display: swap;
     src: url("../fonts/InterDisplay-BlackItalic.woff2") format("woff2");
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-heading font-bold mt-11 mb-3;
-
-    /* Smaller bottom margin if followed by a <p> */
-    &:has(+p) {
-      @apply mb-1;
-    }
-  }
-
-  /* Smaller top margin if after a heading or <p> */
-  h1 + h2,
-  h2 + h3,
-  h3 + h4,
-  h4 + h5,
-  h5 + h6,
-  p + h3,
-  p + h4,
-  p + h5,
-  p + h6 {
-    @apply mt-4;
-  }
-  
-  h1 { 
-    @apply text-4xl; 
-  }
-  
-  h2 { 
-    @apply text-3xl;
-  }
-  
-  h3 { 
-    @apply text-2xl; 
-  }
-  
-  h4 { 
-    @apply text-lg; 
-  }
-  
-  h5 { 
-    @apply text-base; 
-  }
-  
-  h6 { 
-    @apply text-sm; 
   }
 }
