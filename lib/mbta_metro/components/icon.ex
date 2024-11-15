@@ -1,6 +1,8 @@
 defmodule MbtaMetro.Components.Icon do
   @moduledoc false
 
+  require Logger
+
   use Phoenix.Component
 
   alias MbtaMetro.Utils
@@ -34,11 +36,15 @@ defmodule MbtaMetro.Components.Icon do
 
   for {file, name, type} <- icons do
     defp icon(unquote(type), unquote(name), opts) do
-      attrs = opts_to_attrs(opts)
-
-      "<svg" <> rest = unquote(file)
-
-      Phoenix.HTML.raw(["<svg", attrs, rest])
+      with {:ok, html} <- Floki.parse_fragment(unquote(file)),
+           [{"svg", svg_attrs, svg_content}] <- Floki.find(html, "svg") do
+        {"svg", [opts_to_attrs(opts) | svg_attrs], svg_content}
+        |> Floki.raw_html()
+        |> Phoenix.HTML.raw()
+      else
+        _ ->
+          Logger.warning("Could not parse icon #{unquote(name)} #{unquote(type)}")
+      end
     end
   end
 
