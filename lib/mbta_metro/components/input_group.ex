@@ -19,17 +19,15 @@ defmodule MbtaMetro.Components.InputGroup do
   def input_group(assigns) do
     ~H"""
     <.fieldset legend={@legend} id={@id} class={@class}>
-      <ul class="p-0 flex flex-col sm:flex-row list-none">
+      <ul class="p-0 flex list-none">
         <li
           :for={{label, value} <- @options}
           class={[
-            "border border-solid border-blue-400 px-3 py-0 text-blue-400 cursor-pointer",
+            "border border-solid border-blue-400 p-0 md:p-1 text-blue-400 cursor-pointer",
             "has-[:checked]:bg-blue-100 has-[:checked]:font-bold",
             "[&:not(:last-child)]:border-r-0",
-            "sm:first:rounded-l-md sm:last:rounded-r-md",
-            "sm:first:rounded-l-md sm:last:rounded-r-md",
-            "max-sm:-mb-px has-[:checked]:max-sm:mb-0",
-            "sm:-mr-px has-[:checked]:sm:mr-0 w-full"
+            "first:rounded-l-md last:rounded-r-md",
+            "w-full"
           ]}
         >
           <.input
