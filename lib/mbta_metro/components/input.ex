@@ -70,7 +70,7 @@ defmodule MbtaMetro.Components.Input do
     assigns
     |> assign(field: nil, id: assigns.id || field.id)
     |> assign(:label, assigns.label || assigns.value)
-    |> assign(:errors, errors)
+    |> assign(:errors, format_changeset_errors(errors))
     |> assign_new(:name, fn -> if assigns.multiple, do: field.name <> "[]", else: field.name end)
     |> assign_new(:value, fn -> field.value end)
     |> input()
@@ -246,6 +246,13 @@ defmodule MbtaMetro.Components.Input do
       <.feedback :for={msg <- @errors} kind={:error}><%= msg %></.feedback>
     </div>
     """
+  end
+
+  defp format_changeset_errors(errors) do
+    Enum.map(errors, fn
+      {msg, _} -> msg
+      msg -> msg
+    end)
   end
 
   @doc """
