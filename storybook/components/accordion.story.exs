@@ -19,6 +19,33 @@ defmodule Storybook.Components.Accordion do
           open: false
         },
         slots: [
+          ~s|<:heading>
+  <.icon name="envelope" class="w-4 h-4 fill-slate-500" />
+  <div>
+    <p class="leading-4">
+      Heading text
+    </p>
+    <small class="leading-none">
+      Subheading text
+    </small>
+  </div>
+</:heading>|,
+          """
+          <:content>
+            <p>Any content can be inside</p>
+          </:content>
+          """
+        ]
+      },
+      %Variation{
+        id: :contained,
+        description: "Contained",
+        attributes: %{
+          id: "default",
+          variant: "contained",
+          open: false
+        },
+        slots: [
           ~s|<:heading><.icon name="envelope" class="w-4 h-4 fill-blue-500" />Heading text</:heading>|,
           """
           <:content>
