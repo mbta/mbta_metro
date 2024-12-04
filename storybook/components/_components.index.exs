@@ -17,6 +17,7 @@ defmodule Storybook.Components.Index do
   def entry("icon"), do: [name: "Icon"]
   def entry("input"), do: [name: "Input"]
   def entry("input_group"), do: [name: "Input group"]
+  def entry("list"), do: [name: "List"]
   def entry("modal"), do: [name: "Modal"]
   def entry("mode_selector"), do: [name: "Mode selector"]
   def entry("progress"), do: [name: "Progress"]

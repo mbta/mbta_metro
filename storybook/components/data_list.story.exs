@@ -27,7 +27,7 @@ defmodule Storybook.Components.DataList do
     |> Enum.map(&item/1)
   end
 
-  def item({title, value}) do
+  defp item({title, value}) do
     "<:item title=\"#{title}\"}>#{value}</:item>"
   end
 end
