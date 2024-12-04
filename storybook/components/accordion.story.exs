@@ -73,27 +73,6 @@ defmodule Storybook.Components.Accordion do
           </:content>
           """
         ]
-      },
-      %Variation{
-        id: :with_extra,
-        description: "With extra content",
-        attributes: %{
-          id: "content",
-          open: false
-        },
-        slots: [
-          ~s|<:heading>Heading text</:heading>|,
-          """
-          <:content>
-            <p>Any content can be inside</p>
-          </:content>
-          """,
-          """
-          <:extra>
-            <.feedback kind={:error}>Something inside needs attention.</.feedback>
-          </:extra>
-          """
-        ]
       }
     ]
   end

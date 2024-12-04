@@ -26,12 +26,6 @@ defmodule MbtaMetro.Components.Accordion do
 
   slot :content, required: true
 
-  slot :extra,
-    required: false,
-    doc: """
-    Supplemental content to be shown below the accordion. Helpful for showing error states if form inputs are inside the component.
-    """
-
   slot :heading,
     required: true,
     doc: """
@@ -55,7 +49,6 @@ defmodule MbtaMetro.Components.Accordion do
         <%= render_slot(@content) %>
       </div>
     </details>
-    <%= render_slot(@extra) %>
     """
   end
 
@@ -69,11 +62,10 @@ defmodule MbtaMetro.Components.Accordion do
           class="group-open:rotate-180 w-4 h-4 absolute top-3 right-3 fill-blue-500"
         />
       </summary>
-      <div class=" border-t border-solid border-slate-300 p-2">
+      <div class="border-t border-solid border-slate-300 p-2">
         <%= render_slot(@content) %>
       </div>
     </details>
-    <%= render_slot(@extra) %>
     """
   end
 end
