@@ -13,16 +13,22 @@ defmodule Storybook.Components.List do
         id: :default,
         description: "Default",
         slots: items()
+      },
+      %Variation{
+        id: :with_item_classes,
+        description: "With slots that have custom classes",
+        slots: class_items()
       }
     ]
   end
 
   defp items do
     Faker.Util.sample_uniq(3, &Faker.Internet.email/0)
-    |> Enum.map(&item/1)
+    |> Enum.map(fn value -> "<:item>#{value}</:item>" end)
   end
 
-  defp item(value) do
-    "<:item>#{value}</:item>"
+  defp class_items do
+    ["red", "green", "blue"]
+    |> Enum.map(fn value -> "<:item class=\"text-#{value}-500\">#{value}</:item>" end)
   end
 end

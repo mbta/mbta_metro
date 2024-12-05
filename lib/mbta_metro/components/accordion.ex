@@ -38,7 +38,7 @@ defmodule MbtaMetro.Components.Accordion do
   def accordion(%{variant: "contained"} = assigns) do
     ~H"""
     <details id={@id} class="group w-full bg-white" open={@open}>
-      <summary class="border border-solid border-blue-500 text-blue-600 hover:text-slate-900 hover:bg-blue-100 p-2 flex cursor-pointer list-none items-center gap-2 p-2 relative">
+      <summary class="border border-solid border-blue-500 text-blue-600 hover:text-slate-900 hover:bg-blue-100 p-2 flex cursor-pointer list-none items-center gap-2 relative">
         <%= render_slot(@heading) %>
         <.icon
           name="chevron-up"
@@ -55,14 +55,14 @@ defmodule MbtaMetro.Components.Accordion do
   def accordion(assigns) do
     ~H"""
     <details id={@id} class="group w-full bg-white" open={@open}>
-      <summary class="text-slate-500 p-2 flex cursor-pointer list-none gap-2 p-2 relative">
+      <summary class="text-slate-500 flex cursor-pointer list-none gap-2 relative py-2">
         <%= render_slot(@heading) %>
         <.icon
           name="chevron-up"
           class="group-open:rotate-180 w-4 h-4 absolute top-3 right-3 fill-blue-500"
         />
       </summary>
-      <div class="border-t border-solid border-slate-300 p-2">
+      <div class="border-t border-solid border-slate-300">
         <%= render_slot(@content) %>
       </div>
     </details>

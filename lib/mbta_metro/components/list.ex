@@ -16,12 +16,14 @@ defmodule MbtaMetro.Components.List do
   """
   attr :class, :string, default: ""
 
-  slot :item, required: true
+  slot :item, required: true do
+    attr :class, :string
+  end
 
   def list(assigns) do
     ~H"""
-    <ul class={"max-w-xs flex flex-col divide-y divide-slate-200 #{@class}"}>
-      <li :for={item <- @item} class="inline-flex items-center gap-x-2 py-2">
+    <ul class={"flex flex-col w-full divide-y divide-slate-200 ps-0 #{@class}"}>
+      <li :for={item <- @item} class={"inline-flex items-center gap-x-2 py-2 #{Map.get(item, :class, "")}"}>
         <%= render_slot(item) %>
       </li>
     </ul>
