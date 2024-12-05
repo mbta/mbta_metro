@@ -16,7 +16,7 @@ defmodule Storybook.Components.List do
       },
       %Variation{
         id: :with_item_classes,
-        description: "With item classes",
+        description: "With slots that have custom classes",
         slots: class_items()
       }
     ]
