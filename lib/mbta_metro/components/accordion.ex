@@ -5,12 +5,6 @@ defmodule MbtaMetro.Components.Accordion do
 
   import MbtaMetro.Components.Icon, only: [icon: 1]
 
-  attr :id, :string,
-    required: true,
-    doc: """
-    A unique identifier for the accordion.
-    """
-
   attr :variant, :string,
     default: "default",
     values: ["contained", "default"],
@@ -37,7 +31,7 @@ defmodule MbtaMetro.Components.Accordion do
   """
   def accordion(%{variant: "contained"} = assigns) do
     ~H"""
-    <details id={@id} class="group w-full bg-white" open={@open}>
+    <details class="group w-full bg-white" open={@open}>
       <summary class="border border-solid border-blue-500 text-blue-600 hover:text-slate-900 hover:bg-blue-100 p-2 flex cursor-pointer list-none items-center gap-2 relative">
         <%= render_slot(@heading) %>
         <.icon
@@ -54,7 +48,7 @@ defmodule MbtaMetro.Components.Accordion do
 
   def accordion(assigns) do
     ~H"""
-    <details id={@id} class="group w-full bg-white" open={@open}>
+    <details class="group w-full bg-white" open={@open}>
       <summary class="text-slate-500 flex cursor-pointer list-none gap-2 relative py-2">
         <%= render_slot(@heading) %>
         <.icon
