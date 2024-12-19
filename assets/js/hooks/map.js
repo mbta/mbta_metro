@@ -1,7 +1,5 @@
 import maplibregl from "maplibre-gl";
 
-import colors from "../styles/colors";
-
 /**
  * This is a LiveView hook this initializes a maplibre-gl map.
  */
