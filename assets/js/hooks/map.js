@@ -144,7 +144,7 @@ export default {
     return {
       type: "Feature",
       properties: {
-        color: colors[line.color],
+        color: line.color,
         width: line.width,
       },
       geometry: {

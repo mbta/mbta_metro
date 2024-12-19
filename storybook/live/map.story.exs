@@ -19,7 +19,7 @@ defmodule Storybook.Live.Map do
           config: @config,
           lines: [
             %{
-              color: "orange-500",
+              color: "#ED8B00",
               width: 4,
               coordinates: [
                 [-71.05829, 42.36302],
