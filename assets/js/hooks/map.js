@@ -1,7 +1,5 @@
 import maplibregl from "maplibre-gl";
 
-import colors from "../styles/colors";
-
 /**
  * This is a LiveView hook this initializes a maplibre-gl map.
  */
@@ -144,7 +142,7 @@ export default {
     return {
       type: "Feature",
       properties: {
-        color: colors[line.color],
+        color: line.color,
         width: line.width,
       },
       geometry: {
