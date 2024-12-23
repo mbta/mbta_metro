@@ -4,7 +4,6 @@ defmodule MbtaMetro.Components.Progress do
   use Phoenix.Component
 
   attr :aria_label, :string, required: true
-  attr :color, :string, default: "blue"
   attr :value, :integer, default: 0
 
   @doc """
@@ -12,24 +11,18 @@ defmodule MbtaMetro.Components.Progress do
 
   Example:
 
-      <.progress aria_label="Downloading..." color="silver"  value={@download_percent} />
+      <.progress aria_label="Downloading..." value={@download_percent} />
   """
   def progress(assigns) do
     ~H"""
-    <div
-      class={"bg-#{@color}-100 flex w-full h-1.5 rounded-full overflow-hidden border-1"}
-      role="progressbar"
+    <progress
       aria-label={@aria_label}
-      aria-valuenow={@value}
-      aria-valuemin="0"
-      aria-valuemax="100"
+      class="flex w-full h-1.5 border-1 rounded [&::-webkit-progress-bar]:rounded-lg [&::-webkit-progress-value]:rounded-lg [&::-webkit-progress-bar]:bg-charcoal-90 [&::-webkit-progress-value]:bg-cobalt-40 [&::-moz-progress-bar]:bg-cobalt-40"
+      max="100"
+      value={@value}
     >
-      <div
-        class={"bg-#{@color}-500 flex flex-col justify-center rounded-full overflow-hidden text-xs text-white text-center whitespace-nowrap transition duration-500"}
-        style={"width: #{@value}%"}
-      >
-      </div>
-    </div>
+      {@value}
+    </progress>
     """
   end
 end

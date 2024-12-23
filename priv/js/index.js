@@ -1,7 +1,5 @@
 // STYLES
-import colors from "./styles/colors"
 import content from "./styles/content"
-import fontFamily from "./styles/fontFamily"
 import plugins from "./styles/plugins"
 import safelist from "./styles/safelist"
 
@@ -16,9 +14,7 @@ const Hooks = {
 
 export {
   // STYLES
-  colors,
   content,
-  fontFamily,
   plugins,
   safelist,
   // HOOKS

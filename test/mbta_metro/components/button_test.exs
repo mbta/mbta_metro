@@ -24,8 +24,7 @@ defmodule MbtaMetro.Components.ButtonTest do
     component =
       ~H"""
       <.button>
-        <.icon type="brands" name="metro" class="h-10 w-10" />
-        Click me
+        <.icon type="brands" name="metro" class="h-10 w-10" /> Click me
       </.button>
       """
 

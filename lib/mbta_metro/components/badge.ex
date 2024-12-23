@@ -4,7 +4,6 @@ defmodule MbtaMetro.Components.Badge do
   use Phoenix.Component
 
   attr :class, :string, default: ""
-  attr :color, :string, default: "blue-200"
   attr :variant, :string, default: "square", values: ["circle", "pill", "square"]
 
   slot :inner_block, required: true
@@ -31,7 +30,6 @@ defmodule MbtaMetro.Components.Badge do
     ~H"""
     <div class={[
       "inline-flex items-center justify-center whitespace-nowrap leading-none",
-      "bg-#{@color}",
       @variant_class,
       @class
     ]}>

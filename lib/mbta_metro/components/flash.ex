@@ -43,10 +43,11 @@ defmodule MbtaMetro.Components.Flash do
       class={[
         @position,
         "mr-2 w-80 sm:w-96 z-50 rounded-lg p-3 ring-1",
-        @kind == :error && "bg-red-100 text-red-600 shadow-md ring-red-500 fill-red-900",
-        @kind == :info && "bg-blue-100 text-blue-600 ring-blue-500 fill-blue-900",
-        @kind == :success && "bg-green-100 text-green-600 ring-green-500 fill-green-900",
-        @kind == :warning && "bg-yellow-100 text-yellow-600 ring-yellow-500 fill-yellow-900"
+        @kind == :error &&
+          "bg-firebrick-90 text-firebrick-40 shadow-4 ring-firebrick-50 fill-firebrick-10",
+        @kind == :info && "bg-cobalt-90 text-cobalt-40 ring-cobalt-50 fill-cobalt-10",
+        @kind == :success && "bg-emerald-90 text-emerald-40 ring-emerald-50 fill-emerald-10",
+        @kind == :warning && "bg-gold-90 text-gold-40 ring-gold-50 fill-gold-10"
       ]}
       {@rest}
     >
@@ -55,10 +56,10 @@ defmodule MbtaMetro.Components.Flash do
       </.feedback>
       <hr class={[
         "mt-2 mb-1",
-        @kind == :error && "border-red-200",
-        @kind == :info && "border-blue-200",
-        @kind == :success && "border-green-200",
-        @kind == :warning && "border-yellow-200"
+        @kind == :error && "border-firebrick-80",
+        @kind == :info && "border-cobalt-80",
+        @kind == :success && "border-emerald-80",
+        @kind == :warning && "border-gold-80"
       ]} />
       <p class="mt-2 text-sm leading-5"><%= msg %></p>
       <button type="button" class="group absolute top-1 right-1 p-2" aria-label="close">
@@ -68,8 +69,8 @@ defmodule MbtaMetro.Components.Flash do
     """
   end
 
-  defp fill(:error), do: "fill-red-600"
-  defp fill(:info), do: "fill-blue-600"
-  defp fill(:success), do: "fill-green-600"
-  defp fill(:warning), do: "fill-yellow-600"
+  defp fill(:error), do: "fill-firebrick-40"
+  defp fill(:info), do: "fill-cobalt-40"
+  defp fill(:success), do: "fill-emerald-40"
+  defp fill(:warning), do: "fill-gold-40"
 end

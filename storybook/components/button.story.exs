@@ -29,24 +29,6 @@ defmodule Storybook.Components.Button do
         ],
         description: "Default with icon"
       }
-    ] ++ color_variations()
-  end
-
-  defp color_variations do
-    ~w[blue green orange purple red silver yellow]
-    |> Enum.map(&color_variation/1)
-  end
-
-  defp color_variation(color) do
-    %Variation{
-      id: String.to_atom(color),
-      attributes: %{
-        color: color
-      },
-      slots: [
-        color
-      ],
-      description: String.capitalize(color)
-    }
+    ]
   end
 end

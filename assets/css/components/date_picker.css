@@ -1,12 +1,10 @@
 @import "../../node_modules/flatpickr/dist/flatpickr.min.css";
 
-@import "../colors.css";
-
 .flatpickr {
   position: relative;
 
   .form-control[readonly] {
-    background-color: var(--white);
+    background-color: var(--colors-white);
   }
 
   &~a[data-toggle] {
@@ -17,7 +15,7 @@
 }
 
 .flatpickr-mobile {
-  border: 1px solid var(--blue-500);
+  border: 1px solid var(--colors-cobalt-30);
   border-radius: .25rem;
   width: calc(100% - 2.5rem);
 
@@ -61,13 +59,13 @@
 }
 
 .flatpickr-day.selected {
-  background-color: var(--blue-500);
-  border-color: var(--white);
-  color: var(--white);
+  background-color: var(--colors-cobalt-30);
+  border-color: var(--colors-white);
+  color: var(--colors-white);
 
   &:hover {
-    background-color: var(--blue-100);
-    border-color: var(--white);
-    color: var(--blue-500);
+    background-color: var(--colors-cobalt-90);
+    border-color: var(--colors-white);
+    color: var(--colors-cobalt-30);
   }
 }

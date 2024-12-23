@@ -40,7 +40,7 @@ defmodule MbtaMetro.Components.Modal do
     >
       <div
         id={"#{@id}-bg"}
-        class="bg-silver-500/30 fixed inset-0 transition-opacity"
+        class="bg-charcoal-50/30 fixed inset-0 transition-opacity"
         aria-hidden="true"
       />
       <div
@@ -58,7 +58,7 @@ defmodule MbtaMetro.Components.Modal do
               phx-window-keydown={JS.exec("data-cancel", to: "##{@id}")}
               phx-key="escape"
               phx-click-away={JS.exec("data-cancel", to: "##{@id}")}
-              class="shadow-silver-700/5 ring-silver-700/5 relative hidden rounded bg-white p-14 shadow-lg ring-1 transition"
+              class="shadow-charcoal-30/5 ring-charcoal-30/5 relative hidden rounded bg-white p-14 shadow-lg ring-1 transition"
             >
               <div class="absolute top-3 right-3">
                 <.button phx-click={JS.exec("data-cancel", to: "##{@id}")} type="button" class="m-0">

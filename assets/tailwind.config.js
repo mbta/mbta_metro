@@ -1,6 +1,7 @@
-const plugin = require("tailwindcss/plugin")
-
-const {colors, content, fontFamily, plugins, safelist} = require("./js/index")
+const plugin = require("tailwindcss/plugin");
+const defaultTheme = require('tailwindcss/defaultTheme');
+const MbtaRiderDesignSystemConfig = require("@mbta/rider-design-system");
+const { content, plugins, safelist } = require("./js/index")
 
 module.exports = {
   content: [
@@ -20,19 +21,13 @@ module.exports = {
     //
     //     <div class="phx-click-loading:animate-ping">
     //
-    plugin(({addVariant}) => addVariant("phx-no-feedback", [".phx-no-feedback&", ".phx-no-feedback &"])),
-    plugin(({addVariant}) => addVariant("phx-click-loading", [".phx-click-loading&", ".phx-click-loading &"])),
-    plugin(({addVariant}) => addVariant("phx-submit-loading", [".phx-submit-loading&", ".phx-submit-loading &"])),
-    plugin(({addVariant}) => addVariant("phx-change-loading", [".phx-change-loading&", ".phx-change-loading &"])),
+    plugin(({ addVariant }) => addVariant("phx-no-feedback", [".phx-no-feedback&", ".phx-no-feedback &"])),
+    plugin(({ addVariant }) => addVariant("phx-click-loading", [".phx-click-loading&", ".phx-click-loading &"])),
+    plugin(({ addVariant }) => addVariant("phx-submit-loading", [".phx-submit-loading&", ".phx-submit-loading &"])),
+    plugin(({ addVariant }) => addVariant("phx-change-loading", [".phx-change-loading&", ".phx-change-loading &"])),
   ],
-  theme: {
-    fontFamily: {
-      ...fontFamily
-    },
-    extend: {
-      colors: {
-        ...colors
-      }
-    },
-  },
+  theme: { 
+    ...MbtaRiderDesignSystemConfig.theme,
+    spacing: Object.assign({ ...defaultTheme.spacing }, { ...MbtaRiderDesignSystemConfig.theme.spacing })
+  }
 }

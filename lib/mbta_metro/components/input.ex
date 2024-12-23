@@ -6,11 +6,11 @@ defmodule MbtaMetro.Components.Input do
   import MbtaMetro.Components.Feedback
 
   defp input_base_classes do
-    "border border-solid border-2 border-blue-600 bg-white focus:ring-4 focus:border-blue-900 ring-offset-0 ring-sky-700/50 checked:bg-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+    "border border-solid border-2 border-cobalt-30 bg-white focus:ring-4 focus:border-cobalt-10 ring-offset-0 ring-cobalt-80/50 checked:bg-cobalt-50 disabled:opacity-50 disabled:pointer-events-none"
   end
 
   defp input_error_classes do
-    "border border-solid border-2 border-red-300 focus:border-red-600"
+    "border border-solid border-2 border-firebrick-70 focus:border-firebrick-40"
   end
 
   @doc """

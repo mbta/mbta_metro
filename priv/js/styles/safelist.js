@@ -1,5 +1,5 @@
-import colors from "./colors"
-
+const MbtaRiderDesignSystemConfig = require("@mbta/rider-design-system");
+const { theme: { colors } } = MbtaRiderDesignSystemConfig;
 const colorKeys = Object.keys(colors);
 
 const backgroundColors = colorKeys.map(color => {

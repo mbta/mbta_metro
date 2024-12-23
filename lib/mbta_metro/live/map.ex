@@ -77,7 +77,7 @@ defmodule MbtaMetro.Live.Map do
             id={"mbta-metro-point-#{index}"}
             type="metro"
             name="point"
-            class="w-4 h-4 fill-blue-500"
+            class="w-4 h-4 fill-cobalt-50"
             data-coordinates={Jason.encode!(coordinates)}
           />
         <% end %>
@@ -86,7 +86,7 @@ defmodule MbtaMetro.Live.Map do
             id={"mbta-metro-pin-#{index}"}
             type="metro"
             name={index_to_pin(index)}
-            class="w-16 h-16 fill-blue-500"
+            class="w-16 h-16 fill-cobalt-50"
             data-coordinates={Jason.encode!(coordinates)}
           />
         <% end %>

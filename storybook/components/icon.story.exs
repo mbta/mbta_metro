@@ -15,10 +15,15 @@ defmodule Storybook.Components.Icon do
   end
 
   defp icon_variation(type, name) do
+    colors = ["cobalt", "emerald", "firebrick", "gold", "amethyst"]
+    shades = ["20", "40", "70"]
+    class = "fill-#{Faker.Util.pick(colors)}-#{Faker.Util.pick(shades)}"
+    size = ["4", "16", "36"] |> Faker.Util.pick()
+
     %Variation{
       id: String.to_atom("#{type}_#{name}"),
       attributes: %{
-        class: "h-7 w-7 fill-blue-500",
+        class: "h-#{size} w-#{size} #{class}",
         name: name,
         type: type
       }

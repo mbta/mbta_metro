@@ -16,6 +16,7 @@ defmodule Storybook.Components.Badge do
       %Variation{
         id: :circle,
         attributes: %{
+          class: "bg-charcoal-80",
           variant: "circle"
         },
         slots: [
@@ -25,7 +26,7 @@ defmodule Storybook.Components.Badge do
       %Variation{
         id: :circle_with_customization,
         attributes: %{
-          class: "text-white !bg-[#ed8b00]",
+          class: "text-white bg-[#ed8b00]",
           variant: "circle"
         },
         slots: [
@@ -35,8 +36,7 @@ defmodule Storybook.Components.Badge do
       %Variation{
         id: :pill,
         attributes: %{
-          class: "text-white",
-          color: "purple-600",
+          class: "text-white bg-commuter-rail",
           variant: "pill"
         },
         slots: [
@@ -46,6 +46,7 @@ defmodule Storybook.Components.Badge do
       %Variation{
         id: :circle_with_icon,
         attributes: %{
+          class: "bg-ferry",
           variant: "circle"
         },
         slots: [
@@ -55,6 +56,7 @@ defmodule Storybook.Components.Badge do
       %Variation{
         id: :square,
         attributes: %{
+          class: "bg-emerald-70",
           variant: "square"
         },
         slots: [
@@ -65,7 +67,7 @@ defmodule Storybook.Components.Badge do
         id: :square_with_customizations,
         attributes: %{
           color: "transparent",
-          class: "text-black border border-2 border-red-800 !rounded-none",
+          class: "text-black border border-2 border-firebrick-30 !rounded-none",
           variant: "square"
         },
         slots: [
@@ -75,8 +77,7 @@ defmodule Storybook.Components.Badge do
       %Variation{
         id: :square_with_icon,
         attributes: %{
-          class: "shadow-[2px_2px_lightblue]",
-          color: "red-400",
+          class: "shadow-[2px_2px_lightblue] bg-firebrick-50",
           variant: "square"
         },
         slots: [

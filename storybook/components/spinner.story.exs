@@ -16,22 +16,6 @@ defmodule Storybook.Components.Spinner do
           aria_label: "Default"
         }
       }
-    ] ++ color_variations()
-  end
-
-  defp color_variations do
-    ~w[blue green orange purple red silver yellow]
-    |> Enum.map(&color_variation/1)
-  end
-
-  defp color_variation(color) do
-    %Variation{
-      id: String.to_atom(color),
-      attributes: %{
-        aria_label: String.capitalize(color),
-        color: color
-      },
-      description: String.capitalize(color)
-    }
+    ]
   end
 end

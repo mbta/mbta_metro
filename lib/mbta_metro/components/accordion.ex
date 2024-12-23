@@ -32,14 +32,14 @@ defmodule MbtaMetro.Components.Accordion do
   def accordion(%{variant: "contained"} = assigns) do
     ~H"""
     <details class="group w-full bg-white" open={@open}>
-      <summary class="border border-solid border-blue-500 text-blue-600 hover:text-slate-900 hover:bg-blue-100 p-2 flex cursor-pointer list-none items-center gap-2 relative">
+      <summary class="border border-solid border-cobalt-50 text-cobalt-40 hover:text-charcoal-10 hover:bg-cobalt-90 p-2 flex cursor-pointer list-none items-center gap-2 relative">
         <%= render_slot(@heading) %>
         <.icon
           name="chevron-up"
-          class="group-open:rotate-180 w-4 h-4 absolute top-3 right-3 fill-blue-500"
+          class="group-open:rotate-180 w-4 h-4 absolute top-3 right-3 fill-cobalt-50"
         />
       </summary>
-      <div class="border border-solid border-t-0 border-blue-500 p-2">
+      <div class="border border-solid border-t-0 border-cobalt-50 p-2">
         <%= render_slot(@content) %>
       </div>
     </details>
@@ -49,14 +49,14 @@ defmodule MbtaMetro.Components.Accordion do
   def accordion(assigns) do
     ~H"""
     <details class="group w-full bg-white" open={@open}>
-      <summary class="text-slate-500 flex cursor-pointer list-none gap-2 relative py-2">
+      <summary class="text-charcoal-50 flex cursor-pointer list-none gap-2 relative py-2">
         <%= render_slot(@heading) %>
         <.icon
           name="chevron-up"
-          class="group-open:rotate-180 w-4 h-4 absolute top-3 right-3 fill-blue-500"
+          class="group-open:rotate-180 w-4 h-4 absolute top-3 right-3 fill-cobalt-50"
         />
       </summary>
-      <div class="border-t border-solid border-slate-300">
+      <div class="border-t border-solid border-charcoal-70">
         <%= render_slot(@content) %>
       </div>
     </details>

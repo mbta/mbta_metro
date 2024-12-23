@@ -3,7 +3,6 @@ defmodule MbtaMetro.Components.Button do
 
   use Phoenix.Component
 
-  attr :color, :string, default: "blue"
   attr :class, :string, default: ""
   attr :rest, :global, include: ~w(disabled form name value)
 
@@ -12,7 +11,7 @@ defmodule MbtaMetro.Components.Button do
   def button(assigns) do
     ~H"""
     <button
-      class={"py-1 px-3 inline-flex items-center gap-x-2 capitalize font-medium rounded border border-transparent bg-#{assigns[:color]}-600 text-white hover:bg-#{assigns[:color]}-700 focus:outline-none focus:bg-#{assigns[:color]}-700 disabled:opacity-50 disabled:pointer-events-none phx-submit-loading:opacity-75 #{@class}"}
+      class={"py-1 px-3 inline-flex items-center gap-x-2 capitalize font-medium rounded border border-transparent bg-cobalt-40 text-white hover:bg-cobalt-30 focus:outline-none focus:bg-cobalt-30 disabled:opacity-50 disabled:pointer-events-none phx-submit-loading:opacity-75 #{@class}"}
       {@rest}
     >
       <%= render_slot(@inner_block) %>

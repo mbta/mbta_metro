@@ -20,7 +20,7 @@ defmodule Storybook.Components.Accordion do
         },
         slots: [
           ~s|<:heading>
-  <.icon name="envelope" class="w-4 h-4 fill-slate-500" />
+  <.icon name="envelope" class="w-4 h-4 fill-charcoal-50" />
   <div>
     <p class="leading-4">
       Heading text
@@ -46,7 +46,7 @@ defmodule Storybook.Components.Accordion do
           open: false
         },
         slots: [
-          ~s|<:heading><.icon name="envelope" class="w-4 h-4 fill-blue-500" />Heading text</:heading>|,
+          ~s|<:heading><.icon name="envelope" class="w-4 h-4 fill-cobalt-50" />Heading text</:heading>|,
           """
           <:content>
             <p>Any content can be inside</p>

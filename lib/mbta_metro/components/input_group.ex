@@ -23,8 +23,8 @@ defmodule MbtaMetro.Components.InputGroup do
         <li
           :for={{label, value} <- @options}
           class={[
-            "border border-solid border-blue-400 p-0 md:p-1 text-blue-400 cursor-pointer",
-            "has-[:checked]:bg-blue-100 has-[:checked]:font-bold",
+            "border border-solid border-cobalt-30 p-0 md:p-1 text-cobalt-30 cursor-pointer",
+            "has-[:checked]:bg-cobalt-90 has-[:checked]:font-bold",
             "[&:not(:last-child)]:border-r-0",
             "first:rounded-l-md last:rounded-r-md",
             "w-full"
@@ -60,7 +60,7 @@ defmodule MbtaMetro.Components.InputGroup do
   def fieldset(assigns) do
     ~H"""
     <fieldset class={"my-2 w-full #{@class}"}>
-      <legend class="font-bold text-base text-slate-700"><%= @legend %></legend>
+      <legend class="font-bold text-base text-charcoal-20"><%= @legend %></legend>
       <%= render_slot(@inner_block) %>
     </fieldset>
     """
