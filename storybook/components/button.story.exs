@@ -16,9 +16,19 @@ defmodule Storybook.Components.Button do
       %Variation{
         id: :default,
         slots: [
-          "default"
+          "Default Button Style"
         ],
         description: "Default"
+      },
+      %Variation{
+        id: :primary_disabled,
+        attributes: %{
+          "aria-disabled": true
+        },
+        slots: [
+          "Primary disabled button"
+        ],
+        description: "Primary disabled default button"
       },
       %Variation{
         id: :default_with_icon,
@@ -28,6 +38,48 @@ defmodule Storybook.Components.Button do
           """
         ],
         description: "Default with icon"
+      },
+      %Variation{
+        id: :primary_sm,
+        attributes: %{
+          size: :small
+        },
+        slots: [
+          "Primary small button"
+        ],
+        description: "Primary small button"
+      },
+      %Variation{
+        id: :primary_sm_disabled,
+        attributes: %{
+          size: :small,
+          "aria-disabled": true
+        },
+        slots: [
+          "Primary disabled small button"
+        ],
+        description: "Primary disabled small button"
+      },
+      %Variation{
+        id: :secondary,
+        attributes: %{
+          variant: :secondary
+        },
+        slots: [
+          "Secondary button"
+        ],
+        description: "Secondary default button"
+      },
+      %Variation{
+        id: :secondary_sm,
+        attributes: %{
+          variant: :secondary,
+          size: :small
+        },
+        slots: [
+          "Secondary small button"
+        ],
+        description: "Secondary small button"
       }
     ]
   end
