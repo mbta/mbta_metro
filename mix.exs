@@ -37,6 +37,7 @@ defmodule MbtaMetro.MixProject do
   defp deps do
     [
       {:bandit, "1.5.7", only: :dev, optional: true, runtime: false},
+      {:cva, "0.2.2"},
       {:esbuild, "0.8.1", only: :dev, optional: true, runtime: Mix.env() == :dev},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
       {:faker, "0.18.0", only: :dev, runtime: false},
