@@ -4,7 +4,8 @@
   "description": "A Phoenix LiveView component library",
   "main": "js/index.js",
   "exports": {
-    "tailwindTheme": "./tailwind.config.js"
+    ".": "./js/index.js",
+    "./tailwindTheme": "./tailwind.config.js"
   },
   "repository": {
     "type": "git",
