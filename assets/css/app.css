@@ -2,6 +2,8 @@
 @import "components.css";
 
 .mbta-metro-web {
+  background-color: var(--background-primary);
+  color: var(--text-primary);
   font-family: "Inter", "Helvetica Neue", "Helvetica", "Arial", system-ui, sans-serif;
 }
 
