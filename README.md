@@ -36,8 +36,8 @@ end
 Import `mbta_metro`'s styles in your `assets/css/app.css`:
 
 ```css
-@import "@mbta/rider-design-system/dist/variables.light.css" (prefers-color-scheme: light);
-@import "@mbta/rider-design-system/dist/variables.dark.css" (prefers-color-scheme: dark);
+@import "../node_modules/@mbta/rider-design-system/dist/variables.light.css" (prefers-color-scheme: light);
+@import "../node_modules/@mbta/rider-design-system/dist/variables.dark.css" (prefers-color-scheme: dark);
 @import "../../deps/mbta_metro/priv/static/assets/default.css";
 ```
 
