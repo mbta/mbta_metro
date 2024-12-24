@@ -2,7 +2,7 @@ import plugin from "tailwindcss/plugin";
 
 const buttonPlugin = plugin(({ addBase, addComponents, theme }) => {
   addBase({
-    'button': {
+    'button.mbta-button': {
       alignItems: "center",
       borderRadius: theme('borderRadius.md'),
       borderWidth: theme('borderWidth.sm'),
@@ -27,7 +27,7 @@ const buttonPlugin = plugin(({ addBase, addComponents, theme }) => {
     },
   }),
   addComponents({
-    '.button-primary': {
+    '.mbta-button-primary': {
       backgroundColor: "var(--button-primary-default-background-color)",
       borderColor: "var(--button-primary-default-border-color)",
       color: "var(--button-primary-default-text-color)",
@@ -37,7 +37,7 @@ const buttonPlugin = plugin(({ addBase, addComponents, theme }) => {
         color: "var(--button-primary-active-text-color)",
       }
     },
-    '.button-secondary': {
+    '.mbta-button-secondary': {
       backgroundColor: "var(--button-secondary-default-background-color)",
       borderColor: "var(--button-secondary-default-border-color)",
       color: "var(--button-secondary-default-text-color)",

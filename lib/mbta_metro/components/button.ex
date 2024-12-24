@@ -11,8 +11,8 @@ defmodule MbtaMetro.Components.Button do
 
   variant :variant,
           [
-            primary: "button-primary",
-            secondary: "button-secondary"
+            primary: "mbta-button mbta-button-primary",
+            secondary: "mbta-button mbta-button-secondary"
           ],
           default: :primary
 
