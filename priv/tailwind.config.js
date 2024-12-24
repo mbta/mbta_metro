@@ -1,6 +1,6 @@
 const plugin = require("tailwindcss/plugin");
 const defaultTheme = require('tailwindcss/defaultTheme');
-const MbtaRiderDesignSystemTheme = require("@mbta/rider-design-system");
+const { default: MbtaRiderDesignSystemTheme } = require("@mbta/rider-design-system");
 const { content, plugins, safelist } = require("./js/index")
 
 const {spacing: ThemeSpacing} = MbtaRiderDesignSystemTheme;

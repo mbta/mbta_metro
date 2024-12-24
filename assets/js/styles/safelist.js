@@ -1,5 +1,5 @@
-const MbtaRiderDesignSystemConfig = require("@mbta/rider-design-system");
-const { colors } = MbtaRiderDesignSystemConfig;
+const { default: MbtaRiderDesignSystemTheme } = require("@mbta/rider-design-system");
+const { colors } = MbtaRiderDesignSystemTheme;
 const colorKeys = Object.keys(colors);
 
 const backgroundColors = colorKeys.map(color => {
