@@ -51,6 +51,11 @@ defmodule Mix.Tasks.MbtaMetro.ExportAssets do
       "#{dir}/assets/package.json",
       "#{dir}/priv/"
     ])
+
+    System.cmd("cp", [
+      "#{dir}/assets/tailwind.config.js",
+      "#{dir}/priv/"
+    ])
   end
 
   defp export_metro_icons do

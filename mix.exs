@@ -86,6 +86,7 @@ defmodule MbtaMetro.MixProject do
         "lib/mix/tasks/mbta_metro/update_*.ex",
         "mix.exs",
         "priv/package.json",
+        "priv/tailwind.config.js",
         "priv/js/*",
         "priv/static/assets/default.css",
         "priv/static/fonts/*",
