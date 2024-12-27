@@ -19,15 +19,11 @@ defmodule MbtaMetro.Components.InputGroup do
   def input_group(assigns) do
     ~H"""
     <.fieldset legend={@legend} id={@id} class={@class}>
-      <ul class="p-0 flex list-none">
+      <ul class="inline-flex list-none rounded border border-solid border-cobalt-30 text-cobalt-30 divide-x divide-solid divide-cobalt-30 overflow-hidden">
         <li
           :for={{label, value} <- @options}
           class={[
-            "border border-solid border-cobalt-30 p-0 md:p-1 text-cobalt-30 cursor-pointer",
-            "has-[:checked]:bg-cobalt-90 has-[:checked]:font-bold",
-            "[&:not(:last-child)]:border-r-0",
-            "first:rounded-l-md last:rounded-r-md",
-            "w-full"
+            "has-[:checked]:bg-cobalt-80 has-[:checked]:font-bold"
           ]}
         >
           <.input
@@ -59,8 +55,8 @@ defmodule MbtaMetro.Components.InputGroup do
 
   def fieldset(assigns) do
     ~H"""
-    <fieldset class={"my-2 w-full #{@class}"}>
-      <legend class="font-bold text-base text-charcoal-20"><%= @legend %></legend>
+    <fieldset class={"w-full #{@class}"}>
+      <legend class="font-bold m-0 py-sm inline-flex items-center"><%= @legend %></legend>
       <%= render_slot(@inner_block) %>
     </fieldset>
     """
