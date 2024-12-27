@@ -7,9 +7,9 @@ defmodule MbtaMetro.Components.Accordion do
 
   attr :variant, :string,
     default: "default",
-    values: ["contained", "default"],
+    values: ["default", "multiselect"],
     doc: """
-    The variant of the accordion. Options are `contained` or `default`.
+    The variant of the accordion. Options are `default` or `multiselect`.
     """
 
   attr :open, :boolean,

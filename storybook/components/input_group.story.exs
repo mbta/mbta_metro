@@ -14,9 +14,9 @@ defmodule Storybook.Components.InputGroup do
 
   def variations do
     [
-      # checkbox(),
+      checkbox(),
       checkbox_button(),
-      # radio(),
+      radio(),
       radio_button()
     ]
   end
@@ -30,7 +30,7 @@ defmodule Storybook.Components.InputGroup do
         type: "checkbox",
         name: "stations[]",
         form: to_form(%{}),
-        field: :stations,
+        field: :stations_checkbox_example,
         options: [
           {"Back Bay", "place-bbsta"},
           {"North Station", "place-north"},
@@ -49,7 +49,7 @@ defmodule Storybook.Components.InputGroup do
         type: "checkbox-button",
         name: "stations[]",
         form: to_form(%{}),
-        field: :stations,
+        field: :stations_checkbox_button_example,
         options: [
           {"Back Bay", "place-bbsta"},
           {"North Station", "place-north"},
@@ -68,7 +68,7 @@ defmodule Storybook.Components.InputGroup do
         type: "radio",
         name: "station",
         form: to_form(%{"station" => "place-harsq"}),
-        field: :station,
+        field: :station_radio_example,
         options: [
           {"Harvard", "place-harsq"},
           {"Ruggles", "place-rugg"},
@@ -87,7 +87,8 @@ defmodule Storybook.Components.InputGroup do
         type: "radio-button",
         name: "station",
         form: to_form(%{"station" => "place-harsq"}),
-        field: :station,
+        field: :station_radio_button_example,
+        class: "w-full",
         options: [
           {"Harvard", "place-harsq"},
           {"Ruggles", "place-rugg"},
