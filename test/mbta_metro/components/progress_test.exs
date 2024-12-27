@@ -17,7 +17,7 @@ defmodule MbtaMetro.Components.ProgressTest do
     result = rendered_to_string(component)
 
     assert result =~ "aria-label=\"Downloading...\""
-    assert result =~ "aria-valuenow=\"0\""
+    assert result =~ "value=\"0\""
   end
 
   test "an progress bar can be rendered with a value" do
@@ -30,6 +30,6 @@ defmodule MbtaMetro.Components.ProgressTest do
 
     result = rendered_to_string(component)
 
-    assert result =~ "aria-valuenow=\"50\""
+    assert result =~ "value=\"50\""
   end
 end
