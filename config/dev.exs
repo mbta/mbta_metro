@@ -19,7 +19,7 @@ config :mbta_metro, MbtaMetroWeb.Endpoint,
     patterns: [
       ~r"priv/static/(?!uploads/).*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"lib/mbta_metro_web/(controllers|live|components)/.*(ex|heex)$",
-      ~r"storybook/.*(exs)$"
+      ~r"storybook/.*(ex|exs)$"
     ]
   ]
 
