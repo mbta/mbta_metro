@@ -42,7 +42,7 @@ defmodule Storybook.Components.Button do
       %Variation{
         id: :primary_sm,
         attributes: %{
-          size: :small
+          size: "small"
         },
         slots: [
           "Primary small button"
@@ -52,7 +52,7 @@ defmodule Storybook.Components.Button do
       %Variation{
         id: :primary_sm_disabled,
         attributes: %{
-          size: :small,
+          size: "small",
           "aria-disabled": true
         },
         slots: [
@@ -63,7 +63,7 @@ defmodule Storybook.Components.Button do
       %Variation{
         id: :secondary,
         attributes: %{
-          variant: :secondary
+          variant: "secondary"
         },
         slots: [
           "Secondary button"
@@ -73,8 +73,8 @@ defmodule Storybook.Components.Button do
       %Variation{
         id: :secondary_sm,
         attributes: %{
-          variant: :secondary,
-          size: :small
+          variant: "secondary",
+          size: "small"
         },
         slots: [
           "Secondary small button"
