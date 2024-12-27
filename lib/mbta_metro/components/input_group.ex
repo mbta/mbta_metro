@@ -42,7 +42,7 @@ defmodule MbtaMetro.Components.InputGroup do
   def input_group(assigns) do
     ~H"""
     <ul class={"p-0 list-none #{@class}"}>
-      <li :for={{label, value} <- @options} style="height: var(--minimum-tap-target-size)">
+      <li :for={{label, value} <- @options}>
         <.input
           id={input_id(@form, @field) <> "_#{value}"}
           label={label}

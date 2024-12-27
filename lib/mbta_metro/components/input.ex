@@ -84,7 +84,7 @@ defmodule MbtaMetro.Components.Input do
       end)
 
     ~H"""
-    <.label for={@id}>
+    <.label for={@id} style="height: var(--minimum-tap-target-size)">
       <input type="hidden" name={@name} value="false" disabled={@rest[:disabled]} />
       <input
         type="checkbox"
@@ -138,7 +138,7 @@ defmodule MbtaMetro.Components.Input do
     assigns = assigns |> assign_new(:checked, fn -> false end)
 
     ~H"""
-    <.label for={@id}>
+    <.label for={@id} style="height: var(--minimum-tap-target-size)">
       <input
         type="radio"
         id={@id}
@@ -185,7 +185,7 @@ defmodule MbtaMetro.Components.Input do
   def input(%{type: "select"} = assigns) do
     ~H"""
     <div>
-      <.label for={@id} class="font-bold"><%= @label %></.label>
+      <.label :if={@label} for={@id} class="font-bold"><%= @label %></.label>
       <select
         id={@id}
         name={@name}
@@ -208,7 +208,7 @@ defmodule MbtaMetro.Components.Input do
   def input(%{type: "textarea"} = assigns) do
     ~H"""
     <div>
-      <.label for={@id} class="font-bold"><%= @label %></.label>
+      <.label :if={@label} for={@id} class="font-bold"><%= @label %></.label>
       <textarea
         id={@id}
         name={@name}
@@ -229,7 +229,7 @@ defmodule MbtaMetro.Components.Input do
   def input(assigns) do
     ~H"""
     <div>
-      <.label for={@id} class="font-bold"><%= @label %></.label>
+      <.label :if={@label} for={@id} class="font-bold"><%= @label %></.label>
       <input
         type={@type}
         name={@name}
@@ -260,11 +260,16 @@ defmodule MbtaMetro.Components.Input do
   """
   attr :class, :string, default: ""
   attr :for, :string, default: nil
+  attr :rest, :global
   slot :inner_block, required: true
 
   def label(assigns) do
     ~H"""
-    <label for={@for} class={"cursor-pointer w-full m-0 py-sm inline-flex items-center #{@class}"}>
+    <label
+      for={@for}
+      class={"cursor-pointer w-full m-0 py-sm inline-flex items-center #{@class}"}
+      {@rest}
+    >
       <%= render_slot(@inner_block) %>
     </label>
     """
