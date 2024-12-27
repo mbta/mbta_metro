@@ -1,10 +1,6 @@
 const plugin = require("tailwindcss/plugin");
-const defaultTheme = require('tailwindcss/defaultTheme');
 const { default: MbtaRiderDesignSystemTheme } = require("@mbta/rider-design-system");
 const { content, plugins, safelist } = require("./js/index")
-
-const {spacing: ThemeSpacing} = MbtaRiderDesignSystemTheme;
-MbtaRiderDesignSystemTheme.spacing = {...ThemeSpacing, ...defaultTheme.spacing};
 
 module.exports = {
   content: [
@@ -29,5 +25,7 @@ module.exports = {
     plugin(({ addVariant }) => addVariant("phx-submit-loading", [".phx-submit-loading&", ".phx-submit-loading &"])),
     plugin(({ addVariant }) => addVariant("phx-change-loading", [".phx-change-loading&", ".phx-change-loading &"])),
   ],
-  theme: MbtaRiderDesignSystemTheme
+  theme: {
+    extend: MbtaRiderDesignSystemTheme
+  }
 }
