@@ -26,7 +26,6 @@ defmodule Storybook.Components.InputGroup do
       id: :checkbox,
       description: "Checkboxes (select multiple)",
       attributes: %{
-        legend: "Favorite stations",
         type: "checkbox",
         name: "stations[]",
         form: to_form(%{}),
@@ -45,7 +44,6 @@ defmodule Storybook.Components.InputGroup do
       id: :checkbox_button,
       description: "Checkbox Buttons (select multiple)",
       attributes: %{
-        legend: "Favorite stations",
         type: "checkbox-button",
         name: "stations[]",
         form: to_form(%{}),
@@ -64,7 +62,6 @@ defmodule Storybook.Components.InputGroup do
       id: :radio,
       description: "Radios (select one)",
       attributes: %{
-        legend: "Favorite single station",
         type: "radio",
         name: "station",
         form: to_form(%{"station" => "place-harsq"}),
@@ -83,7 +80,6 @@ defmodule Storybook.Components.InputGroup do
       id: :radio_button,
       description: "Radio buttons (select one)",
       attributes: %{
-        legend: "Favorite single station",
         type: "radio-button",
         name: "station",
         form: to_form(%{"station" => "place-harsq"}),
