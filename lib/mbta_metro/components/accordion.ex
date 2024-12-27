@@ -29,17 +29,14 @@ defmodule MbtaMetro.Components.Accordion do
   @doc """
   A disclosure widget that reveals or hides additional content.
   """
-  def accordion(%{variant: "contained"} = assigns) do
+  def accordion(%{variant: "multiselect"} = assigns) do
     ~H"""
     <details class="group w-full bg-white" open={@open}>
-      <summary class="border border-solid border-cobalt-50 text-cobalt-40 hover:text-charcoal-10 hover:bg-cobalt-90 p-2 flex cursor-pointer list-none items-center gap-2 relative">
+      <summary class="rounded border border-cobalt-30 hover:bg-cobalt-80 px-md py-sm flex cursor-pointer list-none items-center gap-2 relative group-open:rounded-none group-open:rounded-t group-open:border-b-0 focus:ring-4 focus:border-cobalt-20 ring-offset-0 ring-cobalt-60 group-open:bg-cobalt-80">
         <%= render_slot(@heading) %>
-        <.icon
-          name="chevron-up"
-          class="group-open:rotate-180 w-4 h-4 absolute top-3 right-3 fill-cobalt-50"
-        />
+        <.icon name="chevron-down" class="group-open:rotate-180 w-4 h-4 absolute top-3 right-md" />
       </summary>
-      <div class="border border-solid border-t-0 border-cobalt-50 p-2">
+      <div class="border border-cobalt-30 px-md py-sm">
         <%= render_slot(@content) %>
       </div>
     </details>
