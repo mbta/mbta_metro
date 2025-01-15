@@ -84,11 +84,11 @@ export default {
   },
   /**
    * Fit the map to a collection of coordinates.
-   * Limit the zoom to the maxZoom, zoom, or a sensible default of 16.
+   * Limit the zoom to the zoom, maxZoom, or a sensible default of 16.
    */
   fitMapToCoordinates(coordinatesCollection) {
     const bounds = this.calcBoundsFromCoordinates(coordinatesCollection);
-    const maxZoom = this.config.maxZoom || this.config.zoom || 16;
+    const maxZoom = this.config.zoom || this.config.maxZoom || 16;
 
     this.map.fitBounds(bounds, {maxZoom, padding: 50});
   },

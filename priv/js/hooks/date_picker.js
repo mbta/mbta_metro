@@ -48,6 +48,12 @@ export default {
 
     this.pickr = flatpickr(el, config);
 
+    // Set the step attribute to "any" on the mobile input.
+    // This is necessary for iOS Safari to allow for decimal values.
+    if (this.pickr.mobileInput) {
+      this.pickr.mobileInput.setAttribute("step", "any")
+    }
+
     this.handleEvent("set-datetime", ({datetime}) => {
       this.pickr.setDate(datetime);
     });
