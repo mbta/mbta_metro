@@ -21,7 +21,9 @@ defmodule MbtaMetro.Components.InputGroup do
         :for={{label, value} <- @options}
         class={[
           "flex-auto",
-          "has-[:checked]:bg-cobalt-80 has-[:checked]:font-bold"
+          "hover:bg-cobalt-80",
+          "has-[:checked]:bg-cobalt-80 has-[:checked]:font-bold",
+          "has-[:focus]:ring-4 has-[:focus]:ring-cobalt-60 has-[:focus]:ring-inset"
         ]}
       >
         <.input
