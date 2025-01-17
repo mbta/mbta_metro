@@ -16,7 +16,7 @@ defmodule MbtaMetro.Components.InputGroup do
 
   def input_group(assigns) when assigns.type in ~W(checkbox-button radio-button) do
     ~H"""
-    <ul class={"inline-flex p-0 list-none rounded border border-solid border-cobalt-30 text-cobalt-30 divide-x divide-solid divide-cobalt-30 overflow-hidden #{@class}"}>
+    <ul class={"inline-flex p-0 list-none bg-white rounded border border-solid border-cobalt-30 text-cobalt-30 divide-x divide-solid divide-cobalt-30 overflow-hidden #{@class}"}>
       <li
         :for={{label, value} <- @options}
         class={[
