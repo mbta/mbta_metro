@@ -39,8 +39,8 @@ defmodule MbtaMetro.Live.DatePicker do
     >
       <div id="date-picker-calendar" class="relative">
         <.input type="datetime-local" field={@field} class="w-full" value={nil} data-input />
-        <a href="#" data-toggle class="absolute top-3.5 right-2.5">
-          <.icon name="calendar" type="regular" class="w-4 h-4 fill-cobalt-20" />
+        <a href="#" data-toggle class="absolute top-3.5 right-2.5 leading-none">
+          <.icon name="calendar" type="regular" class="w-4 h-4 fill-cobalt-30" />
         </a>
       </div>
     </div>
