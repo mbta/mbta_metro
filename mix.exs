@@ -36,20 +36,20 @@ defmodule MbtaMetro.MixProject do
 
   defp deps do
     [
-      {:bandit, "1.5.7", only: :dev, optional: true, runtime: false},
-      {:cva, "0.2.2"},
-      {:esbuild, "0.8.1", only: :dev, optional: true, runtime: Mix.env() == :dev},
+      {:bandit, "~> 1.5", only: :dev, optional: true, runtime: false},
+      {:cva, "~> 0.2"},
+      {:esbuild, "~> 0.8", only: :dev, optional: true, runtime: Mix.env() == :dev},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
-      {:faker, "0.18.0", only: :dev, runtime: false},
+      {:faker, "~> 0.18", only: :dev, runtime: false},
       {:floki, "~> 0.36"},
-      {:jason, "1.4.4"},
-      {:heroicons, "0.5.6", optional: true},
-      {:phoenix, "1.7.14"},
-      {:phoenix_live_reload, "1.5.3", only: :dev, optional: true, runtime: false},
-      {:phoenix_live_view, "1.0.0-rc.6"},
-      {:phoenix_storybook, "0.6.4"},
-      {:tailwind, "0.2.3", only: :dev, optional: true, runtime: Mix.env() == :dev},
-      {:timex, "3.7.11"}
+      {:jason, "~> 1.4"},
+      {:heroicons, "~> 0.5", optional: true},
+      {:phoenix, "~> 1.7"},
+      {:phoenix_live_reload, "~> 1.5", only: :dev, optional: true, runtime: false},
+      {:phoenix_live_view, "~> 1.0"},
+      {:phoenix_storybook, "~> 0.6"},
+      {:tailwind, "~> 0.2", only: :dev, optional: true, runtime: Mix.env() == :dev},
+      {:timex, "~> 3.7"}
     ]
   end
 
