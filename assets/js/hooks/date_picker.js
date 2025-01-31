@@ -8,6 +8,7 @@ const config = {
   allowInvalidPreload: true, // needed on mobile to prevent the input from becoming blank when selecting a date outside the min/max
   altInput: true, // allow different format to be sent to server
   dateFormat: SERVER_DATE_FORMAT, // this gets sent to the server
+  disableMobile: true, // native date pickers are not working well with LiveView
   formatDate: (date, formatString, locale) => {
     if (formatString === SERVER_DATE_FORMAT) {
       // Formats a date into a string in the format util.ex parse/1 expects.
