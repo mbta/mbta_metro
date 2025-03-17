@@ -26,7 +26,7 @@ defmodule Storybook.Theme.Typography do
 
   defp heading_tag_code(assigns) do
     ~H"""
-    <.code class="border border-1 border-amber-600 rounded"><%= "<h#{@num}>" %></.code>
+    <.code class="border border-1 border-amber-600 rounded">{"<h#{@num}>"}</.code>
     """
   end
 
@@ -61,11 +61,11 @@ defmodule Storybook.Theme.Typography do
 
   defp code(assigns) do
     ~H"""
-    <%= Phoenix.LiveView.TagEngine.component(
+    {Phoenix.LiveView.TagEngine.component(
       &MbtaMetro.DocComponents.code/1,
       assigns,
       {__ENV__.module, __ENV__.function, __ENV__.file, __ENV__.line}
-    ) %>
+    )}
     """
   end
 end

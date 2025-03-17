@@ -27,7 +27,7 @@ defmodule MbtaMetro.Components.List do
         :for={item <- @item}
         class={"inline-flex items-center gap-x-2 py-2 #{Map.get(item, :class, "")}"}
       >
-        <%= render_slot(item) %>
+        {render_slot(item)}
       </li>
     </ul>
     """

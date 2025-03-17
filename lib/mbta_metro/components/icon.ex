@@ -56,7 +56,7 @@ defmodule MbtaMetro.Components.Icon do
 
   def icon(assigns) do
     ~H"""
-    <%= icon(@type, @name, @opts) %>
+    {icon(@type, @name, @opts)}
     """
   end
 

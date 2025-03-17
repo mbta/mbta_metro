@@ -41,7 +41,7 @@ defmodule MbtaMetro.Components.Table do
       <table class="w-[40rem] mt-11 sm:w-full">
         <thead class="text-sm text-left leading-6 text-charcoal-40">
           <tr>
-            <th :for={col <- @col} class="p-0 pb-4 pr-6 font-normal"><%= col[:label] %></th>
+            <th :for={col <- @col} class="p-0 pb-4 pr-6 font-normal">{col[:label]}</th>
             <th :if={@action != []} class="relative p-0 pb-4">
               <span class="sr-only">"Actions"></span>
             </th>
@@ -61,7 +61,7 @@ defmodule MbtaMetro.Components.Table do
               <div class="block py-4 pr-6">
                 <span class="absolute -inset-y-px right-0 -left-4 group-hover:bg-charcoal-90" />
                 <span class={["relative", i == 0 && "font-semibold text-charcoal-10"]}>
-                  <%= render_slot(col, @row_item.(row)) %>
+                  {render_slot(col, @row_item.(row))}
                 </span>
               </div>
             </td>
@@ -72,7 +72,7 @@ defmodule MbtaMetro.Components.Table do
                   :for={action <- @action}
                   class="relative ml-4 font-semibold leading-6 text-charcoal-10 hover:text-charcoal-30"
                 >
-                  <%= render_slot(action, @row_item.(row)) %>
+                  {render_slot(action, @row_item.(row))}
                 </span>
               </div>
             </td>

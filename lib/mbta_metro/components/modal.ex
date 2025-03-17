@@ -66,7 +66,7 @@ defmodule MbtaMetro.Components.Modal do
                 </.button>
               </div>
               <div id={"#{@id}-content"}>
-                <%= render_slot(@inner_block) %>
+                {render_slot(@inner_block)}
               </div>
             </.focus_wrap>
           </div>

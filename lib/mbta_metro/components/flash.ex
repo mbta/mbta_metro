@@ -52,7 +52,7 @@ defmodule MbtaMetro.Components.Flash do
       {@rest}
     >
       <.feedback :if={@title} kind={@kind}>
-        <%= @title %>
+        {@title}
       </.feedback>
       <hr class={[
         "mt-2 mb-1",
@@ -61,7 +61,7 @@ defmodule MbtaMetro.Components.Flash do
         @kind == :success && "border-emerald-80",
         @kind == :warning && "border-gold-80"
       ]} />
-      <p class="mt-2 text-sm leading-5"><%= msg %></p>
+      <p class="mt-2 text-sm leading-5">{msg}</p>
       <button type="button" class="group absolute top-1 right-1 p-2" aria-label="close">
         <.icon name="xmark" class={"h-5 w-5 opacity-70 group-hover:opacity-90 #{fill(@kind)}"} />
       </button>

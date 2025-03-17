@@ -19,7 +19,7 @@ defmodule MbtaMetro.Components.Spinner do
       role="status"
       aria-label={@aria_label}
     >
-      <span class="sr-only"><%= @aria_label %></span>
+      <span class="sr-only">{@aria_label}</span>
     </div>
     """
   end
