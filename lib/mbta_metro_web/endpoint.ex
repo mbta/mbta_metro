@@ -24,7 +24,7 @@ defmodule MbtaMetroWeb.Endpoint do
   plug Plug.Static,
     at: "/",
     from: :mbta_metro,
-    gzip: false,
+    gzip: Mix.env() == :prod,
     only: MbtaMetroWeb.static_paths()
 
   # Code reloading can be explicitly enabled under the

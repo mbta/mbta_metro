@@ -15,7 +15,14 @@ defmodule MbtaMetro.MixProject do
       name: "MbtaMetro",
       package: package(),
       start_permanent: Mix.env() == :prod,
-      version: version()
+      version: version(),
+      releases: [
+        mbta_metro_web: [
+          strip_beams: [
+            keep: ["Docs"]
+          ]
+        ]
+      ]
     ]
   end
 
@@ -40,7 +47,9 @@ defmodule MbtaMetro.MixProject do
       ],
       "tokens.build": [
         "cmd --cd assets node process-figma-tokens.js"
-      ]
+      ],
+      storybook: ["tailwind storybook", "esbuild storybook"],
+      "phx.digest": ["storybook", "phx.digest"]
     ]
   end
 
@@ -48,11 +57,11 @@ defmodule MbtaMetro.MixProject do
   defp deps do
     if is_metro_app?() do
       [
-        {:bandit, "~> 1.8", only: :dev, optional: true, runtime: false},
+        {:bandit, "~> 1.8"},
         {:cva, "~> 0.2"},
         {:esbuild, "~> 0.10", runtime: false},
         {:ex_doc, "~> 0.39", only: :dev, runtime: false},
-        {:faker, "~> 0.18", only: :dev, runtime: false},
+        {:faker, "~> 0.18"},
         {:floki, "~> 0.38"},
         {:gettext, "~> 1.0"},
         {:jason, "~> 1.4"},

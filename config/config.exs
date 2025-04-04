@@ -1,5 +1,11 @@
 import Config
 
+config :mbta_metro, MbtaMetroWeb.Endpoint,
+  adapter: Bandit.PhoenixAdapter,
+  pubsub_server: MbtaMetro.PubSub,
+  live_view: [signing_salt: "F_IrwXSetja22gAl"],
+  secret_key_base: "TcvJhq/n8JgjzZJ38tbZcFDrS2htRxPYvQNpKiqPulT+XFCsoQmxRlr9VWDYc912"
+
 config :logger, level: :info
 
 # Raster style maps
