@@ -30,6 +30,12 @@ defmodule MbtaMetro.MixProject do
 
   defp aliases() do
     [
+      "assets.deploy": [
+        "tailwind app --minify",
+        "esbuild components --minify",
+        "esbuild app --minify",
+        "phx.digest"
+      ],
       prepare: ["mbta_metro.export_assets", "mbta_metro.version"]
     ]
   end
@@ -38,9 +44,9 @@ defmodule MbtaMetro.MixProject do
     [
       {:bandit, "~> 1.6", only: :dev, optional: true, runtime: false},
       {:cva, "~> 0.2"},
-      {:esbuild, "~> 0.9", only: :dev, optional: true, runtime: Mix.env() == :dev},
+      {:esbuild, "~> 0.9", runtime: Mix.env() == :dev},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
-      {:faker, "~> 0.18", only: :dev, runtime: false},
+      {:faker, "~> 0.18", runtime: false, optional: true},
       {:floki, "~> 0.37"},
       {:jason, "~> 1.4"},
       {:heroicons, "~> 0.5", optional: true},
@@ -48,7 +54,7 @@ defmodule MbtaMetro.MixProject do
       {:phoenix_live_reload, "~> 1.5", only: :dev, optional: true, runtime: false},
       {:phoenix_live_view, "~> 1.0"},
       {:phoenix_storybook, "~> 0.8"},
-      {:tailwind, "~> 0.3", only: :dev, optional: true, runtime: Mix.env() == :dev},
+      {:tailwind, "~> 0.3", runtime: Mix.env() == :dev},
       {:timex, "~> 3.7"}
     ]
   end
