@@ -13,7 +13,14 @@ defmodule MbtaMetro.MixProject do
       name: "MbtaMetro",
       package: package(),
       start_permanent: Mix.env() == :prod,
-      version: version()
+      version: version(),
+      releases: [
+        mbta_metro_web: [
+          strip_beams: [
+            keep: ["Docs"]
+          ]
+        ]
+      ]
     ]
   end
 
