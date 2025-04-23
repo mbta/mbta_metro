@@ -8,5 +8,8 @@ defmodule MbtaMetroWeb.Storybook do
     css_path: "/assets/app.css",
     js_path: "/assets/app.js",
     sandbox_class: "mbta-metro-web",
-    title: "Mbta Metro"
+    title: "Mbta Metro",
+
+    # Keep attributes & slot documentations in component page header.
+    strip_doc_attributes: false
 end
