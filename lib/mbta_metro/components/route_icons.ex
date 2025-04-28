@@ -63,7 +63,10 @@ defmodule MbtaMetro.Components.SystemIcons do
         """
       else
         ~H"""
-        <span class={"inline-flex flex-nowrap items-center #{spacing_class(@size)}"} aria-label={@label}>
+        <span
+          class={"inline-flex flex-nowrap items-center leading-[0.875em] #{spacing_class(@size)}"}
+          aria-label={@label}
+        >
           <.route_pill class={@combined_class} aria-hidden="true">
             {@line_initials}
           </.route_pill>
@@ -131,7 +134,7 @@ defmodule MbtaMetro.Components.SystemIcons do
         assigns = assign(assigns, :branches, green_branches(assigns.lines))
 
         ~H"""
-        <span class={"flex flex-nowrap items-center #{spacing_class("default")}"}>
+        <span class={"flex flex-nowrap items-center leading-[0.875em] #{spacing_class("default")}"}>
           <.route_icon line="green-line" class={@class} />
           <span class="-space-x-0.5">
             <.icon
@@ -154,7 +157,7 @@ defmodule MbtaMetro.Components.SystemIcons do
 
       true ->
         ~H"""
-        <span class={"flex flex-nowrap items-center #{spacing_class("default")}"}>
+        <span class={"flex flex-nowrap items-center leading-[0.875em]  #{spacing_class("default")}"}>
           <.route_icon :for={line <- @lines} line={line} class={"#{@class} ring-2 ring-white"} />
         </span>
         """
@@ -170,7 +173,7 @@ defmodule MbtaMetro.Components.SystemIcons do
       )
 
     ~H"""
-    <span class="flex flex-nowrap items-center -space-x-0.5">
+    <span class="flex flex-nowrap items-center -space-x-0.5 leading-[0.875em]">
       <%= for {name, index} <- Enum.with_index(@names) do %>
         <.route_icon name={name} class={@class} />
         <span
