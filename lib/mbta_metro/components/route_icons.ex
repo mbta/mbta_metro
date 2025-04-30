@@ -15,15 +15,16 @@ defmodule MbtaMetro.Components.SystemIcons do
     "mattapan-line"
   ]
 
+  # note: these are in GTFS route_sort_order
   @supported_lines [
     "red-line",
     "mattapan-line",
+    "orange-line",
     "green-line",
     "green-line-b",
     "green-line-c",
     "green-line-d",
     "green-line-e",
-    "orange-line",
     "blue-line",
     "silver-line"
   ]
@@ -120,6 +121,7 @@ defmodule MbtaMetro.Components.SystemIcons do
   attr :lines, :list, required: false, doc: "Valid values include #{inspect(@supported_lines)}"
   attr :names, :list
 
+  # Single route pill
   def stacked_route_icon(%{lines: [line]} = assigns) when line in @supported_lines do
     assigns = assign(assigns, :line, line)
 
@@ -128,6 +130,10 @@ defmodule MbtaMetro.Components.SystemIcons do
     """
   end
 
+  # TODO: sort the lines
+  # Green Line pill with one or more modifier icons
+  # Mattapan route pill
+  # or multiple pills
   def stacked_route_icon(%{lines: [_ | _]} = assigns) do
     cond do
       Enum.all?(assigns.lines, &String.starts_with?(&1, "green-line")) ->
@@ -136,13 +142,13 @@ defmodule MbtaMetro.Components.SystemIcons do
         ~H"""
         <span class={"flex flex-nowrap items-center leading-[0.875em] #{spacing_class("default")}"}>
           <.route_icon line="green-line" class={@class} />
-          <span class="-space-x-0.5">
+          <span class="inline-flex flex-nowrap gap-[1px]">
             <.icon
-              :for={branch <- @branches}
+              :for={{branch, index} <- Enum.with_index(@branches)}
               type="system"
               name={"modifier-#{branch}-default"}
               height="1.5rem"
-              class="inline rounded-full ring-2 ring-white"
+              class={"inline rounded-full #{if(index == 0, do: "ring-2", else: "ring-1")} ring-white"}
             />
           </span>
         </span>
@@ -157,8 +163,12 @@ defmodule MbtaMetro.Components.SystemIcons do
 
       true ->
         ~H"""
-        <span class={"flex flex-nowrap items-center leading-[0.875em]  #{spacing_class("default")}"}>
-          <.route_icon :for={line <- @lines} line={line} class={"#{@class} ring-2 ring-white"} />
+        <span class={"flex flex-nowrap items-center leading-[0.875em] #{spacing_class("default")}"}>
+          <.route_icon
+            :for={line <- sort_lines(@lines)}
+            line={line}
+            class={"#{@class} ring-2 ring-white"}
+          />
         </span>
         """
     end
@@ -173,7 +183,7 @@ defmodule MbtaMetro.Components.SystemIcons do
       )
 
     ~H"""
-    <span class="flex flex-nowrap items-center -space-x-0.5 leading-[0.875em]">
+    <span class={"flex flex-nowrap items-center leading-[0.875em] #{spacing_class("small")}"}>
       <%= for {name, index} <- Enum.with_index(@names) do %>
         <.route_icon name={name} class={@class} />
         <span
@@ -301,6 +311,14 @@ defmodule MbtaMetro.Components.SystemIcons do
 
   defp modifier("green-line-" <> branch), do: branch
   defp modifier("mattapan-line"), do: "m"
+
+  # Preserve the desired sorting from `@supported_lines`
+  defp sort_lines(lines) do
+    lines
+    |> Enum.sort_by(fn line ->
+      Enum.find_index(@supported_lines, &(&1 == line))
+    end)
+  end
 
   defp spacing_class("small"), do: "-space-x-0.5"
   defp spacing_class(_), do: "-space-x-2"

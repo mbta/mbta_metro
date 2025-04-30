@@ -41,6 +41,12 @@ defmodule Storybook.Components.StackedRouteIcons do
           }
         ]
       },
+      %Variation{
+        id: :another_example,
+        attributes: %{
+          lines: ["green-line-c", "green-line-d", "orange-line"]
+        }
+      },
       %VariationGroup{
         id: :bus,
         variations: [
