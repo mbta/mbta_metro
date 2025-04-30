@@ -11,77 +11,22 @@
 msgid ""
 msgstr ""
 
-#: lib/mbta_metro/components/route_icons.ex:190
-#, elixir-autogen, elixir-format
-msgid "Blue Line"
-msgstr ""
-
-#: lib/mbta_metro/components/route_icons.ex:184
-#, elixir-autogen, elixir-format
-msgid "Green Line"
-msgstr ""
-
-#: lib/mbta_metro/components/route_icons.ex:185
-#, elixir-autogen, elixir-format
-msgid "Green Line B Branch"
-msgstr ""
-
-#: lib/mbta_metro/components/route_icons.ex:186
-#, elixir-autogen, elixir-format
-msgid "Green Line C Branch"
-msgstr ""
-
-#: lib/mbta_metro/components/route_icons.ex:187
-#, elixir-autogen, elixir-format
-msgid "Green Line D Branch"
-msgstr ""
-
-#: lib/mbta_metro/components/route_icons.ex:188
-#, elixir-autogen, elixir-format
-msgid "Green Line E Branch"
-msgstr ""
-
-#: lib/mbta_metro/components/route_icons.ex:183
-#, elixir-autogen, elixir-format
-msgid "Mattapan Trolley"
-msgstr ""
-
-#: lib/mbta_metro/components/route_icons.ex:189
-#, elixir-autogen, elixir-format
-msgid "Orange Line"
-msgstr ""
-
-#: lib/mbta_metro/components/route_icons.ex:182
-#, elixir-autogen, elixir-format
-msgid "Red Line"
-msgstr ""
-
-#: lib/mbta_metro/components/route_icons.ex:181
-#, elixir-autogen, elixir-format
-msgid "Silver Line"
-msgstr ""
-
-#: lib/mbta_metro/components/route_icons.ex:176
+#: lib/mbta_metro/components/system_icons.ex:309
 #, elixir-autogen, elixir-format
 msgid "bus"
 msgstr ""
 
-#: lib/mbta_metro/components/route_icons.ex:178
+#: lib/mbta_metro/components/system_icons.ex:311
 #, elixir-autogen, elixir-format
 msgid "commuter rail"
 msgstr ""
 
-#: lib/mbta_metro/components/route_icons.ex:179
+#: lib/mbta_metro/components/system_icons.ex:312
 #, elixir-autogen, elixir-format
 msgid "ferry"
 msgstr ""
 
-#: lib/mbta_metro/components/route_icons.ex:177
+#: lib/mbta_metro/components/system_icons.ex:310
 #, elixir-autogen, elixir-format
 msgid "subway"
-msgstr ""
-
-#: lib/mbta_metro/components/route_icons.ex:180
-#, elixir-autogen, elixir-format
-msgid "the ride"
 msgstr ""

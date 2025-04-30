@@ -115,7 +115,7 @@ defmodule MbtaMetro.Components.SystemIcons do
   def route_icon(assigns), do: ~H"<span />"
 
   @doc """
-  Several route icons shown together.
+  A special case for depicting route icons together. A generic list is preferred, as it is more flexible.
   """
   attr :class, :string, default: ""
   attr :lines, :list, required: false, doc: "Valid values include #{inspect(@supported_lines)}"
@@ -130,47 +130,64 @@ defmodule MbtaMetro.Components.SystemIcons do
     """
   end
 
-  # TODO: sort the lines
   # Green Line pill with one or more modifier icons
   # Mattapan route pill
   # or multiple pills
   def stacked_route_icon(%{lines: [_ | _]} = assigns) do
-    cond do
-      Enum.all?(assigns.lines, &String.starts_with?(&1, "green-line")) ->
-        assigns = assign(assigns, :branches, green_branches(assigns.lines))
+    assigns = assign(assigns, :stacks, line_stacks(assigns.lines))
 
-        ~H"""
-        <span class={"flex flex-nowrap items-center leading-[0.875em] #{spacing_class("default")}"}>
-          <.route_icon line="green-line" class={@class} />
-          <span class="inline-flex flex-nowrap gap-[1px]">
-            <.icon
-              :for={{branch, index} <- Enum.with_index(@branches)}
-              type="system"
-              name={"modifier-#{branch}-default"}
-              height="1.5rem"
-              class={"inline rounded-full #{if(index == 0, do: "ring-2", else: "ring-1")} ring-white"}
+    if length(assigns.stacks) > 1 do
+      ~H"""
+      <span class={spacing_class("default")}>
+        <.stacked_route_icon
+          :for={stack_lines <- @stacks}
+          lines={stack_lines}
+          class="ring-2 ring-white"
+        />
+      </span>
+      """
+    else
+      cond do
+        Enum.all?(assigns.lines, &String.starts_with?(&1, "green-line")) ->
+          assigns = assign(assigns, :branches, green_branches(assigns.lines))
+
+          ~H"""
+          <span
+            class={"inline-flex flex-nowrap items-center leading-[0.875em] #{spacing_class("default")}"}
+            aria-label={combined_gl_label(@lines)}
+          >
+            <.route_icon line="green-line" class={@class} />
+            <span class="inline-flex flex-nowrap gap-[1px]">
+              <.icon
+                :for={{branch, index} <- Enum.with_index(@branches)}
+                type="system"
+                aria-hidden="true"
+                name={"modifier-#{branch}-default"}
+                height={icon_size("default")}
+                class={"inline rounded-full #{if(index == 0, do: "ring-2", else: "ring-1")} ring-white"}
+              />
+            </span>
+          </span>
+          """
+
+        "mattapan-line" in assigns.lines ->
+          assigns = assign(assigns, :lines, ["mattapan-line"])
+
+          ~H"""
+          <.stacked_route_icon {assigns} />
+          """
+
+        true ->
+          ~H"""
+          <span class={"flex flex-nowrap items-center leading-[0.875em] #{spacing_class("default")}"}>
+            <.route_icon
+              :for={line <- sort_lines(@lines)}
+              line={line}
+              class={"#{@class} ring-2 ring-white"}
             />
           </span>
-        </span>
-        """
-
-      "mattapan-line" in assigns.lines ->
-        assigns = assign(assigns, :lines, ["mattapan-line"])
-
-        ~H"""
-        <.stacked_route_icon {assigns} />
-        """
-
-      true ->
-        ~H"""
-        <span class={"flex flex-nowrap items-center leading-[0.875em] #{spacing_class("default")}"}>
-          <.route_icon
-            :for={line <- sort_lines(@lines)}
-            line={line}
-            class={"#{@class} ring-2 ring-white"}
-          />
-        </span>
-        """
+          """
+      end
     end
   end
 
@@ -271,6 +288,13 @@ defmodule MbtaMetro.Components.SystemIcons do
   defp color_class("green-line" <> _), do: "bg-green-line text-white"
   defp color_class(other), do: "bg-#{other} text-white"
 
+  defp combined_gl_label([line]), do: label(line)
+
+  defp combined_gl_label(lines) do
+    branches = green_branches(lines)
+    "Green Line #{Enum.join(branches, ", ")} Branches"
+  end
+
   defp green_branches(lines) do
     lines
     |> Enum.reject(&(&1 == "green-line"))
@@ -285,18 +309,18 @@ defmodule MbtaMetro.Components.SystemIcons do
   defp label("subway"), do: gettext("subway")
   defp label("commuter-rail"), do: gettext("commuter rail")
   defp label("ferry"), do: gettext("ferry")
-  defp label("the-ride"), do: gettext("the ride")
-  defp label("silver-line"), do: gettext("Silver Line")
-  defp label("red-line"), do: gettext("Red Line")
-  defp label("mattapan-line"), do: gettext("Mattapan Trolley")
-  defp label("green-line"), do: gettext("Green Line")
-  defp label("green-line-b"), do: gettext("Green Line B Branch")
-  defp label("green-line-c"), do: gettext("Green Line C Branch")
-  defp label("green-line-d"), do: gettext("Green Line D Branch")
-  defp label("green-line-e"), do: gettext("Green Line E Branch")
-  defp label("orange-line"), do: gettext("Orange Line")
-  defp label("blue-line"), do: gettext("Blue Line")
-  defp label(other), do: Gettext.gettext(MbtaMetro.Gettext, other)
+  defp label("the-ride"), do: "The Ride"
+  defp label("silver-line"), do: "Silver Line"
+  defp label("red-line"), do: "Red Line"
+  defp label("mattapan-line"), do: "Mattapan Trolley"
+  defp label("green-line"), do: "Green Line"
+  defp label("green-line-b"), do: "Green Line B Branch"
+  defp label("green-line-c"), do: "Green Line C Branch"
+  defp label("green-line-d"), do: "Green Line D Branch"
+  defp label("green-line-e"), do: "Green Line E Branch"
+  defp label("orange-line"), do: "Orange Line"
+  defp label("blue-line"), do: "Blue Line"
+  defp label(other), do: other
 
   defp line_initials("green-line-" <> _), do: "GL"
   defp line_initials("mattapan-line"), do: "RL"
@@ -307,6 +331,19 @@ defmodule MbtaMetro.Components.SystemIcons do
     |> Enum.map(&String.first/1)
     |> Enum.join()
     |> String.upcase()
+  end
+
+  defp line_stacks(lines) do
+    lines
+    |> Enum.group_by(fn line ->
+      cond do
+        String.starts_with?(line, "green-line") -> :green_stack
+        line in ["mattapan-line", "red-line"] -> :red_stack
+        true -> :unstacked
+      end
+    end)
+    |> Enum.sort_by(& &1, :desc)
+    |> Keyword.values()
   end
 
   defp modifier("green-line-" <> branch), do: branch

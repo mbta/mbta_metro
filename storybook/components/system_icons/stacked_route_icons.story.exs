@@ -86,6 +86,13 @@ defmodule Storybook.Components.StackedRouteIcons do
             attributes: %{
               lines: ["mattapan-line"]
             }
+          },
+          %Variation{
+            id: :r,
+            description: "Red Line",
+            attributes: %{
+              lines: ["red-line"]
+            }
           }
         ]
       },
