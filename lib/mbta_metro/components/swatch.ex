@@ -14,7 +14,7 @@ defmodule MbtaMetro.Components.Swatch do
           if(n > 5, do: "text-black", else: "text-white"),
           n == 5 && "border border-2 border-white outline outline-2 outline-black z-50"
         ]}>
-          <%= n * 10 %>
+          {n * 10}
         </div>
       <% end %>
     </div>

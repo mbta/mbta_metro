@@ -33,7 +33,7 @@ defmodule MbtaMetro.Components.Badge do
       @variant_class,
       @class
     ]}>
-      <%= render_slot(@inner_block) %>
+      {render_slot(@inner_block)}
     </div>
     """
   end

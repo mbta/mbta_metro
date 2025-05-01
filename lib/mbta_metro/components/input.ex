@@ -99,7 +99,7 @@ defmodule MbtaMetro.Components.Input do
         ]}
         {@rest}
       />
-      <%= @label %>
+      {@label}
     </.label>
     """
   end
@@ -128,7 +128,7 @@ defmodule MbtaMetro.Components.Input do
         {@rest}
       />
       <span class="w-full text-center">
-        <%= @label %>
+        {@label}
       </span>
     </.label>
     """
@@ -152,7 +152,7 @@ defmodule MbtaMetro.Components.Input do
         ]}
         {@rest}
       />
-      <%= @label %>
+      {@label}
     </.label>
     """
   end
@@ -176,7 +176,7 @@ defmodule MbtaMetro.Components.Input do
         {@rest}
       />
       <span class="w-full text-center">
-        <%= @label %>
+        {@label}
       </span>
     </.label>
     """
@@ -185,7 +185,7 @@ defmodule MbtaMetro.Components.Input do
   def input(%{type: "select"} = assigns) do
     ~H"""
     <div>
-      <.label :if={@label} for={@id} class="font-bold"><%= @label %></.label>
+      <.label :if={@label} for={@id} class="font-bold">{@label}</.label>
       <select
         id={@id}
         name={@name}
@@ -197,10 +197,10 @@ defmodule MbtaMetro.Components.Input do
         multiple={@multiple}
         {@rest}
       >
-        <option :if={@prompt} value=""><%= @prompt %></option>
-        <%= Phoenix.HTML.Form.options_for_select(@options, @value) %>
+        <option :if={@prompt} value="">{@prompt}</option>
+        {Phoenix.HTML.Form.options_for_select(@options, @value)}
       </select>
-      <.feedback :for={msg <- @errors} kind={:error}><%= msg %></.feedback>
+      <.feedback :for={msg <- @errors} kind={:error}>{msg}</.feedback>
     </div>
     """
   end
@@ -208,7 +208,7 @@ defmodule MbtaMetro.Components.Input do
   def input(%{type: "textarea"} = assigns) do
     ~H"""
     <div>
-      <.label :if={@label} for={@id} class="font-bold"><%= @label %></.label>
+      <.label :if={@label} for={@id} class="font-bold">{@label}</.label>
       <textarea
         id={@id}
         name={@name}
@@ -220,7 +220,7 @@ defmodule MbtaMetro.Components.Input do
         ]}
         {@rest}
       ><%= Phoenix.HTML.Form.normalize_value("textarea", @value) %></textarea>
-      <.feedback :for={msg <- @errors} kind={:error}><%= msg %></.feedback>
+      <.feedback :for={msg <- @errors} kind={:error}>{msg}</.feedback>
     </div>
     """
   end
@@ -229,7 +229,7 @@ defmodule MbtaMetro.Components.Input do
   def input(assigns) do
     ~H"""
     <div>
-      <.label :if={@label} for={@id} class="font-bold"><%= @label %></.label>
+      <.label :if={@label} for={@id} class="font-bold">{@label}</.label>
       <input
         type={@type}
         name={@name}
@@ -243,7 +243,7 @@ defmodule MbtaMetro.Components.Input do
         ]}
         {@rest}
       />
-      <.feedback :for={msg <- @errors} kind={:error}><%= msg %></.feedback>
+      <.feedback :for={msg <- @errors} kind={:error}>{msg}</.feedback>
     </div>
     """
   end
@@ -270,7 +270,7 @@ defmodule MbtaMetro.Components.Input do
       class={"cursor-pointer w-full m-0 py-sm inline-flex items-center #{@class}"}
       {@rest}
     >
-      <%= render_slot(@inner_block) %>
+      {render_slot(@inner_block)}
     </label>
     """
   end

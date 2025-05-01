@@ -26,7 +26,7 @@ defmodule MbtaMetro.Components.BadgeStack do
         variant="circle"
         class={"ring-#{@background} ring-2 #{zindex(index)} #{@class} #{class}"}
       >
-        <%= text %>
+        {text}
       </.badge>
     </div>
     """
@@ -40,7 +40,7 @@ defmodule MbtaMetro.Components.BadgeStack do
           variant="square"
           class={"px-2 first:px-2.5 [&:not(:first-child)]:rounded-l-none [&:not(:last-child)]:rounded-r-none #{zindex(index)} #{@class} #{class}"}
         >
-          <%= text %>
+          {text}
         </.badge>
         <%= if index < Kernel.length(@badges) - 1 do %>
           <div class={"inline-flex bg-#{@background} -mt-0.5 h-6 w-1 #{zindex(index)} transform rotate-[17deg]"}>
