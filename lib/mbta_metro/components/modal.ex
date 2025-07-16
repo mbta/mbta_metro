@@ -54,7 +54,7 @@ defmodule MbtaMetro.Components.Modal do
         <div class="flex min-h-full items-center justify-center">
           <div class="w-full max-w-3xl p-4 sm:p-6 lg:py-8">
             <.focus_wrap
-              id={"#{@id}-container"}
+              id={"#{@id}-wrapper"}
               phx-window-keydown={JS.exec("data-cancel", to: "##{@id}")}
               phx-key="escape"
               phx-click-away={JS.exec("data-cancel", to: "##{@id}")}
@@ -83,7 +83,7 @@ defmodule MbtaMetro.Components.Modal do
       to: "##{id}-bg",
       transition: {"transition-all transform ease-out duration-300", "opacity-0", "opacity-100"}
     )
-    |> show("##{id}-container")
+    |> show("##{id}-wrapper")
     |> JS.add_class("overflow-hidden", to: "body")
     |> JS.focus_first(to: "##{id}-content")
   end
@@ -94,7 +94,7 @@ defmodule MbtaMetro.Components.Modal do
       to: "##{id}-bg",
       transition: {"transition-all transform ease-in duration-200", "opacity-100", "opacity-0"}
     )
-    |> hide("##{id}-container")
+    |> hide("##{id}-wrapper")
     |> JS.hide(to: "##{id}", transition: {"block", "block", "hidden"})
     |> JS.remove_class("overflow-hidden", to: "body")
     |> JS.pop_focus()

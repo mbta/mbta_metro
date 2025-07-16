@@ -4,7 +4,7 @@ defmodule MbtaMetro.Live.Map do
 
   You can optionally pass in the following assigns:
 
-    * `:class` - The CSS classes to apply to the map container. You'll most likely want to set the height and width of the map here.
+    * `:class` - The CSS classes to apply to the map component. You'll most likely want to set the height and width of the map here.
     * `:config` - The maplibre gl configuration.
     * `:click_handler` - A boolean indicating whether to handle map clicks.
     * `:lines` - A list of lists of coordinates to draw lines on the map. Each list of coordinates should be a list of two numbers: the longitude and latitude.
@@ -51,7 +51,7 @@ defmodule MbtaMetro.Live.Map do
 
   @doc """
   There are three main sections of the map component.
-  The container will hold the map itself.
+  The wrapper will hold the map itself.
   The lines will hold the lines to draw on the map.
   The markers will hold the points and pins to place on the map.
 
@@ -62,7 +62,7 @@ defmodule MbtaMetro.Live.Map do
     ~H"""
     <div id="mbta-metro-map" class={@class} data-config={Jason.encode!(@config)} phx-hook="Map">
       <div
-        id="mbta-metro-map-container"
+        id="mbta-metro-map-wrapper"
         class="w-full h-full relative overflow-hidden"
         phx-update="ignore"
       />

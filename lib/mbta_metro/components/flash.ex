@@ -9,7 +9,7 @@ defmodule MbtaMetro.Components.Flash do
 
   alias Phoenix.LiveView.JS
 
-  attr :id, :string, doc: "the optional id of flash container"
+  attr :id, :string, doc: "the optional id of flash component"
 
   attr :flash, :map, default: %{}, doc: "the map of flash messages to display"
 
@@ -19,7 +19,7 @@ defmodule MbtaMetro.Components.Flash do
 
   attr :position, :string, default: "fixed top-2 right-2", doc: "CSS classes for positioning"
   attr :title, :string, default: nil
-  attr :rest, :global, doc: "the arbitrary HTML attributes to add to the flash container"
+  attr :rest, :global, doc: "the arbitrary HTML attributes to add to the flash component"
 
   slot :inner_block, doc: "the optional inner block that renders the flash message"
 
