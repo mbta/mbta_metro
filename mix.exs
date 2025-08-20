@@ -74,7 +74,7 @@ defmodule MbtaMetro.MixProject do
     ]
   end
 
-  # We don't want to compile the mbta_metro_web directory mbta_metro is being run in another app.
+  # We don't want to compile the mbta_metro_web directory when mbta_metro is being run in another app.
   defp elixirc_paths(_) do
     if Mix.Project.config()[:app] === :mbta_metro do
       ["lib"]
@@ -83,7 +83,8 @@ defmodule MbtaMetro.MixProject do
         "lib/mbta_metro.ex",
         "lib/mbta_metro/",
         "lib/mbta_metro/components/",
-        "lib/mbta_metro/live/"
+        "lib/mbta_metro/live/",
+        "lib/mix/"
       ]
     end
   end
