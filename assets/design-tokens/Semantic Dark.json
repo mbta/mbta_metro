@@ -1,0 +1,116 @@
+{
+  "colors": {
+    "text-primary": {
+      "$value": "{colors.white}",
+      "$type": "color"
+    },
+    "text-secondary": {
+      "$value": "{colors.charcoal.70}",
+      "$type": "color"
+    },
+    "text-tertiary": {
+      "$value": "{colors.charcoal.60}",
+      "$type": "color"
+    },
+    "background-primary": {
+      "$value": "{colors.black}",
+      "$type": "color"
+    },
+    "background-secondary": {
+      "$value": "{colors.charcoal.10}",
+      "$type": "color"
+    },
+    "background-tertiary": {
+      "$value": "{colors.charcoal.20}",
+      "$type": "color"
+    },
+    "action-primary": {
+      "default": {
+        "$value": "{colors.cobalt.80}",
+        "$type": "color"
+      },
+      "hover": {
+        "$value": "{colors.cobalt.90}",
+        "$type": "color"
+      },
+      "active": {
+        "$value": "{colors.cobalt.70}",
+        "$type": "color"
+      },
+      "disabled": {
+        "$value": "{colors.charcoal.60}",
+        "$type": "color"
+      },
+      "visited": {
+        "$value": "{colors.amethyst.80}",
+        "$type": "color"
+      }
+    },
+    "focus": {
+      "$value": "{colors.white}",
+      "$type": "color"
+    },
+    "error": {
+      "active": {
+        "foreground": {
+          "$value": "{colors.firebrick.80}",
+          "$type": "color"
+        }
+      },
+      "default": {
+        "foreground": {
+          "$value": "{colors.firebrick.70}",
+          "$type": "color"
+        },
+        "background": {
+          "$value": "{colors.firebrick.10}",
+          "$type": "color"
+        }
+      }
+    },
+    "success": {
+      "default": {
+        "foreground": {
+          "$value": "{colors.emerald.70}",
+          "$type": "color"
+        },
+        "background": {
+          "$value": "{colors.emerald.10}",
+          "$type": "color"
+        }
+      },
+      "active": {
+        "foreground": {
+          "$value": "{colors.emerald.80}",
+          "$type": "color"
+        },
+        "background": {
+          "$value": "{colors.emerald.10}",
+          "$type": "color"
+        }
+      }
+    },
+    "warning": {
+      "default": {
+        "foreground": {
+          "$value": "{colors.gold.70}",
+          "$type": "color"
+        },
+        "background": {
+          "$value": "{colors.gold.10}",
+          "$type": "color"
+        }
+      },
+      "active": {
+        "foreground": {
+          "$value": "{colors.gold.80}",
+          "$type": "color"
+        },
+        "background": {
+          "$value": "{colors.gold.10}",
+          "$type": "color"
+        }
+      }
+    }
+  }
+}
