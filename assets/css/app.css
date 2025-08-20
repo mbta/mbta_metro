@@ -1,5 +1,6 @@
-@import "@mbta/rider-design-system/dist/variables.light.css" (prefers-color-scheme: light);
-@import "@mbta/rider-design-system/dist/variables.dark.css" (prefers-color-scheme: dark);
+@import "../../priv/design-system/variables.base.css";
+@import "../../priv/design-system/variables.light.css";
+@import "../../priv/design-system/variables.dark.css";
 @import "default.css";
 @import "components.css";
 
