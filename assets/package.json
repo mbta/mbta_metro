@@ -29,5 +29,8 @@
     "@fortawesome/fontawesome-free": "6.6.0",
     "style-dictionary": "4.4.0",
     "style-dictionary-utils": "4.1.0"
+  },
+  "scripts": {
+    "process-tokens": "style-dictionary build --config ./process-tokens.js"
   }
 }
