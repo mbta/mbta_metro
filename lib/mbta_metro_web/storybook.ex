@@ -2,7 +2,7 @@ defmodule MbtaMetroWeb.Storybook do
   @moduledoc false
 
   use PhoenixStorybook,
-    otp_app: :mbta_metro_web,
+    otp_app: :mbta_metro,
     content_path: Path.expand("../../storybook", __DIR__),
     # assets path are remote path, not local file-system paths
     css_path: "/assets/app.css",
