@@ -38,7 +38,7 @@ defmodule MbtaMetro.MixProject do
     [
       {:bandit, "~> 1.7", only: :dev, optional: true, runtime: false},
       {:cva, "~> 0.2"},
-      {:esbuild, "~> 0.10", only: :dev, optional: true, runtime: Mix.env() == :dev},
+      {:esbuild, "~> 0.10", only: :dev, runtime: false},
       {:ex_doc, "~> 0.38", only: :dev, runtime: false},
       {:faker, "~> 0.18", only: :dev, runtime: false},
       {:floki, "~> 0.38"},
@@ -81,7 +81,8 @@ defmodule MbtaMetro.MixProject do
     else
       [
         "lib/mbta_metro.ex",
-        "lib/mbta_metro/",
+        "lib/mbta_metro/gettext.ex",
+        "lib/mbta_metro/utils.ex",
         "lib/mbta_metro/components/",
         "lib/mbta_metro/live/",
         "lib/mix/"
