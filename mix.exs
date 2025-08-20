@@ -47,7 +47,7 @@ defmodule MbtaMetro.MixProject do
       {:phoenix, "~> 1.7"},
       {:phoenix_live_reload, "~> 1.6", only: :dev, optional: true, runtime: false},
       {:phoenix_live_view, "~> 1.1"},
-      {:phoenix_storybook, "~> 0.9"},
+      {:phoenix_storybook, "~> 0.9", only: :dev, optional: true, runtime: Mix.env() == :dev},
       {:tailwind, "~> 0.3", only: :dev, optional: true, runtime: Mix.env() == :dev},
       {:timex, "~> 3.7"}
     ]
@@ -74,7 +74,19 @@ defmodule MbtaMetro.MixProject do
     ]
   end
 
-  defp elixirc_paths(_), do: ["lib"]
+  # We don't want to compile the mbta_metro_web directory mbta_metro is being run in another app.
+  defp elixirc_paths(_) do
+    if Mix.Project.config()[:app] === :mbta_metro do
+      ["lib"]
+    else
+      [
+        "lib/mbta_metro.ex",
+        "lib/mbta_metro/",
+        "lib/mbta_metro/components/",
+        "lib/mbta_metro/live/"
+      ]
+    end
+  end
 
   defp package do
     [
