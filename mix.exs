@@ -85,7 +85,7 @@ defmodule MbtaMetro.MixProject do
         "lib/mbta_metro/utils.ex",
         "lib/mbta_metro/components/",
         "lib/mbta_metro/live/",
-        "lib/mix/mbta_metro/update_assets.ex"
+        "lib/mix/tasks/mbta_metro/update_assets.ex"
       ]
     end
   end
