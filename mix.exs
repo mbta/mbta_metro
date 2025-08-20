@@ -36,18 +36,18 @@ defmodule MbtaMetro.MixProject do
 
   defp deps do
     [
-      {:bandit, "~> 1.6", only: :dev, optional: true, runtime: false},
+      {:bandit, "~> 1.7", only: :dev, optional: true, runtime: false},
       {:cva, "~> 0.2"},
-      {:esbuild, "~> 0.9", only: :dev, optional: true, runtime: Mix.env() == :dev},
-      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
+      {:esbuild, "~> 0.10", only: :dev, optional: true, runtime: Mix.env() == :dev},
+      {:ex_doc, "~> 0.38", only: :dev, runtime: false},
       {:faker, "~> 0.18", only: :dev, runtime: false},
-      {:floki, "~> 0.37"},
+      {:floki, "~> 0.38"},
       {:jason, "~> 1.4"},
       {:heroicons, "~> 0.5", optional: true},
       {:phoenix, "~> 1.7"},
-      {:phoenix_live_reload, "~> 1.5", only: :dev, optional: true, runtime: false},
-      {:phoenix_live_view, "~> 1.0"},
-      {:phoenix_storybook, "~> 0.8"},
+      {:phoenix_live_reload, "~> 1.6", only: :dev, optional: true, runtime: false},
+      {:phoenix_live_view, "~> 1.1"},
+      {:phoenix_storybook, "~> 0.9"},
       {:tailwind, "~> 0.3", only: :dev, optional: true, runtime: Mix.env() == :dev},
       {:timex, "~> 3.7"}
     ]
