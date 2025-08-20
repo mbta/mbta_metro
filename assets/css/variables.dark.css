@@ -1,0 +1,75 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+.mbta-metro-dark-mode {
+  --colors-text-primary: var(--colors-white);
+  --colors-text-secondary: var(--colors-charcoal-70);
+  --colors-text-tertiary: var(--colors-charcoal-60);
+  --colors-background-primary: var(--colors-black);
+  --colors-background-secondary: var(--colors-charcoal-10);
+  --colors-background-tertiary: var(--colors-charcoal-20);
+  --colors-action-primary-default: var(--colors-cobalt-80);
+  --colors-action-primary-hover: var(--colors-cobalt-90);
+  --colors-action-primary-active: var(--colors-cobalt-70);
+  --colors-action-primary-disabled: var(--colors-charcoal-60);
+  --colors-action-primary-visited: var(--colors-amethyst-80);
+  --colors-focus: var(--colors-white);
+  --colors-error-active-foreground: var(--colors-firebrick-80);
+  --colors-error-default-foreground: var(--colors-firebrick-70);
+  --colors-error-default-background: var(--colors-firebrick-10);
+  --colors-success-default-foreground: var(--colors-emerald-70);
+  --colors-success-default-background: var(--colors-emerald-10);
+  --colors-success-active-foreground: var(--colors-emerald-80);
+  --colors-success-active-background: var(--colors-emerald-10);
+  --colors-warning-default-foreground: var(--colors-gold-70);
+  --colors-warning-default-background: var(--colors-gold-10);
+  --colors-warning-active-foreground: var(--colors-gold-80);
+  --colors-warning-active-background: var(--colors-gold-10);
+  --submenu-background-color: var(--colors-cobalt-90);
+  --submenu-item-hover-background-color: var(--colors-cobalt-80);
+  --submenu-divider-border-color: var(--colors-cobalt-70);
+  --submenu-category-text-color: var(--colors-cobalt-10);
+  --menu-item-default-background-color: var(--colors-cobalt-30);
+  --menu-item-default-border-color: var(--colors-cobalt-70);
+  --menu-item-active-text-color: var(--colors-cobalt-20);
+  --menu-item-active-background-color: var(--colors-cobalt-70);
+  --menu-item-active-border-color: var(--colors-cobalt-70);
+  --footer-pre-background-color: var(--colors-cobalt-90);
+  --footer-global-background-color: var(--colors-cobalt-10);
+  --footer-global-text-color: var(--colors-white);
+  --footer-local-background-color: var(--colors-cobalt-30);
+  --footer-local-text-color: var(--colors-white);
+  --navbar-global-background-color: var(--colors-cobalt-20);
+  --navbar-local-background-color: var(--colors-cobalt-30);
+  --button-primary-default-text-color: var(--colors-cobalt-30);
+  --button-primary-active-text-color: var(--colors-cobalt-20);
+  --button-secondary-hover-background-color: var(--colors-cobalt-20);
+  --button-secondary-default-background-color: var(--colors-black);
+  --button-secondary-active-text-color: var(--colors-cobalt-20);
+  --button-tertiary-default-border-color: var(--colors-cobalt-30);
+  --button-tertiary-default-background-color: var(--colors-black);
+  --button-tertiary-hover-border-color: var(--colors-cobalt-30);
+  --button-tertiary-hover-background-color: var(--colors-cobalt-30);
+  --button-tertiary-active-text-color: var(--colors-cobalt-20);
+  --annotation-text-color: var(--colors-cobalt-60);
+  --menu-mega-info-card-background-color: var(--colors-white);
+  --menu-mega-sub-category-background-color: var(--colors-cobalt-90);
+  --submenu-item-active-background-color: var(--colors-action-primary-active);
+  --menu-item-default-text-color: var(--colors-text-primary);
+  --footer-pre-text-color: var(--colors-text-primary);
+  --button-primary-default-background-color: var(--colors-action-primary-default);
+  --button-primary-default-border-color: var(--colors-action-primary-default);
+  --button-primary-active-background-color: var(--colors-action-primary-active);
+  --button-primary-active-border-color: var(--colors-action-primary-active);
+  --button-secondary-hover-text-color: var(--colors-action-primary-hover);
+  --button-secondary-hover-border-color: var(--colors-action-primary-hover);
+  --button-secondary-default-text-color: var(--colors-action-primary-default);
+  --button-secondary-default-border-color: var(--colors-action-primary-default);
+  --button-secondary-active-border-color: var(--colors-action-primary-active);
+  --button-secondary-active-background-color: var(--colors-action-primary-active);
+  --button-tertiary-default-text-color: var(--colors-action-primary-default);
+  --button-tertiary-hover-text-color: var(--colors-action-primary-hover);
+  --button-tertiary-active-border-color: var(--colors-action-primary-active);
+  --button-tertiary-active-background-color: var(--colors-action-primary-active);
+}
