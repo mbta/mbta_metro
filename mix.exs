@@ -31,7 +31,10 @@ defmodule MbtaMetro.MixProject do
 
   defp aliases() do
     [
-      prepare: ["mbta_metro.export_assets", "mbta_metro.version"]
+      prepare: ["tokens.build", "mbta_metro.export_assets", "mbta_metro.version"],
+      "tokens.build": [
+        "cmd --cd assets npx style-dictionary build --config process-figma-tokens.js"
+      ]
     ]
   end
 
