@@ -38,7 +38,7 @@ defmodule MbtaMetro.MixProject do
     [
       {:bandit, "~> 1.7", only: :dev, optional: true, runtime: false},
       {:cva, "~> 0.2"},
-      {:esbuild, "~> 0.10", only: :dev, runtime: false},
+      {:esbuild, "~> 0.10"},
       {:ex_doc, "~> 0.38", only: :dev, runtime: false},
       {:faker, "~> 0.18", only: :dev, runtime: false},
       {:floki, "~> 0.38"},
