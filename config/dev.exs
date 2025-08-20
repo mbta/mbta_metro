@@ -24,7 +24,7 @@ config :mbta_metro, MbtaMetroWeb.Endpoint,
   ]
 
 config :esbuild,
-  version: "0.17.11",
+  version: "0.25.9",
   app: [
     args:
       ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
@@ -38,7 +38,7 @@ config :esbuild,
   ]
 
 config :tailwind,
-  version: "3.4.0",
+  version: "3.4.17",
   app: [
     args: ~w(
       --config=tailwind.config.js
