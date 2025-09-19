@@ -16,13 +16,6 @@ Now you can visit [`http://localhost:4000`](http://localhost:4000/storybook) fro
 
 ## Installation
 
-### Install Tailwind
-
-If you have a clean, recent installation of Phoenix, you should already have Tailwind installed.
-If not, you can follow [this guide](https://tailwindcss.com/docs/guides/phoenix).
-
-### Install MBTA METRO
-
 Add this to your `mix.exs`:
 
 ```elixir
@@ -33,52 +26,25 @@ def deps do
 end
 ```
 
-Import `mbta_metro`'s styles in your `assets/css/app.css`:
+Import `mbta_metro`'s styles in your stylesheet:
 
 ```css
-@import "../node_modules/@mbta/rider-design-system/dist/variables.light.css" (prefers-color-scheme: light);
-@import "../node_modules/@mbta/rider-design-system/dist/variables.dark.css" (prefers-color-scheme: dark);
-@import "../../deps/mbta_metro/priv/static/assets/default.css";
+@import "../../deps/mbta_metro/priv/dist/metro.css";
 ```
 
-Make sure your assets are in line with the hex version of `mbta_metro`:
-
-```
-%> mix mbta_metro.update_assets
-```
-
-You can then use some defaults in your `assets/tailwind.config.js`:
+**Optionally**, you can use `mbta_metro` as a base for your Tailwind configuration.
 
 ```js
-const {colors, content, fontFamily, plugins, safelist} = require("mbta_metro")
-
 module.exports = {
-  content: [
-    ...content,
-  ],
-  safelist: [
-    ...safelist,
-  ],
-  plugins: [
-    ...plugins(), // Note that this is a function
-  ],
-  theme: {
-    extend: {
-      colors: {
-        ...colors
-      }
-    },
-    fontFamily: {
-      ...fontFamily,
-    },
-  }
+  presets: [require("../deps/mbta_metro/priv/dist/tailwind-preset")]
+  // the rest of your Tailwind configuration
 }
 ```
 
 If you want to use `mbta_metro`'s LiveComponents, you'll need to add its hooks in your `assets/js/app.js`:
 
 ```js
-import {Hooks} from "mbta_metro"
+import {Hooks} from "../deps/mbta_metro/priv/dist/metro.js"
 
 let liveSocket = new LiveSocket("/live", Socket, {
   hooks: {
@@ -90,7 +56,7 @@ let liveSocket = new LiveSocket("/live", Socket, {
 If you want to include hooks individually, you can do so:
 
 ```js
-import {Map} from "mbta_metro"
+import {Map} from "../deps/mbta_metro/priv/dist/metro.js"
 
 let liveSocket = new LiveSocket("/live", Socket, {
   hooks: {
@@ -157,15 +123,11 @@ config :mbta_metro, :map, config: %{
 
 ## Production usage
 
-Because we ship Mbta Metro's javascript via hex and not npm, installing the library works a little differently than normal.
-We included a mix task `mix mbta_metro.update_assets` that will install the javascript along with its dependencies in the normal Phoenix `node_modules` directory.
-When you go to build and compile your application you might run into errors about Mbta Metro's dependencies not being found.
-If you are building in an environment where you have Elixir and Node in the same image, you can simply run the above mix task.
-If you only have Node in the image, you can run the underlying npm command that mix tasks calls:
-
-```
-%> npm install --prefix assets -S -install-links deps/mbta_metro/priv/
-```
+The required assets are bundled into the following files, make sure to include them:
+- `/priv/dist/metro.css`
+- `/priv/dist/metro.js`
+- `/priv/fonts/`
+- `/priv/icons/`
 
 ## Publishing
 

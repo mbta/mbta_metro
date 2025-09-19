@@ -61,9 +61,7 @@ defmodule MbtaMetro.Components.Modal do
               class="shadow-charcoal-30/5 ring-charcoal-30/5 relative hidden rounded bg-white p-14 shadow-lg ring-1 transition"
             >
               <div class="absolute top-3 right-3">
-                <.button phx-click={JS.exec("data-cancel", to: "##{@id}")} type="button" class="m-0">
-                  Close
-                </.button>
+                <.button phx-click={JS.exec("data-cancel", to: "##{@id}")} type="button" class="m-0" text="Close" />
               </div>
               <div id={"#{@id}-content"}>
                 {render_slot(@inner_block)}

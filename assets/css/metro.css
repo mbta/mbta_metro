@@ -1,0 +1,5 @@
+@import "../../priv/design-system/variables.base.css";
+@import "../../priv/design-system/variables.light.css";
+@import "../../priv/design-system/variables.dark.css";
+@import "./base.css";
+@import "./components.css" layer(components);

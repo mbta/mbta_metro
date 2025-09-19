@@ -13,7 +13,7 @@ defmodule MbtaMetro.Components.Icon do
     if @custom_icon_paths == nil, do: [], else: @custom_icon_paths |> Path.wildcard()
 
   icon_paths =
-    "#{Utils.project_root()}/priv/static/icons/**/*.svg"
+    "#{Utils.project_root()}/priv/icons/**/*.svg"
     |> Path.wildcard()
 
   icons =

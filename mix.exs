@@ -5,11 +5,13 @@ defmodule MbtaMetro.MixProject do
     [
       app: :mbta_metro,
       aliases: aliases(),
+      compilers: Mix.compilers(),
       deps: deps(),
       description: "A Phoenix LiveView component library",
       docs: docs(),
       elixir: "~> 1.17",
       elixirc_paths: elixirc_paths(Mix.env()),
+      listeners: [Phoenix.CodeReloader],
       name: "MbtaMetro",
       package: package(),
       start_permanent: Mix.env() == :prod,
@@ -21,16 +23,17 @@ defmodule MbtaMetro.MixProject do
   #
   # Type `mix help compile.app` for more information.
   def application do
-    if Mix.env() == :dev do
-      [mod: {MbtaMetro.Application, []}]
-    else
-      []
-    end
+    [mod: {MbtaMetro.Application, []}]
   end
 
   defp aliases() do
     [
-      prepare: ["mbta_metro.export_assets", "mbta_metro.version"]
+      prepare: ["assets.build", "mbta_metro.version"],
+      "assets.build": [
+        "esbuild tailwindpreset",
+        "esbuild metro",
+        "tailwind metro"
+      ]
     ]
   end
 
@@ -38,17 +41,17 @@ defmodule MbtaMetro.MixProject do
     [
       {:bandit, "~> 1.7", only: :dev, optional: true, runtime: false},
       {:cva, "~> 0.2"},
-      {:esbuild, "~> 0.10", only: :dev, runtime: Mix.env() == :dev},
+      {:esbuild, "~> 0.10", only: [:dev, :test], runtime: Mix.env() == :dev},
       {:ex_doc, "~> 0.38", only: :dev, runtime: false},
-      {:faker, "~> 0.18", only: :dev, runtime: false},
+      {:faker, "~> 0.18", only: [:dev, :test], runtime: false},
       {:floki, "~> 0.38"},
       {:jason, "~> 1.4"},
       {:heroicons, "~> 0.5", optional: true},
       {:phoenix, "~> 1.7"},
       {:phoenix_live_reload, "~> 1.6", only: :dev, optional: true, runtime: false},
       {:phoenix_live_view, "~> 1.1"},
-      {:phoenix_storybook, "~> 0.9", only: :dev, optional: true, runtime: Mix.env() == :dev},
-      {:tailwind, "~> 0.3", only: :dev, optional: true, runtime: Mix.env() == :dev},
+      {:phoenix_storybook, "0.9.3"},
+      {:tailwind, "~> 0.3", only: [:dev, :test], optional: true, runtime: Mix.env() == :dev},
       {:timex, "~> 3.7"}
     ]
   end
@@ -84,8 +87,7 @@ defmodule MbtaMetro.MixProject do
         "lib/mbta_metro/gettext.ex",
         "lib/mbta_metro/utils.ex",
         "lib/mbta_metro/components/",
-        "lib/mbta_metro/live/",
-        "lib/mix/tasks/mbta_metro/update_assets.ex"
+        "lib/mbta_metro/live/"
       ]
     end
   end
@@ -98,17 +100,10 @@ defmodule MbtaMetro.MixProject do
         "lib/mbta_metro/live/**/*",
         "lib/mbta_metro/gettext.ex",
         "lib/mbta_metro/utils.ex",
-        "lib/mix/tasks/mbta_metro/update_*.ex",
         "mix.exs",
-        "priv/package.json",
-        "priv/tailwind.config.js",
-        "priv/js/*",
-        "priv/static/assets/default.css",
-        "priv/static/assets/tailwind.config.js",
-        "priv/static/assets/variables.dark.css",
-        "priv/static/assets/variables.light.css",
-        "priv/static/fonts/*",
-        "priv/static/icons/*",
+        "priv/fonts/*",
+        "priv/icons/*",
+        "priv/dist/*",
         "README.md",
         "VERSION"
       ],

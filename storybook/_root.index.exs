@@ -7,7 +7,7 @@ defmodule Storybook.Root do
 
   def entry("welcome") do
     [
-      name: "Welcome"
+      name: "Welcome to This Page"
     ]
   end
 end

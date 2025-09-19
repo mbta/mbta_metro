@@ -13,73 +13,94 @@ defmodule Storybook.Components.Button do
 
   def variations do
     [
-      %Variation{
-        id: :default,
-        slots: [
-          "Default Button Style"
-        ],
-        description: "Default"
+      %VariationGroup{
+        id: :primary,
+        description: "",
+        variations: [
+          %Variation{
+            id: :default,
+            attributes: %{text: "Default button"}
+          },
+          %Variation{
+            id: :primary_disabled,
+            attributes: %{
+              "aria-disabled": true,
+              text: "Disabled button"
+            }
+          },
+          %Variation{
+            id: :default_with_class,
+            attributes: %{
+              class: "-skew-x-12 opacity-50",
+              text: "With custom classes"
+            }
+          },
+          %Variation{
+            id: :default_with_icon,
+            attributes: %{
+              text: "Default with icon"
+            },
+            slots: [
+              """
+              <:icon>
+              <.icon name="comment" class="w-4 h-4 fill-white" />
+              </:icon>
+              """
+            ]
+          },
+          %Variation{
+            id: :primary_sm,
+            attributes: %{
+              size: "small",
+              text: "Primary small button"
+            }
+          }
+        ]
       },
-      %Variation{
-        id: :primary_disabled,
-        attributes: %{
-          "aria-disabled": true
-        },
-        slots: [
-          "Primary disabled button"
-        ],
-        description: "Primary disabled default button"
-      },
-      %Variation{
-        id: :default_with_icon,
-        slots: [
-          """
-          <.icon name="comment" class="w-4 h-4 fill-white" /> Default with icon
-          """
-        ],
-        description: "Default with icon"
-      },
-      %Variation{
-        id: :primary_sm,
-        attributes: %{
-          size: "small"
-        },
-        slots: [
-          "Primary small button"
-        ],
-        description: "Primary small button"
-      },
-      %Variation{
-        id: :primary_sm_disabled,
-        attributes: %{
-          size: "small",
-          "aria-disabled": true
-        },
-        slots: [
-          "Primary disabled small button"
-        ],
-        description: "Primary disabled small button"
-      },
-      %Variation{
+      %VariationGroup{
         id: :secondary,
-        attributes: %{
-          variant: "secondary"
-        },
-        slots: [
-          "Secondary button"
-        ],
-        description: "Secondary default button"
+        description: "Secondary button, to use in accompaniment with a primary button.",
+        variations: [
+          %Variation{
+            id: :secondary_default,
+            attributes: %{
+              text: "Secondary button",
+              variant: "secondary"
+            }
+          },
+          %Variation{
+            id: :secondary_with_icon,
+            attributes: %{
+              text: "Secondary with icon",
+              variant: "secondary"
+            },
+            slots: [
+              """
+              <:icon>
+              <.icon name="star" class="w-4 h-4 fill-current" />
+              </:icon>
+              """
+            ]
+          },
+          %Variation{
+            id: :secondary_sm,
+            attributes: %{
+              variant: "secondary",
+              size: "small",
+              text: "Secondary small"
+            }
+          }
+        ]
       },
       %Variation{
-        id: :secondary_sm,
+        id: :tertiary,
         attributes: %{
-          variant: "secondary",
-          size: "small"
+          variant: "tertiary",
+          size: "small",
+          text: "Tertiary button"
         },
-        slots: [
-          "Secondary small button"
-        ],
-        description: "Secondary small button"
+        description:
+          "Tertiary button, only available in small. Use only in contexts where Primary and Secondary are also used in the same view. Example: An “Edit” element button inside a modal with a “Save” and “Cancel” button."
       }
     ]
   end

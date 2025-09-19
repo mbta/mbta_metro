@@ -2,34 +2,50 @@ defmodule MbtaMetro.Components.Button do
   @moduledoc false
 
   use Phoenix.Component
-  use CVA.Component
+
+  import CVA
+
+  @config [
+    variants: [
+      variant: [
+        primary: "mbta-metro-button--primary",
+        secondary: "mbta-metro-button--secondary",
+        tertiary: "mbta-metro-button--tertiary"
+      ],
+      size: [
+        default: "mbta-metro-button",
+        small: "mbta-metro-button mbta-metro-button--small"
+      ]
+    ],
+    default_variants: [
+      variant: :primary,
+      size: :default
+    ]
+  ]
 
   attr :class, :string, default: ""
+  attr :variant, :string, values: ~w(primary secondary tertiary), default: "primary"
+  attr :size, :string, values: ~w(default small), default: "default"
+  attr :text, :string, required: true
   attr :rest, :global
 
-  slot :inner_block, required: true
-
-  variant :variant,
-          [
-            primary: "mbta-button mbta-button-primary",
-            secondary: "mbta-button mbta-button-secondary"
-          ],
-          default: :primary
-
-  variant :size,
-          [
-            default: "text-lg",
-            small: "text-sm"
-          ],
-          default: :default
+  slot :icon, doc: "Optional icon to prefix the button text"
 
   @doc """
-  Button styles in primary and secondary variants, and small and regular sizing.
+  Indicate a user can take an action or series of actions from a list of options.
   """
-  def button(assigns) do
+  def button(%{variant: variant, size: size} = assigns) do
+    assigns =
+      assign(
+        assigns,
+        :class,
+        cva(assigns.class, @config, variant: variant, size: size)
+      )
+
     ~H"""
-    <button class={"#{@cva_class} #{@class}"} {@rest}>
-      {render_slot(@inner_block)}
+    <button class={@class} {@rest}>
+      {if(@icon, do: render_slot(@icon))}
+      {@text}
     </button>
     """
   end

@@ -1,0 +1,18 @@
+@import "../../priv/dist/metro.css";
+
+.mbta-metro-web {
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+}
+
+.psb {
+  pre {
+    overflow: hidden;
+  }
+}
+
+@layer utilities {
+  * {
+    @apply font-base;
+  }
+}

@@ -2,6 +2,13 @@ import Config
 
 config :logger, level: :info
 
+config :mbta_metro, MbtaMetroWeb.Endpoint,
+  url: [host: "localhost"],
+  adapter: Bandit.PhoenixAdapter,
+  pubsub_server: MbtaMetro.PubSub,
+  live_view: [signing_salt: "F_IrwXSetja22gAl"],
+  server: config_env() != :test
+
 # Raster style maps
 config :mbta_metro, :map, %{
   center: [-71.0589, 42.3601],
@@ -31,5 +38,41 @@ config :mbta_metro, :map, %{
 }
 
 config :mbta_metro, custom_icons: "#{File.cwd!()}/priv/static/test/icons/custom/*.svg"
+
+config :esbuild,
+  version: "0.25.9",
+  storybook: [
+    args: ~w(js/storybook.js --bundle --outdir=../priv/static/assets),
+    cd: Path.expand("../assets", __DIR__),
+    env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
+  ],
+  tailwindpreset: [
+    args: ~w(js/tailwind-preset.js --bundle --outdir=../priv/dist),
+    cd: Path.expand("../assets", __DIR__),
+    env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
+  ],
+  metro: [
+    args: ~w(js/metro.js --bundle --target=es2020 --outdir=../priv/dist --minify),
+    cd: Path.expand("../assets", __DIR__),
+    env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
+  ]
+
+config :tailwind,
+  version: "3.4.17",
+  storybook: [
+    args: ~w(
+      --config=tailwind.storybook.config.js
+      --input=css/storybook.css
+      --output=../priv/static/assets/storybook.css
+    ),
+    cd: Path.expand("../assets", __DIR__)
+  ],
+  metro: [
+    args: ~w(
+      --input=css/metro.css
+      --output=../priv/dist/metro.css
+    ),
+    cd: Path.expand("../assets", __DIR__)
+  ]
 
 import_config "#{config_env()}.exs"

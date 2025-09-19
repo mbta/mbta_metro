@@ -1,0 +1,1405 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root {
+  --colors-charcoal-10: #1c1e23;
+  --colors-charcoal-20: #28343e;
+  --colors-charcoal-30: #494f5c;
+  --colors-charcoal-40: #626a73;
+  --colors-charcoal-50: #777f92;
+  --colors-charcoal-60: #a0a4b1;
+  --colors-charcoal-70: #bdbfc1;
+  --colors-charcoal-80: #e8eaee;
+  --colors-charcoal-90: #f4f5f7;
+  --colors-cobalt-10: #071e31;
+  --colors-cobalt-20: #0b2f4c;
+  --colors-cobalt-30: #165c96;
+  --colors-cobalt-40: #1b73bb;
+  --colors-cobalt-50: #4278d6;
+  --colors-cobalt-60: #5697dc;
+  --colors-cobalt-70: #a1c6ed;
+  --colors-cobalt-80: #cee0f4;
+  --colors-cobalt-90: #e2ecf9;
+  --colors-gold-10: #3c3002;
+  --colors-gold-20: #735d07;
+  --colors-gold-30: #a8880b;
+  --colors-gold-40: #d8ac00;
+  --colors-gold-50: #ffce0c;
+  --colors-gold-60: #f9d543;
+  --colors-gold-70: #ffe372;
+  --colors-gold-80: #fff0b2;
+  --colors-gold-90: #fffae9;
+  --colors-firebrick-10: #330005;
+  --colors-firebrick-20: #660009;
+  --colors-firebrick-30: #b3000f;
+  --colors-firebrick-40: #c71a28;
+  --colors-firebrick-50: #d24b57;
+  --colors-firebrick-60: #d36464;
+  --colors-firebrick-70: #e18e8e;
+  --colors-firebrick-80: #e7bbbb;
+  --colors-firebrick-90: #f2dede;
+  --colors-emerald-10: #0b3003;
+  --colors-emerald-20: #145a06;
+  --colors-emerald-30: #1e8709;
+  --colors-emerald-40: #2bbf0d;
+  --colors-emerald-50: #40df20;
+  --colors-emerald-60: #66e54c;
+  --colors-emerald-70: #8fe87d;
+  --colors-emerald-80: #b8eaae;
+  --colors-emerald-90: #dff0d8;
+  --colors-amethyst-10: #130e1b;
+  --colors-amethyst-20: #302343;
+  --colors-amethyst-30: #4d386b;
+  --colors-amethyst-40: #664a8d;
+  --colors-amethyst-50: #8358bb;
+  --colors-amethyst-60: #986ece;
+  --colors-amethyst-70: #ae94d1;
+  --colors-amethyst-80: #cfc1e1;
+  --colors-amethyst-90: #dcd3e8;
+  --colors-white: #ffffff;
+  --colors-black: #000000;
+  --colors-green-line: #00843d;
+  --colors-orange-line: #ed8b00;
+  --colors-red-line: #da291c;
+  --colors-blue-line: #003da5;
+  --colors-silver-line: #7c878e;
+  --colors-brand-bus: #ffc72c;
+  --colors-ferry: #008eaa;
+  --colors-the-ride: #52bbc5;
+  --colors-commuter-rail: #80276c;
+  --colors-swa: #00b5e2;
+  --colors-mbta-dark: #212322;
+  --colors-dark-winter: #13294b;
+  --colors-mid-winter: #147bd1;
+  --border-radius-none: 0;
+  --border-radius-xs: 0.125rem;
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.375rem;
+  --border-radius-lg: 0.5rem;
+  --border-radius-xl: 1rem;
+  --border-radius-2xl: 2rem;
+  --border-radius-4xl: 4rem;
+  --border-radius-full: 624.9375rem;
+  --border-width-xs: 0.0625rem;
+  --border-width-sm: 0.125rem;
+  --border-width-md: 0.1875rem;
+  --border-width-lg: 0.25rem;
+  --spacing-0: 0;
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+  --line-height-sm: 1.25rem;
+  --line-height-md: 1.5rem;
+  --line-height-lg: 2rem;
+  --line-height-xl: 2.5rem;
+  --line-height-2xl: 3rem;
+  --transition-duration: 0.20s;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-family-inter: Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-family-helvetica: "Helvetica Neue", Helvetica, Inter, Arial, ui-sans-serif, system-ui, sans-serif;
+  --minimum-tap-target-size: 2.75rem;
+  --colors-subway: var(--colors-charcoal-30);
+  --border-radius-default: var(--border-radius-sm);
+  --border-width-default: var(--border-width-sm);
+  --spacing-xs: var(--spacing-1);
+  --spacing-sm: var(--spacing-2);
+  --spacing-md: var(--spacing-4);
+  --spacing-lg: var(--spacing-6);
+  --spacing-xl: var(--spacing-8);
+  --spacing-2xl: var(--spacing-12);
+  --line-height-default: var(--line-height-md);
+  --font-size-default: var(--font-size-md);
+  --font-family-base: var(--font-family-inter);
+  --font-family-heading: var(--font-family-helvetica);
+  --spacing-default: var(--spacing-md);
+}
+
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --colors-text-primary: var(--colors-black);
+    --colors-text-secondary: var(--colors-charcoal-30);
+    --colors-text-tertiary: var(--colors-charcoal-40);
+    --colors-background-primary: var(--colors-white);
+    --colors-background-secondary: var(--colors-charcoal-90);
+    --colors-background-tertiary: var(--colors-charcoal-80);
+    --colors-action-primary-default: var(--colors-cobalt-30);
+    --colors-action-primary-hover: var(--colors-cobalt-20);
+    --colors-action-primary-active: var(--colors-cobalt-20);
+    --colors-action-primary-disabled: var(--colors-charcoal-40);
+    --colors-action-primary-visited: var(--colors-amethyst-40);
+    --colors-focus: var(--colors-cobalt-60);
+    --colors-error-active-foreground: var(--colors-firebrick-20);
+    --colors-error-default-foreground: var(--colors-firebrick-30);
+    --colors-error-default-background: var(--colors-firebrick-90);
+    --colors-success-default-foreground: var(--colors-emerald-30);
+    --colors-success-default-background: var(--colors-emerald-90);
+    --colors-success-active-foreground: var(--colors-emerald-20);
+    --colors-success-active-background: var(--colors-emerald-90);
+    --colors-warning-default-foreground: var(--colors-gold-30);
+    --colors-warning-default-background: var(--colors-gold-90);
+    --colors-warning-active-foreground: var(--colors-gold-20);
+    --colors-warning-active-background: var(--colors-gold-90);
+    --submenu-background-color: var(--colors-cobalt-90);
+    --submenu-item-hover-background-color: var(--colors-cobalt-80);
+    --submenu-divider-border-color: var(--colors-cobalt-70);
+    --submenu-category-text-color: var(--colors-cobalt-10);
+    --menu-item-default-background-color: var(--colors-white);
+    --menu-item-default-border-color: var(--colors-cobalt-70);
+    --menu-item-active-background-color: var(--colors-cobalt-70);
+    --menu-item-active-border-color: var(--colors-cobalt-70);
+    --footer-pre-background-color: var(--colors-cobalt-90);
+    --footer-global-background-color: var(--colors-cobalt-10);
+    --footer-global-text-color: var(--colors-white);
+    --footer-local-background-color: var(--colors-cobalt-30);
+    --footer-local-text-color: var(--colors-white);
+    --navbar-global-background-color: var(--colors-cobalt-20);
+    --navbar-local-background-color: var(--colors-cobalt-30);
+    --button-primary-default-text-color: var(--colors-white);
+    --button-primary-active-text-color: var(--colors-white);
+    --button-secondary-hover-background-color: var(--colors-cobalt-80);
+    --button-secondary-default-background-color: var(--colors-white);
+    --button-secondary-active-text-color: var(--colors-white);
+    --button-tertiary-default-border-color: var(--colors-cobalt-70);
+    --button-tertiary-default-background-color: var(--colors-white);
+    --button-tertiary-hover-border-color: var(--colors-cobalt-70);
+    --button-tertiary-hover-background-color: var(--colors-cobalt-70);
+    --button-tertiary-active-text-color: var(--colors-white);
+    --annotation-text-color: var(--colors-cobalt-50);
+    --menu-mega-info-card-background-color: var(--colors-cobalt-80);
+    --menu-mega-sub-category-background-color: var(--colors-cobalt-90);
+    --submenu-item-active-background-color: var(--colors-action-primary-active);
+    --menu-item-default-text-color: var(--colors-text-primary);
+    --menu-item-active-text-color: var(--colors-action-primary-active);
+    --footer-pre-text-color: var(--colors-text-primary);
+    --button-primary-default-background-color: var(--colors-action-primary-default);
+    --button-primary-default-border-color: var(--colors-action-primary-default);
+    --button-primary-active-background-color: var(--colors-action-primary-active);
+    --button-primary-active-border-color: var(--colors-action-primary-active);
+    --button-secondary-hover-text-color: var(--colors-action-primary-hover);
+    --button-secondary-hover-border-color: var(--colors-action-primary-hover);
+    --button-secondary-default-text-color: var(--colors-action-primary-default);
+    --button-secondary-default-border-color: var(--colors-action-primary-default);
+    --button-secondary-active-border-color: var(--colors-action-primary-active);
+    --button-secondary-active-background-color: var(--colors-action-primary-active);
+    --button-tertiary-default-text-color: var(--colors-action-primary-default);
+    --button-tertiary-hover-text-color: var(--colors-action-primary-hover);
+    --button-tertiary-active-border-color: var(--colors-action-primary-active);
+    --button-tertiary-active-background-color: var(--colors-action-primary-active);
+  }
+}
+
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --colors-text-primary: var(--colors-white);
+    --colors-text-secondary: var(--colors-charcoal-70);
+    --colors-text-tertiary: var(--colors-charcoal-60);
+    --colors-background-primary: var(--colors-black);
+    --colors-background-secondary: var(--colors-charcoal-10);
+    --colors-background-tertiary: var(--colors-charcoal-20);
+    --colors-action-primary-default: var(--colors-cobalt-80);
+    --colors-action-primary-hover: var(--colors-cobalt-90);
+    --colors-action-primary-active: var(--colors-cobalt-70);
+    --colors-action-primary-disabled: var(--colors-charcoal-60);
+    --colors-action-primary-visited: var(--colors-amethyst-80);
+    --colors-focus: var(--colors-white);
+    --colors-error-active-foreground: var(--colors-firebrick-80);
+    --colors-error-default-foreground: var(--colors-firebrick-70);
+    --colors-error-default-background: var(--colors-firebrick-10);
+    --colors-success-default-foreground: var(--colors-emerald-70);
+    --colors-success-default-background: var(--colors-emerald-10);
+    --colors-success-active-foreground: var(--colors-emerald-80);
+    --colors-success-active-background: var(--colors-emerald-10);
+    --colors-warning-default-foreground: var(--colors-gold-70);
+    --colors-warning-default-background: var(--colors-gold-10);
+    --colors-warning-active-foreground: var(--colors-gold-80);
+    --colors-warning-active-background: var(--colors-gold-10);
+    --submenu-background-color: var(--colors-cobalt-90);
+    --submenu-item-hover-background-color: var(--colors-cobalt-80);
+    --submenu-divider-border-color: var(--colors-cobalt-70);
+    --submenu-category-text-color: var(--colors-cobalt-10);
+    --menu-item-default-background-color: var(--colors-cobalt-30);
+    --menu-item-default-border-color: var(--colors-cobalt-70);
+    --menu-item-active-text-color: var(--colors-cobalt-20);
+    --menu-item-active-background-color: var(--colors-cobalt-70);
+    --menu-item-active-border-color: var(--colors-cobalt-70);
+    --footer-pre-background-color: var(--colors-cobalt-90);
+    --footer-global-background-color: var(--colors-cobalt-10);
+    --footer-global-text-color: var(--colors-white);
+    --footer-local-background-color: var(--colors-cobalt-30);
+    --footer-local-text-color: var(--colors-white);
+    --navbar-global-background-color: var(--colors-cobalt-20);
+    --navbar-local-background-color: var(--colors-cobalt-30);
+    --button-primary-default-text-color: var(--colors-cobalt-30);
+    --button-primary-active-text-color: var(--colors-cobalt-20);
+    --button-secondary-hover-background-color: var(--colors-cobalt-20);
+    --button-secondary-default-background-color: var(--colors-black);
+    --button-secondary-active-text-color: var(--colors-cobalt-20);
+    --button-tertiary-default-border-color: var(--colors-cobalt-30);
+    --button-tertiary-default-background-color: var(--colors-black);
+    --button-tertiary-hover-border-color: var(--colors-cobalt-30);
+    --button-tertiary-hover-background-color: var(--colors-cobalt-30);
+    --button-tertiary-active-text-color: var(--colors-cobalt-20);
+    --annotation-text-color: var(--colors-cobalt-60);
+    --menu-mega-info-card-background-color: var(--colors-white);
+    --menu-mega-sub-category-background-color: var(--colors-cobalt-90);
+    --submenu-item-active-background-color: var(--colors-action-primary-active);
+    --menu-item-default-text-color: var(--colors-text-primary);
+    --footer-pre-text-color: var(--colors-text-primary);
+    --button-primary-default-background-color: var(--colors-action-primary-default);
+    --button-primary-default-border-color: var(--colors-action-primary-default);
+    --button-primary-active-background-color: var(--colors-action-primary-active);
+    --button-primary-active-border-color: var(--colors-action-primary-active);
+    --button-secondary-hover-text-color: var(--colors-action-primary-hover);
+    --button-secondary-hover-border-color: var(--colors-action-primary-hover);
+    --button-secondary-default-text-color: var(--colors-action-primary-default);
+    --button-secondary-default-border-color: var(--colors-action-primary-default);
+    --button-secondary-active-border-color: var(--colors-action-primary-active);
+    --button-secondary-active-background-color: var(--colors-action-primary-active);
+    --button-tertiary-default-text-color: var(--colors-action-primary-default);
+    --button-tertiary-hover-text-color: var(--colors-action-primary-hover);
+    --button-tertiary-active-border-color: var(--colors-action-primary-active);
+    --button-tertiary-active-background-color: var(--colors-action-primary-active);
+  }
+}
+
+*, ::before, ::after {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}
+
+::backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}
+
+/*! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com
+ */
+
+/*
+1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
+2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
+*/
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  /* 1 */
+  border-width: 0;
+  /* 2 */
+  border-style: solid;
+  /* 2 */
+  border-color: #e5e7eb;
+  /* 2 */
+}
+
+::before,
+::after {
+  --tw-content: '';
+}
+
+/*
+1. Use a consistent sensible line-height in all browsers.
+2. Prevent adjustments of font size after orientation changes in iOS.
+3. Use a more readable tab size.
+4. Use the user's configured `sans` font-family by default.
+5. Use the user's configured `sans` font-feature-settings by default.
+6. Use the user's configured `sans` font-variation-settings by default.
+7. Disable tap highlights on iOS
+*/
+
+html,
+:host {
+  line-height: 1.5;
+  /* 1 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+  -moz-tab-size: 4;
+  /* 3 */
+  -o-tab-size: 4;
+     tab-size: 4;
+  /* 3 */
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  /* 4 */
+  font-feature-settings: normal;
+  /* 5 */
+  font-variation-settings: normal;
+  /* 6 */
+  -webkit-tap-highlight-color: transparent;
+  /* 7 */
+}
+
+/*
+1. Remove the margin in all browsers.
+2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
+*/
+
+body {
+  margin: 0;
+  /* 1 */
+  line-height: inherit;
+  /* 2 */
+}
+
+/*
+1. Add the correct height in Firefox.
+2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+3. Ensure horizontal rules are visible by default.
+*/
+
+hr {
+  height: 0;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  border-top-width: 1px;
+  /* 3 */
+}
+
+/*
+Add the correct text decoration in Chrome, Edge, and Safari.
+*/
+
+abbr:where([title]) {
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+}
+
+/*
+Remove the default font size and weight for headings.
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*
+Reset links to optimize for opt-in styling instead of opt-out.
+*/
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/*
+Add the correct font weight in Edge and Safari.
+*/
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/*
+1. Use the user's configured `mono` font-family by default.
+2. Use the user's configured `mono` font-feature-settings by default.
+3. Use the user's configured `mono` font-variation-settings by default.
+4. Correct the odd `em` font sizing in all browsers.
+*/
+
+code,
+kbd,
+samp,
+pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  /* 1 */
+  font-feature-settings: normal;
+  /* 2 */
+  font-variation-settings: normal;
+  /* 3 */
+  font-size: 1em;
+  /* 4 */
+}
+
+/*
+Add the correct font size in all browsers.
+*/
+
+small {
+  font-size: 80%;
+}
+
+/*
+Prevent `sub` and `sup` elements from affecting the line height in all browsers.
+*/
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/*
+1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+3. Remove gaps between table borders by default.
+*/
+
+table {
+  text-indent: 0;
+  /* 1 */
+  border-color: inherit;
+  /* 2 */
+  border-collapse: collapse;
+  /* 3 */
+}
+
+/*
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+3. Remove default padding in all browsers.
+*/
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  /* 1 */
+  font-feature-settings: inherit;
+  /* 1 */
+  font-variation-settings: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  font-weight: inherit;
+  /* 1 */
+  line-height: inherit;
+  /* 1 */
+  letter-spacing: inherit;
+  /* 1 */
+  color: inherit;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+  padding: 0;
+  /* 3 */
+}
+
+/*
+Remove the inheritance of text transform in Edge and Firefox.
+*/
+
+button,
+select {
+  text-transform: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Remove default button styles.
+*/
+
+button,
+input:where([type='button']),
+input:where([type='reset']),
+input:where([type='submit']) {
+  -webkit-appearance: button;
+  /* 1 */
+  background-color: transparent;
+  /* 2 */
+  background-image: none;
+  /* 2 */
+}
+
+/*
+Use the modern Firefox focus style for all focusable elements.
+*/
+
+:-moz-focusring {
+  outline: auto;
+}
+
+/*
+Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
+*/
+
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+/*
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+
+progress {
+  vertical-align: baseline;
+}
+
+/*
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/*
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+
+[type='search'] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
+}
+
+/*
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to `inherit` in Safari.
+*/
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+}
+
+/*
+Add the correct display in Chrome and Safari.
+*/
+
+summary {
+  display: list-item;
+}
+
+/*
+Removes the default spacing and border for appropriate elements.
+*/
+
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+ol,
+ul,
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+Reset default styling for dialogs.
+*/
+
+dialog {
+  padding: 0;
+}
+
+/*
+Prevent resizing textareas horizontally by default.
+*/
+
+textarea {
+  resize: vertical;
+}
+
+/*
+1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
+2. Set the default placeholder color to the user's configured gray 400 color.
+*/
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+  opacity: 1;
+  /* 1 */
+  color: #9ca3af;
+  /* 2 */
+}
+
+input::placeholder,
+textarea::placeholder {
+  opacity: 1;
+  /* 1 */
+  color: #9ca3af;
+  /* 2 */
+}
+
+/*
+Set the default cursor for buttons.
+*/
+
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+/*
+Make sure disabled buttons don't get the pointer cursor.
+*/
+
+:disabled {
+  cursor: default;
+}
+
+/*
+1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
+2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
+   This can trigger a poorly considered lint error in some tools but is included by design.
+*/
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+  /* 1 */
+  vertical-align: middle;
+  /* 2 */
+}
+
+/*
+Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
+*/
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Make elements with the HTML hidden attribute stay hidden by default */
+
+[hidden]:where(:not([hidden="until-found"])) {
+  display: none;
+}
+
+:root {
+  font-family: var(--font-family-base);
+}
+
+@supports (font-variation-settings: normal) {
+  :root {
+    font-family: "InterVariable", sans-serif;
+    font-optical-sizing: auto;
+  }
+}
+
+@font-face {
+  font-family: InterVariable;
+
+  font-style: normal;
+
+  font-weight: 100 900;
+
+  font-display: swap;
+
+  src: url("../fonts/InterVariable.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: InterVariable;
+
+  font-style: italic;
+
+  font-weight: 100 900;
+
+  font-display: swap;
+
+  src: url("../fonts/InterVariable-Italic.woff2") format("woff2");
+}
+
+/* static fonts */
+
+@font-face {
+  font-family: "Inter";
+
+  font-style: normal;
+
+  font-weight: 100;
+
+  font-display: swap;
+
+  src: url("../fonts/Inter-Thin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+
+  font-style: italic;
+
+  font-weight: 100;
+
+  font-display: swap;
+
+  src: url("../fonts/Inter-ThinItalic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+
+  font-style: normal;
+
+  font-weight: 200;
+
+  font-display: swap;
+
+  src: url("../fonts/Inter-ExtraLight.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+
+  font-style: italic;
+
+  font-weight: 200;
+
+  font-display: swap;
+
+  src: url("../fonts/Inter-ExtraLightItalic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+
+  font-style: normal;
+
+  font-weight: 300;
+
+  font-display: swap;
+
+  src: url("../fonts/Inter-Light.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+
+  font-style: italic;
+
+  font-weight: 300;
+
+  font-display: swap;
+
+  src: url("../fonts/Inter-LightItalic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+
+  font-style: normal;
+
+  font-weight: 400;
+
+  font-display: swap;
+
+  src: url("../fonts/Inter-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+
+  font-style: italic;
+
+  font-weight: 400;
+
+  font-display: swap;
+
+  src: url("../fonts/Inter-Italic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+
+  font-style: normal;
+
+  font-weight: 500;
+
+  font-display: swap;
+
+  src: url("../fonts/Inter-Medium.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+
+  font-style: italic;
+
+  font-weight: 500;
+
+  font-display: swap;
+
+  src: url("../fonts/Inter-MediumItalic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+
+  font-style: normal;
+
+  font-weight: 600;
+
+  font-display: swap;
+
+  src: url("../fonts/Inter-SemiBold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+
+  font-style: italic;
+
+  font-weight: 600;
+
+  font-display: swap;
+
+  src: url("../fonts/Inter-SemiBoldItalic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+
+  font-style: normal;
+
+  font-weight: 700;
+
+  font-display: swap;
+
+  src: url("../fonts/Inter-Bold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+
+  font-style: italic;
+
+  font-weight: 700;
+
+  font-display: swap;
+
+  src: url("../fonts/Inter-BoldItalic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+
+  font-style: normal;
+
+  font-weight: 800;
+
+  font-display: swap;
+
+  src: url("../fonts/Inter-ExtraBold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+
+  font-style: italic;
+
+  font-weight: 800;
+
+  font-display: swap;
+
+  src: url("../fonts/Inter-ExtraBoldItalic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+
+  font-style: normal;
+
+  font-weight: 900;
+
+  font-display: swap;
+
+  src: url("../fonts/Inter-Black.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+
+  font-style: italic;
+
+  font-weight: 900;
+
+  font-display: swap;
+
+  src: url("../fonts/Inter-BlackItalic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "InterDisplay";
+
+  font-style: normal;
+
+  font-weight: 100;
+
+  font-display: swap;
+
+  src: url("../fonts/InterDisplay-Thin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "InterDisplay";
+
+  font-style: italic;
+
+  font-weight: 100;
+
+  font-display: swap;
+
+  src: url("../fonts/InterDisplay-ThinItalic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "InterDisplay";
+
+  font-style: normal;
+
+  font-weight: 200;
+
+  font-display: swap;
+
+  src: url("../fonts/InterDisplay-ExtraLight.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "InterDisplay";
+
+  font-style: italic;
+
+  font-weight: 200;
+
+  font-display: swap;
+
+  src: url("../fonts/InterDisplay-ExtraLightItalic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "InterDisplay";
+
+  font-style: normal;
+
+  font-weight: 300;
+
+  font-display: swap;
+
+  src: url("../fonts/InterDisplay-Light.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "InterDisplay";
+
+  font-style: italic;
+
+  font-weight: 300;
+
+  font-display: swap;
+
+  src: url("../fonts/InterDisplay-LightItalic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "InterDisplay";
+
+  font-style: normal;
+
+  font-weight: 400;
+
+  font-display: swap;
+
+  src: url("../fonts/InterDisplay-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "InterDisplay";
+
+  font-style: italic;
+
+  font-weight: 400;
+
+  font-display: swap;
+
+  src: url("../fonts/InterDisplay-Italic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "InterDisplay";
+
+  font-style: normal;
+
+  font-weight: 500;
+
+  font-display: swap;
+
+  src: url("../fonts/InterDisplay-Medium.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "InterDisplay";
+
+  font-style: italic;
+
+  font-weight: 500;
+
+  font-display: swap;
+
+  src: url("../fonts/InterDisplay-MediumItalic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "InterDisplay";
+
+  font-style: normal;
+
+  font-weight: 600;
+
+  font-display: swap;
+
+  src: url("../fonts/InterDisplay-SemiBold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "InterDisplay";
+
+  font-style: italic;
+
+  font-weight: 600;
+
+  font-display: swap;
+
+  src: url("../fonts/InterDisplay-SemiBoldItalic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "InterDisplay";
+
+  font-style: normal;
+
+  font-weight: 700;
+
+  font-display: swap;
+
+  src: url("../fonts/InterDisplay-Bold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "InterDisplay";
+
+  font-style: italic;
+
+  font-weight: 700;
+
+  font-display: swap;
+
+  src: url("../fonts/InterDisplay-BoldItalic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "InterDisplay";
+
+  font-style: normal;
+
+  font-weight: 800;
+
+  font-display: swap;
+
+  src: url("../fonts/InterDisplay-ExtraBold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "InterDisplay";
+
+  font-style: italic;
+
+  font-weight: 800;
+
+  font-display: swap;
+
+  src: url("../fonts/InterDisplay-ExtraBoldItalic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "InterDisplay";
+
+  font-style: normal;
+
+  font-weight: 900;
+
+  font-display: swap;
+
+  src: url("../fonts/InterDisplay-Black.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "InterDisplay";
+
+  font-style: italic;
+
+  font-weight: 900;
+
+  font-display: swap;
+
+  src: url("../fonts/InterDisplay-BlackItalic.woff2") format("woff2");
+}
+
+/* remove default caret in Safari */
+
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+/*
+  the styles from the @tailwindcss/forms plugin aren't customizable, (see https://github.com/tailwindlabs/tailwindcss/discussions/4645 for discussion on custom ring color), yet are also too specific and can override other classes... so we override them as suggested by  https://github.com/tailwindlabs/tailwindcss/discussions/4649#discussioncomment-8714473 to more easily achieve our desired custom focus styles
+  */
+
+[type="checkbox"],
+  [type="radio"] {
+  border-color: var(--colors-action-primary-default);
+  color: var(--colors-action-primary-default);
+  &:focus {
+    --tw-ring-color: var(--colors-focus);
+    --tw-ring-offset-color: transparent;
+    --tw-ring-offset-width: 0px;
+    border-color: var(--colors-action-primary-default);
+  }
+}
+
+/*
+      /*rtl:begin:ignore*/
+
+/*
+      /*rtl:end:ignore*/
+
+/*
+      /*rtl:begin:ignore*/
+
+/*
+      /*rtl:end:ignore*/
+
+@keyframes fpFadeInDown{
+  from{
+    opacity:0;
+    transform:translate3d(0,-20px,0)
+  }
+
+  to{
+    opacity:1;
+    transform:translate3d(0,0,0)
+  }
+}
+
+@keyframes maplibregl-spin{
+  0%{
+    transform:rotate(0deg)
+  }
+
+  to{
+    transform:rotate(1turn)
+  }
+}
+
+@keyframes maplibregl-user-location-dot-pulse{
+  0%{
+    opacity:1;
+    transform:scale(1)
+  }
+
+  70%{
+    opacity:0;
+    transform:scale(3)
+  }
+
+  to{
+    opacity:0;
+    transform:scale(1)
+  }
+}
+
+@keyframes rotate {
+  0%   {
+    transform: rotate(0deg)
+  }
+
+  100%   {
+    transform: rotate(360deg)
+  }
+}
+
+@keyframes prixClipFix {
+  0%   {
+    clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)
+  }
+
+  50%  {
+    clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)
+  }
+
+  75%, 100%  {
+    clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)
+  }
+}
