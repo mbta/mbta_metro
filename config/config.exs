@@ -3,7 +3,6 @@ import Config
 config :logger, level: :info
 
 config :mbta_metro, MbtaMetroWeb.Endpoint,
-  url: [host: "localhost"],
   adapter: Bandit.PhoenixAdapter,
   pubsub_server: MbtaMetro.PubSub,
   live_view: [signing_salt: "F_IrwXSetja22gAl"],
@@ -47,12 +46,12 @@ config :esbuild,
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ],
   tailwindpreset: [
-    args: ~w(js/tailwind-preset.js --bundle --outdir=../priv/dist),
+    args: ~w(js/tailwind-preset.js --bundle --format=cjs  --outdir=../priv/dist),
     cd: Path.expand("../assets", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ],
   metro: [
-    args: ~w(js/metro.js --bundle --target=es2020 --outdir=../priv/dist --minify),
+    args: ~w(js/metro.js --bundle --target=es2020 --format=cjs  --outdir=../priv/dist --minify),
     cd: Path.expand("../assets", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ]

@@ -29,7 +29,7 @@ defmodule MbtaMetro.Components.Button do
   attr :text, :string, required: true
   attr :rest, :global
 
-  slot :icon, doc: "Optional icon to prefix the button text"
+  slot :icon, doc: "Optional icon to precede the button text"
 
   @doc """
   Indicate a user can take an action or series of actions from a list of options.
@@ -39,12 +39,14 @@ defmodule MbtaMetro.Components.Button do
       assign(
         assigns,
         :class,
-        cva(assigns.class, @config, variant: variant, size: size)
+        cva("flex #{assigns.class}", @config, variant: variant, size: size)
       )
 
     ~H"""
     <button class={@class} {@rest}>
-      {if(@icon, do: render_slot(@icon))}
+      <span class="shrink-0" :if={@icon != []}>
+        {render_slot(@icon)}
+      </span>
       {@text}
     </button>
     """

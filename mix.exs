@@ -10,7 +10,6 @@ defmodule MbtaMetro.MixProject do
       description: "A Phoenix LiveView component library",
       docs: docs(),
       elixir: "~> 1.17",
-      elixirc_paths: elixirc_paths(Mix.env()),
       listeners: [Phoenix.CodeReloader],
       name: "MbtaMetro",
       package: package(),
@@ -65,31 +64,6 @@ defmodule MbtaMetro.MixProject do
       source_url: "https://github.com/mbta/mbta_metro",
       source_ref: "v#{version()}"
     ]
-  end
-
-  # Specifies which paths to compile per environment.
-  # In test, we only want to compile the function and live components (and utils).
-  defp elixirc_paths(:test) do
-    [
-      "lib/mbta_metro/components",
-      "lib/mbta_metro/live",
-      "lib/mbta_metro/utils.ex"
-    ]
-  end
-
-  # We don't want to compile the mbta_metro_web directory when mbta_metro is being run in another app.
-  defp elixirc_paths(_) do
-    if Mix.Project.config()[:app] === :mbta_metro do
-      ["lib"]
-    else
-      [
-        "lib/mbta_metro.ex",
-        "lib/mbta_metro/gettext.ex",
-        "lib/mbta_metro/utils.ex",
-        "lib/mbta_metro/components/",
-        "lib/mbta_metro/live/"
-      ]
-    end
   end
 
   defp package do

@@ -43,7 +43,7 @@ defmodule Storybook.Components.Button do
             slots: [
               """
               <:icon>
-              <.icon name="comment" class="w-4 h-4 fill-white" />
+              <.icon name="comment" class="w-auto h-4 fill-white" />
               </:icon>
               """
             ]
