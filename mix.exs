@@ -10,6 +10,7 @@ defmodule MbtaMetro.MixProject do
       description: "A Phoenix LiveView component library",
       docs: docs(),
       elixir: "~> 1.17",
+      elixirc_paths: elixirc_paths(Mix.env()),
       listeners: [Phoenix.CodeReloader],
       name: "MbtaMetro",
       package: package(),
@@ -37,22 +38,29 @@ defmodule MbtaMetro.MixProject do
   end
 
   defp deps do
-    [
-      {:bandit, "~> 1.7", only: :dev, optional: true, runtime: false},
-      {:cva, "~> 0.2"},
-      {:esbuild, "~> 0.10", only: [:dev, :test], runtime: Mix.env() == :dev},
-      {:ex_doc, "~> 0.38", only: :dev, runtime: false},
-      {:faker, "~> 0.18", only: [:dev, :test], runtime: false},
-      {:floki, "~> 0.38"},
-      {:jason, "~> 1.4"},
-      {:heroicons, "~> 0.5", optional: true},
-      {:phoenix, "~> 1.7"},
-      {:phoenix_live_reload, "~> 1.6", only: :dev, optional: true, runtime: false},
-      {:phoenix_live_view, "~> 1.1"},
-      {:phoenix_storybook, "0.9.3"},
-      {:tailwind, "~> 0.3", only: [:dev, :test], optional: true, runtime: Mix.env() == :dev},
-      {:timex, "~> 3.7"}
-    ]
+    if is_metro_app?() do
+      [
+        {:bandit, "~> 1.7", only: :dev, optional: true, runtime: false},
+        {:cva, "~> 0.2"},
+        {:esbuild, "~> 0.10", only: :dev, runtime: false},
+        {:ex_doc, "~> 0.38", only: :dev, runtime: false},
+        {:faker, "~> 0.18", only: [:dev, :test], runtime: false},
+        {:floki, "~> 0.38"},
+        {:heroicons, "~> 0.5", optional: true},
+        {:jason, "~> 1.4"},
+        {:phoenix_live_reload, "~> 1.6", only: :dev, optional: true, runtime: false},
+        {:phoenix_storybook, "0.9.3"},
+        {:tailwind, "~> 0.3", only: :dev, optional: true, runtime: false},
+        {:timex, "~> 3.7"}
+      ]
+    else
+      [
+        {:cva, "~> 0.2"},
+        {:floki, "~> 0.38"},
+        {:jason, "~> 1.4"},
+        {:timex, "~> 3.7"}
+      ]
+    end
   end
 
   defp docs do
@@ -64,6 +72,31 @@ defmodule MbtaMetro.MixProject do
       source_url: "https://github.com/mbta/mbta_metro",
       source_ref: "v#{version()}"
     ]
+  end
+
+  # Specifies which paths to compile per environment.
+  # In test, we only want to compile the function and live components (and utils).
+  defp elixirc_paths(:test) do
+    [
+      "lib/mbta_metro/components",
+      "lib/mbta_metro/live",
+      "lib/mbta_metro/utils.ex"
+    ]
+  end
+
+  # We don't want to compile the mbta_metro_web directory when mbta_metro is being run in another app.
+  defp elixirc_paths(_) do
+    if is_metro_app?() do
+      ["lib", "storybook"]
+    else
+      [
+        "lib/mbta_metro.ex",
+        "lib/mbta_metro/gettext.ex",
+        "lib/mbta_metro/utils.ex",
+        "lib/mbta_metro/components/",
+        "lib/mbta_metro/live/"
+      ]
+    end
   end
 
   defp package do
@@ -89,5 +122,11 @@ defmodule MbtaMetro.MixProject do
   defp version do
     File.read!("VERSION")
     |> String.trim()
+  end
+
+  # Load different things if this application's a dependency of another project
+  defp is_metro_app? do
+    app = Mix.Project.config()[:app]
+    is_nil(app) or app == :mbta_metro
   end
 end
