@@ -1,4 +1,4 @@
-import { Hooks } from "./../../priv/dist/metro.js";
+import { Hooks } from "./metro.js";
 
 (function () {
   window.storybook = {

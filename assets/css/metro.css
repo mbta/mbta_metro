@@ -2,4 +2,5 @@
 @import "../../priv/design-system/variables.light.css";
 @import "../../priv/design-system/variables.dark.css";
 @import "./base.css";
+@import "./../node_modules/maplibre-gl/dist/maplibre-gl.css";
 @import "./components.css";

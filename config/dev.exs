@@ -12,7 +12,6 @@ config :mbta_metro, MbtaMetroWeb.Endpoint,
     tailwind: {Tailwind, :install_and_run, [:storybook, ~w(--watch)]}
   ],
   live_reload: [
-    url: "ws://localhost:4000",
     patterns: [
       ~r"priv/static/(?!uploads/).*(js|css|png|jpeg|jpg|gif|svg)$"
       # ~r"lib/mbta_metro_web/(live|views)/.*(ex)$",

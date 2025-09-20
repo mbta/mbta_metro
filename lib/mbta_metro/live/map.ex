@@ -19,12 +19,13 @@ defmodule MbtaMetro.Live.Map do
   use Phoenix.LiveComponent
 
   import MbtaMetro.Components.Icon, only: [icon: 1]
+  import MbtaMetro.Utils, only: [encode_json: 1]
 
   @doc """
   We check if the map is loaded; if so, we tell the Hook to update the lines and markers every time the component updates.
   If the map is not loaded, we check for for assigns and assign defaults for any not passed into the component.
   """
-  @impl true
+  @impl Phoenix.LiveComponent
   def update(assigns, %{assigns: %{loaded: true}} = socket) do
     new_socket =
       socket
@@ -38,6 +39,7 @@ defmodule MbtaMetro.Live.Map do
   def update(assigns, socket) do
     new_socket =
       assign(socket,
+        id: Map.get(assigns, :id),
         class: Map.get(assigns, :class, ""),
         config: Map.get(assigns, :config, %{}),
         lines: Map.get(assigns, :lines, []),
@@ -57,10 +59,10 @@ defmodule MbtaMetro.Live.Map do
 
   The associated Hook will take the lines and markers and draw them on the map.
   """
-  @impl true
+  @impl Phoenix.LiveComponent
   def render(assigns) do
     ~H"""
-    <div id="mbta-metro-map" class={@class} data-config={Jason.encode!(@config)} phx-hook="Map">
+    <div id={@id} class={@class} data-config={encode_json(@config)} phx-hook="Map">
       <div
         id="mbta-metro-map-wrapper"
         class="w-full h-full relative overflow-hidden"
@@ -68,7 +70,7 @@ defmodule MbtaMetro.Live.Map do
       />
       <div id="mbta-metro-map-lines" class="hidden">
         <%= for {line, index} <- Enum.with_index(@lines) do %>
-          <div id={"mbta-metro-line-#{index}"} data-line={Jason.encode!(line)} />
+          <div id={"mbta-metro-line-#{index}"} data-line={encode_json(line)} />
         <% end %>
       </div>
       <div id="mbta-metro-map-markers" class="hidden">
@@ -78,7 +80,7 @@ defmodule MbtaMetro.Live.Map do
             type="metro"
             name="point"
             class="w-4 h-4 fill-cobalt-30"
-            data-coordinates={Jason.encode!(coordinates)}
+            data-coordinates={encode_json(coordinates)}
           />
         <% end %>
         <%= for {coordinates, index} <- Enum.with_index(@pins) do %>
@@ -87,7 +89,7 @@ defmodule MbtaMetro.Live.Map do
             type="metro"
             name={index_to_pin(index)}
             class="w-16 h-16 fill-cobalt-30"
-            data-coordinates={Jason.encode!(coordinates)}
+            data-coordinates={encode_json(coordinates)}
           />
         <% end %>
       </div>
@@ -100,7 +102,7 @@ defmodule MbtaMetro.Live.Map do
   Once the Hook tells us it has loaded, we tell it to update the lines and markers.
   We then update the `loaded` assign to `true` so we know future updates can be drawn on the map.
   """
-  @impl true
+  @impl Phoenix.LiveComponent
   def handle_event("map-loaded", _params, socket) do
     new_socket =
       socket

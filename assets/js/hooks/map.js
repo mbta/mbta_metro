@@ -25,16 +25,16 @@ export default {
     this.map.addControl(new maplibregl.NavigationControl(), "top-left");
 
     this.map.on("load", () => {
-      this.handleEvent("update-lines", _ => this.updateLines());
-      this.handleEvent("update-markers", _ => this.updateMarkers());
+      this.handleEvent("update-lines", (_) => this.updateLines());
+      this.handleEvent("update-markers", (_) => this.updateMarkers());
 
-      this.pushEventTo("#mbta-metro-map", "map-loaded", {});
+      this.pushEventTo(this.el, "map-loaded", {});
     });
   },
   /**
    * Destroys the map when the hook is removed.
    */
-  destroyed () {
+  destroyed() {
     delete this.map;
   },
   /**
@@ -45,8 +45,8 @@ export default {
       type: "geojson",
       data: {
         type: "FeatureCollection",
-        features: lines.map(this.lineToFeature)
-      }
+        features: lines.map(this.lineToFeature),
+      },
     });
 
     this.map.addLayer({
@@ -56,16 +56,16 @@ export default {
       paint: {
         "line-color": ["get", "color"],
         "line-width": ["get", "width"],
-      }
+      },
     });
   },
   /**
    * Add each marker to the map and update the markers array.
    */
   addMarkers(markers) {
-    markers.forEach(marker => {
+    markers.forEach((marker) => {
       const mapMarker = new maplibregl.Marker({
-        element: marker.element
+        element: marker.element,
       });
 
       this.markers.push(mapMarker);
@@ -90,7 +90,7 @@ export default {
     const bounds = this.calcBoundsFromCoordinates(coordinatesCollection);
     const maxZoom = this.config.zoom || this.config.maxZoom || 16;
 
-    this.map.fitBounds(bounds, {maxZoom, padding: 50});
+    this.map.fitBounds(bounds, { maxZoom, padding: 50 });
   },
   /**
    * Fit the map to the center of the map if one is provided in the config.
@@ -105,7 +105,7 @@ export default {
    * Calculate the bounds of collection of markers and fit the map to those bounds.
    */
   fitMapToMarkers(markers) {
-    const coordinates = markers.map(marker => marker.coordinates);
+    const coordinates = markers.map((marker) => marker.coordinates);
 
     this.fitMapToCoordinates(coordinates);
   },
@@ -114,12 +114,12 @@ export default {
    */
   getNECoordinates(coordinatesCollection) {
     const highestLng = Math.max(
-      ...coordinatesCollection.map((coordinates) => coordinates[0])
+      ...coordinatesCollection.map((coordinates) => coordinates[0]),
     );
     const highestLat = Math.max(
-      ...coordinatesCollection.map((coordinates) => coordinates[1])
+      ...coordinatesCollection.map((coordinates) => coordinates[1]),
     );
-  
+
     return [highestLng, highestLat];
   },
   /**
@@ -127,12 +127,12 @@ export default {
    */
   getSWCoordinates(coordinatesCollection) {
     const lowestLng = Math.min(
-      ...coordinatesCollection.map((coordinates) => coordinates[0])
+      ...coordinatesCollection.map((coordinates) => coordinates[0]),
     );
     const lowestLat = Math.min(
-      ...coordinatesCollection.map((coordinates) => coordinates[1])
+      ...coordinatesCollection.map((coordinates) => coordinates[1]),
     );
-  
+
     return [lowestLng, lowestLat];
   },
   /**
@@ -167,7 +167,7 @@ export default {
    * Remove all markers from the map and reset the markers array.
    */
   resetMarkers() {
-    this.markers.forEach(marker => marker.remove());
+    this.markers.forEach((marker) => marker.remove());
 
     this.markers = [];
   },
@@ -183,7 +183,7 @@ export default {
    */
   updateLines() {
     const elements = this.el.querySelectorAll("#mbta-metro-map-lines div");
-    const lines = Array.from(elements).map(element => {
+    const lines = Array.from(elements).map((element) => {
       return JSON.parse(element.getAttribute("data-line"));
     });
 
@@ -208,12 +208,16 @@ export default {
    * If there are no markers, we skip the last two steps.
    */
   updateMarkers() {
-    const markers = Array.from(this.el.querySelectorAll("#mbta-metro-map-markers svg")).map(element => {
-      return {
-        coordinates: JSON.parse(element.getAttribute("data-coordinates")),
-        element
-      }
-    }).filter(marker => marker.coordinates.length === 2);
+    const markers = Array.from(
+      this.el.querySelectorAll("#mbta-metro-map-markers svg"),
+    )
+      .map((element) => {
+        return {
+          coordinates: JSON.parse(element.getAttribute("data-coordinates")),
+          element,
+        };
+      })
+      .filter((marker) => marker.coordinates.length === 2);
 
     this.resetMarkers();
 
@@ -226,5 +230,5 @@ export default {
     this.addMarkers(markers);
 
     this.fitMapToMarkers(markers);
-  }
-}
+  },
+};

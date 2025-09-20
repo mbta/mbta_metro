@@ -7,19 +7,19 @@
     background-color: var(--colors-white);
   }
 
-  &~a[data-toggle] {
+  & ~ a[data-toggle] {
     position: absolute;
-    right: .75rem;
-    top: .5rem;
+    right: 0.75rem;
+    top: 0.5rem;
   }
 }
 
 .flatpickr-mobile {
   border: 1px solid var(--colors-cobalt-30);
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   width: calc(100% - 2.5rem);
 
-  &~a[data-toggle] {
+  & ~ a[data-toggle] {
     position: unset;
   }
 }
@@ -67,5 +67,18 @@
     background-color: var(--colors-cobalt-90);
     border-color: var(--colors-white);
     color: var(--colors-cobalt-30);
+  }
+}
+
+/* position calendar icon */
+[phx-hook="DatePicker"] [data-toggle] {
+  position: absolute;
+  right: 1rem;
+  top: 14px;
+
+  svg {
+    fill: var(--colors-action-primary-default);
+    height: 1rem;
+    width: 1rem;
   }
 }

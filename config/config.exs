@@ -17,7 +17,7 @@ config :mbta_metro, :map, %{
     "sources" => %{
       "raster-tiles" => %{
         "type" => "raster",
-        "tiles" => ["https://mbta-map-tiles-dev.s3.amazonaws.com/osm_tiles/{z}/{x}/{y}.png"],
+        "tiles" => ["https://cdn.mbta.com/osm_tiles/{z}/{x}/{y}.png"],
         "tileSize" => 256,
         "attribution" =>
           "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a>"

@@ -46,19 +46,18 @@ defmodule MbtaMetro.MixProject do
         {:ex_doc, "~> 0.38", only: :dev, runtime: false},
         {:faker, "~> 0.18", only: [:dev, :test], runtime: false},
         {:floki, "~> 0.38"},
+        {:gettext, "~> 1.0"},
         {:heroicons, "~> 0.5", optional: true},
-        {:jason, "~> 1.4"},
         {:phoenix_live_reload, "~> 1.6", only: :dev, optional: true, runtime: false},
         {:phoenix_storybook, "0.9.3"},
-        {:tailwind, "~> 0.3", only: :dev, optional: true, runtime: false},
-        {:timex, "~> 3.7"}
+        {:tailwind, "~> 0.3", only: :dev, optional: true, runtime: false}
       ]
     else
       [
         {:cva, "~> 0.2"},
+        # TODO compile icons in mix task... and mark this here as optional (they only need it if running the mix task to compile their icons?)
         {:floki, "~> 0.38"},
-        {:jason, "~> 1.4"},
-        {:timex, "~> 3.7"}
+        {:gettext, "~> 1.0"}
       ]
     end
   end

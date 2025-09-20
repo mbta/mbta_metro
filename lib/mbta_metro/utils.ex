@@ -18,4 +18,9 @@ defmodule MbtaMetro.Utils do
       |> project_root()
     end
   end
+
+  def encode_json(data) do
+    mod = Phoenix.json_library()
+    mod.encode!(data)
+  end
 end
