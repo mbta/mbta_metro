@@ -22,7 +22,7 @@ defmodule MbtaMetro.MixProject do
   #
   # Type `mix help compile.app` for more information.
   def application do
-    if is_metro_app?() do
+    if is_metro_app?() and Mix.env() != :test do
       [mod: {MbtaMetro.Application, []}]
     else
       []
@@ -41,23 +41,27 @@ defmodule MbtaMetro.MixProject do
       [
         {:bandit, "~> 1.7", only: :dev, optional: true, runtime: false},
         {:cva, "~> 0.2"},
-        {:esbuild, "~> 0.10", only: :dev, runtime: Mix.env() == :dev},
+        {:esbuild, "~> 0.10", runtime: false},
         {:ex_doc, "~> 0.38", only: :dev, runtime: false},
         {:faker, "~> 0.18", only: :dev, runtime: false},
         {:floki, "~> 0.38"},
+        {:gettext, ">= 0.0.0"},
         {:jason, "~> 1.4"},
         {:heroicons, "~> 0.5", optional: true},
         {:phoenix, "~> 1.7"},
         {:phoenix_live_reload, "~> 1.6", only: :dev, optional: true, runtime: false},
         {:phoenix_live_view, "~> 1.1"},
         {:phoenix_storybook, "~> 0.9", only: :dev, optional: true, runtime: Mix.env() == :dev},
-        {:tailwind, "~> 0.3"}
+        {:tailwind, "~> 0.3", runtime: false},
+        {:timex, "~> 3.7"}
       ]
     else
       [
         {:cva, "~> 0.2"},
         {:floki, "~> 0.38"},
-        {:jason, "~> 1.4"}
+        {:gettext, ">= 0.0.0"},
+        {:jason, "~> 1.4"},
+        {:timex, "~> 3.7"}
       ]
     end
   end
