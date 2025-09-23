@@ -1,12 +1,18 @@
 const plugin = require("tailwindcss/plugin");
-const {
-  default: MbtaRiderDesignSystemTheme,
-} = require("@mbta/rider-design-system");
-const { content, plugins, safelist } = require("./js/index");
+const { default: MbtaRiderDesignSystemTheme } = require("@mbta/rider-design-system");
+const { content, plugins, safelist } = require("./js/index")
 
 module.exports = {
-  content: [...content, "../lib/mbta_metro/**/*.ex"],
-  safelist: [...safelist],
+  content: [
+    ...content,
+    "../lib/doc_components.ex",
+    "../lib/mbta_metro/**/*.ex",
+    "../storybook/**/*.exs",
+  ],
+  safelist: [
+    ...safelist,
+  ],
+  important: ".mbta-metro-web",
   plugins: [
     ...plugins(),
     // Allows prefixing tailwind classes with LiveView classes to add rules
