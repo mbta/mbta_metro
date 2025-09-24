@@ -1,10 +1,11 @@
+@config "./../tailwind.config.js";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    font-family: "Inter", sans-serif;
+    font-family: var(--font-family-base);
   }
 
   @supports (font-variation-settings: normal) {

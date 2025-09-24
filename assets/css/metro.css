@@ -1,3 +1,5 @@
-@import "@mbta/rider-design-system/dist/variables.light.css";
-@import "./default.css";
+@import "./variables.base.css";
+@import "./variables.light.css";
+@import "./variables.dark.css";
+@import "./base.css";
 @import "./components.css";
