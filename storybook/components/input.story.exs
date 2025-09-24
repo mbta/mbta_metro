@@ -120,7 +120,7 @@ defmodule Storybook.Components.InputGroup do
       id: :text,
       description: "Text",
       attributes: %{
-        errors: [],
+        errors: ["Something went wrong", "Stop trying"],
         id: Faker.Lorem.word(),
         label: "Label",
         name: Faker.Lorem.word(),
