@@ -1,25 +1,18 @@
-const plugin = require("tailwindcss/plugin");
-const {
-  default: MbtaRiderDesignSystemTheme,
-} = require("@mbta/rider-design-system");
-const { content, plugins, safelist } = require("./js/index");
-
-module.exports = {
-  content: [...content, "../lib/mbta_metro/**/*.ex"],
-  safelist: [...safelist],
-  plugins: [
-    ...plugins(),
-    // Allows prefixing tailwind classes with LiveView classes to add rules
-    // only when LiveView classes are applied, for example:
-    //
-    //     <div class="phx-click-loading:animate-ping">
-    //
-    plugin(({ addVariant }) => addVariant("phx-no-feedback", [".phx-no-feedback&", ".phx-no-feedback &"])),
-    plugin(({ addVariant }) => addVariant("phx-click-loading", [".phx-click-loading&", ".phx-click-loading &"])),
-    plugin(({ addVariant }) => addVariant("phx-submit-loading", [".phx-submit-loading&", ".phx-submit-loading &"])),
-    plugin(({ addVariant }) => addVariant("phx-change-loading", [".phx-change-loading&", ".phx-change-loading &"])),
+/**
+ *
+ * Needed to include the plugin-generated CSS, safelist, etc in the final bundle
+ * when running `mix tailwind metro`
+ *
+ */
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./css/**/*.css",
+    "./js/**/*.js",
+    "../lib/mbta_metro.ex",
+    "../lib/mbta_metro/**/*.*ex",
+    "../../../config/*.*exs",
+    "../../mbta_metro/lib/**/*.ex",
   ],
-  theme: {
-    extend: MbtaRiderDesignSystemTheme
-  }
-}
+  presets: [require("./js/tailwind-preset")],
+};

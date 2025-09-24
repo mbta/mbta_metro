@@ -1,43 +1,43 @@
-const { default: MbtaRiderDesignSystemTheme } = require("@mbta/rider-design-system");
-const { colors } = MbtaRiderDesignSystemTheme;
-const colorKeys = Object.keys(colors);
+const { default: theme } = require("./../tokens");
 
-const backgroundColors = colorKeys.map(color => {
+const colorKeys = Object.keys(theme.colors);
+
+const backgroundColors = colorKeys.map((color) => {
   return {
     pattern: new RegExp(`bg-${color}`, "g"),
-    variants: ["hover"]
-  }
+    variants: ["hover"],
+  };
 });
 
-const borderColors = colorKeys.map(color => {
+const borderColors = colorKeys.map((color) => {
   return {
     pattern: new RegExp(`border-${color}`, "g"),
-    variants: ["after", "before", "hover"]
-  }
+    variants: ["after", "before", "hover"],
+  };
 });
 
-const fillColors = colorKeys.map(color => {
+const fillColors = colorKeys.map((color) => {
   return {
     pattern: new RegExp(`fill-${color}`, "g"),
-    variants: ["hover"]
-  }
+    variants: ["hover"],
+  };
 });
 
-const ringColors = colorKeys.map(color => {
+const ringColors = colorKeys.map((color) => {
   return {
     pattern: new RegExp(`ring-${color}`, "g"),
-    variants: ["hover"]
-  }
+    variants: ["hover"],
+  };
 });
 
-const textColors = colorKeys.map(color => {
+const textColors = colorKeys.map((color) => {
   return {
     pattern: new RegExp(`text-${color}`, "g"),
-    variants: ["hover"]
-  }
+    variants: ["hover"],
+  };
 });
 
-const zindexes = [...Array(5).keys()].map(n => {
+const zindexes = [...Array(5).keys()].map((n) => {
   return `z-${n * 10}`;
 });
 
@@ -48,5 +48,5 @@ export default [
   ...fillColors,
   ...ringColors,
   ...textColors,
-  ...zindexes
-]
+  ...zindexes,
+];
