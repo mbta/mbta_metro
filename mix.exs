@@ -31,7 +31,12 @@ defmodule MbtaMetro.MixProject do
 
   defp aliases() do
     [
-      prepare: ["tokens.build", "mbta_metro.export_assets", "mbta_metro.version"],
+      prepare: ["tokens.build", "assets.build", "mbta_metro.version"],
+      "assets.build": [
+        "esbuild metro",
+        "tailwind metro",
+        "esbuild tailwindpreset"
+      ],
       "tokens.build": [
         "cmd --cd assets npx style-dictionary build --config process-figma-tokens.js"
       ]
@@ -116,6 +121,7 @@ defmodule MbtaMetro.MixProject do
         "lib/mbta_metro/utils.ex",
         "lib/mix/tasks/mbta_metro/update_*.ex",
         "mix.exs",
+        "priv/dist/*",
         "priv/static/fonts/*",
         "priv/static/icons/*",
         "README.md",
