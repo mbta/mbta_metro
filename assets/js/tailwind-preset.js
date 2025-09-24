@@ -11,10 +11,7 @@ import plugins from "./styles/plugins";
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./deps/mbta_metro/lib/mbta_metro/components/*.ex",
-    "./deps/mbta_metro/lib/mbta_metro/live/*.ex",
-  ],
+  content: ["../lib/mbta_metro.ex", "../lib/mbta_metro/**/*.*ex"],
   plugins: [...plugins],
   safelist: [...safelist],
   theme: {

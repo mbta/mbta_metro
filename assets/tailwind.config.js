@@ -6,13 +6,7 @@
  */
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./css/**/*.css",
-    "./js/**/*.js",
-    "../lib/mbta_metro.ex",
-    "../lib/mbta_metro/**/*.*ex",
-    "../../../config/*.*exs",
-    "../../mbta_metro/lib/**/*.ex",
-  ],
+  content: ["../lib/mbta_metro.ex", "../lib/mbta_metro/**/*.*ex"],
+  plugins: [require("@tailwindcss/forms")],
   presets: [require("./js/tailwind-preset")],
 };
