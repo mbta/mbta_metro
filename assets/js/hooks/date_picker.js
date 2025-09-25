@@ -50,6 +50,7 @@ export default {
     Object.assign(config, customConfig);
 
     // this.pickr = flatpickr(el, config);
+    this.pickr = {};
 
     // Set the step attribute to "any" on the mobile input.
     // This is necessary for iOS Safari to allow for decimal values.
@@ -61,7 +62,7 @@ export default {
       this.pickr.setDate(datetime);
     });
   },
-  destroyed() {
-    this.pickr.destroy();
-  },
+  // destroyed() {
+  //   this.pickr.destroy();
+  // },
 };
