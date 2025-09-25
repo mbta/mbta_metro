@@ -1,8 +1,8 @@
-import camelcaseKeys from "camelcase-keys"
-import { formatISO } from "date-fns"
-import flatpickr from "flatpickr"
+import camelcaseKeys from "camelcase-keys";
+import { formatISO } from "date-fns";
+// import flatpickr from "flatpickr"
 
-const SERVER_DATE_FORMAT = "Z"
+const SERVER_DATE_FORMAT = "Z";
 
 const config = {
   allowInvalidPreload: true, // needed on mobile to prevent the input from becoming blank when selecting a date outside the min/max
@@ -18,8 +18,8 @@ const config = {
     // if not being sent to the server, use localized format
     return i18nDate(date, locale);
   },
-  wrap: true // works with adjacent icon
-}
+  wrap: true, // works with adjacent icon
+};
 
 /**
  * Formats a date into a string in the user's locale.
@@ -30,11 +30,11 @@ const i18nDate = (date, locale = navigator.language) => {
     weekday: "short",
     day: "numeric",
     hour: "numeric",
-    minute: "numeric"
+    minute: "numeric",
   });
 
   return formatter.format(date);
-}
+};
 
 /**
  * This is a LiveView hook that initializes a flatpickr date picker.
@@ -43,23 +43,25 @@ export default {
   mounted() {
     const el = this.el.querySelector("#date-picker-calendar");
 
-    var customConfig = this.el.dataset.config ? JSON.parse(this.el.dataset.config) : {};
-    customConfig = camelcaseKeys(customConfig, {deep: true});
+    var customConfig = this.el.dataset.config
+      ? JSON.parse(this.el.dataset.config)
+      : {};
+    customConfig = camelcaseKeys(customConfig, { deep: true });
     Object.assign(config, customConfig);
 
-    this.pickr = flatpickr(el, config);
+    // this.pickr = flatpickr(el, config);
 
     // Set the step attribute to "any" on the mobile input.
     // This is necessary for iOS Safari to allow for decimal values.
     if (this.pickr.mobileInput) {
-      this.pickr.mobileInput.setAttribute("step", "any")
+      this.pickr.mobileInput.setAttribute("step", "any");
     }
 
-    this.handleEvent("set-datetime", ({datetime}) => {
+    this.handleEvent("set-datetime", ({ datetime }) => {
       this.pickr.setDate(datetime);
     });
   },
   destroyed() {
     this.pickr.destroy();
-  }
-}
+  },
+};
