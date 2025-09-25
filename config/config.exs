@@ -45,7 +45,7 @@ config :esbuild,
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ],
   metro: [
-    args: ~w(js/metro.js --bundle --target=es2020 --format=cjs  --outdir=../priv/dist --minify),
+    args: ~w(js/metro.js --bundle --target=es2020 --outdir=../priv/dist --minify),
     cd: Path.expand("../assets", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ]
