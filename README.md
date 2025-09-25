@@ -2,26 +2,24 @@
 
 [![hex version](https://img.shields.io/hexpm/v/mbta_metro.svg)](https://hex.pm/packages/mbta_metro)
 
-This package contains function components, live components, and default styles.
+This repository contains:
+- exported variables from our Rider Design System Figma library, defining standard colors, sizes, and more
+- scripts to transform those variables into formats usable by applications
+- Elixir function components, LiveComponents, and default styles provided  via compiled CSS, JS, and [Tailwind v3 configuration preset](https://v3.tailwindcss.com/docs/presets)
+- a web application documenting these styled components in an interactive Storybook-like experience
 
-To demo all of the `mbta_metro` components:
+To launch the Storybook and demo all of the `mbta_metro` components:
 
 ```
 %> npm install --prefix assets
+%> mix assets.build
 %> mix deps.get
 %> mix phx.server
 ```
 
-Now you can visit [`http://localhost:4000`](http://localhost:4000/storybook) from your browser.
+Now you can visit [`http://localhost:4000/storybook`](http://localhost:4000/storybook) from your browser.
 
-## Installation
-
-### Install Tailwind
-
-If you have a clean, recent installation of Phoenix, you should already have Tailwind installed.
-If not, you can follow [this guide](https://tailwindcss.com/docs/guides/phoenix).
-
-### Install MBTA METRO
+## Installing MBTA Metro in Your Phoenix Application
 
 Add this to your `mix.exs`:
 
@@ -36,49 +34,13 @@ end
 Import `mbta_metro`'s styles in your `assets/css/app.css`:
 
 ```css
-@import "../node_modules/@mbta/rider-design-system/dist/variables.light.css" (prefers-color-scheme: light);
-@import "../node_modules/@mbta/rider-design-system/dist/variables.dark.css" (prefers-color-scheme: dark);
-@import "../../deps/mbta_metro/priv/static/assets/default.css";
-```
-
-Make sure your assets are in line with the hex version of `mbta_metro`:
-
-```
-%> mix mbta_metro.update_assets
-```
-
-You can then use some defaults in your `assets/tailwind.config.js`:
-
-```js
-const {colors, content, fontFamily, plugins, safelist} = require("mbta_metro")
-
-module.exports = {
-  content: [
-    ...content,
-  ],
-  safelist: [
-    ...safelist,
-  ],
-  plugins: [
-    ...plugins(), // Note that this is a function
-  ],
-  theme: {
-    extend: {
-      colors: {
-        ...colors
-      }
-    },
-    fontFamily: {
-      ...fontFamily,
-    },
-  }
-}
+@import "../../deps/mbta_metro/priv/dist/metro.css";
 ```
 
 If you want to use `mbta_metro`'s LiveComponents, you'll need to add its hooks in your `assets/js/app.js`:
 
 ```js
-import {Hooks} from "mbta_metro"
+import { Hooks } from "../../../mbta_metro/priv/dist/metro";
 
 let liveSocket = new LiveSocket("/live", Socket, {
   hooks: {
@@ -90,13 +52,33 @@ let liveSocket = new LiveSocket("/live", Socket, {
 If you want to include hooks individually, you can do so:
 
 ```js
-import {Map} from "mbta_metro"
+import {Map} from "../../../mbta_metro/priv/dist/metro";
 
 let liveSocket = new LiveSocket("/live", Socket, {
   hooks: {
     Map
   }
 })
+```
+
+
+### Optional: Configure Tailwind
+
+If using Tailwind, you can use the provided preset in your Tailwind configuration. This will give you new utility classes like `p-sm` or `bg-red-line` that are tailored to the Rider Design System. You must add references to the dependency files in your `content` section.
+
+TODO: Add documentation for the new Tailwind classes
+
+```javascript
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    // ...your other content
+    "../deps/mbta_metro/lib/mbta_metro/components/*.ex",
+    "../deps/mbta_metro/lib/mbta_metro/live/*.ex",
+  ],
+  /* whatever other properties */
+  presets: [require("./../deps/mbta_metro/priv/dist/tailwind-preset")],
+};
 ```
 
 ### Custom Icons
@@ -157,15 +139,33 @@ config :mbta_metro, :map, config: %{
 
 ## Production usage
 
-Because we ship Mbta Metro's javascript via hex and not npm, installing the library works a little differently than normal.
-We included a mix task `mix mbta_metro.update_assets` that will install the javascript along with its dependencies in the normal Phoenix `node_modules` directory.
-When you go to build and compile your application you might run into errors about Mbta Metro's dependencies not being found.
-If you are building in an environment where you have Elixir and Node in the same image, you can simply run the above mix task.
-If you only have Node in the image, you can run the underlying npm command that mix tasks calls:
+WIP, so long as you're using the files from `deps/mbta_metro/priv/dist` it should work.
 
+There are also icons and fonts, which can be added to your application's `/priv/static` directory with the mix task `mix mbta_metro.update_assets`.
+
+# Contributing
+
+We welcome contributions! To add a local version of `mbta_metro` to your application, use the `path` option:
+
+```elixir
+{:mbta_metro, path: "../mbta_metro", app: false}
 ```
-%> npm install --prefix assets -S -install-links deps/mbta_metro/priv/
-```
+
+## Building tokens
+
+Variables have to be exported out of Figma manually. This is at `assets/figma-tokens.zip`, unzipped to `assets/figma-tokens/`. Building the tokens is as simple as running `mix tokens.build` -- StyleDictionary will complain about some things, but it ultimately works.
+
+The workhorse script, a Style Dictionary configuration located at `assets/process-figma-tokens.js`, may need adjusting if the structure of the Figma variables changes.
+
+It generates a few `variables.*.css` files in `assets/css/` and a single JavaScript file at `assets/js/tokens.js`. This JavaScript file basically matches the structure of a Tailwind theme.
+
+## Compiling assets
+
+After making edits to `mbta_metro`, you will have to run the `mix assets.build` script to regenerate the compiled CSS and JS. This runs the Esbuild and Tailwind CLI commands to process the assets and produce the following files in `priv/dist/`:
+
+- `metro.css` - bundled CSS for all components, including any component dependencies
+- `metro.js` - bundled JS for all components, including any component dependencies
+- `tailwind-preset.js` - a Tailwind configuration containing a theme tailored to the MBTA Rider Design System (including bundled plugins)
 
 ## Publishing
 
@@ -179,3 +179,5 @@ Please enter a release level [patch | minor | major]: patch
 ...
 %> git push origin main
 ```
+
+Note this rebuilds the tokens, recompiles the assets, and bumps the application version automatically.

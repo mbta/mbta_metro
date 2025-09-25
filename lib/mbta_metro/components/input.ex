@@ -6,11 +6,11 @@ defmodule MbtaMetro.Components.Input do
   import MbtaMetro.Components.Feedback
 
   defp input_base_classes do
-    "border border-cobalt-30 bg-white focus:ring-4 ring-offset-0 ring-cobalt-60 checked:bg-cobalt-30 disabled:opacity-50 disabled:bg-charcoal-20"
+    "checked:bg-cobalt-30 disabled:opacity-50 disabled:bg-charcoal-20"
   end
 
   defp input_error_classes do
-    "border border-solid border-firebrick-70 focus:border-firebrick-40"
+    "border-firebrick-70 focus:border-firebrick-40"
   end
 
   @doc """
@@ -190,7 +190,7 @@ defmodule MbtaMetro.Components.Input do
         id={@id}
         name={@name}
         class={[
-          "shadow-sm rounded px-md py-sm",
+          "rounded px-md py-sm pr-[4ch]",
           input_base_classes(),
           @class
         ]}
