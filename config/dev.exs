@@ -24,26 +24,35 @@ config :mbta_metro, MbtaMetroWeb.Endpoint,
   ]
 
 config :esbuild,
-  version: "0.17.11",
+  version: "0.25.9",
   app: [
     args:
       ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
     cd: Path.expand("../assets", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ],
-  components: [
-    args: ~w(components.css --bundle --outdir=../../priv/static/assets),
-    cd: Path.expand("../assets/css", __DIR__),
+  metro: [
+    args:
+      ~w(js/index.js --bundle --target=es2017 --format=cjs --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
+    cd: Path.expand("../assets", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ]
 
 config :tailwind,
-  version: "3.4.0",
+  version: "3.4.17",
   app: [
     args: ~w(
-      --config=tailwind.config.js
+      --config=tailwind.storybook.config.js
       --input=css/app.css
       --output=../priv/static/assets/app.css
     ),
+    cd: Path.expand("../assets", __DIR__)
+  ],
+  metro: [
+    args: ~w(
+        --config=tailwind.config.js
+        --input=css/metro.css
+        --output=../priv/static/assets/metro.css
+      ),
     cd: Path.expand("../assets", __DIR__)
   ]
