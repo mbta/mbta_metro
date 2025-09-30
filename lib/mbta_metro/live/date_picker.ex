@@ -21,8 +21,8 @@ defmodule MbtaMetro.Live.DatePicker do
 
   def mount(_params, _session, socket) do
     config = Map.get(socket.assigns, :config, %{})
-    locale = Map.get(config, :locale, "en")
-    new_socket = assign(socket, config: Map.drop(config, [:locale]), locale: locale)
+    {locale, new_config} = Map.pop(config, :locale, "en")
+    new_socket = assign(socket, config: new_config, locale: locale)
 
     {:ok, new_socket}
   end
