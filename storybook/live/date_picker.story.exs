@@ -26,7 +26,8 @@ defmodule Storybook.Live.DatePicker do
             form: %Phoenix.HTML.Form{},
             name: Faker.Lorem.word(),
             value: NaiveDateTime.utc_now()
-          }
+          },
+          locale: "en"
         }
       }
     ]

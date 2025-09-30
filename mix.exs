@@ -76,7 +76,7 @@ defmodule MbtaMetro.MixProject do
 
   # We don't want to compile the mbta_metro_web directory when mbta_metro is being run in another app.
   defp elixirc_paths(_) do
-    if Mix.Project.config()[:app] === :mbta_metro do
+    if local_dev?() do
       ["lib"]
     else
       [
@@ -115,6 +115,10 @@ defmodule MbtaMetro.MixProject do
       licenses: ["GPL-3.0-or-later"],
       links: %{"GitHub" => "https://github.com/mbta/mbta_metro"}
     ]
+  end
+
+  defp local_dev? do
+    not Keyword.has_key?(Mix.Project.config(), :app) or Mix.Project.config()[:app] === :mbta_metro
   end
 
   defp version do
