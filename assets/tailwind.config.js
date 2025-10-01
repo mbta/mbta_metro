@@ -8,8 +8,10 @@
  */
 /** @type {import('tailwindcss').Config} */
 export default {
+  corePlugins: {
+    preflight: false,
+  },
   content: ["../lib/mbta_metro.ex", "../lib/mbta_metro/**/*.*ex"],
-  important: true,
   plugins: [require("@tailwindcss/forms")],
   presets: [require("./js/tailwind-preset")],
 };
