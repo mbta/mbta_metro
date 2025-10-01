@@ -37,3 +37,4 @@ npm-debug.log
 
 .envrc
 .DS_Store
+.elixir_ls

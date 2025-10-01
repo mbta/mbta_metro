@@ -9,6 +9,7 @@ defmodule MbtaMetro.Live.DatePicker do
   You can optionally pass in a `:config` map:
     * `:default_date` - The default date that should be selected.
     * `:enable_time` - A boolean that determines if the time picker should be enabled.
+    * `:locale` - A two letter localization code like "es" or "zh."
     * `:max_date` - The maximum date that can be selected.
     * `:min_date` - The minimum date that can be selected.
   """
@@ -20,7 +21,8 @@ defmodule MbtaMetro.Live.DatePicker do
 
   def mount(_params, _session, socket) do
     config = Map.get(socket.assigns, :config, %{})
-    new_socket = assign(socket, config: config)
+    {locale, new_config} = Map.pop(config, :locale, "en")
+    new_socket = assign(socket, config: new_config, locale: locale)
 
     {:ok, new_socket}
   end
@@ -35,6 +37,7 @@ defmodule MbtaMetro.Live.DatePicker do
       phx-hook="DatePicker"
       phx-update="ignore"
       data-config={Jason.encode!(@config)}
+      data-locale={@locale}
       class="min-w-72"
     >
       <div id="date-picker-calendar" class="relative">
