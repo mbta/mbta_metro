@@ -1,3 +1,4 @@
+import util from "node:util";
 import { StyleDictionary } from "style-dictionary-utils";
 import { transformGroups } from "style-dictionary/enums";
 
@@ -174,7 +175,7 @@ StyleDictionary.registerFormat({
 
     const tokens = buildNestedObject(dictionary.allTokens);
 
-    return `/**\n* Do not edit directly, this file was auto-generated.\n*/\n\nexport default ${JSON.stringify(tokens, null, 2)};`;
+    return `/**\n* Do not edit directly, this file was auto-generated.\n*/\n\nmodule.exports = ${util.inspect(tokens)};`;
   },
 });
 

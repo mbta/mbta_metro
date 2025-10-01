@@ -17,4 +17,17 @@ export default {
   ],
   important: ".mbta-metro-web",
   presets: [require("./js/tailwind-preset")],
+  safelist: [
+    {
+      pattern:
+        /(bg|border|fill|ring|text)-(charcoal|cobalt|gold|firebrick|emerald|amethyst|white|black|subway|green-line|orange-line|red-line|blue-line|silver-line|brand-bus|ferry|the-ride|commuter-rail|swa|mbta-dark|dark-winter|mid-winter)./,
+      variants: ["after", "before", "hover", "focus"],
+    },
+    "z-50",
+    "z-60",
+    "z-70",
+    "z-80",
+    "z-90",
+    "z-100",
+  ],
 };
