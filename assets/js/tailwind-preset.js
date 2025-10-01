@@ -29,6 +29,5 @@ function deepMerge(target, source) {
 module.exports = {
   content: ["../lib/mbta_metro.ex", "../lib/mbta_metro/**/*.*ex"],
   plugins: require("./styles/plugins"),
-  presets: [],
   theme,
 };
