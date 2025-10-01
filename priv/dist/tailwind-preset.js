@@ -1480,7 +1480,6 @@
       module.exports = {
         content: ["../lib/mbta_metro.ex", "../lib/mbta_metro/**/*.*ex"],
         plugins: (init_plugins(), __toCommonJS(plugins_exports)),
-        presets: [],
         theme
       };
     }
