@@ -132,10 +132,6 @@ defmodule MbtaMetro.MixProject do
     ]
   end
 
-  defp local_dev? do
-    not Keyword.has_key?(Mix.Project.config(), :app) or Mix.Project.config()[:app] === :mbta_metro
-  end
-
   defp version do
     File.read!("VERSION")
     |> String.trim()

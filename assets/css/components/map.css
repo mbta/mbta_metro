@@ -1,12 +1,7 @@
 @import "../../node_modules/maplibre-gl/dist/maplibre-gl.css";
 
-.mbta-metro-map {
-  border: 2px pink solid;
-
-  .mbta-metro-map-wrapper {
-    border: 2px blue dotted;
-    height: 100%;
-  }
+.mbta-metro-map-wrapper {
+  height: 100%;
 }
 
 .mbta-metro-map svg {
