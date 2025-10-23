@@ -4,6 +4,24 @@
  * utility classes when running `mix tailwind storybook`
  *
  */
+
+/* Merge the themes! */
+const defaultTheme = require("tailwindcss/defaultTheme");
+const metroTheme = require("./js/tokens");
+const theme = deepMerge(defaultTheme, metroTheme);
+theme.colors = metroTheme.colors;
+
+function deepMerge(target, source) {
+  for (const key in source) {
+    if (source[key] instanceof Object && key in target) {
+      target[key] = deepMerge(target[key], source[key]);
+    } else {
+      target[key] = source[key];
+    }
+  }
+  return target;
+}
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -16,7 +34,6 @@ export default {
     "../storybook/*.story.exs",
   ],
   important: ".mbta-metro-web",
-  presets: [require("./js/tailwind-preset")],
   safelist: [
     {
       pattern:
@@ -30,4 +47,5 @@ export default {
     "z-90",
     "z-100",
   ],
+  theme,
 };

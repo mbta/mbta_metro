@@ -6,12 +6,6 @@
   .form-control[readonly] {
     background-color: var(--colors-white);
   }
-
-  &~a[data-toggle] {
-    position: absolute;
-    right: .75rem;
-    top: .5rem;
-  }
 }
 
 .flatpickr-mobile {
@@ -67,5 +61,29 @@
     background-color: var(--colors-cobalt-90);
     border-color: var(--colors-white);
     color: var(--colors-cobalt-30);
+  }
+}
+
+.mbta-date-picker {
+  .mbta-date-picker--calendar {
+    position: relative;
+
+    a[data-toggle] {
+      position: absolute;
+      right: .75rem;
+      bottom: .875rem;
+    }
+
+    .mbta-input {
+      padding-right: 2rem;
+      width: 100%;
+      min-width: 16.875rem;
+    }
+  }
+
+  .mbta-date-picker--icon {
+    fill: var(--colors-cobalt-30);
+    width: 1rem;
+    height: 1rem;
   }
 }

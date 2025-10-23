@@ -38,6 +38,7 @@ defmodule MbtaMetro.Live.Map do
   def update(assigns, socket) do
     new_socket =
       assign(socket,
+        id: Map.fetch!(assigns, :id),
         class: Map.get(assigns, :class, ""),
         config: Map.get(assigns, :config, %{}),
         lines: Map.get(assigns, :lines, []),
@@ -60,33 +61,29 @@ defmodule MbtaMetro.Live.Map do
   @impl true
   def render(assigns) do
     ~H"""
-    <div id="mbta-metro-map" class={@class} data-config={Jason.encode!(@config)} phx-hook="Map">
+    <div id={@id} class={"mbta-metro-map #{@class}"} data-config={Jason.encode!(@config)} phx-hook="Map">
       <div
-        id="mbta-metro-map-wrapper"
-        class="w-full h-full relative overflow-hidden"
+        id={"#{@id}-map-container"}
+        class="mbta-metro-map-wrapper"
         phx-update="ignore"
       />
-      <div id="mbta-metro-map-lines" class="hidden">
+      <div class="hidden">
         <%= for {line, index} <- Enum.with_index(@lines) do %>
-          <div id={"mbta-metro-line-#{index}"} data-line={Jason.encode!(line)} />
+          <div data-line={Jason.encode!(line)} />
         <% end %>
-      </div>
-      <div id="mbta-metro-map-markers" class="hidden">
         <%= for {coordinates, index} <- Enum.with_index(@points) do %>
           <.icon
-            id={"mbta-metro-point-#{index}"}
             type="metro"
             name="point"
-            class="w-4 h-4 fill-cobalt-30"
+            class="mbta-metro-map-point"
             data-coordinates={Jason.encode!(coordinates)}
           />
         <% end %>
         <%= for {coordinates, index} <- Enum.with_index(@pins) do %>
           <.icon
-            id={"mbta-metro-pin-#{index}"}
             type="metro"
             name={index_to_pin(index)}
-            class="w-16 h-16 fill-cobalt-30"
+            class="mbta-metro-map-pin"
             data-coordinates={Jason.encode!(coordinates)}
           />
         <% end %>

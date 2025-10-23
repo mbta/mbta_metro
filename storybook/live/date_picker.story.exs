@@ -13,11 +13,12 @@ defmodule Storybook.Live.DatePicker do
         id: :default,
         description: "Default",
         attributes: %{
+          id: "default-datepicker",
           config: %{
             default_date: Timex.now(),
             enable_time: true,
             max_date: Timex.now() |> Timex.shift(days: 7),
-            min_date: Timex.now() |> Timex.shift(days: -7)
+            min_date: Timex.now() |> Timex.shift(days: -7),
           },
           field: %Phoenix.HTML.FormField{
             id: Faker.Lorem.word(),
@@ -27,6 +28,7 @@ defmodule Storybook.Live.DatePicker do
             name: Faker.Lorem.word(),
             value: NaiveDateTime.utc_now()
           },
+          label: "Date of birth",
           locale: "en"
         }
       }

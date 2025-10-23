@@ -4,7 +4,9 @@ defmodule MbtaMetro.Live.DatePicker do
 
   You must pass in the following assigns:
 
+    * `:id`
     * `:field` - A form field struct retrieved from a form, for example: @form[:datetime].
+    * `:label`
 
   You can optionally pass in a `:config` map:
     * `:default_date` - The default date that should be selected.
@@ -33,17 +35,17 @@ defmodule MbtaMetro.Live.DatePicker do
   def render(assigns) do
     ~H"""
     <div
-      id="date-picker"
+      id={@id}
       phx-hook="DatePicker"
       phx-update="ignore"
       data-config={Jason.encode!(@config)}
+      class="mbta-date-picker"
       data-locale={@locale}
-      class="min-w-72"
     >
-      <div id="date-picker-calendar" class="relative">
-        <.input type="datetime-local" field={@field} class="w-full" value={nil} data-input />
-        <a href="#" data-toggle class="absolute top-3.5 right-2.5 leading-none">
-          <.icon name="calendar" type="regular" class="w-4 h-4 fill-cobalt-30" />
+      <div class="mbta-date-picker--calendar">
+        <.input id={"#{@id}-input"} type="datetime-local" field={@field} value={nil} name={@field.name} data-input>{@label}</.input>
+        <a href="#" data-toggle>
+          <.icon name="calendar" type="regular" class="mbta-date-picker--icon" />
         </a>
       </div>
     </div>

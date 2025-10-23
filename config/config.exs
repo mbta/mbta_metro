@@ -48,6 +48,11 @@ config :esbuild,
     args: ~w(js/metro.js --bundle --target=es2020 --format=cjs  --outdir=../priv/dist --minify),
     cd: Path.expand("../assets", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
+  ],
+  metrocss: [
+    args: ~w(css/metro.css --bundle --outdir=../priv/dist --external:../fonts/*),
+    cd: Path.expand("../assets", __DIR__),
+    env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ]
 
 config :tailwind,
@@ -56,13 +61,6 @@ config :tailwind,
     args: ~w(
       --input=css/storybook.css
       --output=../priv/static/assets/storybook.css
-    ),
-    cd: Path.expand("../assets", __DIR__)
-  ],
-  metro: [
-    args: ~w(
-      --input=css/metro.css
-      --output=../priv/dist/metro.css
     ),
     cd: Path.expand("../assets", __DIR__)
   ]

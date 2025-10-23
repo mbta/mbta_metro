@@ -1,0 +1,27 @@
+.mbta-feedback {
+  align-items: center;
+  display: flex;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-default);
+  padding-block: var(--spacing-sm);
+
+  svg.mbta-feedback-icon {
+    fill: currentColor;
+    height: var(--spacing-5);
+    width: var(--spacing-5);
+  }
+}
+
+.mbta-feedback--error {
+  color: var(--colors-error-default-foreground);
+}
+.mbta-feedback--info {
+  color: var(--colors-action-primary-default);
+}
+.mbta-feedback--success {
+  color: var(--colors-success-default-foreground);
+}
+.mbta-feedback--warning {
+  color: var(--colors-warning-default-foreground);
+}

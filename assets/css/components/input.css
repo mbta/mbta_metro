@@ -1,0 +1,149 @@
+/*[type="text"],
+input:where(:not([type])),
+[type="email"],
+[type="url"],
+[type="password"],
+[type="number"],
+[type="date"],
+[type="datetime-local"],
+[type="month"],
+[type="search"],
+[type="tel"],
+[type="time"],
+[type="week"],
+[type="checkbox"],
+[type="radio"],
+[multiple],
+textarea,
+select {*/
+
+.mbta-input {
+  appearance: none;
+  background-color: var(--colors-white);
+  border-color: var(--colors-action-primary-default);
+  border-radius: var(--border-radius-default);
+  border-width: var(--border-width-default);
+  padding: var(--spacing-sm) var(--spacing-md);
+
+  &:focus {
+    outline: var(--border-width-lg) solid var(--colors-focus);
+  }
+
+  &[disabled] {
+    background-color: var(--colors-charcoal-20);
+    opacity: 50;
+  }
+
+  &:invalid,
+  &.mbta-input--error {
+    border-color: var(--colors-error-default-foreground);
+    color: var(--colors-error-default-foreground);
+  }
+
+  &.mbta-input--success {
+    border-color: var(--colors-success-default-foreground);
+    color: var(--colors-success-default-foreground);
+  }
+}
+
+select.mbta-input {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23165c96' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding: var(--spacing-sm) var(--spacing-2xl) var(--spacing-sm)
+    var(--spacing-md);
+}
+
+textarea.mbta-input {
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+input[type="radio"].mbta-input {
+  border-radius: var(--border-radius-full);
+}
+
+input[type="radio"].mbta-input:checked {
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");
+  background-color: var(--colors-action-primary-default);
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+input[type="checkbox"].mbta-input:checked {
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+  background-color: var(--colors-action-primary-default);
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+input[type="checkbox"].mbta-input,
+input[type="radio"].mbta-input {
+  height: var(--spacing-6);
+  width: var(--spacing-6);
+  padding: 0;
+}
+
+.mbta-label {
+  display: block;
+  margin: 0;
+  padding-block: var(--spacing-sm);
+  width: 100%;
+
+  &:has(.mbta-input) {
+    align-items: center;
+    cursor: pointer;
+    display: inline-flex;
+    gap: var(--spacing-sm);
+    min-height: var(--minimum-tap-target-size);
+  }
+}
+
+fieldset.mbta-input-group {
+  .mbta-input-group--buttons input {
+    position: absolute;
+    clip: rect(0,0,0,0);
+    pointer-events: none;
+  }
+
+  .mbta-button {
+    cursor: pointer;
+    display: inline-flex;
+    font-weight: 400;
+    text-wrap: nowrap;
+
+    &:focus,
+    &:focus-within {
+      outline: none;
+    }
+  }
+
+  .mbta-button:has(:checked) {
+    background-color: var(--button-secondary-hover-background-color);
+  }
+
+  .mbta-input-group--buttons {
+    display: inline-flex;
+
+    :first-child {
+      border-right: 0;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    :last-child {
+      border-left: 0;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    > :not(:last-child):not(:first-child) {
+      border-inline-width: 2px;
+      border-radius: 0;
+
+      + & {
+        border-left-width: 0px;
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.mbta-data-list {
+  width: 100%;
+
+  > div {
+    border-color: var(--colors-charcoal-90);
+    border-bottom-width: var(--border-width-xs);
+  }
+
+  dt {
+    color: var(--colors-charcoal-50);
+    font-weight: 500;
+    width: 25%;
+  }
+
+  dt,
+  dd {
+    display: inline-block;
+    padding-block: var(--spacing-sm);
+    padding-inline: var(--spacing-xs);
+  }
+}
