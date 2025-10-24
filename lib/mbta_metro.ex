@@ -8,7 +8,6 @@ defmodule MbtaMetro do
       import MbtaMetro.Components.{
         Accordion,
         Badge,
-        BadgeStack,
         Button,
         DataList,
         Feedback,
