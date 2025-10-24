@@ -32,7 +32,7 @@ defmodule MbtaMetro.Components.Accordion do
   def accordion(%{variant: "multiselect"} = assigns) do
     ~H"""
     <details class="mbta-accordion--multiselect" open={@open}>
-      <summary>
+      <summary class="mbta-button mbta-button-secondary">
         {render_slot(@heading)}
         <.icon name="chevron-down" class="mbta-accordion-arrow" />
       </summary>

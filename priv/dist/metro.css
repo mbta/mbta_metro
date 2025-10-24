@@ -567,23 +567,11 @@ details.mbta-accordion--multiselect {
   color: var(--colors-text-primary);
   width: 100%;
   summary {
-    align-items: center;
-    border-color: var(--colors-cobalt-30);
-    border-radius: var(--border-radius-default);
-    border-width: var(--border-width-default);
+    color: var(--colors-text-primary);
     cursor: pointer;
-    display: flex;
-    gap: var(--spacing-sm);
-    padding-block: var(--spacing-sm);
-    padding-inline: var(--spacing-md);
+    padding-right: 3rem;
     position: relative;
-    &:hover {
-      border-color: var(--colors-cobalt-80);
-    }
-    &:focus {
-      border-color: var(--colors-cobalt-20);
-      box-shadow: 0 0 0 4px var(--colors-cobalt-60), 0 0 #0000;
-    }
+    width: 100%;
     svg.mbta-accordion-arrow {
       height: var(--spacing-4);
       position: absolute;
@@ -593,7 +581,7 @@ details.mbta-accordion--multiselect {
     }
   }
   summary + div {
-    border-color: var(--colors-cobalt-30);
+    border-color: var(--button-secondary-default-border-color);
     border-width: var(--border-width-default);
     padding-block: var(--spacing-sm);
     padding-inline: var(--spacing-md);
@@ -1767,6 +1755,10 @@ input[type=radio].mbta-input {
   }
 }
 fieldset.mbta-input-group {
+  &:has(.mbta-input-group--buttons),
+  .mbta-input-group--buttons {
+    width: 100%;
+  }
   .mbta-input-group--buttons input {
     position: absolute;
     clip: rect(0, 0, 0, 0);
@@ -1775,6 +1767,7 @@ fieldset.mbta-input-group {
   .mbta-button {
     cursor: pointer;
     display: inline-flex;
+    justify-content: center;
     font-weight: 400;
     text-wrap: nowrap;
     &:focus,
@@ -1784,6 +1777,7 @@ fieldset.mbta-input-group {
   }
   .mbta-button:has(:checked) {
     background-color: var(--button-secondary-hover-background-color);
+    color: var(--button-secondary-hover-text-color);
   }
   .mbta-input-group--buttons {
     display: inline-flex;
