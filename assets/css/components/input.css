@@ -1,22 +1,3 @@
-/*[type="text"],
-input:where(:not([type])),
-[type="email"],
-[type="url"],
-[type="password"],
-[type="number"],
-[type="date"],
-[type="datetime-local"],
-[type="month"],
-[type="search"],
-[type="tel"],
-[type="time"],
-[type="week"],
-[type="checkbox"],
-[type="radio"],
-[multiple],
-textarea,
-select {*/
-
 .mbta-input {
   appearance: none;
   background-color: var(--colors-white);

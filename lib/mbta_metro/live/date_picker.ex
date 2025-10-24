@@ -40,34 +40,26 @@ defmodule MbtaMetro.Live.DatePicker do
       |> assign_new(:value, fn -> assigns.field.value end)
 
     ~H"""
-    <div
-      id={@id}
-      phx-hook="DatePicker"
-      phx-update="ignore"
-      data-config={Jason.encode!(@config)}
-      class="mbta-date-picker"
-      data-locale={@locale}
-    >
+    <div class={["mbta-date-picker", @errors != [] && "mbta-date-picker--error"]}>
       <.label :if={@label} for={@field.id}><strong>{@label}</strong></.label>
-      <div class="mbta-date-picker--input">
+      <div
+        id={@id}
+        class="mbta-date-picker--input"
+        phx-hook="DatePicker"
+        phx-update="ignore"
+        data-config={Jason.encode!(@config)}
+        data-locale={@locale}
+      >
         <input
           type="datetime-local"
           name={@field.name}
           id={@field.id}
           value={Phoenix.HTML.Form.normalize_value("datetime-local", @field.value)}
-          class={[
-            "mbta-input",
-            @errors != [] && "mbta-input--error"
-          ]}
+          class="mbta-input"
           data-input
         />
         <a href="#" data-toggle>
-          <.icon
-            name="calendar"
-            type="regular"
-            class={
-            "mbta-date-picker--icon #{@errors != [] && "mbta-date-picker--icon-error"}"}
-          />
+          <.icon name="calendar" type="regular" class="mbta-date-picker--icon" />
         </a>
       </div>
       <.feedback :for={msg <- @errors} kind={:error}>{msg}</.feedback>

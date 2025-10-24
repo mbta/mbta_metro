@@ -1601,8 +1601,14 @@ span.flatpickr-weekday {
     height: var(--spacing-4);
     width: var(--spacing-4);
   }
-  .mbta-date-picker--icon-error {
+}
+.mbta-date-picker--error {
+  .mbta-date-picker--icon {
     fill: var(--colors-error-default-foreground);
+  }
+  .mbta-input {
+    border-color: var(--colors-error-default-foreground);
+    color: var(--colors-error-default-foreground);
   }
 }
 
