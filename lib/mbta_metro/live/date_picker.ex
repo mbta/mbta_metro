@@ -18,8 +18,9 @@ defmodule MbtaMetro.Live.DatePicker do
 
   use Phoenix.LiveComponent
 
+  import MbtaMetro.Components.Feedback
   import MbtaMetro.Components.Icon, only: [icon: 1]
-  import MbtaMetro.Components.Input, only: [input: 1]
+  import MbtaMetro.Components.Input, only: [label: 1]
 
   def mount(_params, _session, socket) do
     config = Map.get(socket.assigns, :config, %{})
@@ -42,12 +43,29 @@ defmodule MbtaMetro.Live.DatePicker do
       class="mbta-date-picker"
       data-locale={@locale}
     >
-      <div class="mbta-date-picker--calendar">
-        <.input id={"#{@id}-input"} type="datetime-local" field={@field} value={nil} name={@field.name} data-input>{@label}</.input>
+      <.label :if={@label} for={@field.id}><strong>{@label}</strong></.label>
+      <div class="mbta-date-picker--input">
+        <input
+          type="datetime-local"
+          name={@field.name}
+          id={@field.id}
+          value={Phoenix.HTML.Form.normalize_value("datetime-local", @field.value)}
+          class={[
+            "mbta-input",
+            @field.errors != [] && "mbta-input--error"
+          ]}
+          data-input
+        />
         <a href="#" data-toggle>
-          <.icon name="calendar" type="regular" class="mbta-date-picker--icon" />
+          <.icon
+            name="calendar"
+            type="regular"
+            class={
+            "mbta-date-picker--icon #{@field.errors != [] && "mbta-date-picker--icon-error"}"}
+          />
         </a>
       </div>
+      <.feedback :for={msg <- @field.errors} kind={:error}>{msg}</.feedback>
     </div>
     """
   end

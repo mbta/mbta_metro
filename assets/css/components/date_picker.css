@@ -1,13 +1,5 @@
 @import "../../node_modules/flatpickr/dist/flatpickr.min.css";
 
-.flatpickr {
-  position: relative;
-
-  .form-control[readonly] {
-    background-color: var(--colors-white);
-  }
-}
-
 .flatpickr-mobile {
   border: 1px solid var(--colors-cobalt-30);
   border-radius: .25rem;
@@ -65,25 +57,33 @@
 }
 
 .mbta-date-picker {
-  .mbta-date-picker--calendar {
+  .mbta-date-picker--input {
     position: relative;
 
     a[data-toggle] {
       position: absolute;
-      right: .75rem;
-      bottom: .875rem;
+      right: var(--spacing-4);
+      top: calc(var(--spacing-3) + 1px);
     }
 
     .mbta-input {
       padding-right: 2rem;
       width: 100%;
       min-width: 16.875rem;
+
+      &.form-control[readonly] {
+        background-color: var(--colors-white);
+      }
     }
   }
 
   .mbta-date-picker--icon {
-    fill: var(--colors-cobalt-30);
-    width: 1rem;
-    height: 1rem;
+    fill: var(--colors-action-primary-default);
+    height: var(--spacing-4);
+    width: var(--spacing-4);
+  }
+
+  .mbta-date-picker--icon-error {
+    fill: var(--colors-error-default-foreground);
   }
 }
