@@ -9,6 +9,8 @@ defmodule MbtaMetroWeb.Storybook do
     js_path: "/assets/app.js",
     sandbox_class: "mbta-metro-web",
     title: "Mbta Metro",
+    color_mode: true,
+    color_mode_sandbox_dark_class: "mbta-metro-dark-mode",
 
     # Keep attributes & slot documentations in component page header.
     strip_doc_attributes: false
