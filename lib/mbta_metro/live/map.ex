@@ -61,7 +61,12 @@ defmodule MbtaMetro.Live.Map do
   @impl true
   def render(assigns) do
     ~H"""
-    <div id={@id} class={"mbta-metro-map #{@class}"} data-config={Jason.encode!(@config)} phx-hook="Map">
+    <div
+      id={@id}
+      class={"mbta-metro-map #{@class}"}
+      data-config={Jason.encode!(@config)}
+      phx-hook="Map"
+    >
       <div
         id={"#{@id}-map-container"}
         class="mbta-metro-map-wrapper"

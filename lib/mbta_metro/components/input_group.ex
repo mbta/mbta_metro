@@ -25,7 +25,11 @@ defmodule MbtaMetro.Components.InputGroup do
     <fieldset class={"mbta-input-group #{@class}"}>
       <legend class="mbta-label">{@label}</legend>
       <div class="mbta-input-group--buttons">
-        <.label :for={input <- @input} for={input_id(@form, @field) <> "_#{input.value}"} class="mbta-button mbta-button-secondary">
+        <.label
+          :for={input <- @input}
+          for={input_id(@form, @field) <> "_#{input.value}"}
+          class="mbta-button mbta-button-secondary"
+        >
           <input
             type={@type}
             id={input_id(@form, @field) <> "_#{input.value}"}

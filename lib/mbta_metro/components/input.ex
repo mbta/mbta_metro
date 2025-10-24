@@ -61,7 +61,6 @@ defmodule MbtaMetro.Components.Input do
 
     assigns
     |> assign(field: nil, id: assigns.id || field.id)
-    # |> assign(:label, assigns.label || assigns.value)
     |> assign(:errors, format_changeset_errors(errors))
     |> assign_new(:name, fn -> if assigns.multiple, do: field.name <> "[]", else: field.name end)
     |> assign_new(:value, fn -> field.value end)
