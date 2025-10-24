@@ -171,7 +171,7 @@ defmodule MbtaMetro.Components.Input do
     """
   end
 
-  defp format_changeset_errors(errors) do
+  def format_changeset_errors(errors) do
     Enum.map(errors, fn
       {msg, _} -> msg
       msg -> msg

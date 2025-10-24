@@ -20,7 +20,7 @@ defmodule MbtaMetro.Live.DatePicker do
 
   import MbtaMetro.Components.Feedback
   import MbtaMetro.Components.Icon, only: [icon: 1]
-  import MbtaMetro.Components.Input, only: [label: 1]
+  import MbtaMetro.Components.Input, only: [format_changeset_errors: 1, label: 1]
 
   def mount(_params, _session, socket) do
     config = Map.get(socket.assigns, :config, %{})
@@ -34,6 +34,11 @@ defmodule MbtaMetro.Live.DatePicker do
   Renders the date picker component.
   """
   def render(assigns) do
+    assigns =
+      assigns
+      |> assign(:errors, format_changeset_errors(assigns.field.errors))
+      |> assign_new(:value, fn -> assigns.field.value end)
+
     ~H"""
     <div
       id={@id}
@@ -52,7 +57,7 @@ defmodule MbtaMetro.Live.DatePicker do
           value={Phoenix.HTML.Form.normalize_value("datetime-local", @field.value)}
           class={[
             "mbta-input",
-            @field.errors != [] && "mbta-input--error"
+            @errors != [] && "mbta-input--error"
           ]}
           data-input
         />
@@ -61,11 +66,11 @@ defmodule MbtaMetro.Live.DatePicker do
             name="calendar"
             type="regular"
             class={
-            "mbta-date-picker--icon #{@field.errors != [] && "mbta-date-picker--icon-error"}"}
+            "mbta-date-picker--icon #{@errors != [] && "mbta-date-picker--icon-error"}"}
           />
         </a>
       </div>
-      <.feedback :for={msg <- @field.errors} kind={:error}>{msg}</.feedback>
+      <.feedback :for={msg <- @errors} kind={:error}>{msg}</.feedback>
     </div>
     """
   end
