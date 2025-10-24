@@ -10,11 +10,9 @@ defmodule Storybook.Theme.Typography do
         The fonts we use on the MBTA.com website are <strong>Helvetica Neue</strong>
         and <strong><a class="text-blue-500 underline" href="https://rsms.me/inter/">Inter</a></strong>. These are available to developers via the CSS utility classes
         <.code>.font-headings</.code>
-        and
-        <.code>.font-base</.code>, respectively, or additionally through
+        and <.code>.font-base</.code>, respectively, or additionally through
         <.code>.font-helvetica</.code>
-        and
-        <.code>.font-inter</.code>.
+        and <.code>.font-inter</.code>.
       </p>
       <p class="my-4">
         To increase legibility while staying within the Helvetic-ish family, we use Inter as our body font. The two fonts are visually similar to each other, but Inter is nicely optimized for screens and has better readability in running text. It is also free and open-source and has tabular numbers, which help for timetables and such.

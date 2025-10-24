@@ -1,0 +1,153 @@
+.mbta-system-mode-icon {
+  height: var(--spacing-6);
+  width: var(--spacing-6);
+}
+
+.mbta-system-mode-icon--small {
+  height: var(--spacing-4);
+  width: var(--spacing-4);
+}
+
+.mbta-system-route-icon {
+  font-size: var(--font-size-base);
+  min-width: 3.125em;
+}
+
+.mbta-system-route-icon--small {
+  font-size: var(--font-size-sm);
+  min-width: 2em;
+}
+
+.mbta-system-icon {
+  display: inline;
+}
+
+.mbta-system-route-pill {
+  align-items: center;
+  border-radius: var(--border-radius-full);
+  display: inline-flex;
+  flex-wrap: nowrap;
+  font-family: var(--font-family-helvetica);
+  font-weight: 700;
+  justify-content: center;
+  line-height: 0.875em;
+  text-wrap: nowrap;
+  padding-left: 0.25em;
+  padding-right: 0.25em;
+  padding-top: 0.25em;
+  padding-bottom: 0.3125em;
+
+  > svg {
+    box-shadow:
+      2px 0 #fff,
+      0 0 #0000;
+  }
+}
+
+.mbta-icon-stacked {
+  align-items: center;
+  display: inline-flex;
+
+  > svg:first-of-type {
+    border-radius: var(--border-radius-full);
+    margin-left: -4px;
+    outline: var(--border-width-default) solid white;
+  }
+
+  > svg:not(:first-of-type) {
+    border-radius: var(--border-radius-full);
+    margin-left: 1px;
+    outline: var(--border-width-xs) solid white;
+  }
+
+  .mbta-system-route-pill + &,
+  .mbta-system-route-pill + .mbta-system-route-pill {
+    border-radius: var(--border-radius-full);
+    margin-left: -4px;
+    outline: var(--border-width-default) solid white;
+  }
+}
+
+.mbta-icon-stacked--slashed {
+  align-items: center;
+  display: inline-flex;
+
+  .mbta-slash {
+    background-color: var(--colors-white);
+    height: 24px;
+    width: 0;
+    outline: var(--border-width-default) solid white;
+    transform: skew(-7deg, 0);
+    z-index: 50;
+  }
+
+  > :not(:last-child):not(:first-child):not(.mbta-slash) {
+    border-radius: 0;
+    outline-width: 0;
+  }
+
+  > :not(.mbta-slash):last-child {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    outline-width: 0;
+  }
+
+  > :not(.mbta-slash):first-child {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    outline-width: 0;
+  }
+}
+
+/*.mbta-icon-stacked > * {
+  border-radius: var(--border-radius-full);
+  margin-right: -0.125rem;
+  margin-left: -0.125rem;
+  outline: var(--border-width-default) solid white;
+}*/
+
+.mbta-icon-stacked--tight > * {
+  border-radius: var(--border-radius-full);
+  margin-right: calc(var(--spacing-2) * -1);
+  margin-left: calc(var(--spacing-2) * -1);
+  outline: var(--border-width-default) solid white;
+}
+
+.mbta-bus {
+  background-color: var(--colors-brand-bus);
+  color: var(--colors-black);
+}
+
+.mbta-silver-line {
+  background-color: var(--colors-silver-line);
+  color: var(--colors-white);
+}
+
+.mbta-commuter-rail {
+  background-color: var(--colors-commuter-rail);
+  color: var(--colors-white);
+}
+
+.mbta-ferry {
+  background-color: var(--colors-ferry);
+  color: var(--colors-white);
+}
+
+.mbta-green-line {
+  background-color: var(--colors-green-line);
+  color: var(--colors-white);
+}
+.mbta-orange-line {
+  background-color: var(--colors-orange-line);
+  color: var(--colors-white);
+}
+
+.mbta-red-line {
+  background-color: var(--colors-red-line);
+  color: var(--colors-white);
+}
+
+.mbta-blue-line {
+  background-color: var(--colors-blue-line);
+  color: var(--colors-white);
+}

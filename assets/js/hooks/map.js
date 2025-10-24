@@ -18,7 +18,7 @@ export default {
     this.config = JSON.parse(this.el.dataset.config);
 
     this.map = new maplibregl.Map({
-      container: this.el.querySelector("#mbta-metro-map-wrapper"),
+      container: this.el.querySelector(".mbta-metro-map-wrapper"),
       ...this.config,
     });
 
@@ -27,8 +27,7 @@ export default {
     this.map.on("load", () => {
       this.handleEvent("update-lines", _ => this.updateLines());
       this.handleEvent("update-markers", _ => this.updateMarkers());
-
-      this.pushEventTo("#mbta-metro-map", "map-loaded", {});
+      this.pushEventTo(this.el, "map-loaded", {});
     });
   },
   /**
@@ -119,7 +118,7 @@ export default {
     const highestLat = Math.max(
       ...coordinatesCollection.map((coordinates) => coordinates[1])
     );
-  
+
     return [highestLng, highestLat];
   },
   /**
@@ -132,7 +131,7 @@ export default {
     const lowestLat = Math.min(
       ...coordinatesCollection.map((coordinates) => coordinates[1])
     );
-  
+
     return [lowestLng, lowestLat];
   },
   /**
@@ -182,7 +181,7 @@ export default {
    * If there are no lines, we skip the last step.
    */
   updateLines() {
-    const elements = this.el.querySelectorAll("#mbta-metro-map-lines div");
+    const elements = this.el.querySelectorAll("[data-line]");
     const lines = Array.from(elements).map(element => {
       return JSON.parse(element.getAttribute("data-line"));
     });
@@ -208,7 +207,7 @@ export default {
    * If there are no markers, we skip the last two steps.
    */
   updateMarkers() {
-    const markers = Array.from(this.el.querySelectorAll("#mbta-metro-map-markers svg")).map(element => {
+    const markers = Array.from(this.el.querySelectorAll("[data-coordinates]")).map(element => {
       return {
         coordinates: JSON.parse(element.getAttribute("data-coordinates")),
         element

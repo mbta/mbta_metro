@@ -1,0 +1,26 @@
+dialog.mbta-modal {
+  background-color: var(--colors-background-primary);
+  border: var(--border-width-xs) solid var(--colors-charcoal-70);
+  color: var(--colors-text-primary);
+  padding: var(--spacing-lg);
+  max-width: clamp(420px, 50vw, 980px);
+  z-index: 1000;
+
+  form[method="dialog"] {
+    background-color: var(--colors-cobalt-90);
+    margin-top: calc(var(--spacing-lg) * -1);
+    margin-inline: calc(var(--spacing-lg) * -1);
+    margin-bottom: var(--spacing-lg);
+    padding-block: var(--spacing-default);
+    padding-inline: var(--spacing-lg);
+    text-align: right;
+  }
+}
+
+@media (max-width: 429px) {
+  dialog.mbta-modal {
+    max-height: 100%;
+    overflow: auto;
+    width: 100%;
+  }
+}
