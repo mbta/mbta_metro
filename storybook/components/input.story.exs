@@ -8,10 +8,8 @@ defmodule Storybook.Components.InputGroup do
   def variations do
     [
       checkbox(),
-      # checkbox_button(),
       password(),
       radio(),
-      # radio_button(),
       select(),
       text(),
       textarea()
@@ -25,26 +23,11 @@ defmodule Storybook.Components.InputGroup do
       attributes: %{
         errors: [],
         id: Faker.Lorem.word(),
-        label: "Label",
         name: Faker.Lorem.word(),
         type: "checkbox",
         value: "true"
-      }
-    }
-  end
-
-  def checkbox_button do
-    %Variation{
-      id: :checkbox_button,
-      description: "Checkbox Button",
-      attributes: %{
-        errors: [],
-        id: Faker.Lorem.word(),
-        label: "Label",
-        name: Faker.Lorem.word(),
-        type: "checkbox-button",
-        value: "true"
-      }
+      },
+      slots: ["Label"]
     }
   end
 
@@ -55,11 +38,11 @@ defmodule Storybook.Components.InputGroup do
       attributes: %{
         errors: [],
         id: Faker.Lorem.word(),
-        label: "Label",
         name: Faker.Lorem.word(),
         type: "password",
         value: nil
-      }
+      },
+      slots: ["Label"]
     }
   end
 
@@ -70,26 +53,11 @@ defmodule Storybook.Components.InputGroup do
       attributes: %{
         errors: [],
         id: Faker.Lorem.word(),
-        label: "Label",
         name: Faker.Lorem.word(),
         type: "radio",
         value: "true"
-      }
-    }
-  end
-
-  def radio_button do
-    %Variation{
-      id: :radio_button,
-      description: "Radio Button",
-      attributes: %{
-        errors: [],
-        id: Faker.Lorem.word(),
-        label: "Label",
-        name: Faker.Lorem.word(),
-        type: "radio-button",
-        value: "true"
-      }
+      },
+      slots: ["Label"]
     }
   end
 
@@ -106,12 +74,12 @@ defmodule Storybook.Components.InputGroup do
       attributes: %{
         errors: [],
         id: Faker.Lorem.word(),
-        label: "Label",
         name: Faker.Lorem.word(),
         options: options,
         type: "select",
         value: "two"
-      }
+      },
+      slots: ["Label"]
     }
   end
 
@@ -120,13 +88,13 @@ defmodule Storybook.Components.InputGroup do
       id: :text,
       description: "Text",
       attributes: %{
-        errors: [],
+        errors: ["Something went wrong", "Stop trying"],
         id: Faker.Lorem.word(),
-        label: "Label",
         name: Faker.Lorem.word(),
         type: "text",
         value: nil
-      }
+      },
+      slots: ["Label"]
     }
   end
 
@@ -137,11 +105,11 @@ defmodule Storybook.Components.InputGroup do
       attributes: %{
         errors: [],
         id: Faker.Lorem.word(),
-        label: "Label",
         name: Faker.Lorem.word(),
         type: "textarea",
         value: Faker.Lorem.sentence(5)
-      }
+      },
+      slots: ["Label"]
     }
   end
 end

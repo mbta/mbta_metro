@@ -7,6 +7,10 @@ defmodule Storybook.Components.Table do
 
   def function, do: &Table.table/1
 
+  def imports do
+    [{MbtaMetro.Components.Button, button: 1}]
+  end
+
   def variations do
     [
       %Variation{
@@ -21,6 +25,26 @@ defmodule Storybook.Components.Table do
           <:col :let={user} label="First Name"><%= user.first_name %></:col>
           <:col :let={user} label="Last Name"><%= user.last_name %></:col>
           <:col :let={user} label="Email"><%= user.email %></:col>
+          """
+        ]
+      },
+      %Variation{
+        id: :default_action,
+        description: "Default with action",
+        attributes: %{
+          rows: rows()
+        },
+        slots: [
+          """
+          <:col :let={user} label="ID"><%= user.id %></:col>
+          <:col :let={user} label="First Name"><%= user.first_name %></:col>
+          <:col :let={user} label="Last Name"><%= user.last_name %></:col>
+          <:action :let={user} label="Promote">
+            <.button variant="secondary" size="small">Promote <%= user.first_name %></.button>
+          </:action>
+          <:action label="Demote">
+            <.button variant="primary" size="small">Demote</.button>
+          </:action>
           """
         ]
       }

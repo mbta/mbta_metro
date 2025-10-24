@@ -31,12 +31,12 @@ defmodule MbtaMetro.Components.Accordion do
   """
   def accordion(%{variant: "multiselect"} = assigns) do
     ~H"""
-    <details class="group w-full bg-white" open={@open}>
-      <summary class="rounded border border-cobalt-30 hover:bg-cobalt-80 px-md py-sm flex cursor-pointer list-none items-center gap-2 relative group-open:rounded-none group-open:rounded-t group-open:border-b-0 focus:ring-4 focus:border-cobalt-20 ring-offset-0 ring-cobalt-60 group-open:bg-cobalt-80">
+    <details class="mbta-accordion--multiselect" open={@open}>
+      <summary class="mbta-button mbta-button-secondary">
         {render_slot(@heading)}
-        <.icon name="chevron-down" class="group-open:rotate-180 w-4 h-4 absolute top-3 right-md" />
+        <.icon name="chevron-down" class="mbta-accordion-arrow" />
       </summary>
-      <div class="border border-cobalt-30 px-md py-sm">
+      <div>
         {render_slot(@content)}
       </div>
     </details>
@@ -45,15 +45,15 @@ defmodule MbtaMetro.Components.Accordion do
 
   def accordion(assigns) do
     ~H"""
-    <details class="group w-full bg-white" open={@open}>
-      <summary class="text-charcoal-50 flex cursor-pointer list-none gap-2 relative py-2">
+    <details class="mbta-accordion" open={@open}>
+      <summary>
         {render_slot(@heading)}
         <.icon
           name="chevron-up"
-          class="group-open:rotate-180 w-4 h-4 absolute top-3 right-3 fill-cobalt-50"
+          class="mbta-accordion-arrow"
         />
       </summary>
-      <div class="border-t border-solid border-charcoal-70">
+      <div>
         {render_slot(@content)}
       </div>
     </details>

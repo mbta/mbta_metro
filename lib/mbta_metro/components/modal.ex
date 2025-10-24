@@ -3,14 +3,29 @@ defmodule MbtaMetro.Components.Modal do
 
   use Phoenix.Component
 
-  import MbtaMetro.Components.{Button, JS}
+  import MbtaMetro.Components.Button
 
   alias Phoenix.LiveView.JS
+
+  attr :modal_id, :string, required: true, doc: "ID of the associated modal. Must be unique"
+  slot :inner_block, required: true
+
+  def modal_trigger(assigns) do
+    assigns =
+      assign_new(assigns, :script, fn %{modal_id: id} ->
+        "document.getElementById(\"#{id}\").showModal();"
+      end)
+
+    ~H"""
+    <.button onclick={@script} phx-update="ignore">{render_slot(@inner_block)}</.button>
+    """
+  end
 
   attr :id, :string, required: true
   attr :show, :boolean, default: false
   attr :on_cancel, JS, default: %JS{}
   slot :inner_block, required: true
+  attr :rest, :global
 
   @doc """
   Renders a modal.
@@ -31,72 +46,26 @@ defmodule MbtaMetro.Components.Modal do
   """
   def modal(assigns) do
     ~H"""
-    <div
+    <dialog
       id={@id}
-      phx-mounted={@show && show_modal(@id)}
-      phx-remove={hide_modal(@id)}
+      class="mbta-modal"
       data-cancel={JS.exec(@on_cancel, "phx-remove")}
-      class="relative z-50 hidden"
+      {@rest}
     >
-      <div
-        id={"#{@id}-bg"}
-        class="bg-charcoal-50/30 fixed inset-0 transition-opacity"
-        aria-hidden="true"
-      />
-      <div
-        class="fixed inset-0 overflow-y-auto"
-        aria-labelledby={"#{@id}-title"}
-        aria-describedby={"#{@id}-description"}
-        role="dialog"
-        aria-modal="true"
-        tabindex="0"
+      <.focus_wrap
+        id={"#{@id}-wrapper"}
+        phx-window-keydown={JS.exec("data-cancel", to: "##{@id}")}
+        phx-key="escape"
+        phx-click-away={JS.exec("data-cancel", to: "##{@id}")}
       >
-        <div class="flex min-h-full items-center justify-center">
-          <div class="w-full max-w-3xl p-4 sm:p-6 lg:py-8">
-            <.focus_wrap
-              id={"#{@id}-wrapper"}
-              phx-window-keydown={JS.exec("data-cancel", to: "##{@id}")}
-              phx-key="escape"
-              phx-click-away={JS.exec("data-cancel", to: "##{@id}")}
-              class="shadow-charcoal-30/5 ring-charcoal-30/5 relative hidden rounded bg-white p-14 shadow-lg ring-1 transition"
-            >
-              <div class="absolute top-3 right-3">
-                <.button phx-click={JS.exec("data-cancel", to: "##{@id}")} type="button" class="m-0">
-                  Close
-                </.button>
-              </div>
-              <div id={"#{@id}-content"}>
-                {render_slot(@inner_block)}
-              </div>
-            </.focus_wrap>
-          </div>
-        </div>
-      </div>
-    </div>
+        <form method="dialog">
+          <.button autofocus phx-click={JS.exec(@on_cancel, "phx-remove")} size="small">
+            Close
+          </.button>
+        </form>
+        {render_slot(@inner_block)}
+      </.focus_wrap>
+    </dialog>
     """
-  end
-
-  def show_modal(js \\ %JS{}, id) when is_binary(id) do
-    js
-    |> JS.show(to: "##{id}")
-    |> JS.show(
-      to: "##{id}-bg",
-      transition: {"transition-all transform ease-out duration-300", "opacity-0", "opacity-100"}
-    )
-    |> show("##{id}-wrapper")
-    |> JS.add_class("overflow-hidden", to: "body")
-    |> JS.focus_first(to: "##{id}-content")
-  end
-
-  def hide_modal(js \\ %JS{}, id) do
-    js
-    |> JS.hide(
-      to: "##{id}-bg",
-      transition: {"transition-all transform ease-in duration-200", "opacity-100", "opacity-0"}
-    )
-    |> hide("##{id}-wrapper")
-    |> JS.hide(to: "##{id}", transition: {"block", "block", "hidden"})
-    |> JS.remove_class("overflow-hidden", to: "body")
-    |> JS.pop_focus()
   end
 end

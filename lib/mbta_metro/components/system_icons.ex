@@ -59,13 +59,13 @@ defmodule MbtaMetro.Components.SystemIcons do
           name={"modifier-#{modifier(@line)}-small"}
           height={icon_size("small")}
           aria-label={@label}
-          class={"rounded-full inline #{@class}"}
+          class={["mbta-system-icon", @class]}
         />
         """
       else
         ~H"""
         <span
-          class={"inline-flex flex-nowrap items-center leading-[0.875em] #{spacing_class(@size)}"}
+          class="mbta-icon-stacked"
           aria-label={@label}
         >
           <.route_pill class={@combined_class} aria-hidden="true">
@@ -76,7 +76,6 @@ defmodule MbtaMetro.Components.SystemIcons do
             name={"modifier-#{modifier(@line)}-default"}
             height={icon_size("default")}
             aria-hidden="true"
-            class="rounded-full inline ring-2 ring-white"
           />
         </span>
         """
@@ -98,11 +97,10 @@ defmodule MbtaMetro.Components.SystemIcons do
         :class,
         [
           if(String.starts_with?(assigns.name, "SL"),
-            do: color_class("silver-line"),
-            else: color_class("bus")
+            do: "mbta-silver-line",
+            else: "mbta-bus"
           ),
-          cva_class(:route_icon, assigns),
-          "px-[0.5em]"
+          cva_class(:route_icon, assigns)
         ]
         |> Enum.join(" ")
       )
@@ -138,11 +136,10 @@ defmodule MbtaMetro.Components.SystemIcons do
 
     if length(assigns.stacks) > 1 do
       ~H"""
-      <span class={spacing_class("default")}>
+      <span class="mbta-icon-stacked">
         <.stacked_route_icon
           :for={stack_lines <- @stacks}
           lines={stack_lines}
-          class="ring-2 ring-white"
         />
       </span>
       """
@@ -153,20 +150,17 @@ defmodule MbtaMetro.Components.SystemIcons do
 
           ~H"""
           <span
-            class={"inline-flex flex-nowrap items-center leading-[0.875em] #{spacing_class("default")}"}
+            class="mbta-icon-stacked"
             aria-label={combined_gl_label(@lines)}
           >
             <.route_icon line="green-line" class={@class} />
-            <span class="inline-flex flex-nowrap gap-[1px]">
-              <.icon
-                :for={{branch, index} <- Enum.with_index(@branches)}
-                type="system"
-                aria-hidden="true"
-                name={"modifier-#{branch}-default"}
-                height={icon_size("default")}
-                class={"inline rounded-full #{if(index == 0, do: "ring-2", else: "ring-1")} ring-white"}
-              />
-            </span>
+            <.icon
+              :for={{branch, index} <- Enum.with_index(@branches)}
+              type="system"
+              aria-hidden="true"
+              name={"modifier-#{branch}-default"}
+              height={icon_size("default")}
+            />
           </span>
           """
 
@@ -179,11 +173,11 @@ defmodule MbtaMetro.Components.SystemIcons do
 
         true ->
           ~H"""
-          <span class={"flex flex-nowrap items-center leading-[0.875em] #{spacing_class("default")}"}>
+          <span class="mbta-icon-stacked">
             <.route_icon
               :for={line <- sort_lines(@lines)}
               line={line}
-              class={"#{@class} ring-2 ring-white"}
+              class={@class}
             />
           </span>
           """
@@ -191,21 +185,22 @@ defmodule MbtaMetro.Components.SystemIcons do
     end
   end
 
-  def stacked_route_icon(%{names: _} = assigns) do
-    assigns =
-      assign(
-        assigns,
-        :class,
-        "#{assigns.class} !px-[0.75em] [&:not(:first-child)]:rounded-l-none [&:not(:last-child)]:rounded-r-none"
-      )
+  def stacked_route_icon(%{names: [name]} = assigns) do
+    assigns = assign(assigns, :name, name)
 
     ~H"""
-    <span class={"flex flex-nowrap items-center leading-[0.875em] #{spacing_class("small")}"}>
+    <.route_icon name={@name} class={@class} />
+    """
+  end
+
+  def stacked_route_icon(%{names: _} = assigns) do
+    ~H"""
+    <span class="mbta-icon-stacked--slashed">
       <%= for {name, index} <- Enum.with_index(@names) do %>
         <.route_icon name={name} class={@class} />
         <span
           :if={index < Kernel.length(@names) - 1}
-          class={"bg-white -mt-0.5 w-1 h-8 z-#{50 - index * 10} transform rotate-[10deg]"}
+          class="mbta-slash"
           aria-label="or"
         />
       <% end %>
@@ -217,7 +212,7 @@ defmodule MbtaMetro.Components.SystemIcons do
 
   @valid_modes ["subway", "bus", "commuter-rail", "ferry", "the-ride"]
 
-  attr :class, :string, default: "inline"
+  attr :class, :string, default: ""
   attr :mode, :string, required: true, values: @valid_modes
   attr :size, :string, default: "default", values: ["default", "small"]
 
@@ -241,7 +236,7 @@ defmodule MbtaMetro.Components.SystemIcons do
   defp route_pill(assigns) do
     ~H"""
     <span
-      class={"text-nowrap font-helvetica font-bold inline-flex justify-center rounded-full px-[0.25em] pt-[0.25em] pb-[0.3125em] leading-[0.875em] #{@class}"}
+      class={"mbta-system-route-pill #{@class}"}
       {@rest}
     >
       {render_slot(@inner_block)}
@@ -255,9 +250,9 @@ defmodule MbtaMetro.Components.SystemIcons do
         variants: [
           size: [
             # minimum 50px wide
-            default: "text-base min-w-[3.125em]",
+            default: "mbta-system-route-icon",
             # minimum 28px wide
-            small: "text-sm min-w-[2em]"
+            small: "mbta-system-route-icon--small"
           ]
         ],
         default_variants: [size: "default"]
@@ -272,9 +267,9 @@ defmodule MbtaMetro.Components.SystemIcons do
         variants: [
           size: [
             # 1.5rem
-            default: "w-6 h-6",
+            default: "mbta-system-mode-icon",
             # 1rem
-            small: "w-4 h-4"
+            small: "mbta-system-mode-icon--small"
           ]
         ],
         default_variants: [size: "default"]
@@ -283,10 +278,9 @@ defmodule MbtaMetro.Components.SystemIcons do
     )
   end
 
-  defp color_class("bus"), do: "bg-brand-bus text-black"
-  defp color_class("mattapan-line"), do: "bg-red-line text-white"
-  defp color_class("green-line" <> _), do: "bg-green-line text-white"
-  defp color_class(other), do: "bg-#{other} text-white"
+  defp color_class("mattapan-line"), do: "mbta-red-line"
+  defp color_class("green-line" <> _), do: "mbta-green-line"
+  defp color_class(other), do: "mbta-#{other}"
 
   defp combined_gl_label([line]), do: label(line)
 
@@ -356,7 +350,4 @@ defmodule MbtaMetro.Components.SystemIcons do
       Enum.find_index(@supported_lines, &(&1 == line))
     end)
   end
-
-  defp spacing_class("small"), do: "-space-x-0.5"
-  defp spacing_class(_), do: "-space-x-2"
 end

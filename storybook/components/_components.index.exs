@@ -9,7 +9,6 @@ defmodule Storybook.Components.Index do
 
   def entry("accordion"), do: [name: "Accordion"]
   def entry("badge"), do: [name: "Badge"]
-  def entry("badge_stack"), do: [name: "Badge stack"]
   def entry("button"), do: [name: "Button"]
   def entry("data_list"), do: [name: "DataList"]
   def entry("feedback"), do: [name: "Feedback"]

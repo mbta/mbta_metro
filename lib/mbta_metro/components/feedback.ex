@@ -18,8 +18,8 @@ defmodule MbtaMetro.Components.Feedback do
   """
   def feedback(%{kind: :error} = assigns) do
     ~H"""
-    <p class="flex items-center gap-2 text-sm leading-6 text-firebrick-30 my-2">
-      <.icon name="circle-exclamation" class="h-5 w-5 mt-0.5 fill-firebrick-30" />
+    <p class="mbta-feedback mbta-feedback--error">
+      <.icon name="circle-exclamation" class="mbta-feedback-icon" />
       {render_slot(@inner_block)}
     </p>
     """
@@ -27,8 +27,8 @@ defmodule MbtaMetro.Components.Feedback do
 
   def feedback(%{kind: :info} = assigns) do
     ~H"""
-    <p class="flex items-center gap-2 text-sm leading-6 text-cobalt-30 my-2">
-      <.icon name="circle-info" class="h-5 w-5 mt-0.5 fill-cobalt-30" />
+    <p class="mbta-feedback mbta-feedback--info">
+      <.icon name="circle-info" class="mbta-feedback-icon" />
       {render_slot(@inner_block)}
     </p>
     """
@@ -36,8 +36,8 @@ defmodule MbtaMetro.Components.Feedback do
 
   def feedback(%{kind: :success} = assigns) do
     ~H"""
-    <p class="flex items-center gap-2 text-sm leading-6 text-emerald-30 my-2">
-      <.icon name="circle-check" class="h-5 w-5 mt-0.5 fill-emerald-30" />
+    <p class="mbta-feedback mbta-feedback--success">
+      <.icon name="circle-check" class="mbta-feedback-icon" />
       {render_slot(@inner_block)}
     </p>
     """
@@ -45,8 +45,8 @@ defmodule MbtaMetro.Components.Feedback do
 
   def feedback(%{kind: :warning} = assigns) do
     ~H"""
-    <p class="flex items-center gap-2 text-sm leading-6 text-gold-30 my-2">
-      <.icon name="triangle-exclamation" class="h-5 w-5 mt-0.5 fill-gold-30" />
+    <p class="mbta-feedback mbta-feedback--warning">
+      <.icon name="triangle-exclamation" class="mbta-feedback-icon" />
       {render_slot(@inner_block)}
     </p>
     """

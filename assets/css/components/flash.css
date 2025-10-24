@@ -1,0 +1,61 @@
+.mbta-flash {
+  border-color: currentColor;
+  border-radius: var(--border-radius-lg);
+  border-width: var(--border-width-xs);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-default);
+  padding: var(--spacing-md);
+  position: relative;
+  width: 20rem;
+  z-index: 50;
+
+  > .mbta-feedback {
+    margin-top: calc(var(--spacing-1) * -1);
+  }
+
+  > hr {
+    border-color: currentColor;
+    margin-top: var(--spacing-2);
+    margin-bottom: var(--spacing-1);
+    opacity: 50;
+  }
+
+  > p {
+    margin-top: var(--spacing-2);
+  }
+
+  > button.mbta-close {
+    position: absolute;
+    padding: var(--spacing-sm);
+    right: var(--spacing-1);
+    top: var(--spacing-1);
+  }
+
+  .mbta-close svg {
+    fill: currentColor;
+    height: var(--spacing-5);
+    opacity: 70;
+    width: var(--spacing-5);
+
+    &:hover {
+      opacity: 100;
+    }
+  }
+}
+
+.mbta-flash--error {
+  background-color: var(--colors-error-default-background);
+  color: var(--colors-error-default-foreground);
+}
+.mbta-flash--info {
+  background-color: var(--colors-cobalt-90);
+  color: var(--colors-cobalt-40);
+}
+.mbta-flash--success {
+  background-color: var(--colors-success-default-background);
+  color: var(--colors-success-default-foreground);
+}
+.mbta-flash--warning {
+  background-color: var(--colors-warning-default-background);
+  color: var(--colors-warning-default-foreground);
+}

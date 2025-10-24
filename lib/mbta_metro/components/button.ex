@@ -18,8 +18,8 @@ defmodule MbtaMetro.Components.Button do
 
   variant :size,
           [
-            default: "text-lg",
-            small: "text-sm"
+            default: "",
+            small: "mbta-button-small"
           ],
           default: :default
 

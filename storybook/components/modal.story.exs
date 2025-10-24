@@ -1,30 +1,40 @@
 defmodule Storybook.Components.Modal do
   @moduledoc false
 
-  use PhoenixStorybook.Story, :component
+  use PhoenixStorybook.Story, :page
 
-  alias MbtaMetro.Components.{Button, Modal}
+  import MbtaMetro.Components.Modal
 
-  def function, do: &Modal.modal/1
+  def render(assigns) do
+    ~H"""
+    <div>
+      <.modal_trigger modal_id="foo">
+        Click here to open the modal.
+      </.modal_trigger>
+      <.modal id="foo">
+        <p>This is a modal. It can contain anything!</p>
+        <p>{Faker.Lorem.paragraph()}</p>
+      </.modal>
 
-  def imports do
-    [{Button, button: 1}]
-  end
-
-  def variations do
-    [
-      %Variation{
-        id: :default,
-        description: "Default",
-        attributes: %{
-          show: true
-        },
-        slots: [
-          """
-          <p><%= Faker.Lorem.paragraph() %></p>
-          """
-        ]
-      }
-    ]
+      <.modal_trigger modal_id="foo2">
+        Bigger example
+      </.modal_trigger>
+      <.modal id="foo2">
+        <p>{Faker.Lorem.paragraph()}</p>
+        <p>{Faker.Lorem.paragraph()}</p>
+        <p>{Faker.Lorem.paragraph()}</p>
+        <p>{Faker.Lorem.paragraph()}</p>
+        <p>{Faker.Lorem.paragraph()}</p>
+        <p>{Faker.Lorem.paragraph()}</p>
+        <p>{Faker.Lorem.paragraph()}</p>
+        <p>{Faker.Lorem.paragraph()}</p>
+        <p>{Faker.Lorem.paragraph()}</p>
+        <p>{Faker.Lorem.paragraph()}</p>
+        <p>{Faker.Lorem.paragraph()}</p>
+        <p>{Faker.Lorem.paragraph()}</p>
+        <p>{Faker.Lorem.paragraph()}</p>
+      </.modal>
+    </div>
+    """
   end
 end

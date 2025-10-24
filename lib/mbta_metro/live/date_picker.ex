@@ -4,7 +4,9 @@ defmodule MbtaMetro.Live.DatePicker do
 
   You must pass in the following assigns:
 
+    * `:id`
     * `:field` - A form field struct retrieved from a form, for example: @form[:datetime].
+    * `:label`
 
   You can optionally pass in a `:config` map:
     * `:default_date` - The default date that should be selected.
@@ -16,8 +18,9 @@ defmodule MbtaMetro.Live.DatePicker do
 
   use Phoenix.LiveComponent
 
+  import MbtaMetro.Components.Feedback
   import MbtaMetro.Components.Icon, only: [icon: 1]
-  import MbtaMetro.Components.Input, only: [input: 1]
+  import MbtaMetro.Components.Input, only: [format_changeset_errors: 1, label: 1]
 
   def mount(_params, _session, socket) do
     config = Map.get(socket.assigns, :config, %{})
@@ -31,21 +34,35 @@ defmodule MbtaMetro.Live.DatePicker do
   Renders the date picker component.
   """
   def render(assigns) do
+    assigns =
+      assigns
+      |> assign(:errors, format_changeset_errors(assigns.field.errors))
+      |> assign_new(:value, fn -> assigns.field.value end)
+
     ~H"""
-    <div
-      id="date-picker"
-      phx-hook="DatePicker"
-      phx-update="ignore"
-      data-config={Jason.encode!(@config)}
-      data-locale={@locale}
-      class="min-w-72"
-    >
-      <div id="date-picker-calendar" class="relative">
-        <.input type="datetime-local" field={@field} class="w-full" value={nil} data-input />
-        <a href="#" data-toggle class="absolute top-3.5 right-2.5 leading-none">
-          <.icon name="calendar" type="regular" class="w-4 h-4 fill-cobalt-30" />
+    <div class={["mbta-date-picker", @errors != [] && "mbta-date-picker--error"]}>
+      <.label :if={@label} for={@field.id}><strong>{@label}</strong></.label>
+      <div
+        id={@id}
+        class="mbta-date-picker--input"
+        phx-hook="DatePicker"
+        phx-update="ignore"
+        data-config={Jason.encode!(@config)}
+        data-locale={@locale}
+      >
+        <input
+          type="datetime-local"
+          name={@field.name}
+          id={@field.id}
+          value={Phoenix.HTML.Form.normalize_value("datetime-local", @field.value)}
+          class="mbta-input"
+          data-input
+        />
+        <a href="#" data-toggle>
+          <.icon name="calendar" type="regular" class="mbta-date-picker--icon" />
         </a>
       </div>
+      <.feedback :for={msg <- @errors} kind={:error}>{msg}</.feedback>
     </div>
     """
   end

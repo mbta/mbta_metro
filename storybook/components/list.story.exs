@@ -28,7 +28,9 @@ defmodule Storybook.Components.List do
   end
 
   defp class_items do
-    ["red", "green", "blue"]
-    |> Enum.map(fn value -> "<:item class=\"text-#{value}-500\">#{value}</:item>" end)
+    ["gold", "emerald", "amethyst"]
+    |> Enum.map(fn value ->
+      "<:item class=\"text-#{value}-30 border-#{value}-90\">#{value}</:item>"
+    end)
   end
 end

@@ -1,0 +1,20 @@
+.mbta-js--show {
+  transition-property: opacity, transform;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  transition-duration: var(--transition-duration);
+}
+
+.mbta-js--hide {
+  transition-property: opacity, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+  transition-duration: var(--transition-duration);
+}
+
+.mbta-js-transition--end {
+  transform: translateY(0px);
+  opacity: 100;
+}
+.mbta-js-transition--start {
+  transform: translateY(1rem);
+  opacity: 0;
+}

@@ -1,0 +1,9 @@
+ul.mbta-list {
+  padding-inline-start: 0;
+  width: 100%;
+
+  li {
+    border-bottom: var(--border-width-default) solid var(--colors-charcoal-80);
+    padding-block: var(--spacing-sm);
+  }
+}

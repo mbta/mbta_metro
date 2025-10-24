@@ -1,0 +1,150 @@
+module.exports = {
+  colors: {
+    charcoal: {
+      "10": "var(--colors-charcoal-10)",
+      "20": "var(--colors-charcoal-20)",
+      "30": "var(--colors-charcoal-30)",
+      "40": "var(--colors-charcoal-40)",
+      "50": "var(--colors-charcoal-50)",
+      "60": "var(--colors-charcoal-60)",
+      "70": "var(--colors-charcoal-70)",
+      "80": "var(--colors-charcoal-80)",
+      "90": "var(--colors-charcoal-90)"
+    },
+    cobalt: {
+      "10": "var(--colors-cobalt-10)",
+      "20": "var(--colors-cobalt-20)",
+      "30": "var(--colors-cobalt-30)",
+      "40": "var(--colors-cobalt-40)",
+      "50": "var(--colors-cobalt-50)",
+      "60": "var(--colors-cobalt-60)",
+      "70": "var(--colors-cobalt-70)",
+      "80": "var(--colors-cobalt-80)",
+      "90": "var(--colors-cobalt-90)"
+    },
+    gold: {
+      "10": "var(--colors-gold-10)",
+      "20": "var(--colors-gold-20)",
+      "30": "var(--colors-gold-30)",
+      "40": "var(--colors-gold-40)",
+      "50": "var(--colors-gold-50)",
+      "60": "var(--colors-gold-60)",
+      "70": "var(--colors-gold-70)",
+      "80": "var(--colors-gold-80)",
+      "90": "var(--colors-gold-90)"
+    },
+    firebrick: {
+      "10": "var(--colors-firebrick-10)",
+      "20": "var(--colors-firebrick-20)",
+      "30": "var(--colors-firebrick-30)",
+      "40": "var(--colors-firebrick-40)",
+      "50": "var(--colors-firebrick-50)",
+      "60": "var(--colors-firebrick-60)",
+      "70": "var(--colors-firebrick-70)",
+      "80": "var(--colors-firebrick-80)",
+      "90": "var(--colors-firebrick-90)"
+    },
+    emerald: {
+      "10": "var(--colors-emerald-10)",
+      "20": "var(--colors-emerald-20)",
+      "30": "var(--colors-emerald-30)",
+      "40": "var(--colors-emerald-40)",
+      "50": "var(--colors-emerald-50)",
+      "60": "var(--colors-emerald-60)",
+      "70": "var(--colors-emerald-70)",
+      "80": "var(--colors-emerald-80)",
+      "90": "var(--colors-emerald-90)"
+    },
+    amethyst: {
+      "10": "var(--colors-amethyst-10)",
+      "20": "var(--colors-amethyst-20)",
+      "30": "var(--colors-amethyst-30)",
+      "40": "var(--colors-amethyst-40)",
+      "50": "var(--colors-amethyst-50)",
+      "60": "var(--colors-amethyst-60)",
+      "70": "var(--colors-amethyst-70)",
+      "80": "var(--colors-amethyst-80)",
+      "90": "var(--colors-amethyst-90)"
+    },
+    white: "var(--colors-white)",
+    black: "var(--colors-black)",
+    subway: "var(--colors-subway)",
+    "green-line": "var(--colors-green-line)",
+    "orange-line": "var(--colors-orange-line)",
+    "red-line": "var(--colors-red-line)",
+    "blue-line": "var(--colors-blue-line)",
+    "silver-line": "var(--colors-silver-line)",
+    "brand-bus": "var(--colors-brand-bus)",
+    ferry: "var(--colors-ferry)",
+    "the-ride": "var(--colors-the-ride)",
+    "commuter-rail": "var(--colors-commuter-rail)",
+    swa: "var(--colors-swa)",
+    "mbta-dark": "var(--colors-mbta-dark)",
+    "dark-winter": "var(--colors-dark-winter)",
+    "mid-winter": "var(--colors-mid-winter)"
+  },
+  borderRadius: {
+    DEFAULT: "var(--border-radius-default)",
+    none: "var(--border-radius-none)",
+    xs: "var(--border-radius-xs)",
+    sm: "var(--border-radius-sm)",
+    md: "var(--border-radius-md)",
+    lg: "var(--border-radius-lg)",
+    xl: "var(--border-radius-xl)",
+    "2xl": "var(--border-radius-2xl)",
+    "4xl": "var(--border-radius-4xl)",
+    full: "var(--border-radius-full)"
+  },
+  borderWidth: {
+    DEFAULT: "var(--border-width-default)",
+    xs: "var(--border-width-xs)",
+    sm: "var(--border-width-sm)",
+    md: "var(--border-width-md)",
+    lg: "var(--border-width-lg)"
+  },
+  spacing: {
+    "0": "var(--spacing-0)",
+    "1": "var(--spacing-1)",
+    "2": "var(--spacing-2)",
+    "3": "var(--spacing-3)",
+    "4": "var(--spacing-4)",
+    "5": "var(--spacing-5)",
+    "6": "var(--spacing-6)",
+    "8": "var(--spacing-8)",
+    "10": "var(--spacing-10)",
+    "12": "var(--spacing-12)",
+    "16": "var(--spacing-16)",
+    "20": "var(--spacing-20)",
+    DEFAULT: "var(--spacing-default)",
+    xs: "var(--spacing-xs)",
+    sm: "var(--spacing-sm)",
+    md: "var(--spacing-md)",
+    lg: "var(--spacing-lg)",
+    xl: "var(--spacing-xl)",
+    "2xl": "var(--spacing-2xl)"
+  },
+  lineHeight: {
+    DEFAULT: "var(--line-height-default)",
+    sm: "var(--line-height-sm)",
+    md: "var(--line-height-md)",
+    lg: "var(--line-height-lg)",
+    xl: "var(--line-height-xl)",
+    "2xl": "var(--line-height-2xl)"
+  },
+  transitionDuration: "var(--transition-duration)",
+  fontSize: {
+    DEFAULT: "var(--font-size-default)",
+    sm: "var(--font-size-sm)",
+    md: "var(--font-size-md)",
+    lg: "var(--font-size-lg)",
+    xl: "var(--font-size-xl)",
+    "2xl": "var(--font-size-2xl)"
+  },
+  fontFamily: {
+    base: "var(--font-family-base)",
+    heading: "var(--font-family-heading)",
+    inter: "var(--font-family-inter)",
+    helvetica: "var(--font-family-helvetica)"
+  },
+  minimumTapTargetSize: "var(--minimum-tap-target-size)"
+};

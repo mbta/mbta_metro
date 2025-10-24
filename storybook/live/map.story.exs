@@ -15,6 +15,7 @@ defmodule Storybook.Live.Map do
         id: :raster,
         description: "Raster map",
         attributes: %{
+          id: "default-map",
           class: "w-full h-96",
           config: @config,
           lines: [
