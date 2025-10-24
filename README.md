@@ -139,7 +139,7 @@ config :mbta_metro, :map, config: %{
 
 WIP, so long as you're using the files from `deps/mbta_metro/priv/dist` it should work.
 
-There are also icons and fonts, which can be added to your application's `/priv/static` directory with the mix task `mix mbta_metro.update_assets`.
+There are also icons and fonts, which can be added to your application's `/priv/static` directory with the mix task `mix mbta_metro.export_assets`.
 
 # Contributing
 

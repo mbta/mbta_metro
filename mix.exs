@@ -105,8 +105,7 @@ defmodule MbtaMetro.MixProject do
         "lib/mbta_metro/gettext.ex",
         "lib/mbta_metro/utils.ex",
         "lib/mbta_metro/components/",
-        "lib/mbta_metro/live/",
-        "lib/mix/tasks/mbta_metro/update_assets.ex"
+        "lib/mbta_metro/live/"
       ]
     end
   end
@@ -119,7 +118,6 @@ defmodule MbtaMetro.MixProject do
         "lib/mbta_metro/live/**/*",
         "lib/mbta_metro/gettext.ex",
         "lib/mbta_metro/utils.ex",
-        "lib/mix/tasks/mbta_metro/update_*.ex",
         "mix.exs",
         "priv/dist/*",
         "priv/static/fonts/*",
