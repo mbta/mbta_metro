@@ -39,8 +39,8 @@ config :esbuild,
     cd: Path.expand("../assets", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ],
-  tailwindpreset: [
-    args: ~w(js/tailwind-preset.js --bundle --outdir=../priv/dist),
+  tokens: [
+    args: ~w(js/tokens.js --outdir=../priv/dist),
     cd: Path.expand("../assets", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ],

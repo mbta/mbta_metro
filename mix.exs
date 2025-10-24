@@ -33,9 +33,9 @@ defmodule MbtaMetro.MixProject do
     [
       prepare: ["tokens.build", "assets.build", "mbta_metro.version"],
       "assets.build": [
+        "esbuild tokens",
         "esbuild metro",
-        "tailwind metro",
-        "esbuild tailwindpreset"
+        "tailwind metro"
       ],
       "tokens.build": [
         "cmd --cd assets npx style-dictionary build --config process-figma-tokens.js"
