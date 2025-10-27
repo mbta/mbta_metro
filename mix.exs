@@ -102,29 +102,17 @@ defmodule MbtaMetro.MixProject do
     else
       [
         "lib/mbta_metro.ex",
+        "lib/mbta_metro/components",
+        "lib/mbta_metro/live",
         "lib/mbta_metro/gettext.ex",
-        "lib/mbta_metro/utils.ex",
-        "lib/mbta_metro/components/",
-        "lib/mbta_metro/live/"
+        "lib/mbta_metro/utils.ex"
       ]
     end
   end
 
   defp package do
     [
-      files: [
-        "lib/mbta_metro.ex",
-        "lib/mbta_metro/components/**/*",
-        "lib/mbta_metro/live/**/*",
-        "lib/mbta_metro/gettext.ex",
-        "lib/mbta_metro/utils.ex",
-        "mix.exs",
-        "priv/dist/*",
-        "priv/static/fonts/*",
-        "priv/static/icons/*",
-        "README.md",
-        "VERSION"
-      ],
+      files: ~w(lib mix.exs priv/dist priv/static/fonts priv/static/icons README* VERSION),
       licenses: ["GPL-3.0-or-later"],
       links: %{"GitHub" => "https://github.com/mbta/mbta_metro"}
     ]
