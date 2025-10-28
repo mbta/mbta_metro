@@ -3,14 +3,15 @@ defmodule Storybook.Components.InputGroup do
 
   import Phoenix.Component, only: [to_form: 1]
 
-  alias MbtaMetro.Components.{Icon, Input, InputGroup}
+  alias MbtaMetro.Components.{Icon, Input, InputGroup, SystemIcons}
 
   def function, do: &InputGroup.input_group/1
 
   def imports,
     do: [
       {Icon, icon: 1},
-      {Input, [label: 1]}
+      {Input, [label: 1]},
+      {SystemIcons, [route_icon: 1]}
     ]
 
   def variations do
@@ -69,16 +70,18 @@ defmodule Storybook.Components.InputGroup do
       slots: [
         """
         <:input value="place-harsq">
-          <.icon name="ship" class="w-4 h-4 fill-black" /> Harvard
+          <.route_icon line="red-line" /> Harvard
         </:input>
         """,
         """
         <:input value="place-rugg">
+          <.route_icon line="orange-line" />
           Ruggles
         </:input>
         """,
         """
         <:input value="place-wondl">
+          <.route_icon line="blue-line" />
           Wonderland
         </:input>
         """
