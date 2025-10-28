@@ -1,0 +1,22 @@
+table.mbta-table {
+  border-collapse: collapse;
+  table-layout: fixed;
+
+  thead tr {
+    border-bottom: var(--border-width-default) solid var(--colors-charcoal-30);
+  }
+
+  td,
+  th {
+    padding: var(--spacing-sm) var(--spacing-md);
+    text-align: left;
+  }
+
+  .mbta-table-action {
+    text-align: right;
+  }
+
+  tbody tr:nth-child(odd) {
+    background-color: var(--colors-charcoal-90);
+  }
+}

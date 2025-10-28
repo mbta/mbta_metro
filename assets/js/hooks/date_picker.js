@@ -56,7 +56,7 @@ const i18nDate = (date, locale = "en") => {
  */
 export default {
   mounted() {
-    const el = this.el.querySelector("#date-picker-calendar");
+    const el = this.el;
 
     var customConfig = this.el.dataset.config ? JSON.parse(this.el.dataset.config) : {};
     customConfig = camelcaseKeys(customConfig, {deep: true});

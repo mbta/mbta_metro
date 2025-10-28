@@ -1,0 +1,16 @@
+progress.mbta-progress {
+  appearance: none;
+  border-radius: var(--border-radius-lg);
+  display: flex;
+  height: var(--spacing-4);
+  width: 100%;
+
+  &::-mode-progress-bar,
+  &::-webkit-progress-bar {
+    background-color: var(--colors-charcoal-90);
+  }
+
+  &::-webkit-progress-value {
+    background-color: var(--colors-cobalt-40);
+  }
+}

@@ -5,14 +5,6 @@ defmodule MbtaMetro.Components.Input do
 
   import MbtaMetro.Components.Feedback
 
-  defp input_base_classes do
-    "border border-cobalt-30 bg-white focus:ring-4 ring-offset-0 ring-cobalt-60 checked:bg-cobalt-30 disabled:opacity-50 disabled:bg-charcoal-20"
-  end
-
-  defp input_error_classes do
-    "border border-solid border-firebrick-70 focus:border-firebrick-40"
-  end
-
   @doc """
   Renders an input with label and error messages.
 
@@ -41,7 +33,7 @@ defmodule MbtaMetro.Components.Input do
   """
   attr :id, :any, default: nil
   attr :name, :any
-  attr :label, :string, default: nil
+  slot :inner_block, doc: "The label for this input."
   attr :value, :any
 
   attr :type, :string,
@@ -69,7 +61,6 @@ defmodule MbtaMetro.Components.Input do
 
     assigns
     |> assign(field: nil, id: assigns.id || field.id)
-    |> assign(:label, assigns.label || assigns.value)
     |> assign(:errors, format_changeset_errors(errors))
     |> assign_new(:name, fn -> if assigns.multiple, do: field.name <> "[]", else: field.name end)
     |> assign_new(:value, fn -> field.value end)
@@ -84,7 +75,7 @@ defmodule MbtaMetro.Components.Input do
       end)
 
     ~H"""
-    <.label for={@id} style="height: var(--minimum-tap-target-size)">
+    <.label for={@id}>
       <input type="hidden" name={@name} value="false" disabled={@rest[:disabled]} />
       <input
         type="checkbox"
@@ -92,44 +83,10 @@ defmodule MbtaMetro.Components.Input do
         name={@name}
         value="true"
         checked={@checked}
-        class={[
-          "shrink-0 mr-sm rounded w-5 h-5",
-          input_base_classes(),
-          @class
-        ]}
+        class={["mbta-input", @class]}
         {@rest}
       />
-      {@label}
-    </.label>
-    """
-  end
-
-  def input(%{type: "checkbox-button"} = assigns) do
-    assigns =
-      assigns
-      |> assign_new(:checked, fn ->
-        Phoenix.HTML.Form.normalize_value("checkbox", assigns[:value])
-      end)
-
-    ~H"""
-    <.label for={@id} class="px-md">
-      <input type="hidden" name={@name} value="false" disabled={@rest[:disabled]} />
-      <input
-        type="checkbox"
-        id={@id}
-        name={@name}
-        value="true"
-        checked={@checked}
-        class={[
-          "shrink-0 mr-sm rounded w-6 h-6 sr-only",
-          input_base_classes(),
-          @class
-        ]}
-        {@rest}
-      />
-      <span class="w-full text-center">
-        {@label}
-      </span>
+      {render_slot(@inner_block)}
     </.label>
     """
   end
@@ -138,46 +95,17 @@ defmodule MbtaMetro.Components.Input do
     assigns = assigns |> assign_new(:checked, fn -> false end)
 
     ~H"""
-    <.label for={@id} style="height: var(--minimum-tap-target-size)">
+    <.label for={@id}>
       <input
         type="radio"
         id={@id}
         name={@name}
         value={@value}
         checked={@checked}
-        class={[
-          "shrink-0 mr-sm rounded-full w-5 h-5",
-          input_base_classes(),
-          @class
-        ]}
+        class={["mbta-input", @class]}
         {@rest}
       />
-      {@label}
-    </.label>
-    """
-  end
-
-  def input(%{type: "radio-button"} = assigns) do
-    assigns = assigns |> assign_new(:checked, fn -> false end)
-
-    ~H"""
-    <.label for={@id} class="px-md">
-      <input
-        type="radio"
-        id={@id}
-        name={@name}
-        value={@value}
-        checked={@checked}
-        class={[
-          "shrink-0 mr-sm rounded-full w-6 h-6 sr-only",
-          input_base_classes(),
-          @class
-        ]}
-        {@rest}
-      />
-      <span class="w-full text-center">
-        {@label}
-      </span>
+      {render_slot(@inner_block)}
     </.label>
     """
   end
@@ -185,15 +113,11 @@ defmodule MbtaMetro.Components.Input do
   def input(%{type: "select"} = assigns) do
     ~H"""
     <div>
-      <.label :if={@label} for={@id} class="font-bold">{@label}</.label>
+      <.label :if={@inner_block} for={@id}><strong>{render_slot(@inner_block)}</strong></.label>
       <select
         id={@id}
         name={@name}
-        class={[
-          "shadow-sm rounded px-md py-sm",
-          input_base_classes(),
-          @class
-        ]}
+        class={["mbta-input", @class]}
         multiple={@multiple}
         {@rest}
       >
@@ -208,16 +132,16 @@ defmodule MbtaMetro.Components.Input do
   def input(%{type: "textarea"} = assigns) do
     ~H"""
     <div>
-      <.label :if={@label} for={@id} class="font-bold">{@label}</.label>
+      <.label :if={@inner_block} for={@id}><strong>{render_slot(@inner_block)}</strong></.label>
       <textarea
         id={@id}
         name={@name}
         class={[
-          "min-h-[6rem] rounded px-md py-sm",
-          input_base_classes(),
-          @errors != [] && input_error_classes(),
+          "mbta-input",
+          @errors != [] && "mbta-input--error",
           @class
         ]}
+        rows="3"
         {@rest}
       ><%= Phoenix.HTML.Form.normalize_value("textarea", @value) %></textarea>
       <.feedback :for={msg <- @errors} kind={:error}>{msg}</.feedback>
@@ -229,16 +153,15 @@ defmodule MbtaMetro.Components.Input do
   def input(assigns) do
     ~H"""
     <div>
-      <.label :if={@label} for={@id} class="font-bold">{@label}</.label>
+      <.label :if={@inner_block} for={@id}><strong>{render_slot(@inner_block)}</strong></.label>
       <input
         type={@type}
         name={@name}
         id={@id}
         value={Phoenix.HTML.Form.normalize_value(@type, @value)}
         class={[
-          "rounded px-md py-sm",
-          input_base_classes(),
-          @errors != [] && input_error_classes(),
+          "mbta-input",
+          @errors != [] && "mbta-input--error",
           @class
         ]}
         {@rest}
@@ -248,7 +171,7 @@ defmodule MbtaMetro.Components.Input do
     """
   end
 
-  defp format_changeset_errors(errors) do
+  def format_changeset_errors(errors) do
     Enum.map(errors, fn
       {msg, _} -> msg
       msg -> msg
@@ -265,11 +188,7 @@ defmodule MbtaMetro.Components.Input do
 
   def label(assigns) do
     ~H"""
-    <label
-      for={@for}
-      class={"cursor-pointer w-full m-0 py-sm inline-flex items-center #{@class}"}
-      {@rest}
-    >
+    <label for={@for} class={"mbta-label #{@class}"} {@rest}>
       {render_slot(@inner_block)}
     </label>
     """

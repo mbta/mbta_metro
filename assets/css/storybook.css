@@ -1,0 +1,25 @@
+@import "./../../priv/dist/metro.css";
+
+@config "./../tailwind.storybook.config.js";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.mbta-metro-web {
+  font-family: var(--font-family-base);
+}
+
+body.psb {
+  background-color: var(--colors-background-primary);
+  color: var(--colors-text-primary);
+}
+
+.psb {
+  pre {
+    overflow: hidden;
+  }
+
+  .p {
+    padding: 0;
+  }
+}
