@@ -2511,7 +2511,10 @@ dialog.mbta-modal {
   border: var(--border-width-xs) solid var(--colors-charcoal-70);
   color: var(--colors-text-primary);
   padding: var(--spacing-lg);
-  max-width: clamp(420px, 50vw, 980px);
+  max-width: 100dvw;
+  max-height: 100dvh;
+  width: clamp(420px, 40rem, 55%);
+  box-shadow: 0 7px 14px 0 color-mix(in srgb, var(--colors-charcoal-10), transparent 80%);
   z-index: 1000;
   form[method=dialog] {
     background-color: var(--colors-cobalt-90);
@@ -2525,9 +2528,9 @@ dialog.mbta-modal {
 }
 @media (max-width: 429px) {
   dialog.mbta-modal {
-    max-height: 100%;
-    overflow: auto;
-    width: 100%;
+    height: 100dvh;
+    overflow: scroll;
+    width: 100dvw;
   }
 }
 
