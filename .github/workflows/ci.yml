@@ -1,0 +1,78 @@
+name: CI
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - ready_for_review
+
+env:
+  MIX_ENV: test
+
+jobs:
+  setup:
+    name: Build and test Elixir
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Set cache keys
+        id: cache-keys
+        run: |
+          echo "asdf-restore=cache-asdf-" >> $GITHUB_OUTPUT
+          echo "asdf=cache-asdf-${{ hashFiles('.tool-versions') }}" >> $GITHUB_OUTPUT
+          echo "mix-deps-restore=cache-mix-deps-" >> $GITHUB_OUTPUT
+          echo "mix-deps=cache-mix-deps-${{ hashFiles('mix.exs', 'mix.lock', '.tool-versions') }}" >> $GITHUB_OUTPUT
+      - name: asdf cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.asdf
+          key: ${{ steps.cache-keys.outputs.asdf }}
+          restore-keys: ${{ steps.cache-keys.outputs.asdf-restore }}
+        id: asdf-cache
+      - name: asdf install
+        uses: asdf-vm/actions/install@v4
+        # only run `asdf install` if we didn't hit the cache
+        if: steps.asdf-cache.outputs.cache-hit != 'true'
+      - name: asdf reshim
+        uses: mbta/actions/reshim-asdf@v2
+      - name: mix rebar and hex
+        run: |
+          mix local.rebar --force
+          mix local.hex --force
+        # mix rebar and hex are cached with asdf, not with mix
+        if: steps.asdf-cache.outputs.cache-hit != 'true'
+      - name: mix deps cache
+        id: mix-deps-cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            deps
+            _build
+          key: ${{ steps.cache-keys.outputs.mix-deps }}
+          restore-keys: ${{ steps.cache-keys.outputs.mix-deps-restore }}
+      - name: mix deps install and compile
+        if: steps.deps-cache.outputs.cache-hit != 'true'
+        run: |
+          mix deps.get
+          mix deps.compile
+      - run: mix compile --force --warnings-as-errors
+      - run: mix format --check-formatted
+      - run: mix test
+      - name: Check for unused dependencies
+        run: mix deps.unlock --check-unused
+
+  docker:
+    name: Check that the Docker container will build
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: docker build
+        run: docker build . -t mbta_metro

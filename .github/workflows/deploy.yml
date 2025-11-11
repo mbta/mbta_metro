@@ -1,0 +1,27 @@
+name: Deploy
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        type: string
+        required: true
+        default: staging
+    secrets:
+      AWS_ROLE_ARN:
+        required: true
+      DOCKER_REPO:
+        required: true
+      SLACK_WEBHOOK:
+        required: true
+
+jobs:
+  call-workflow:
+    uses: mbta/workflows/.github/workflows/deploy-ecs.yml@v4
+    with:
+      app-name: mbta-metro
+      environment: ${{ inputs.environment }}
+    secrets:
+      aws-role-arn: ${{ secrets.AWS_ROLE_ARN }}
+      docker-repo: ${{ secrets.DOCKER_REPO }}
+      slack-webhook: ${{ secrets.SLACK_WEBHOOK }}
