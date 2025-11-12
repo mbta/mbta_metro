@@ -3,6 +3,14 @@
   width: var(--spacing-6);
 }
 
+.mbta-system-mode-icon[class*="mbta-route"] {
+  background-color: unset;
+}
+
+.mbta-system-mode-icon[class*="mbta-route"] > path[fill]:not([fill="none"]) {
+  fill: inherit;
+}
+
 .mbta-system-mode-icon--small {
   height: var(--spacing-4);
   width: var(--spacing-4);
@@ -99,55 +107,9 @@
   }
 }
 
-/*.mbta-icon-stacked > * {
-  border-radius: var(--border-radius-full);
-  margin-right: -0.125rem;
-  margin-left: -0.125rem;
-  outline: var(--border-width-default) solid white;
-}*/
-
 .mbta-icon-stacked--tight > * {
   border-radius: var(--border-radius-full);
   margin-right: calc(var(--spacing-2) * -1);
   margin-left: calc(var(--spacing-2) * -1);
   outline: var(--border-width-default) solid white;
-}
-
-.mbta-bus {
-  background-color: var(--colors-brand-bus);
-  color: var(--colors-black);
-}
-
-.mbta-silver-line {
-  background-color: var(--colors-silver-line);
-  color: var(--colors-white);
-}
-
-.mbta-commuter-rail {
-  background-color: var(--colors-commuter-rail);
-  color: var(--colors-white);
-}
-
-.mbta-ferry {
-  background-color: var(--colors-ferry);
-  color: var(--colors-white);
-}
-
-.mbta-green-line {
-  background-color: var(--colors-green-line);
-  color: var(--colors-white);
-}
-.mbta-orange-line {
-  background-color: var(--colors-orange-line);
-  color: var(--colors-white);
-}
-
-.mbta-red-line {
-  background-color: var(--colors-red-line);
-  color: var(--colors-white);
-}
-
-.mbta-blue-line {
-  background-color: var(--colors-blue-line);
-  color: var(--colors-white);
 }

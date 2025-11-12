@@ -33,6 +33,20 @@ defmodule Storybook.Components.ModeIcons do
               }
             }
           end
+      },
+      %VariationGroup{
+        id: :colored,
+        variations:
+          for line <-
+                ~w(red-line mattapan-line orange-line green-line green-line-b green-line-c green-line-d green-line-e blue-line silver-line) do
+            %Variation{
+              id: String.to_atom("#{line}_subway_icon"),
+              attributes: %{
+                mode: "subway",
+                line: line
+              }
+            }
+          end
       }
     ] ++
       [

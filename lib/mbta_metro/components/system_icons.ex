@@ -97,8 +97,8 @@ defmodule MbtaMetro.Components.SystemIcons do
         :class,
         [
           if(String.starts_with?(assigns.name, "SL"),
-            do: "mbta-silver-line",
-            else: "mbta-bus"
+            do: "mbta-route-silver-line",
+            else: "mbta-route-bus"
           ),
           cva_class(:route_icon, assigns)
         ]
@@ -221,6 +221,16 @@ defmodule MbtaMetro.Components.SystemIcons do
 
   <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="350" src="https://embed.figma.com/design/IupfoRXJNItGDD8ZaZCxDz/branch/lMS9vgBPCx0HLbDqONQlha/MBTA-Rider-Design-System-Components?m=auto&node-id=2483-821&embed-host=share" allowfullscreen></iframe>
   """
+  def mode_icon(%{line: _} = assigns) do
+    line_class = color_class(assigns.line)
+    class = cva_class(:mode_icon, assigns)
+    assigns = assign(assigns, :class, "#{class} #{line_class}")
+
+    ~H"""
+    <.icon type="system" class={@class} name={"mode-#{@mode}-#{@size}"} aria-label={label(@mode)} />
+    """
+  end
+
   def mode_icon(assigns) do
     assigns = assign(assigns, :class, cva_class(:mode_icon, assigns))
 
@@ -278,9 +288,9 @@ defmodule MbtaMetro.Components.SystemIcons do
     )
   end
 
-  defp color_class("mattapan-line"), do: "mbta-red-line"
-  defp color_class("green-line" <> _), do: "mbta-green-line"
-  defp color_class(other), do: "mbta-#{other}"
+  defp color_class("mattapan-line"), do: "mbta-route-red-line"
+  defp color_class("green-line" <> _), do: "mbta-route-green-line"
+  defp color_class(other), do: "mbta-route-#{other}"
 
   defp combined_gl_label([line]), do: label(line)
 
