@@ -2682,38 +2682,6 @@ progress.mbta-progress {
   margin-left: calc(var(--spacing-2) * -1);
   outline: var(--border-width-default) solid white;
 }
-.mbta-bus {
-  background-color: var(--colors-brand-bus);
-  color: var(--colors-black);
-}
-.mbta-silver-line {
-  background-color: var(--colors-silver-line);
-  color: var(--colors-white);
-}
-.mbta-commuter-rail {
-  background-color: var(--colors-commuter-rail);
-  color: var(--colors-white);
-}
-.mbta-ferry {
-  background-color: var(--colors-ferry);
-  color: var(--colors-white);
-}
-.mbta-green-line {
-  background-color: var(--colors-green-line);
-  color: var(--colors-white);
-}
-.mbta-orange-line {
-  background-color: var(--colors-orange-line);
-  color: var(--colors-white);
-}
-.mbta-red-line {
-  background-color: var(--colors-red-line);
-  color: var(--colors-white);
-}
-.mbta-blue-line {
-  background-color: var(--colors-blue-line);
-  color: var(--colors-white);
-}
 
 /* css/components/table.css */
 table.mbta-table {
@@ -2736,6 +2704,50 @@ table.mbta-table {
 }
 
 /* css/components.css */
+
+/* css/utilities/routes.css */
+.mbta-route-bus {
+  background-color: var(--colors-brand-bus);
+  color: var(--colors-black);
+  fill: var(--colors-brand-bus);
+}
+.mbta-route-silver-line {
+  background-color: var(--colors-silver-line);
+  color: var(--colors-white);
+  fill: var(--colors-silver-line);
+}
+.mbta-route-commuter-rail {
+  background-color: var(--colors-commuter-rail);
+  color: var(--colors-white);
+  fill: var(--colors-commuter-rail);
+}
+.mbta-route-ferry {
+  background-color: var(--colors-ferry);
+  color: var(--colors-white);
+  fill: var(--colors-ferry);
+}
+.mbta-route-green-line {
+  background-color: var(--colors-green-line);
+  color: var(--colors-white);
+  fill: var(--colors-green-line);
+}
+.mbta-route-orange-line {
+  background-color: var(--colors-orange-line);
+  color: var(--colors-white);
+  fill: var(--colors-orange-line);
+}
+.mbta-route-red-line {
+  background-color: var(--colors-red-line);
+  color: var(--colors-white);
+  fill: var(--colors-red-line);
+}
+.mbta-route-blue-line {
+  background-color: var(--colors-blue-line);
+  color: var(--colors-white);
+  fill: var(--colors-blue-line);
+}
+
+/* css/utilities.css */
 
 /* css/metro.css */
 .sr-only {

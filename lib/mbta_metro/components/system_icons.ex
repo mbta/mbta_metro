@@ -97,8 +97,8 @@ defmodule MbtaMetro.Components.SystemIcons do
         :class,
         [
           if(String.starts_with?(assigns.name, "SL"),
-            do: "mbta-silver-line",
-            else: "mbta-bus"
+            do: "mbta-route-silver-line",
+            else: "mbta-route-bus"
           ),
           cva_class(:route_icon, assigns)
         ]
@@ -278,9 +278,9 @@ defmodule MbtaMetro.Components.SystemIcons do
     )
   end
 
-  defp color_class("mattapan-line"), do: "mbta-red-line"
-  defp color_class("green-line" <> _), do: "mbta-green-line"
-  defp color_class(other), do: "mbta-#{other}"
+  defp color_class("mattapan-line"), do: "mbta-route-red-line"
+  defp color_class("green-line" <> _), do: "mbta-route-green-line"
+  defp color_class(other), do: "mbta-route-#{other}"
 
   defp combined_gl_label([line]), do: label(line)
 

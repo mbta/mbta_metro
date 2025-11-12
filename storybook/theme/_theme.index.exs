@@ -9,4 +9,5 @@ defmodule Storybook.Theme.Index do
 
   def entry("color"), do: [name: "Color"]
   def entry("typography"), do: [name: "Typography"]
+  def entry("utilities"), do: [name: "Utility classes"]
 end
