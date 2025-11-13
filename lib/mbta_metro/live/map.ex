@@ -10,7 +10,7 @@ defmodule MbtaMetro.Live.Map do
     * `:lines` - A list of lists of coordinates to draw lines on the map. Each list of coordinates should be a list of two numbers: the longitude and latitude.
     * `:pins` - A list of coordinates to place pins on the map. Each coordinate should be a list of two numbers: the longitude and latitude.
     * `:points` - A list of coordinates to place points on the map. Each coordinate should be a list of two numbers: the longitude and latitude.
-    * `:icons` - A list of maps with `:coordinates` and `:icon` keys to place custom icon markers on the map. Each coordinate should be a list of two numbers: the longitude and latitude. The icon should be a rendered icon component.
+    * `:icons` - A list of maps with `:coordinates`, `:name`, and `:type` keys to place custom icon markers on the map. Each coordinate should be a list of two numbers: the longitude and latitude. The `:name` and `:type` correspond to the icon component's attributes.
 
   If `:click_handler` is `true`, the component will send a `map-clicked` event to the parent live view when the map is clicked.
 
