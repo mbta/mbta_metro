@@ -22,13 +22,3 @@ config :mbta_metro, MbtaMetroWeb.Endpoint,
       ~r"storybook/.*(ex|exs)$"
     ]
   ]
-
-config :tailwind,
-  version: "3.4.17",
-  metro: [
-    args: ~w(
-      --input=css/storybook.css
-      --output=../priv/static/assets/storybook.css
-    ),
-    cd: Path.expand("../assets", __DIR__)
-  ]
