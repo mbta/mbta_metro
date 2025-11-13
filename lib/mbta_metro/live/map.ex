@@ -10,7 +10,7 @@ defmodule MbtaMetro.Live.Map do
     * `:lines` - A list of lists of coordinates to draw lines on the map. Each list of coordinates should be a list of two numbers: the longitude and latitude.
     * `:pins` - A list of coordinates to place pins on the map. Each coordinate should be a list of two numbers: the longitude and latitude.
     * `:points` - A list of coordinates to place points on the map. Each coordinate should be a list of two numbers: the longitude and latitude.
-    * `:icons` - A list of maps with `:coordinates` and `:url` keys to place custom icon markers on the map. Each coordinate should be a list of two numbers: the longitude and latitude. The URL should point to the image to display.
+    * `:icons` - A list of maps with `:coordinates` and `:icon` keys to place custom icon markers on the map. Each coordinate should be a list of two numbers: the longitude and latitude. The icon should be a rendered icon component.
 
   If `:click_handler` is `true`, the component will send a `map-clicked` event to the parent live view when the map is clicked.
 
@@ -44,9 +44,9 @@ defmodule MbtaMetro.Live.Map do
         config: Map.get(assigns, :config, %{}),
         lines: Map.get(assigns, :lines, []),
         loaded: false,
+        icons: Map.get(assigns, :icons, []),
         pins: Map.get(assigns, :pins, []),
-        points: Map.get(assigns, :points, []),
-        icons: Map.get(assigns, :icons, [])
+        points: Map.get(assigns, :points, [])
       )
 
     {:ok, new_socket}
@@ -75,10 +75,10 @@ defmodule MbtaMetro.Live.Map do
         phx-update="ignore"
       />
       <div class="hidden">
-        <%= for {line, index} <- Enum.with_index(@lines) do %>
+        <%= for line <- @lines do %>
           <div data-line={Jason.encode!(line)} />
         <% end %>
-        <%= for {coordinates, index} <- Enum.with_index(@points) do %>
+        <%= for coordinates <- @points do %>
           <.icon
             type="metro"
             name="point"
@@ -94,12 +94,12 @@ defmodule MbtaMetro.Live.Map do
             data-coordinates={Jason.encode!(coordinates)}
           />
         <% end %>
-        <%= for {icon, index} <- Enum.with_index(@icons) do %>
-          <img
-            src={icon.url}
+        <%= for icon <- @icons do %>
+          <.icon
+            type={icon.type}
+            name={icon.name}
             class="mbta-metro-map-icon"
             data-coordinates={Jason.encode!(icon.coordinates)}
-            alt=""
           />
         <% end %>
       </div>

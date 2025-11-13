@@ -57,15 +57,12 @@ defmodule Storybook.Live.Map do
             %{
               # North Station
               coordinates: [-71.0602, 42.3653],
-              url: square_icon()
+              name: "mode-subway-default",
+              type: "system"
             }
           ]
         }
       }
     ]
-  end
-
-  defp square_icon do
-    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Cpolygon points='16,4 28,28 4,28' fill='green' stroke='black' stroke-width='2'/%3E%3C/svg%3E"
   end
 end
