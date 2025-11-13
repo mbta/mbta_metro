@@ -2494,6 +2494,10 @@ a.maplibregl-ctrl-logo.maplibregl-compact {
   width: 1rem;
   height: 1rem;
 }
+.mbta-metro-map-icon {
+  width: 2rem;
+  height: 2rem;
+}
 
 /* css/components/list.css */
 ul.mbta-list {
