@@ -5,10 +5,16 @@
 
 .mbta-system-mode-icon[class*="mbta-route"] {
   background-color: unset;
+  & .mbta-icon-background {
+    fill: inherit; /* background = fill value from the route */
+  }
+  & .mbta-icon-foreground {
+    fill: currentColor; /* foreground = text color from the route */
+  }
 }
 
-.mbta-system-mode-icon[class*="mbta-route"] > path[fill]:not([fill="none"]) {
-  fill: inherit;
+.mbta-system-mode-icon[class*="mbta-route"] {
+  background-color: unset;
 }
 
 .mbta-system-mode-icon--small {
