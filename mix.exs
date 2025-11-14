@@ -11,6 +11,7 @@ defmodule MbtaMetro.MixProject do
       docs: docs(),
       elixir: "~> 1.17",
       elixirc_paths: elixirc_paths(Mix.env()),
+      listeners: [Phoenix.CodeReloader],
       name: "MbtaMetro",
       package: package(),
       start_permanent: Mix.env() == :prod,
@@ -47,26 +48,26 @@ defmodule MbtaMetro.MixProject do
   defp deps do
     if is_metro_app?() do
       [
-        {:bandit, "~> 1.7", only: :dev, optional: true, runtime: false},
+        {:bandit, "~> 1.8", only: :dev, optional: true, runtime: false},
         {:cva, "~> 0.2"},
         {:esbuild, "~> 0.10", runtime: false},
-        {:ex_doc, "~> 0.38", only: :dev, runtime: false},
+        {:ex_doc, "~> 0.39", only: :dev, runtime: false},
         {:faker, "~> 0.18", only: :dev, runtime: false},
         {:floki, "~> 0.38"},
-        {:gettext, ">= 0.0.0"},
+        {:gettext, "~> 1.0"},
         {:jason, "~> 1.4"},
         {:heroicons, "~> 0.5", optional: true},
-        {:phoenix, "~> 1.7"},
+        {:phoenix, "~> 1.8"},
         {:phoenix_live_reload, "~> 1.6", only: :dev, optional: true, runtime: false},
         {:phoenix_live_view, "~> 1.1"},
-        {:phoenix_storybook, "~> 0.9", only: :dev, optional: true, runtime: Mix.env() == :dev},
+        {:phoenix_storybook, "~> 0.9"},
         {:tailwind, "~> 0.3", runtime: false}
       ]
     else
       [
         {:cva, "~> 0.2"},
         {:floki, "~> 0.38"},
-        {:gettext, ">= 0.0.0"},
+        {:gettext, "~> 1.0"},
         {:jason, "~> 1.4"}
       ]
     end
