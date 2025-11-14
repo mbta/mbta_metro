@@ -35,7 +35,7 @@ defmodule MbtaMetro.MixProject do
       "assets.build": [
         "esbuild tokens",
         "esbuild metro",
-        "tailwind metro"
+        "esbuild metrocss"
       ],
       "tokens.build": [
         "cmd --cd assets node process-figma-tokens.js"
