@@ -15,6 +15,7 @@ defmodule MbtaMetro.Live.Map do
       * `:name` / `:type` - These are the same as for `MbtaMetro.Components.Icon.icon/1`. `:type`
         indicates which icon package the icon comes from (one of `"regular"`, `"solid"`, `"brands"`,
         `"metro"`, `"system"`, or a custom type), and `:name` is the name of the specific icon.
+      * `:class` - A string or list of strings with additional CSS classes
 
   If `:click_handler` is `true`, the component will send a `map-clicked` event to the parent live view when the map is clicked.
 
@@ -102,7 +103,7 @@ defmodule MbtaMetro.Live.Map do
           <.icon
             type={icon.type}
             name={icon.name}
-            class="mbta-metro-map-icon"
+            class={"mbta-metro-map-icon#{concat_classes(icon |> Map.get(:class))}"}
             data-coordinates={Jason.encode!(icon.coordinates)}
           />
         <% end %>
@@ -110,6 +111,10 @@ defmodule MbtaMetro.Live.Map do
     </div>
     """
   end
+
+  defp concat_classes(nil), do: ""
+  defp concat_classes(classes) when is_binary(classes), do: " #{classes}"
+  defp concat_classes(classes) when is_list(classes), do: " #{Enum.join(classes, " ")}"
 
   @doc """
   The map has to be loaded before we can draw anything on it.
