@@ -38,7 +38,7 @@ defmodule MbtaMetro.MixProject do
         "tailwind metro"
       ],
       "tokens.build": [
-        "cmd --cd assets npx style-dictionary build --config process-figma-tokens.js"
+        "cmd --cd assets node process-figma-tokens.js"
       ]
     ]
   end
