@@ -13,6 +13,8 @@ defmodule Storybook.Live.DatePicker do
   def component, do: DatePicker
 
   def variations do
+    now = DateTime.utc_now()
+
     [
       %Variation{
         id: :default,
@@ -20,10 +22,10 @@ defmodule Storybook.Live.DatePicker do
         attributes: %{
           id: "default-datepicker",
           config: %{
-            default_date: Timex.now(),
+            default_date: now,
             enable_time: true,
-            max_date: Timex.now() |> Timex.shift(days: 7),
-            min_date: Timex.now() |> Timex.shift(days: -7)
+            max_date: DateTime.shift(now, day: 7),
+            min_date: DateTime.shift(now, day: -7)
           },
           field: %Phoenix.HTML.FormField{
             id: Faker.Lorem.word(),
@@ -43,10 +45,10 @@ defmodule Storybook.Live.DatePicker do
         attributes: %{
           id: "error-datepicker",
           config: %{
-            default_date: Timex.now(),
+            default_date: now,
             enable_time: true,
-            max_date: Timex.now() |> Timex.shift(days: 7),
-            min_date: Timex.now() |> Timex.shift(days: -7)
+            max_date: DateTime.shift(now, day: 7),
+            min_date: DateTime.shift(now, day: -7)
           },
           field: %Phoenix.HTML.FormField{
             id: Faker.Lorem.word(),

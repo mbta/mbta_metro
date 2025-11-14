@@ -60,16 +60,14 @@ defmodule MbtaMetro.MixProject do
         {:phoenix_live_reload, "~> 1.6", only: :dev, optional: true, runtime: false},
         {:phoenix_live_view, "~> 1.1"},
         {:phoenix_storybook, "~> 0.9", only: :dev, optional: true, runtime: Mix.env() == :dev},
-        {:tailwind, "~> 0.3", runtime: false},
-        {:timex, "~> 3.7"}
+        {:tailwind, "~> 0.3", runtime: false}
       ]
     else
       [
         {:cva, "~> 0.2"},
         {:floki, "~> 0.38"},
         {:gettext, ">= 0.0.0"},
-        {:jason, "~> 1.4"},
-        {:timex, "~> 3.7"}
+        {:jason, "~> 1.4"}
       ]
     end
   end
