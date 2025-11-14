@@ -587,7 +587,7 @@ details.mbta-accordion--multiselect {
     padding-inline: var(--spacing-md);
   }
   &[open] {
-    svg {
+    svg.mbta-accordion-arrow {
       transform: rotate(0.5turn);
     }
     summary {

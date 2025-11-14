@@ -27,7 +27,7 @@ details.mbta-accordion--multiselect {
   }
 
   &[open] {
-    svg {
+    svg.mbta-accordion-arrow {
       transform: rotate(0.5turn);
     }
 

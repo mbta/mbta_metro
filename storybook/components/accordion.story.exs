@@ -62,7 +62,7 @@ defmodule Storybook.Components.Accordion do
           open: false
         },
         slots: [
-          ~s|<:heading>Choose something</:heading>|,
+          ~s|<:heading><.icon name="envelope" class="w-4 h-4 fill-charcoal-50" />Choose something</:heading>|,
           """
           <:content>
             <.input name="choice" value="" type="radio" label="Yes" />
