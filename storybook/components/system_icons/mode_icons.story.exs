@@ -47,9 +47,37 @@ defmodule Storybook.Components.ModeIcons do
               }
             }
           end
+      },
+      %VariationGroup{
+        id: :colored_bus,
+        variations:
+          for line <-
+                ~w(red-line mattapan-line orange-line green-line green-line-b green-line-c green-line-d green-line-e blue-line silver-line bus commuter-rail) do
+            %Variation{
+              id: String.to_atom("#{line}_bus_icon"),
+              attributes: %{
+                mode: "bus",
+                line: line
+              }
+            }
+          end
       }
     ] ++
       [
+        %VariationGroup{
+          id: :no_line,
+          variations:
+            for mode <-
+                  ~w(bus commuter-rail) do
+              %Variation{
+                id: String.to_atom("#{mode}_noline_icon"),
+                attributes: %{
+                  mode: mode,
+                  line: nil
+                }
+              }
+            end
+        },
         %Variation{
           id: :custom_class,
           attributes: %{
