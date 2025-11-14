@@ -62,6 +62,31 @@ defmodule Storybook.Live.Map do
             }
           ]
         }
+      },
+      %Variation{
+        id: :custom_icons_with_anchors,
+        description: "Map with custom icon and custom anchors",
+        attributes: %{
+          id: "icon-map",
+          class: "w-full h-96",
+          config: @config,
+          icons: [
+            %{
+              # North Station
+              anchor: "bottom",
+              coordinates: [-71.0602, 42.3653],
+              name: "heart",
+              type: "regular"
+            },
+            %{
+              # South Station
+              anchor: "bottom-left",
+              coordinates: [-71.0552, 42.3522],
+              name: "flag",
+              type: "regular"
+            }
+          ]
+        }
       }
     ]
   end

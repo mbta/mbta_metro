@@ -64,6 +64,7 @@ export default {
   addMarkers(markers) {
     markers.forEach(marker => {
       const mapMarker = new maplibregl.Marker({
+        anchor: marker.anchor,
         element: marker.element
       });
 
@@ -209,6 +210,7 @@ export default {
   updateMarkers() {
     const markers = Array.from(this.el.querySelectorAll("[data-coordinates]")).map(element => {
       return {
+        anchor: element.getAttribute("data-anchor"),
         coordinates: JSON.parse(element.getAttribute("data-coordinates")),
         element
       }

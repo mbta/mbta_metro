@@ -16,6 +16,8 @@ defmodule MbtaMetro.Live.Map do
         indicates which icon package the icon comes from (one of `"regular"`, `"solid"`, `"brands"`,
         `"metro"`, `"system"`, or a custom type), and `:name` is the name of the specific icon.
       * `:class` - A string or list of strings with additional CSS classes
+      * `:anchor` - One of `"center"`, `"top"`, `"bottom-left"`, etc, to indicate what part of the
+        icon should be anchored to `coordinates`. Defaults to `"center"`.
 
   If `:click_handler` is `true`, the component will send a `map-clicked` event to the parent live view when the map is clicked.
 
@@ -104,6 +106,7 @@ defmodule MbtaMetro.Live.Map do
             type={icon.type}
             name={icon.name}
             class={"mbta-metro-map-icon#{concat_classes(icon |> Map.get(:class))}"}
+            data-anchor={icon |> Map.get(:anchor, "center")}
             data-coordinates={Jason.encode!(icon.coordinates)}
           />
         <% end %>
