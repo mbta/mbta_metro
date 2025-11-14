@@ -222,7 +222,7 @@ defmodule MbtaMetro.Components.SystemIcons do
   <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="350" src="https://embed.figma.com/design/IupfoRXJNItGDD8ZaZCxDz/branch/lMS9vgBPCx0HLbDqONQlha/MBTA-Rider-Design-System-Components?m=auto&node-id=2483-821&embed-host=share" allowfullscreen></iframe>
   """
   def mode_icon(%{line: line} = assigns) when not is_nil(line) and line != assigns.mode do
-    line_class = color_class(assigns.line, assigns.mode)
+    line_class = color_class(assigns.line)
     class = cva_class(:mode_icon, assigns)
     assigns = assign(assigns, :class, "#{class} #{line_class}")
 
