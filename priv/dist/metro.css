@@ -2602,9 +2602,15 @@ progress.mbta-progress {
 }
 .mbta-system-mode-icon[class*=mbta-route] {
   background-color: unset;
+  & .mbta-icon-background {
+    fill: inherit;
+  }
+  & .mbta-icon-foreground {
+    fill: currentColor;
+  }
 }
-.mbta-system-mode-icon[class*=mbta-route] > path[fill]:not([fill=none]) {
-  fill: inherit;
+.mbta-system-mode-icon[class*=mbta-route] {
+  background-color: unset;
 }
 .mbta-system-mode-icon--small {
   height: var(--spacing-4);
