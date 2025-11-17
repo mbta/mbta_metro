@@ -10,6 +10,14 @@ defmodule MbtaMetro.Live.Map do
     * `:lines` - A list of lists of coordinates to draw lines on the map. Each list of coordinates should be a list of two numbers: the longitude and latitude.
     * `:pins` - A list of coordinates to place pins on the map. Each coordinate should be a list of two numbers: the longitude and latitude.
     * `:points` - A list of coordinates to place points on the map. Each coordinate should be a list of two numbers: the longitude and latitude.
+    * `:icons` - A list of maps with the following keys:
+      * `:coordinates` - A list of two numbers in geojson format: longitude first, then latitude.
+      * `:name` / `:type` - These are the same as for `MbtaMetro.Components.Icon.icon/1`. `:type`
+        indicates which icon package the icon comes from (one of `"regular"`, `"solid"`, `"brands"`,
+        `"metro"`, `"system"`, or a custom type), and `:name` is the name of the specific icon.
+      * `:class` - A string or list of strings with additional CSS classes
+      * `:anchor` - One of `"center"`, `"top"`, `"bottom-left"`, etc, to indicate what part of the
+        icon should be anchored to `coordinates`. Defaults to `"center"`.
 
   If `:click_handler` is `true`, the component will send a `map-clicked` event to the parent live view when the map is clicked.
 
@@ -43,6 +51,7 @@ defmodule MbtaMetro.Live.Map do
         config: Map.get(assigns, :config, %{}),
         lines: Map.get(assigns, :lines, []),
         loaded: false,
+        icons: Map.get(assigns, :icons, []),
         pins: Map.get(assigns, :pins, []),
         points: Map.get(assigns, :points, [])
       )
@@ -73,10 +82,10 @@ defmodule MbtaMetro.Live.Map do
         phx-update="ignore"
       />
       <div class="hidden">
-        <%= for {line, index} <- Enum.with_index(@lines) do %>
+        <%= for line <- @lines do %>
           <div data-line={Jason.encode!(line)} />
         <% end %>
-        <%= for {coordinates, index} <- Enum.with_index(@points) do %>
+        <%= for coordinates <- @points do %>
           <.icon
             type="metro"
             name="point"
@@ -92,10 +101,23 @@ defmodule MbtaMetro.Live.Map do
             data-coordinates={Jason.encode!(coordinates)}
           />
         <% end %>
+        <%= for icon <- @icons do %>
+          <.icon
+            type={icon.type}
+            name={icon.name}
+            class={"mbta-metro-map-icon#{concat_classes(icon |> Map.get(:class))}"}
+            data-anchor={icon |> Map.get(:anchor, "center")}
+            data-coordinates={Jason.encode!(icon.coordinates)}
+          />
+        <% end %>
       </div>
     </div>
     """
   end
+
+  defp concat_classes(nil), do: ""
+  defp concat_classes(classes) when is_binary(classes), do: " #{classes}"
+  defp concat_classes(classes) when is_list(classes), do: " #{Enum.join(classes, " ")}"
 
   @doc """
   The map has to be loaded before we can draw anything on it.

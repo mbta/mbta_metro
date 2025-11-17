@@ -12,8 +12,8 @@ To launch the Storybook and demo all of the `mbta_metro` components:
 
 ```
 %> npm install --prefix assets
-%> mix assets.build
 %> mix deps.get
+%> mix assets.build
 %> mix phx.server
 ```
 

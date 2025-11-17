@@ -23,26 +23,68 @@ defmodule Storybook.Live.Map do
               color: "#ED8B00",
               width: 4,
               coordinates: [
-                [-71.05829, 42.36302],
-                [-71.05803, 42.363099999999996],
-                [-71.05805000000001, 42.363139999999994],
-                [-71.05817, 42.363319999999995],
-                [-71.05837000000001, 42.36353],
-                [-71.05912000000001, 42.36418],
-                [-71.0601, 42.36533],
-                [-71.06021000000001, 42.36528]
+                [-71.0583, 42.3630],
+                [-71.0580, 42.3631],
+                [-71.0581, 42.3631],
+                [-71.0582, 42.3633],
+                [-71.0584, 42.3635],
+                [-71.0591, 42.3642],
+                [-71.0601, 42.3653],
+                [-71.0602, 42.3653]
               ]
             }
           ],
           pins: [
             # Haymarket
-            [-71.05829, 42.36302],
+            [-71.0583, 42.3630],
             # North Station
-            [-71.06021000000001, 42.36528]
+            [-71.0602, 42.3653]
           ],
           points: [
-            [-71.05805000000001, 42.363139999999994],
-            [-71.05912000000001, 42.36418]
+            [-71.0581, 42.3631],
+            [-71.0591, 42.3642]
+          ]
+        }
+      },
+      %Variation{
+        id: :custom_icon,
+        description: "Map with custom icon",
+        attributes: %{
+          id: "icon-map",
+          class: "w-full h-96",
+          config: @config,
+          icons: [
+            %{
+              # North Station
+              coordinates: [-71.0602, 42.3653],
+              name: "mode-subway-default",
+              type: "system"
+            }
+          ]
+        }
+      },
+      %Variation{
+        id: :custom_icons_with_anchors,
+        description: "Map with custom icon and custom anchors",
+        attributes: %{
+          id: "icon-map",
+          class: "w-full h-96",
+          config: @config,
+          icons: [
+            %{
+              # North Station
+              anchor: "bottom",
+              coordinates: [-71.0602, 42.3653],
+              name: "heart",
+              type: "regular"
+            },
+            %{
+              # South Station
+              anchor: "bottom-left",
+              coordinates: [-71.0552, 42.3522],
+              name: "flag",
+              type: "regular"
+            }
           ]
         }
       }

@@ -1,5 +1,18 @@
 defmodule MbtaMetro.Components.Icon do
-  @moduledoc false
+  @moduledoc """
+  A component that renders an SVG icon, from FontAwesome, a bespoke Metro collection, or
+  a custom collection provided by the client.
+
+  An icon can be pulled in like
+  ```heex
+  <.icon type="solid" name="thumbs-up" class="size-6" />
+  ```
+
+  `type` indicates which icon pack the icon comes from, `name` indicates the specific icon.
+  Other properties (including `class`) are passed directly to the `svg` component.
+
+  See `icon/1` for more information.
+  """
 
   require Logger
 
