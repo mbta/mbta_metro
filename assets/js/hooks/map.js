@@ -208,6 +208,8 @@ export default {
    * If there are no markers, we skip the last two steps.
    */
   updateMarkers() {
+    this.resetMarkers();
+
     const markers = Array.from(this.el.querySelectorAll("[data-coordinates]")).map(element => {
       return {
         anchor: element.getAttribute("data-anchor"),
@@ -215,8 +217,6 @@ export default {
         element
       }
     }).filter(marker => marker.coordinates.length === 2);
-
-    this.resetMarkers();
 
     if (markers.length === 0) {
       this.fitMapToCenter();
