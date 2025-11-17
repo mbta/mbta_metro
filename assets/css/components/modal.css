@@ -1,12 +1,13 @@
 dialog.mbta-modal {
   background-color: var(--colors-background-primary);
   border: var(--border-width-xs) solid var(--colors-charcoal-70);
+  box-shadow: 0 7px 14px 0
+    color-mix(in srgb, var(--colors-charcoal-10), transparent 80%);
   color: var(--colors-text-primary);
   padding: var(--spacing-lg);
-  max-width: 100dvw;
   max-height: 100dvh;
-  width: clamp(420px, 40rem, 55%);
-  box-shadow: 0 7px 14px 0 color-mix(in srgb, var(--colors-charcoal-10), transparent 80%);
+  max-width: 65ch; /* "two and a half alphabets" */
+  overflow: scroll;
   z-index: 1000;
 
   form[method="dialog"] {
@@ -20,10 +21,13 @@ dialog.mbta-modal {
   }
 }
 
-@media (max-width: 429px) {
+/*
+ * After we hit the max-width: 65ch above, the modal will be smaller than the
+ * window width. Reduce the max possible height to 95% of the device height to
+ * help show the content behind the modal.
+ */
+@media (min-width: 65ch) {
   dialog.mbta-modal {
-    height: 100dvh;
-    overflow: scroll;
-    width: 100dvw;
+    max-height: 95dvh;
   }
 }
