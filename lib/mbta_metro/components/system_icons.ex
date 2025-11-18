@@ -213,7 +213,9 @@ defmodule MbtaMetro.Components.SystemIcons do
   @valid_modes ["subway", "bus", "commuter-rail", "ferry", "the-ride"]
 
   attr :class, :string, default: ""
+  attr :line, :string
   attr :mode, :string, required: true, values: @valid_modes
+  attr :rest, :global
   attr :size, :string, default: "default", values: ["default", "small"]
 
   @doc """
@@ -227,7 +229,13 @@ defmodule MbtaMetro.Components.SystemIcons do
     assigns = assign(assigns, :class, "#{class} #{line_class}")
 
     ~H"""
-    <.icon type="system" class={@class} name={"mode-#{@mode}-#{@size}"} aria-label={label(@mode)} />
+    <.icon
+      type="system"
+      class={@class}
+      name={"mode-#{@mode}-#{@size}"}
+      aria-label={label(@mode)}
+      {@rest}
+    />
     """
   end
 
@@ -235,7 +243,13 @@ defmodule MbtaMetro.Components.SystemIcons do
     assigns = assign(assigns, :class, cva_class(:mode_icon, assigns))
 
     ~H"""
-    <.icon type="system" class={@class} name={"mode-#{@mode}-#{@size}"} aria-label={label(@mode)} />
+    <.icon
+      type="system"
+      class={@class}
+      name={"mode-#{@mode}-#{@size}"}
+      aria-label={label(@mode)}
+      {@rest}
+    />
     """
   end
 

@@ -5,7 +5,7 @@ defmodule MbtaMetro.Components.Button do
   use CVA.Component
 
   attr :class, :string, default: ""
-  attr :rest, :global
+  attr :rest, :global, include: ["popovertarget"]
 
   slot :inner_block, required: true
 
