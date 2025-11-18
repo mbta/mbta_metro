@@ -60,7 +60,7 @@ defmodule MbtaMetro.MixProject do
         {:phoenix, "~> 1.8"},
         {:phoenix_live_reload, "~> 1.6", only: :dev, optional: true, runtime: false},
         {:phoenix_live_view, "~> 1.1"},
-        {:phoenix_storybook, "~> 0.9"},
+        {:phoenix_storybook, "~> 0.9", only: :dev, optional: true, runtime: Mix.env() == :dev},
         {:tailwind, "~> 0.3", runtime: false}
       ]
     else
