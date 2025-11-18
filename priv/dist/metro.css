@@ -2518,7 +2518,6 @@ dialog.mbta-modal {
   padding: var(--spacing-lg);
   max-height: 100dvh;
   max-width: 65ch;
-  overflow: scroll;
   z-index: 1000;
   form[method=dialog] {
     background-color: var(--colors-cobalt-90);
