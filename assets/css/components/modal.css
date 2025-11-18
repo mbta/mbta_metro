@@ -7,7 +7,6 @@ dialog.mbta-modal {
   padding: var(--spacing-lg);
   max-height: 100dvh;
   max-width: 65ch; /* "two and a half alphabets" */
-  overflow: scroll;
   z-index: 1000;
 
   form[method="dialog"] {
