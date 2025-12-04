@@ -1,7 +1,7 @@
 defmodule MbtaMetroWeb.Router do
   @moduledoc false
 
-  use Phoenix.Router, helpers: false
+  use MbtaMetroWeb, :router
 
   import Phoenix.LiveView.Router
   import PhoenixStorybook.Router
@@ -22,6 +22,7 @@ defmodule MbtaMetroWeb.Router do
   scope "/", MbtaMetroWeb do
     pipe_through(:browser)
 
+    get("/_health", HealthController, :index)
     live("/demo", Live.Demo)
     live_storybook("/storybook", backend_module: MbtaMetroWeb.Storybook)
   end

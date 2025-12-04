@@ -27,7 +27,7 @@ defmodule MbtaMetroWeb do
         layouts: [html: MbtaMetroWeb.Layouts]
 
       import Plug.Conn
-      import MbtaMetroWeb.Gettext
+      import MbtaMetro.Gettext
 
       unquote(verified_routes())
     end
