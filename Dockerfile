@@ -48,6 +48,7 @@ COPY config/config.exs config/${MIX_ENV}.exs config/
 COPY assets assets
 COPY priv priv
 COPY lib lib
+COPY storybook storybook
 
 RUN mix deps.compile
 # RUN mix assets.build
