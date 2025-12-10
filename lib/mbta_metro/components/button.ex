@@ -35,7 +35,7 @@ defmodule MbtaMetro.Components.Button do
   ## When to consider something else
 
   - **Linking between a site's pages.** Use regular links instead.
-  
+
   ## Usability guidance
 
   Buttons are available in variants to match their importance and context. To show importance, there `primary`, `secondary`, and `tertiary` button variants. To match context, there are `default` and `small` sizes.
