@@ -12,7 +12,8 @@ defmodule MbtaMetro.Components.Button do
   variant :variant,
           [
             primary: "mbta-button mbta-button-primary",
-            secondary: "mbta-button mbta-button-secondary"
+            secondary: "mbta-button mbta-button-secondary",
+            tertiary: "mbta-button mbta-button-tertiary"
           ],
           default: :primary
 
@@ -24,8 +25,14 @@ defmodule MbtaMetro.Components.Button do
           default: :default
 
   @doc """
-  Button styles in primary and secondary variants, and small and regular sizing.
+  Button styles in primary, secondary, and tertiary variants, and small and regular sizing.
   """
+  def button(%{variant: "tertiary", size: "default"} = assigns) do
+    assigns
+    |> assign(:size, "small")
+    |> button()
+  end
+
   def button(assigns) do
     ~H"""
     <button class={"#{@cva_class} #{@class}"} {@rest}>

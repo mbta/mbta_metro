@@ -80,6 +80,16 @@ defmodule Storybook.Components.Button do
           "Secondary small button"
         ],
         description: "Secondary small button"
+      },
+      %Variation{
+        id: :tertiary,
+        attributes: %{
+          variant: "tertiary"
+        },
+        slots: [
+          "Tertiary button"
+        ],
+        description: "Tertiary button is always small"
       }
     ]
   end
