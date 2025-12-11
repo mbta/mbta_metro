@@ -19,7 +19,9 @@ defmodule Storybook.Components.InputGroup do
       checkbox_button(),
       checkbox(),
       radio_button(),
-      radio()
+      radio(),
+      radio_cards(),
+      radio_cards_with_errors()
     ]
   end
 
@@ -29,7 +31,6 @@ defmodule Storybook.Components.InputGroup do
       description: "Checkbox (select multiple)",
       attributes: %{
         type: "checkbox",
-        as_buttons: false,
         name: "stations_example[]",
         label: "Best stations",
         form: to_form(%{}),
@@ -61,7 +62,7 @@ defmodule Storybook.Components.InputGroup do
       description: "Checkbox Buttons (select multiple)",
       attributes: %{
         type: "checkbox",
-        as_buttons: true,
+        variant: "buttons",
         name: "stations[]",
         label: "Best stations",
         form: to_form(%{}),
@@ -89,13 +90,74 @@ defmodule Storybook.Components.InputGroup do
     }
   end
 
+  defp radio_cards do
+    %Variation{
+      id: :radio_cards_1,
+      description: "Radio Cards (select one)",
+      attributes: %{
+        type: "radio",
+        variant: "cards",
+        name: "route1",
+        label: "Best route",
+        form: to_form(%{}),
+        field: :routes_radio_cards_example1
+      },
+      slots: [
+        """
+        <:input value="Red">
+          <div style="display: flex; flex-direction: column; row-gap: var(--spacing-xs);">
+            <strong>Red Line</strong>
+            <p>A mainstay in the Cambridge area, also the gateway to Arlington, Lexington, and other points north.</p>
+          </div>
+        </:input>
+        """,
+        """
+        <:input value="Orange">
+          <div>Orange Line</div>
+        </:input>
+        """,
+        """
+        <:input value="Blue">
+          Blue Line
+        </:input>
+        """
+      ]
+    }
+  end
+
+  defp radio_cards_with_errors do
+    %Variation{
+      id: :radio_cards_2,
+      description: "Radio Cards (with error message)",
+      attributes: %{
+        type: "radio",
+        variant: "cards",
+        name: "route2",
+        label: "Best route",
+        errors: ["Don't pick that one"],
+        form: to_form(%{}),
+        field: :routes_radio_cards_example2
+      },
+      slots: [
+        """
+        <:input value="1">1</:input>
+        """,
+        """
+        <:input value="10">10</:input>
+        """,
+        """
+        <:input value="350">350</:input>
+        """
+      ]
+    }
+  end
+
   defp radio do
     %Variation{
       id: :radio,
       description: "Radios (select one)",
       attributes: %{
         type: "radio",
-        as_buttons: false,
         name: "station",
         label: "Favorite station",
         form: to_form(%{"station" => "place-harsq"}),
@@ -127,7 +189,7 @@ defmodule Storybook.Components.InputGroup do
       description: "Radio Buttons (select one)",
       attributes: %{
         type: "radio",
-        as_buttons: true,
+        variant: "buttons",
         name: "stations_radio[]",
         label: "Worst station",
         form: to_form(%{}),
