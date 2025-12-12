@@ -25,6 +25,7 @@ function deepMerge(target, source) {
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
+    "../lib/doc_components.ex",
     "../lib/mbta_metro.ex",
     "../lib/mbta_metro/**/*.*ex",
     "../storybook/components/system_icons/*.story.exs",
