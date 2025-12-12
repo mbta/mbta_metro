@@ -12,7 +12,7 @@
   padding-top: var(--spacing-sm);
   padding-left: var(--spacing-default);
   padding-right: var(--spacing-default);
-  transition: background-color var(--transition-duration-default) ease;
+  transition: background-color var(--transition-duration) ease;
 
   &[aria-disabled] {
     cursor: not-allowed;
