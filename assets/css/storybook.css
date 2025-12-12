@@ -12,6 +12,16 @@
   font-family: var(--font-family-base);
 }
 
+.mbta-metro-web a {
+  color: var(--colors-action-primary-default);
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.mbta-metro-web p {
+  margin-block: var(--spacing-md);
+}
+
 body.psb {
   background-color: var(--colors-background-primary);
   color: var(--colors-text-primary);
