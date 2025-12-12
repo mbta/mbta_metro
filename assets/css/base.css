@@ -1,5 +1,6 @@
 :root {
   font-family: var(--font-family-base);
+  line-height: var(--line-height-default);
 }
 
 @supports (font-variation-settings: normal) {
