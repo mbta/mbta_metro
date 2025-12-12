@@ -1,9 +1,12 @@
-@import "./../../priv/dist/metro.css";
+@layer tailwind-base, metro;
+@import "./../../priv/dist/metro.css" layer(metro);
 
-@config "./../tailwind.storybook.config.js";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@layer tailwind-base {
+  @config "./../tailwind.storybook.config.js";
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+}
 
 .mbta-metro-web {
   font-family: var(--font-family-base);
