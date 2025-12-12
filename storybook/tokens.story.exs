@@ -6,6 +6,16 @@ defmodule Storybook.Tokens do
   use Phoenix.Component
   use PhoenixStorybook.Story, :page
 
+  paths = Path.wildcard("assets/css/variables.*.css")
+
+  for path <- paths do
+    @external_resource path
+  end
+
+  @base File.read!("assets/css/variables.base.css")
+  @light File.read!("assets/css/variables.light.css")
+  @dark File.read!("assets/css/variables.dark.css")
+
   def doc, do: "Use with CSS properties, e.g. var(--token-name)"
 
   def navigation do
@@ -26,7 +36,7 @@ defmodule Storybook.Tokens do
   def render(%{tab: :base} = assigns) do
     assigns =
       assign_new(assigns, :tokens, fn ->
-        load_tokens("assets/css/variables.base.css")
+        load_tokens(@base)
         |> Enum.reject(fn [name, _] ->
           if String.contains?(name, "colors-black") || String.contains?(name, "colors-white") do
             false
@@ -38,7 +48,7 @@ defmodule Storybook.Tokens do
       end)
 
     ~H"""
-    <h2>Base Tokens </h2>
+    <h2>Base Tokens</h2>
     <.tokens_list tokens={@tokens} />
     """
   end
@@ -46,7 +56,7 @@ defmodule Storybook.Tokens do
   def render(%{tab: :system} = assigns) do
     assigns =
       assign_new(assigns, :tokens, fn ->
-        load_tokens("assets/css/variables.base.css")
+        load_tokens(@base)
         |> Enum.filter(fn [name, _] -> String.contains?(name, "colors") end)
         |> Enum.reject(fn [name, _] -> String.contains?(name, "0") end)
         |> Enum.reject(fn [name, _] ->
@@ -55,7 +65,7 @@ defmodule Storybook.Tokens do
       end)
 
     ~H"""
-    <h2>System Tokens </h2>
+    <h2>System Tokens</h2>
     <.tokens_list tokens={@tokens} />
     """
   end
@@ -66,8 +76,8 @@ defmodule Storybook.Tokens do
     """
   end
 
-  defp load_tokens(filename) do
-    File.read!(filename)
+  defp load_tokens(file) do
+    file
     |> String.split("\n")
     |> Stream.map(&String.split(&1, ":"))
     |> Stream.filter(&(Enum.count(&1) == 2))
@@ -84,15 +94,14 @@ defmodule Storybook.Tokens do
   defp semantic(assigns) do
     assigns =
       assign_new(assigns, :tokens, fn ->
-        File.read!("assets/css/variables.#{assigns.mode}.css")
-        |> String.split("\n")
-        |> Stream.map(&String.split(&1, ":"))
-        |> Stream.filter(&(Enum.count(&1) == 2))
-        |> Stream.reject(&Enum.any?(&1, fn x -> x == "" end))
-        |> Stream.map(fn line ->
-          Enum.map(line, &(String.trim(&1) |> String.trim_trailing(";")))
-        end)
-        |> Enum.to_list()
+        file =
+          if assigns.mode == "dark" do
+            @dark
+          else
+            @light
+          end
+
+        load_tokens(file)
       end)
 
     ~H"""
@@ -105,7 +114,10 @@ defmodule Storybook.Tokens do
 
   defp tokens_list(assigns) do
     ~H"""
-    <div :for={[token, value] <- @tokens} class="flex gap-lg w-full mb-1 items-center py-md border-b-xs border-cobalt-80">
+    <div
+      :for={[token, value] <- @tokens}
+      class="flex gap-lg w-full mb-1 items-center py-md border-b-xs border-cobalt-80"
+    >
       <.preview token={token} value={value} />
       <.code>{token}</.code>
       <.code class="border-cobalt-90">{value}</.code>
@@ -148,7 +160,7 @@ defmodule Storybook.Tokens do
   defp preview(%{token: "--line-height" <> _} = assigns) do
     ~H"""
     <div class="w-32 text-wrap break-all" style={"line-height: #{@value};"}>
-    Abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
+      Abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
     </div>
     """
   end
@@ -172,7 +184,10 @@ defmodule Storybook.Tokens do
 
   defp preview(%{token: "--transition-duration"} = assigns) do
     ~H"""
-      <div class="animate-bounce rounded-full bg-emerald-40 size-4 transition" style={"transition-duration: #{@value}"} />
+    <div
+      class="animate-bounce rounded-full bg-emerald-40 size-4 transition"
+      style={"transition-duration: #{@value}"}
+    />
     """
   end
 

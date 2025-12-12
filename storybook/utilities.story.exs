@@ -27,7 +27,9 @@ defmodule Storybook.Theme.Utilities do
         </div>
       </div>
     <% end %>
-    <p>For the specific color values, see the corresponding <a href="/storybook/tokens?tab=system">Design Tokens</a>.</p>
+    <p>
+      For the specific color values, see the corresponding <a href="/storybook/tokens?tab=system">Design Tokens</a>.
+    </p>
     """
   end
 
