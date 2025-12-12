@@ -21,6 +21,21 @@ defmodule Storybook.Theme.Utilities do
           </div>
         </div>
       <% end %>
+
+      <h1>Other colors</h1>
+      <%= for color <- ~w(cobalt emerald amethyst firebrick charcoal gold) do %>
+      <h2 class="mt-4">{color}</h2>
+      <section class="flex gap-sm">
+        <%= for n <- 1..9 do %>
+          <div>
+            <div class={[
+              "size-10 font-small flex flex-col justify-center items-center bg-#{color}-#{n * 10}"
+            ]} />
+            <div class="size-4">{n * 10}</div>
+          </div>
+        <% end %>
+      </section>
+      <% end %>
     </div>
     """
   end

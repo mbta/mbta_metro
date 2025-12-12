@@ -3,7 +3,7 @@ defmodule Storybook.Live.Index do
 
   use PhoenixStorybook.Index
 
-  def folder_name, do: "Live"
+  def folder_name, do: "LiveComponent"
   def folder_icon, do: {:hero, "bolt"}
   def folder_open?, do: false
 

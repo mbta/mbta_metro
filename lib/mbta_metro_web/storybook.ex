@@ -8,7 +8,7 @@ defmodule MbtaMetroWeb.Storybook do
     css_path: "/assets/storybook.css",
     js_path: "/assets/storybook.js",
     sandbox_class: "mbta-metro-web",
-    title: "Mbta Metro",
+    title: "MBTA Metro Components",
     color_mode: true,
     color_mode_sandbox_dark_class: "mbta-metro-dark-mode",
 

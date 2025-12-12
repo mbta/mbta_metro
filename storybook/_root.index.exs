@@ -3,11 +3,7 @@ defmodule Storybook.Root do
 
   use PhoenixStorybook.Index
 
-  def folder_name, do: "MbtaMetro"
-
-  def entry("welcome") do
-    [
-      name: "Welcome"
-    ]
-  end
+  def entry("intro"), do: [name: "Introduction", index: 1]
+  def entry("typography"), do: [name: "Typography", index: 2]
+  def entry("utilities"), do: [name: "Utilities", index: 3]
 end
