@@ -1802,9 +1802,22 @@ input[type=radio].mbta-input {
   }
 }
 fieldset.mbta-input-group {
+  legend {
+    font-weight: bold;
+  }
   &:has(.mbta-input-group--buttons),
-  .mbta-input-group--buttons {
+  &:has(.mbta-input-group--cards),
+  .mbta-input-group--buttons,
+  .mbta-input-group--cards {
     width: 100%;
+  }
+  &:has(.mbta-input--error) .mbta-input,
+  &:has(.mbta-input--error) .mbta-card {
+    border-color: var(--colors-error-default-foreground);
+  }
+  &:has(.mbta-input--success) .mbta-input,
+  &:has(.mbta-input--success) .mbta-card {
+    border-color: var(--colors-success-default-foreground);
   }
   .mbta-input-group--buttons input {
     position: absolute;
@@ -1822,7 +1835,8 @@ fieldset.mbta-input-group {
       outline: none;
     }
   }
-  .mbta-button:has(:checked) {
+  .mbta-button:has(:checked),
+  .mbta-card:has(:checked) {
     background-color: var(--button-secondary-hover-background-color);
     color: var(--button-secondary-hover-text-color);
   }
@@ -1845,6 +1859,29 @@ fieldset.mbta-input-group {
         border-left-width: 0px;
       }
     }
+  }
+  .mbta-input-group--cards {
+    display: flex;
+    flex-direction: column;
+    line-height: var(--line-height-default);
+    row-gap: var(--spacing-default);
+    .mbta-input {
+      flex-shrink: 0;
+    }
+  }
+  .mbta-card {
+    align-items: flex-start;
+    background-color: var(--colors-background-primary);
+    border-color: var(--colors-action-primary-default);
+    border-radius: var(--border-radius-default);
+    border-width: var(--border-width-default);
+    column-gap: var(--spacing-default);
+    display: inline-flex;
+    flex-direction: row;
+    padding-bottom: var(--spacing-default);
+    padding-top: var(--spacing-default);
+    padding-left: var(--spacing-lg);
+    padding-right: var(--spacing-lg);
   }
 }
 
