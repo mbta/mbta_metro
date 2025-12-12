@@ -50,7 +50,7 @@ defmodule Storybook.Intro do
     </p>
     <p>
       See the <a href="/storybook/typography">Typography</a>
-      and <a href="/storybook/utilities">Utilities & Variables</a>
+      and <a href="/storybook/utilities">Utilities</a>
       pages for CSS classes you can immediately use, or dig into the "Source" tab in any component page to learn about how to build non-Elixir counterparts.
     </p>
     <h3>Can this be used with Tailwind?</h3>

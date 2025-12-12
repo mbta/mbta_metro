@@ -5,38 +5,29 @@ defmodule Storybook.Theme.Utilities do
 
   def navigation do
     [
-      {:app, "Application Colors"},
-      {:system, "MBTA System Colors"}
+      {:system, "System Colors"}
     ]
   end
 
   def render(%{tab: :system} = assigns) do
     ~H"""
-    <h2>MBTA System Colors</h2>
-    <p class="my-4">CSS variables are available to use directly.</p>
-    <%= for cls <- ~w(green-line orange-line red-line blue-line silver-line brand-bus ferry commuter-rail) do %>
-      <div class="flex gap-lg w-full py-2 items-center">
-        <div>
-          <.code>var(--colors-{cls})</.code>
-        </div>
-        <div style={"background-color: var(--colors-#{cls});"} class="size-8"></div>
-      </div>
-    <% end %>
+    <h2>System Colors</h2>
     <p class="my-4">
-      To pair with the appropriate text color, these CSS utility classes will add the correct <.code>background-color</.code>, <.code>color</.code>, and
+      To show the system colors with the appropriate text color, these CSS utility classes will add the correct <.code>background-color</.code>, <.code>color</.code>, and
       <.code>fill</.code>
       for each system route or mode.
     </p>
     <%= for cls <- ~w(green-line orange-line red-line blue-line silver-line bus ferry commuter-rail) do %>
-      <div class="flex gap-lg w-full py-2 items-center">
+      <div class="flex gap-lg items-center">
         <div>
           <.code>.mbta-route-{cls}</.code>
         </div>
-        <div class={"font-bold mbta-route-#{cls} px-2"}>
+        <div class={"font-bold text-xl mbta-route-#{cls} p-sm my-xs"}>
           {String.split(cls, "-") |> Enum.map(&String.capitalize/1) |> Enum.intersperse(" ")}
         </div>
       </div>
     <% end %>
+    <p>For the specific color values, see the corresponding <a href="/storybook/tokens?tab=system">Design Tokens</a>.</p>
     """
   end
 
