@@ -8,7 +8,7 @@ defmodule MbtaMetro.DocComponents do
 
   def code(assigns) do
     ~H"""
-    <code class={"text-cobalt-20 bg-cobalt-90 py-05 text-sm #{@class}"}>
+    <code class={"border border-cobalt-70 text-cobalt-20 bg-cobalt-90 inline-block px-xs py-05 rounded #{@class}"}>
       {render_slot(@inner_block)}
     </code>
     """
