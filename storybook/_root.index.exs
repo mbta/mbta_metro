@@ -5,5 +5,5 @@ defmodule Storybook.Root do
 
   def entry("intro"), do: [name: "Introduction", index: 1]
   def entry("typography"), do: [name: "Typography", index: 2]
-  def entry("utilities"), do: [name: "Utilities", index: 3]
+  def entry("utilities"), do: [name: "Utilities & Variables", index: 3]
 end
