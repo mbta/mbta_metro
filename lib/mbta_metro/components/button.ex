@@ -12,7 +12,8 @@ defmodule MbtaMetro.Components.Button do
   variant :variant,
           [
             primary: "mbta-button mbta-button-primary",
-            secondary: "mbta-button mbta-button-secondary"
+            secondary: "mbta-button mbta-button-secondary",
+            tertiary: "mbta-button mbta-button-tertiary"
           ],
           default: :primary
 
@@ -46,6 +47,12 @@ defmodule MbtaMetro.Components.Button do
   - **Use the `small` size only when the `default` size is too large for the context.** Do not use the `small` size as an indicator of importance. For example, use the `small` size for a group of actions that apply to a single row in a list of items.
   - **Icons can help people identify the consequence of an action.** However, the label should be clear on its own, and avoid icon-only buttons without labels.
   """
+  def button(%{variant: "tertiary", size: "default"} = assigns) do
+    assigns
+    |> assign(:size, "small")
+    |> button()
+  end
+
   def button(assigns) do
     ~H"""
     <button class={"#{@cva_class} #{@class}"} {@rest}>
