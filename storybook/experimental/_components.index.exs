@@ -3,7 +3,7 @@ defmodule Storybook.Components.Index do
 
   use PhoenixStorybook.Index
 
-  def folder_name, do: "WIP Components"
+  def folder_name, do: "Experimental Components"
   def folder_icon, do: {:hero, "wrench"}
   def folder_open?, do: false
 
