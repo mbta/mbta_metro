@@ -1817,10 +1817,6 @@ fieldset.mbta-input-group {
     justify-content: center;
     font-weight: 400;
     text-wrap: nowrap;
-    &:focus,
-    &:focus-within {
-      outline: none;
-    }
   }
   .mbta-button:has(:checked) {
     background-color: var(--button-secondary-hover-background-color);
