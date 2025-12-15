@@ -7,6 +7,6 @@ defmodule Storybook.Components.Index do
   def folder_open?, do: true
 
   def entry("button"), do: [name: "Button"]
-  def entry("input"), do: [name: "Input"]
+  def entry("form"), do: [name: "Form Inputs"]
   def entry("inputgroup"), do: [name: "Input group"]
 end

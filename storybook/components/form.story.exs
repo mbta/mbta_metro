@@ -1,4 +1,4 @@
-defmodule Storybook.Components.InputGroup do
+defmodule Storybook.Components.FormInputs do
   use PhoenixStorybook.Story, :component
 
   alias MbtaMetro.Components.Input
