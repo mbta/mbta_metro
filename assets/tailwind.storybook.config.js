@@ -28,6 +28,7 @@ export default {
     "../lib/doc_components.ex",
     "../lib/mbta_metro.ex",
     "../lib/mbta_metro/**/*.*ex",
+    "../storybook/design_tokens/*.story.exs",
     "../storybook/components/system_icons/*.story.exs",
     "../storybook/components/*.story.exs",
     "../storybook/live/*.story.exs",

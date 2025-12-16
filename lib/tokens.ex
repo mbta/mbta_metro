@@ -27,12 +27,7 @@ defmodule MbtaMetro.Tokens do
     font-family
   )
 
-  # colors-
-  @base_colors_order ~w(charcoal cobalt gold firebrick emerald amethyst black white)
-
   @component_token_order ~w(submenu menu footer navbar button-primary button-secondary button-tertiary annotation)
-
-  @token_state_order ~w(default hover active disabled visited)
 
   # colors-
   @semantic_token_order ~w(action-primary error success warning colors)

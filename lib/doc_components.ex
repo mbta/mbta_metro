@@ -24,7 +24,7 @@ defmodule MbtaMetro.DocComponents do
     >
       <.preview token={token} value={value} />
       <.code>{token}</.code>
-      <.code class="border-cobalt-90">{value}</.code>
+      <.code class="border-none bg-white text-gold-20">{value}</.code>
     </div>
     """
   end
