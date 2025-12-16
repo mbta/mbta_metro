@@ -16,12 +16,14 @@ defmodule Storybook.DesignTokens.Component do
     assigns = assign(assigns, :tokens, MbtaMetro.Tokens.component_values(assigns.tab))
 
     ~H"""
-    <section :for={
-      k <- ~w(submenu menu footer navbar button-primary button-secondary button-tertiary annotation)
-    }>
-      <h2>{k}</h2>
-      <.tokens_list tokens={Map.get(@tokens, k) |> Enum.sort()} />
-    </section>
+    <div class={"#{if(@tab == :dark, do: "mbta-metro-dark-mode")} p-xl"}>
+      <section :for={
+        k <- ~w(submenu menu footer navbar button-primary button-secondary button-tertiary annotation)
+      }>
+        <h2>{k}</h2>
+        <.tokens_list tokens={Map.get(@tokens, k) |> Enum.sort()} />
+      </section>
+    </div>
     """
   end
 end

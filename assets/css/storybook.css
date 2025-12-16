@@ -22,9 +22,9 @@
   margin-block: var(--spacing-md);
 }
 
-body.psb {
-  background-color: var(--colors-background-primary);
-  color: var(--colors-text-primary);
+.mbta-metro-web, .mbta-metro-dark-mode {
+  background-color: var(--colors-background-secondary);
+  color: var(--colors-text-secondary);
 }
 
 .psb {
