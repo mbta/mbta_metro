@@ -8,5 +8,5 @@ defmodule Storybook.Components.Index do
 
   def entry("button"), do: [name: "Button"]
   def entry("form"), do: [name: "Form Inputs"]
-  def entry("inputgroup"), do: [name: "Input group"]
+  def entry("inputgroup"), do: [name: "Input Group"]
 end
