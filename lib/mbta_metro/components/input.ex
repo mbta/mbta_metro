@@ -118,7 +118,9 @@ defmodule MbtaMetro.Components.Input do
   def input(%{type: "select"} = assigns) do
     ~H"""
     <div>
-      <.label :if={@inner_block} for={@id}><strong>{render_slot(@inner_block)}</strong><.required_label :if={@rest[:required]} /></.label>
+      <.label :if={@inner_block} for={@id}>
+        <strong>{render_slot(@inner_block)}</strong> <.required_label :if={@rest[:required]} />
+      </.label>
       <select
         id={@id}
         name={@name}
@@ -137,7 +139,9 @@ defmodule MbtaMetro.Components.Input do
   def input(%{type: "textarea"} = assigns) do
     ~H"""
     <div>
-      <.label :if={@inner_block} for={@id}><strong>{render_slot(@inner_block)}</strong><.required_label :if={@rest[:required]} /></.label>
+      <.label :if={@inner_block} for={@id}>
+        <strong>{render_slot(@inner_block)}</strong> <.required_label :if={@rest[:required]} />
+      </.label>
       <textarea
         id={@id}
         name={@name}
@@ -158,7 +162,9 @@ defmodule MbtaMetro.Components.Input do
   def input(assigns) do
     ~H"""
     <div>
-      <.label :if={@inner_block} for={@id}><strong>{render_slot(@inner_block)}</strong><.required_label :if={@rest[:required]} /></.label>
+      <.label :if={@inner_block} for={@id}>
+        <strong>{render_slot(@inner_block)}</strong> <.required_label :if={@rest[:required]} />
+      </.label>
       <input
         type={@type}
         name={@name}
