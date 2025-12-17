@@ -1,6 +1,7 @@
 defmodule MbtaMetro.Components.Input do
   @moduledoc false
 
+  use Gettext, backend: MbtaMetro.Gettext
   use Phoenix.Component
 
   import MbtaMetro.Components.Feedback
@@ -113,7 +114,7 @@ defmodule MbtaMetro.Components.Input do
   def input(%{type: "select"} = assigns) do
     ~H"""
     <div>
-      <.label :if={@inner_block} for={@id}><strong>{render_slot(@inner_block)}</strong></.label>
+      <.label :if={@inner_block} for={@id}><strong>{render_slot(@inner_block)}</strong><.required_label :if={@rest[:required]} /></.label>
       <select
         id={@id}
         name={@name}
@@ -132,7 +133,7 @@ defmodule MbtaMetro.Components.Input do
   def input(%{type: "textarea"} = assigns) do
     ~H"""
     <div>
-      <.label :if={@inner_block} for={@id}><strong>{render_slot(@inner_block)}</strong></.label>
+      <.label :if={@inner_block} for={@id}><strong>{render_slot(@inner_block)}</strong><.required_label :if={@rest[:required]} /></.label>
       <textarea
         id={@id}
         name={@name}
@@ -153,7 +154,7 @@ defmodule MbtaMetro.Components.Input do
   def input(assigns) do
     ~H"""
     <div>
-      <.label :if={@inner_block} for={@id}><strong>{render_slot(@inner_block)}</strong></.label>
+      <.label :if={@inner_block} for={@id}><strong>{render_slot(@inner_block)}</strong><.required_label :if={@rest[:required]} /></.label>
       <input
         type={@type}
         name={@name}
@@ -191,6 +192,12 @@ defmodule MbtaMetro.Components.Input do
     <label for={@for} class={"mbta-label #{@class}"} {@rest}>
       {render_slot(@inner_block)}
     </label>
+    """
+  end
+
+  def required_label(assigns) do
+    ~H"""
+    <div class="mbta-label--required">{Gettext.gettext(MbtaMetro.Gettext, "Required")}</div>
     """
   end
 end

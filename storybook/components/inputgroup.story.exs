@@ -62,6 +62,7 @@ defmodule Storybook.Components.InputGroup do
       attributes: %{
         type: "checkbox",
         as_buttons: true,
+        required: true,
         name: "stations[]",
         label: "Best stations",
         form: to_form(%{}),

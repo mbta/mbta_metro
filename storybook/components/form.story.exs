@@ -36,7 +36,8 @@ defmodule Storybook.Components.FormInputs do
       id: :password,
       description: "Password",
       attributes: %{
-        errors: [],
+        required: true,
+        errors: ["This field is required"],
         id: Faker.Lorem.word(),
         name: Faker.Lorem.word(),
         type: "password",

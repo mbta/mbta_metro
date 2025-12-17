@@ -135,3 +135,9 @@ fieldset.mbta-input-group {
     }
   }
 }
+
+.mbta-label--required {
+  font-weight: 400;
+  display: inline-block;
+  margin-left: var(--spacing-sm);
+}

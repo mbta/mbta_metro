@@ -3,7 +3,7 @@ defmodule MbtaMetro.Components.InputGroup do
 
   use Phoenix.Component
 
-  import MbtaMetro.Components.Input, only: [label: 1, input: 1]
+  import MbtaMetro.Components.Input, only: [label: 1, input: 1, required_label: 1]
   import Phoenix.HTML.Form, only: [input_id: 2, input_name: 2, input_value: 2]
 
   slot :input, required: true do
@@ -18,12 +18,15 @@ defmodule MbtaMetro.Components.InputGroup do
   attr :field, :atom
   attr :form, Phoenix.HTML.Form
   attr :class, :string, default: ""
-  attr :rest, :global
+  attr :rest, :global, include: ~w(disabled form required)
 
   def input_group(%{as_buttons: true} = assigns) do
     ~H"""
     <fieldset class={"mbta-input-group #{@class}"}>
-      <legend class="mbta-label">{@label}</legend>
+      <legend class="mbta-label">
+        {@label}
+        <.required_label :if={@rest[:required]} />
+      </legend>
       <div class="mbta-input-group--buttons">
         <.label
           :for={input <- @input}
@@ -49,7 +52,10 @@ defmodule MbtaMetro.Components.InputGroup do
   def input_group(assigns) do
     ~H"""
     <fieldset class={"mbta-input-group #{@class}"}>
-      <legend class="mbta-label">{@label}</legend>
+      <legend class="mbta-label">
+        {@label}
+        <.required_label :if={@rest[:required]} />
+      </legend>
       <.input
         :for={input <- @input}
         id={input_id(@form, @field) <> "_#{input.value}"}
