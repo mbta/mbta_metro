@@ -34,7 +34,7 @@ defmodule Storybook.Components.FormInputs do
       ### When to use
 
       * **Asking for consent or providing a way to opt out.** For example: "I have read and agree to the Privacy Policy."
-      
+
       * **Asking for a simple a yes or no.** For example: "Prefer accessible routes"
 
       ### When to consider something else
@@ -58,7 +58,7 @@ defmodule Storybook.Components.FormInputs do
       slots: ["Label"],
       note: """
       A text input field of `type` `password` where the text entered is masked with bullets.
-      
+
       ### When to use
 
       * **Use sparingly when there is a risk of typed text exposing sensitive private information** to passers-by such as passwords, social security numbers, and PIN numbers.
@@ -118,9 +118,9 @@ defmodule Storybook.Components.FormInputs do
       ### When to use
 
       * **Use sparingly.** Use the select component only when a user needs to choose from over 7 to under 15 possible options and you have limited space to display the options.
-      
+
       ### When to consider something else
-      
+
       * **Fewer than seven options.** Use radio buttons instead.
 
       * **Site navigation.** Use navigation components instead.
@@ -142,7 +142,7 @@ defmodule Storybook.Components.FormInputs do
       slots: ["Label"],
       note: """
       Allows users to enter any combination of letters, numbers, or symbols.
-      
+
       ### When to use
 
       * **Unpredictable or freeform responses.** If you can't predict a user's answer to a prompt.
