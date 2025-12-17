@@ -82,6 +82,10 @@ input[type="radio"].mbta-input {
 }
 
 fieldset.mbta-input-group {
+  legend.mbta-label {
+    font-weight: 700;
+  }
+
   &:has(.mbta-input-group--buttons),
   .mbta-input-group--buttons {
     width: 100%;
