@@ -7,17 +7,21 @@ defmodule MbtaMetro.Components.Input do
   import MbtaMetro.Components.Feedback
 
   @doc """
-  Renders an input with label and error messages.
+  An input receives input of various types, such as text, radios, checkboxes, passwords, and other controls. It includes a label and can display error messages.
+
+  ## Implementation guidance
 
   A `Phoenix.HTML.FormField` may be passed as argument,
   which is used to retrieve the input name, id, and values.
   Otherwise all attributes may be passed explicitly.
 
-  ## Types
+  ### Types
 
   This function accepts all HTML input types, considering that:
 
     * You may also set `type="select"` to render a `<select>` tag
+
+    * `type="textarea"` is used to render a `<textarea>` tag
 
     * `type="checkbox"` is used exclusively to render boolean values
 
@@ -27,7 +31,7 @@ defmodule MbtaMetro.Components.Input do
   for more information. Unsupported types, such as hidden and radio,
   are best written directly in your templates.
 
-  ## Examples
+  ### Examples
 
       <.input field={@form[:email]} type="email" />
       <.input name="my-input" errors={["oh no!"]} />

@@ -6,6 +6,10 @@ defmodule MbtaMetro.Components.InputGroup do
   import MbtaMetro.Components.Input, only: [label: 1, input: 1, required_label: 1]
   import Phoenix.HTML.Form, only: [input_id: 2, input_name: 2, input_value: 2]
 
+  @doc """
+  An input group receives input from a group of 2 or more radios or checkboxes. An input group can be displayed as segmented buttons using the `as_buttons` property. Input groups include a label for the group and can display an error message for the group.
+  """
+
   slot :input, required: true do
     attr :value, :string, required: true
   end
