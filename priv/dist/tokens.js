@@ -134,6 +134,7 @@ module.exports = {
   transitionDuration: "var(--transition-duration)",
   fontSize: {
     DEFAULT: "var(--font-size-default)",
+    xs: "var(--font-size-xs)",
     sm: "var(--font-size-sm)",
     md: "var(--font-size-md)",
     lg: "var(--font-size-lg)",
