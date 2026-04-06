@@ -17,7 +17,7 @@ on:
 
 jobs:
   call-workflow:
-    uses: mbta/workflows/.github/workflows/deploy-ecs.yml@v4
+    uses: mbta/workflows/.github/workflows/deploy-ecs.yml@cbj/ecs-register-task-definition-output-off
     with:
       app-name: mbta-metro
       environment: ${{ inputs.environment }}
