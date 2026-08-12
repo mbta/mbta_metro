@@ -21,7 +21,9 @@ jobs:
     timeout-minutes: 15
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false
       - name: Set cache keys
         id: cache-keys
         run: |
@@ -30,18 +32,18 @@ jobs:
           echo "mix-deps-restore=cache-mix-deps-" >> $GITHUB_OUTPUT
           echo "mix-deps=cache-mix-deps-${{ hashFiles('mix.exs', 'mix.lock', '.tool-versions') }}" >> $GITHUB_OUTPUT
       - name: asdf cache
-        uses: actions/cache@v4
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
         with:
           path: ~/.asdf
           key: ${{ steps.cache-keys.outputs.asdf }}
           restore-keys: ${{ steps.cache-keys.outputs.asdf-restore }}
         id: asdf-cache
       - name: asdf install
-        uses: asdf-vm/actions/install@v4
+        uses: asdf-vm/actions/install@b7bcd026f18772e44fe1026d729e1611cc435d47 # v4.0.1
         # only run `asdf install` if we didn't hit the cache
         if: steps.asdf-cache.outputs.cache-hit != 'true'
       - name: asdf reshim
-        uses: mbta/actions/reshim-asdf@v2
+        uses: mbta/actions/reshim-asdf@d37877022d4ae12e96663d2e0a970a5214a2e232 # v2.20
       - name: mix rebar and hex
         run: |
           mix local.rebar --force
@@ -50,7 +52,7 @@ jobs:
         if: steps.asdf-cache.outputs.cache-hit != 'true'
       - name: mix deps cache
         id: mix-deps-cache
-        uses: actions/cache@v4
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
         with:
           path: |
             deps
@@ -73,6 +75,8 @@ jobs:
     timeout-minutes: 10
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false
       - name: docker build
         run: docker build . -t mbta_metro
