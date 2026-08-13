@@ -15,22 +15,33 @@ on:
 env:
   MIX_ENV: test
 
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
 jobs:
   setup:
     name: Build and test Elixir
     timeout-minutes: 15
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
         with:
           persist-credentials: false
       - name: Set cache keys
         id: cache-keys
+        env:
+          ASDF_HASH: ${{ hashFiles('.tool-versions') }}
+          MIX_HASH: ${{ hashFiles('mix.exs', 'mix.lock', '.tool-versions') }}
         run: |
           echo "asdf-restore=cache-asdf-" >> $GITHUB_OUTPUT
-          echo "asdf=cache-asdf-${{ hashFiles('.tool-versions') }}" >> $GITHUB_OUTPUT
+          echo "asdf=cache-asdf-${ASDF_HASH}" >> $GITHUB_OUTPUT
           echo "mix-deps-restore=cache-mix-deps-" >> $GITHUB_OUTPUT
-          echo "mix-deps=cache-mix-deps-${{ hashFiles('mix.exs', 'mix.lock', '.tool-versions') }}" >> $GITHUB_OUTPUT
+          echo "mix-deps=cache-mix-deps-${MIX_HASH}" >> $GITHUB_OUTPUT
       - name: asdf cache
         uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
         with:
@@ -74,6 +85,8 @@ jobs:
     name: Check that the Docker container will build
     timeout-minutes: 10
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
         with:
@@ -84,6 +97,8 @@ jobs:
   zizmor:
     name: Security analysis with Zizmor
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout repository
         uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0

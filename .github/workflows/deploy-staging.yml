@@ -9,10 +9,18 @@ concurrency:
   group: deploy-staging
   cancel-in-progress: true
 
+permissions: {}
+
 jobs:
   deploy:
     name: Deploy to Staging
     uses: ./.github/workflows/deploy.yml
+    permissions:
+      id-token: write
+      contents: read
     with:
       environment: staging
-    secrets: inherit
+    secrets:
+      AWS_ROLE_ARN: ${{ secrets.AWS_ROLE_ARN }}
+      DOCKER_REPO: ${{ secrets.DOCKER_REPO }}
+      SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
