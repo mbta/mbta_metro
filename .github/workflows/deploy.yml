@@ -15,9 +15,14 @@ on:
       SLACK_WEBHOOK:
         required: true
 
+permissions: {}
+
 jobs:
   call-workflow:
-    uses: mbta/workflows/.github/workflows/deploy-ecs.yml@v4
+    uses: mbta/workflows/.github/workflows/deploy-ecs.yml@5c46d99bcf742a09983588d30a2b3ffed710decd # v4.0.1
+    permissions:
+      id-token: write
+      contents: read
     with:
       app-name: mbta-metro
       environment: ${{ inputs.environment }}
