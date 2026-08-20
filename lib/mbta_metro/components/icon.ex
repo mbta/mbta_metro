@@ -48,16 +48,22 @@ defmodule MbtaMetro.Components.Icon do
   def types, do: @types
 
   for {file, name, type} <- icons do
-    defp icon(unquote(type), unquote(name), opts) do
-      with {:ok, html} <- Floki.parse_fragment(unquote(file)),
-           [{"svg", svg_attrs, svg_content}] <- Floki.find(html, "svg") do
-        {"svg", [opts_to_attrs(opts) | svg_attrs], svg_content}
-        |> Floki.raw_html()
-        |> Phoenix.HTML.raw()
-      else
-        _ ->
-          Logger.warning("Could not parse icon #{unquote(name)} #{unquote(type)}")
+    # --- compile time only ---
+    {:ok, parsed} = Floki.parse_fragment(file)
+    [{"svg", svg_attrs, svg_content}] = Floki.find(parsed, "svg")
+    inner_html = Floki.raw_html(svg_content)
+
+    # Convert the static svg attrs into the SAME iodata shape opts_to_attrs/1
+    # produces, so both lists can just be concatenated at runtime with no
+    # per-request formatting work.
+    svg_attrs_iodata =
+      for {key, value} <- svg_attrs do
+        [?\s, key, ?=, ?", Phoenix.HTML.Safe.to_iodata(value), ?"]
       end
+
+    defp icon(unquote(type), unquote(name), opts) do
+      attrs = opts_to_attrs(opts) ++ unquote(svg_attrs_iodata)
+      {:safe, [?<, "svg", attrs, ?>, unquote(inner_html), "</svg>"]}
     end
   end
 

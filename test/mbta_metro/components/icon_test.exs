@@ -15,13 +15,14 @@ defmodule MbtaMetro.Components.IconTest do
 
     component =
       ~H"""
-      <.icon type="brands" name="metro" class="h-10 w-10" />
+      <.icon type="brands" name="metro" class="h-10 w-10" aria-hidden />
       """
 
     result = rendered_to_string(component)
 
     assert result =~ "svg"
-    assert result =~ "h-10 w-10"
+    assert result =~ ~s(class="h-10 w-10")
+    assert result =~ ~s(aria-hidden="true")
   end
 
   test "the class attribute is optional" do
