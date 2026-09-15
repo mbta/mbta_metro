@@ -61,15 +61,15 @@ defmodule MbtaMetro.MixProject do
         {:cva, "~> 0.2"},
         {:esbuild, "~> 0.10", runtime: false},
         {:ex_doc, "~> 0.39", only: :dev, runtime: false},
-        {:faker, "~> 0.18"},
+        {:faker, "~> 0.19"},
         {:floki, "~> 0.38"},
         {:gettext, "~> 1.0"},
         {:jason, "~> 1.4"},
         {:heroicons, "~> 0.5", optional: true},
         {:phoenix, "~> 1.8"},
         {:phoenix_live_reload, "~> 1.6", only: :dev, optional: true, runtime: false},
-        {:phoenix_live_view, "~> 1.1"},
-        {:phoenix_storybook, "~> 0.9"},
+        {:phoenix_live_view, "~> 1.2"},
+        {:phoenix_storybook, "~> 1.4"},
         {:tailwind, "~> 0.3", runtime: false}
       ]
     else

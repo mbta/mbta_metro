@@ -70,7 +70,7 @@ defmodule MbtaMetro.Components.Icon do
   defp icon(_, _, _), do: nil
 
   attr :name, :string, required: true
-  attr :opts, :global, default: %{}
+  attr :opts, :global, default: %{}, include: ~w(height)
   attr :type, :string, values: @types, default: "solid"
 
   def icon(assigns) do
