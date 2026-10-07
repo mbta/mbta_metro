@@ -57,10 +57,10 @@ defmodule MbtaMetro.MixProject do
   defp deps do
     if is_metro_app?() do
       [
-        {:bandit, "~> 1.8"},
+        {:bandit, "~> 1.12"},
         {:cva, "~> 0.2"},
         {:esbuild, "~> 0.10", runtime: false},
-        {:ex_doc, "~> 0.39", only: :dev, runtime: false},
+        {:ex_doc, "~> 0.40", only: :dev, runtime: false},
         {:faker, "~> 0.19"},
         {:floki, "~> 0.38"},
         {:gettext, "~> 1.0"},
@@ -69,7 +69,7 @@ defmodule MbtaMetro.MixProject do
         {:phoenix, "~> 1.8"},
         {:phoenix_live_reload, "~> 1.6", only: :dev, optional: true, runtime: false},
         {:phoenix_live_view, "~> 1.2"},
-        {:phoenix_storybook, "~> 1.4"},
+        {:phoenix_storybook, "~> 1.5"},
         {:tailwind, "~> 0.3", runtime: false}
       ]
     else
