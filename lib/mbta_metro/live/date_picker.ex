@@ -62,7 +62,11 @@ defmodule MbtaMetro.Live.DatePicker do
           <.icon name="calendar" type="regular" class="mbta-date-picker--icon" />
         </a>
       </div>
-      <.feedback :for={msg <- @errors} kind={:error}>{msg}</.feedback>
+      <.feedback :for={msg <- @errors} kind={:error}>
+        <label for={@field.id} aria-live={true} aria-role="alert">
+          {msg}
+        </label>
+      </.feedback>
     </div>
     """
   end
